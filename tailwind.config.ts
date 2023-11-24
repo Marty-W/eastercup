@@ -5,9 +5,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        "brand-blue": "#0026FF",
+        "brand-blue": "#213a8f",
         "brand-red": "#FF0000",
-        "brand-yellow": "#FFFF00",
+        "brand-yellow": "#ffed03",
       },
       fontFamily: {
         sans: ["var(--font-pano)"],
