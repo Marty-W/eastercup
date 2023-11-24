@@ -1,82 +1,135 @@
-import Link from "next/link";
+import Image from "next/image";
 
-import { CreatePost } from "@/app/_components/create-post";
-import { getServerAuthSession } from "@/server/auth";
-import { api } from "@/trpc/server";
-
-export default async function Home() {
-  const hello = await api.post.hello.query({ text: "from tRPC" });
-  const session = await getServerAuthSession();
-
+export default function Landing() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
+    <main className="flex h-screen flex-col">
+      <header className="pr-5">
+        <div className="flex items-center justify-between">
+          <Image
+            src="/logo_big.svg"
+            // TODO make the logo responsive
+            //TODO left padding is off
+            width={83}
+            height={67}
+            alt="EasterCup logo"
+          />
+          <nav>
+            <div className="flex gap-x-1 text-[10px]">
+              <button>cz</button>
+              <span>|</span>
+              <button>en</button>
             </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
+            {/* TODO add hamburger menu */}
+          </nav>
         </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
+      </header>
+      <Image
+        src="/header_stripe.svg"
+        className="w-full"
+        height={33}
+        width={1000}
+        alt="Decorative stripe"
+      />
+      <div className="flex flex-col justify-around gap-y-4 px-5 pt-7 text-center text-[10px]">
+        <div className="">
+          <h2 className="font-bold">28.-31.3.2023</h2>
+          <span>Klatovy, Czech Republic</span>
+        </div>
+        <div className="font-bold">
+          <h1>mezinarodni basketbalovy turnaj</h1>
+          <h1>mladeze</h1>
+        </div>
+        <button className="mx-16 bg-brand-yellow px-2 py-2">
+          registrace do turnaje
+        </button>
+        <div className="flex justify-between text-[9px]">
+          {/* TODO add timedown counter */}
+          <span>xxx:xx:xx:xx</span>
+          <span>prihlaseno x tymu z x zemi</span>
+        </div>
+      </div>
+      <div>
+        {/* TODO remove this, only a thumbnail */}
+        <Image
+          src="/landing_thumbnail.png"
+          alt="group"
+          width={258}
+          height={183}
+          className="mx-auto pt-28"
+        />
+      </div>
+      <footer className="mt-auto">
+        <div className="h-2 w-full bg-brand-blue" />
+        <div className="grid grid-cols-2 grid-rows-2 place-content-center px-5 py-5 text-[6px]">
+          <div className="flex flex-col">
+            <span className="font-bold">BK Klatovy</span>
+            <span>Voriskova 715, Klatovy III.</span>
+            <span>33901</span>
+            <span>IČ:22850490</span>
+            <span>c.u: 241338205/0300 ČSOB Klatovy</span>
+          </div>
+          <div className="row-start-2 self-center">
+            <a href="https://basketbal-klatovy.cz" target="_blank">
+              www.basketbal-klatovy.cz
+            </a>
+            {/* TODO format as email */}
+            <p>bk.klatovy@seznam.cz</p>
+            <p>All rights reserved</p>
+          </div>
+          <div className="row-span-2 my-auto grid grid-cols-3 grid-rows-2">
+            {/* TODO get logos in higher res / svg */}
 
-          <div className="flex flex-col items-center justify-center gap-4">
-            <p className="text-center text-2xl text-white">
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
-            <Link
-              href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-            >
-              {session ? "Sign out" : "Sign in"}
-            </Link>
+            <Image
+              src="/brand_logos/czbasketball.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/dragonpress.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/fiba.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/klatovy.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/meks.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/peak.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/plzenskykraj.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
+            <Image
+              src="/brand_logos/smucler.png"
+              width={50}
+              height={50}
+              alt="Czech basketball federation logo"
+            />
           </div>
         </div>
-
-        <CrudShowcase />
-      </div>
+      </footer>
     </main>
-  );
-}
-
-async function CrudShowcase() {
-  const session = await getServerAuthSession();
-  if (!session?.user) return null;
-
-  const latestPost = await api.post.getLatest.query();
-
-  return (
-    <div className="w-full max-w-xs">
-      {latestPost ? (
-        <p className="truncate">Your most recent post: {latestPost.name}</p>
-      ) : (
-        <p>You have no posts yet.</p>
-      )}
-
-      <CreatePost />
-    </div>
   );
 }
