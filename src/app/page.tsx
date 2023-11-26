@@ -6,7 +6,7 @@ import TimeCounter from "./_components/timeCounter";
 export default function Landing() {
   return (
     <main className="flex flex-col">
-      <div className="flex h-screen flex-col justify-between">
+      <div className="flex h-[100svh] flex-col justify-between">
         <header className="px-4 pt-4">
           <div className="flex h-16 items-center justify-between">
             <LogoBig height="auto" />
