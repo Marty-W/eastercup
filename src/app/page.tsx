@@ -1,51 +1,45 @@
 import Image from "next/image";
+import HeroStripe from "../../public/header_stripe.svg";
+import LogoBig from "../../public/logo_big.svg";
+import TimeCounter from "./_components/timeCounter";
 
 export default function Landing() {
   return (
-    <main className="flex h-screen flex-col">
-      <header className="pr-5">
-        <div className="flex items-center justify-between">
-          <Image
-            src="/logo_big.svg"
-            // TODO make the logo responsive
-            //TODO left padding is off
-            width={83}
-            height={67}
-            alt="EasterCup logo"
-          />
-          <nav>
-            <div className="flex gap-x-1 text-[10px]">
-              <button>cz</button>
-              <span>|</span>
-              <button>en</button>
+    <main className="flex flex-col">
+      <div className="flex h-screen flex-col justify-between">
+        <header className="px-4 pt-4">
+          <div className="flex h-16 items-center justify-between">
+            <LogoBig height="auto" />
+            <nav>
+              <div className="text-md flex gap-x-1">
+                <button>cz</button>
+                <span>|</span>
+                <button>en</button>
+              </div>
+              {/* TODO add hamburger menu */}
+            </nav>
+          </div>
+        </header>
+        <HeroStripe viewBox="0 0 1000 300" />
+        <div className="flex flex-1 flex-col justify-between px-5 pt-7 text-center text-lg">
+          <div>
+            <div className="mb-6">
+              <h2 className="font-bold">28.-31.3.2023</h2>
+              <span>Klatovy, Czech Republic</span>
             </div>
-            {/* TODO add hamburger menu */}
-          </nav>
-        </div>
-      </header>
-      <Image
-        src="/header_stripe.svg"
-        className="w-full"
-        height={33}
-        width={1000}
-        alt="Decorative stripe"
-      />
-      <div className="flex flex-col justify-around gap-y-4 px-5 pt-7 text-center text-[10px]">
-        <div className="">
-          <h2 className="font-bold">28.-31.3.2023</h2>
-          <span>Klatovy, Czech Republic</span>
-        </div>
-        <div className="font-bold">
-          <h1>mezinarodni basketbalovy turnaj</h1>
-          <h1>mladeze</h1>
-        </div>
-        <button className="mx-16 bg-brand-yellow px-2 py-2">
-          registrace do turnaje
-        </button>
-        <div className="flex justify-between text-[9px]">
-          {/* TODO add timedown counter */}
-          <span>xxx:xx:xx:xx</span>
-          <span>prihlaseno x tymu z x zemi</span>
+            <div className="font-bold">
+              <h1>mezinarodni basketbalovy turnaj</h1>
+              <h1>mladeze</h1>
+            </div>
+          </div>
+          <button className="mx-16 bg-brand-yellow px-2 py-2">
+            registrace do turnaje
+          </button>
+          <div className="flex flex-col justify-between space-y-2 pb-8 text-sm">
+            {/* TODO add timedown counter */}
+            <TimeCounter />
+            <span>prihlaseno x tymu z x zemi</span>
+          </div>
         </div>
       </div>
       <div>
@@ -55,20 +49,20 @@ export default function Landing() {
           alt="group"
           width={258}
           height={183}
-          className="mx-auto pt-28"
+          className="mx-auto pb-8"
         />
       </div>
       <footer className="mt-auto">
         <div className="h-2 w-full bg-brand-blue" />
-        <div className="grid grid-cols-2 grid-rows-2 place-content-center px-5 py-5 text-[6px]">
-          <div className="flex flex-col">
+        <div className="flex flex-col p-6 text-sm">
+          <div className="mb-2 flex flex-col">
             <span className="font-bold">BK Klatovy</span>
             <span>Voriskova 715, Klatovy III.</span>
             <span>33901</span>
             <span>IČ:22850490</span>
             <span>c.u: 241338205/0300 ČSOB Klatovy</span>
           </div>
-          <div className="row-start-2 self-center">
+          <div className="mb-4">
             <a href="https://basketbal-klatovy.cz" target="_blank">
               www.basketbal-klatovy.cz
             </a>
@@ -76,7 +70,7 @@ export default function Landing() {
             <p>bk.klatovy@seznam.cz</p>
             <p>All rights reserved</p>
           </div>
-          <div className="row-span-2 my-auto grid grid-cols-3 grid-rows-2">
+          <div className="my-auto grid grid-cols-3 grid-rows-2 place-items-center pb-6">
             {/* TODO get logos in higher res / svg */}
 
             <Image
