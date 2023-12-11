@@ -3,6 +3,7 @@ import HeroStripe from "../../../public/header_stripe.svg";
 import LogoBig from "../../../public/logo_big.svg";
 import TimeCounter from "../_components/timeCounter";
 import { getI18n } from "locales/server";
+import LangSwitcher from "../_components/langSwitcher";
 
 export default async function Landing() {
   const t = await getI18n();
@@ -13,11 +14,7 @@ export default async function Landing() {
           <div className="flex h-16 items-center justify-between">
             <LogoBig height="auto" />
             <nav>
-              <div className="text-md flex gap-x-1">
-                <button>cz</button>
-                <span>|</span>
-                <button>en</button>
-              </div>
+              <LangSwitcher />
               {/* TODO add hamburger menu */}
             </nav>
           </div>
