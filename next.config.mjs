@@ -8,6 +8,8 @@ import withSvgr from "next-plugin-svgr";
 await import("./src/env.mjs");
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  transpilePackages: ["next-international"],
+};
 
 export default withSvgr(config);

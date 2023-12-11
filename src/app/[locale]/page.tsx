@@ -1,9 +1,11 @@
 import Image from "next/image";
-import HeroStripe from "../../public/header_stripe.svg";
-import LogoBig from "../../public/logo_big.svg";
-import TimeCounter from "./_components/timeCounter";
+import HeroStripe from "../../../public/header_stripe.svg";
+import LogoBig from "../../../public/logo_big.svg";
+import TimeCounter from "../_components/timeCounter";
+import { getI18n } from "locales/server";
 
-export default function Landing() {
+export default async function Landing() {
+  const t = await getI18n();
   return (
     <main className="flex flex-col">
       <div className="flex h-[100svh] flex-col justify-between">
@@ -28,15 +30,13 @@ export default function Landing() {
               <span>Klatovy, Czech Republic</span>
             </div>
             <div className="font-bold">
-              <h1>mezinarodni basketbalovy turnaj</h1>
-              <h1>mladeze</h1>
+              <h1>{t("hero.title")}</h1>
             </div>
           </div>
           <button className="mx-16 bg-brand-yellow px-2 py-2">
             registrace do turnaje
           </button>
           <div className="flex flex-col justify-between space-y-2 pb-8 text-sm">
-            {/* TODO add timedown counter */}
             <TimeCounter />
             <span>prihlaseno x tymu z x zemi</span>
           </div>

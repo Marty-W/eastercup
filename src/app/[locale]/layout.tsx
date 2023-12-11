@@ -4,15 +4,16 @@ import localFont from "next/font/local";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import { I18nProviderClient } from "../../../locales/client";
 
 const pano = localFont({
   src: [
     {
-      path: "../styles/fonts/HW Pano Regular.woff",
+      path: "../../styles/fonts/HW Pano Regular.woff",
       weight: "500",
     },
     {
-      path: "../styles/fonts/HW Pano Bold.woff",
+      path: "../../styles/fonts/HW Pano Bold.woff",
       weight: "700",
     },
   ],
@@ -28,14 +29,16 @@ export const metadata = {
 
 export default function RootLayout({
   children,
+  params: { locale },
 }: {
   children: React.ReactNode;
+  params: { locale: string };
 }) {
   return (
     <html lang="en" className={`${pano.variable}`}>
       <body className="font-pano">
         <TRPCReactProvider cookies={cookies().toString()}>
-          {children}
+          <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
         </TRPCReactProvider>
       </body>
     </html>
