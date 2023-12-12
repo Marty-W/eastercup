@@ -1,25 +1,15 @@
 import Image from "next/image";
-import HeroStripe from "../../../public/header_stripe.svg";
-import LogoBig from "../../../public/logo_big.svg";
 import TimeCounter from "../_components/timeCounter";
 import { getI18n } from "locales/server";
-import LangSwitcher from "../_components/langSwitcher";
+import Navbar from "../_components/navbar";
+import Link from "next/link";
 
 export default async function Landing() {
   const t = await getI18n();
   return (
     <main className="flex flex-col">
       <div className="flex h-[100svh] flex-col justify-between">
-        <header className="px-4 pt-4">
-          <div className="flex h-16 items-center justify-between">
-            <LogoBig height="auto" />
-            <nav>
-              <LangSwitcher />
-              {/* TODO add hamburger menu */}
-            </nav>
-          </div>
-        </header>
-        <HeroStripe viewBox="0 0 1000 300" />
+        <Navbar />
         <div className="flex flex-1 flex-col justify-between px-5 pt-7 text-center text-lg">
           <div>
             <div className="mb-6">
@@ -31,9 +21,9 @@ export default async function Landing() {
               <h1>{t("hero.title")}</h1>
             </div>
           </div>
-          <button className="mx-16 bg-brand-yellow px-2 py-2">
+          <Link href="/form" className="mx-16 bg-brand-yellow px-2 py-2">
             {t("hero.button")}
-          </button>
+          </Link>
           <div className="flex flex-col justify-between space-y-2 pb-8 text-sm">
             <TimeCounter />
             <span>{t("hero.teamcount")}</span>
