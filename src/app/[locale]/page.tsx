@@ -24,18 +24,19 @@ export default async function Landing() {
           <div>
             <div className="mb-6">
               <h2 className="font-bold">28.-31.3.2023</h2>
-              <span>Klatovy, Czech Republic</span>
+              {/* <span>Klatovy, Czech Republic</span> */}
+              <span>{`Klatovy, ${t("common.cz")}`}</span>
             </div>
             <div className="font-bold">
               <h1>{t("hero.title")}</h1>
             </div>
           </div>
           <button className="mx-16 bg-brand-yellow px-2 py-2">
-            registrace do turnaje
+            {t("hero.button")}
           </button>
           <div className="flex flex-col justify-between space-y-2 pb-8 text-sm">
             <TimeCounter />
-            <span>prihlaseno x tymu z x zemi</span>
+            <span>{t("hero.teamcount")}</span>
           </div>
         </div>
       </div>
