@@ -1,7 +1,7 @@
 import Image from "next/image";
-import TimeCounter from "../_components/timeCounter";
+import TimeCounter from "@/components/timeCounter";
 import { getI18n } from "locales/server";
-import Navbar from "../_components/navbar";
+import Navbar from "@/components/navbar";
 import Link from "next/link";
 
 export default async function Landing() {

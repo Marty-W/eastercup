@@ -1,4 +1,4 @@
-import Navbar from "@/app/_components/navbar";
+import Navbar from "@/components/navbar";
 
 export default function Form() {
   return (

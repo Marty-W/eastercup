@@ -1,6 +1,6 @@
 import LangSwitcher from "./langSwitcher";
-import LogoBig from "../../../public/logo_big.svg";
-import HeroStripe from "../../../public/header_stripe.svg";
+import LogoBig from "public/logo_big.svg";
+import HeroStripe from "public/header_stripe.svg";
 
 export default function Navbar() {
   return (
