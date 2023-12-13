@@ -1,4 +1,5 @@
 import { type Config } from "tailwindcss";
+import { GeistSans } from "geist/font/sans";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -71,7 +72,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-pano)"],
+        display: ["var(--font-pano)"],
+        sans: ["var(--font-geist-sans)"],
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

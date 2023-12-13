@@ -7,7 +7,7 @@ export default function Form() {
       {/* Consider moving the navbar to a shared layout */}
       <Navbar />
       <div className="container flex flex-col">
-        <h1 className="text-center">Registrace tymu</h1>
+        <h1 className="text-center font-display">Registrace tymu</h1>
         <TeamRegistrationForm />
       </div>
     </main>

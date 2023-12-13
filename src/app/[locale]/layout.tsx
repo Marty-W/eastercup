@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 
 import localFont from "next/font/local";
+import { GeistSans } from "geist/font/sans";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
@@ -36,7 +37,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${pano.variable}`}>
-      <body className="font-pano">
+      <body className={`font-pano ${GeistSans.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
         </TRPCReactProvider>

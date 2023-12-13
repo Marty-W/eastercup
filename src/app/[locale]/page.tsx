@@ -7,7 +7,7 @@ import Link from "next/link";
 export default async function Landing() {
   const t = await getI18n();
   return (
-    <main className="flex flex-col">
+    <main className="flex flex-col font-display">
       <div className="flex h-[100svh] flex-col justify-between">
         <Navbar />
         <div className="flex flex-1 flex-col justify-between px-5 pt-7 text-center text-lg">

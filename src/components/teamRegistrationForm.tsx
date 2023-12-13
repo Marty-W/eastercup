@@ -1,10 +1,11 @@
 "use client";
 
-import { Form, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "./ui/button";
 import {
+  Form,
   FormField,
   FormItem,
   FormLabel,
@@ -31,7 +32,10 @@ export default function TeamRegistrationForm() {
   };
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className="space-y-8 font-sans"
+      >
         <FormField
           control={form.control}
           name="teamName"
@@ -48,7 +52,9 @@ export default function TeamRegistrationForm() {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit" className="font-sans">
+          Submit
+        </Button>
       </form>
     </Form>
   );

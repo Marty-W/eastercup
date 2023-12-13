@@ -13,7 +13,7 @@ export default function LangSwitcher() {
   };
 
   return (
-    <div className="text-md flex gap-x-1">
+    <div className="text-md flex gap-x-1 font-display">
       <button
         className={cn(locale === "cs" && "font-bold")}
         onClick={() => handleLocaleChange("cs")}
