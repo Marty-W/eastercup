@@ -1,5 +1,3 @@
-import { type Config } from "tailwindcss";
-import { GeistSans } from "geist/font/sans";
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
