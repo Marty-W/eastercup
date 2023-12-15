@@ -1,13 +1,6 @@
-import * as zod from "zod";
+import { type TCountryCode } from "countries-list";
+import * as z from "zod";
 
-// U11 MIX (narozeni 2014 a mladší)
-// U12B (narozeni 2013 a mladší)
-// U12G (narozené 2013 a mladší)
-// U14B (narození 2011 a mladší)
-// U14G (narozené 2011 a mladší)
-// U16B (narození 2009 a mladší)
-// U16G (narozené 2009 a mladší)
-//
 export const TEAM_CATEGORIRES = [
   "U11 MIX",
   "U12B",
@@ -17,8 +10,6 @@ export const TEAM_CATEGORIRES = [
   "U16B",
   "U16G",
 ] as const;
-
-export const TEAM_CATEGORY_ENUM = zod.enum(TEAM_CATEGORIRES);
 
 export const TIMES_BY_30_MINUTES = [
   "07:00",
@@ -46,4 +37,47 @@ export const TIMES_BY_30_MINUTES = [
   "18:00",
 ] as const;
 
-export const TIME_BY_30_MINUTES_ENUM = zod.enum(TIMES_BY_30_MINUTES);
+export const teamFormSchema = z.object({
+  teamName: z
+    .string()
+    .min(10, { message: "form.teamName.minError" })
+    .max(50, { message: "form.teamName.maxError" }),
+  country: z.custom<TCountryCode>((val) => val, {
+    message: "form.country.error",
+  }),
+  category: z.enum(TEAM_CATEGORIRES, {
+    errorMap: () => ({ message: "form.category.error" }),
+  }),
+  contactPerson: z
+    .string()
+    .min(1, { message: "form.contactPerson.minError" })
+    .max(50, {
+      message: "form.contactPerson.maxError",
+    }),
+  phoneNumber: z
+    .string()
+    .min(9, { message: "form.phoneNumber.minError" })
+    .max(50, { message: "form.phoneNumber.maxError" })
+    .startsWith("+", { message: "form.phoneNumber.startsWithError" }),
+  email: z.string().email({ message: "form.email.error" }),
+  arrivalTime: z.enum(TIMES_BY_30_MINUTES, {
+    errorMap: () => ({ message: "form.arrivalTime.error" }),
+  }),
+  meansOfTransport: z
+    .string()
+    .max(50, {
+      message: "form.transport.maxError",
+    })
+    .optional(),
+  note: z.string().max(900, { message: "form.note.maxError" }).optional(),
+});
+
+export const teamFormDefaultValues = {
+  teamName: "",
+  //TODO would be cool to fetch national phone prefix based on country
+  phoneNumber: "+",
+  email: "@",
+  contactPerson: "",
+  meansOfTransport: "",
+  note: "",
+};

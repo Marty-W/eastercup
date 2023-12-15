@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "@/trpc/react";
 import { I18nProviderClient } from "../../../locales/client";
+import { Toaster } from "@/components/ui/toaster";
 
 const pano = localFont({
   src: [
@@ -39,7 +40,10 @@ export default function RootLayout({
     <html lang="en" className={`${pano.variable}`}>
       <body className={`font-pano ${GeistSans.variable}`}>
         <TRPCReactProvider cookies={cookies().toString()}>
-          <I18nProviderClient locale={locale}>{children}</I18nProviderClient>
+          <I18nProviderClient locale={locale}>
+            {children}
+            <Toaster />
+          </I18nProviderClient>
         </TRPCReactProvider>
       </body>
     </html>

@@ -12,6 +12,7 @@ import {
 
 import { cn } from "@/lib/utils";
 import { Label } from "@/components/ui/label";
+import { useI18n } from "locales/client";
 
 const Form = FormProvider;
 
@@ -143,10 +144,11 @@ FormDescription.displayName = "FormDescription";
 
 const FormMessage = React.forwardRef<
   HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, children, ...props }, ref) => {
+  React.HTMLAttributes<HTMLParagraphElement> & { isTranslated?: boolean }
+>(({ className, children, isTranslated, ...props }, ref) => {
   const { error, formMessageId } = useFormField();
   const body = error ? String(error?.message) : children;
+  const t = useI18n();
 
   if (!body) {
     return null;
@@ -159,7 +161,7 @@ const FormMessage = React.forwardRef<
       className={cn("text-sm font-medium text-destructive", className)}
       {...props}
     >
-      {body}
+      {isTranslated ? t(body) : body}
     </p>
   );
 });
