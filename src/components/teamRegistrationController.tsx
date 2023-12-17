@@ -9,6 +9,7 @@ import { teamFormDefaultValues, teamFormSchema } from "@/lib/conts";
 import type * as z from "zod";
 import { useI18n } from "locales/client";
 import { Button } from "./ui/button";
+import FormSubmitDialog from "./formSubmitDialog";
 
 export type RegistrationStep = "credentials" | "services";
 
@@ -26,17 +27,24 @@ export default function TeamRegistrationController() {
   };
 
   const handleStepChange = (step: RegistrationStep) => {
-    const isFirstStepValid =
-      Object.keys(form.formState.errors).filter((fieldName) => {
+    const { formState } = form;
+    const onlyFirstStepErrors = Object.keys(formState.errors).filter(
+      (fieldName) => {
         !fieldName.includes("interest");
-      }).length === 0;
+      },
+    );
+    const isFirstStepValid =
+      formState.isDirty && onlyFirstStepErrors.length === 0;
+    // FIXME: if the last field is the text area touched this doesnt work
+
     if (isFirstStepValid) {
+      form.clearErrors();
       setStep(step);
     }
   };
 
   return (
-    <div>
+    <div className="pb-6">
       <h1 className="text-center font-display">
         {step === "credentials"
           ? t("form.credentialsHeader")
@@ -45,7 +53,7 @@ export default function TeamRegistrationController() {
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto flex flex-col"
+          className="mx-auto flex flex-col font-sans"
         >
           {step === "credentials" && (
             <>
@@ -69,9 +77,7 @@ export default function TeamRegistrationController() {
                 >
                   {t("form.previousStep")}
                 </Button>
-                <Button type="submit" className="mx-auto w-32 font-sans">
-                  {t("form.submit")}
-                </Button>
+                <FormSubmitDialog />
               </div>
             </>
           )}

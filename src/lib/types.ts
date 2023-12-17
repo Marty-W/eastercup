@@ -4,4 +4,6 @@ import { type teamFormSchema } from "./conts";
 
 export type LocaleKey = keyof typeof locale;
 
-export type FormFieldName = keyof z.infer<typeof teamFormSchema>;
+export type Form = z.infer<typeof teamFormSchema>;
+
+export type FormFieldName = keyof Form;

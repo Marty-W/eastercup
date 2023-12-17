@@ -18,11 +18,11 @@ export default function TeamServiceForm() {
       <div className="space-y-6 font-sans">
         <InterestRadio
           fieldName="interestInCatering"
-          fieldLabel="form.catering"
+          fieldLabel="form.interestInCatering"
         />
         <InterestRadio
-          fieldName="interestInAccommodation"
-          fieldLabel="form.accomodation"
+          fieldName="interestInAccomodation"
+          fieldLabel="form.interestInAccomodation"
         />
         <InterestRadio
           fieldName="interestInTshirts"

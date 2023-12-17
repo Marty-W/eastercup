@@ -75,7 +75,7 @@ export const teamFormSchema = z.object({
       required_error: "form.catering.error",
     })
     .transform((value) => (value === "yes" ? true : false)),
-  interestInAccommodation: z
+  interestInAccomodation: z
     .enum(["yes", "no"], {
       required_error: "form.accomodation.error",
     })
