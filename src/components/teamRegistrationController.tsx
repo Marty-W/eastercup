@@ -1,18 +1,19 @@
 "use client";
 
-import { Progress } from "@/components/ui/progress";
 import TeamRegistrationForm from "./teamRegistrationForm";
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import TeamServiceForm from "./teamServicesForm";
+import { useForm, FormProvider } from "react-hook-form";
+import TeamServiceForm from "./TeamServiceForm";
 import { teamFormDefaultValues, teamFormSchema } from "@/lib/conts";
-import { useToast } from "@/components/ui/use-toast";
 import type * as z from "zod";
+import { useI18n } from "locales/client";
+import { Button } from "./ui/button";
 
 export type RegistrationStep = "credentials" | "services";
 
 export default function TeamRegistrationController() {
+  const t = useI18n();
   const [step, setStep] = useState<RegistrationStep>("credentials");
   const form = useForm<z.infer<typeof teamFormSchema>>({
     resolver: zodResolver(teamFormSchema),
@@ -20,37 +21,62 @@ export default function TeamRegistrationController() {
     defaultValues: teamFormDefaultValues,
   });
 
-  const toast = useToast();
-
   const onSubmit = (values: z.infer<typeof teamFormSchema>) => {
     console.log(values);
   };
 
   const handleStepChange = (step: RegistrationStep) => {
-    if (!form.formState.errors) {
+    const isFirstStepValid =
+      Object.keys(form.formState.errors).filter((fieldName) => {
+        !fieldName.includes("interest");
+      }).length === 0;
+    if (isFirstStepValid) {
       setStep(step);
-    } else {
-      // toast({
-      //   variant: "destructive",
-      //   title: "Please fill all required fields",
-      // });
     }
   };
 
   return (
     <div>
-      <Progress className="w-full" value={33} />
-      <form onSubmit={form.handleSubmit(onSubmit)}>
-        {step === "credentials" && (
-          <TeamRegistrationForm
-            form={form}
-            handleStepChange={handleStepChange}
-          />
-        )}
-        {step === "services" && (
-          <TeamServiceForm form={form} handleStepChange={handleStepChange} />
-        )}
-      </form>
+      <h1 className="text-center font-display">
+        {step === "credentials"
+          ? t("form.credentialsHeader")
+          : t("form.servicesHeader")}
+      </h1>
+      <FormProvider {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="mx-auto flex flex-col"
+        >
+          {step === "credentials" && (
+            <>
+              <TeamRegistrationForm />
+              <Button
+                className="mx-auto mt-8 w-32 font-sans"
+                onClick={() => handleStepChange("services")}
+              >
+                {t("form.nextStep")}
+              </Button>
+            </>
+          )}
+          {step === "services" && (
+            <>
+              <TeamServiceForm />
+              <div className="mt-8 flex flex-col space-y-4">
+                <Button
+                  className="mx-auto w-32 font-sans"
+                  onClick={() => handleStepChange("credentials")}
+                  variant="secondary"
+                >
+                  {t("form.previousStep")}
+                </Button>
+                <Button type="submit" className="mx-auto w-32 font-sans">
+                  {t("form.submit")}
+                </Button>
+              </div>
+            </>
+          )}
+        </form>
+      </FormProvider>
     </div>
   );
 }

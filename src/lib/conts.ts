@@ -70,11 +70,32 @@ export const teamFormSchema = z.object({
     })
     .optional(),
   note: z.string().max(900, { message: "form.note.maxError" }).optional(),
+  interestInCatering: z
+    .enum(["yes", "no"], {
+      required_error: "form.catering.error",
+    })
+    .transform((value) => (value === "yes" ? true : false)),
+  interestInAccommodation: z
+    .enum(["yes", "no"], {
+      required_error: "form.accomodation.error",
+    })
+    .transform((value) => (value === "yes" ? true : false)),
+  interestInTshirts: z
+    .enum(["yes", "no"], {
+      required_error: "form.tshirts.error",
+    })
+    .transform((value) => (value === "yes" ? true : false)),
+  noXsShirts: z.coerce.number().min(0).max(50).optional(),
+  noSShirts: z.coerce.number().min(0).max(50).optional(),
+  noMShirts: z.coerce.number().min(0).max(50).optional(),
+  noLShirts: z.coerce.number().min(0).max(50).optional(),
+  noXLShirts: z.coerce.number().min(0).max(50).optional(),
+  noXXLShirts: z.coerce.number().min(0).max(50).optional(),
 });
 
 export const teamFormDefaultValues = {
   teamName: "",
-  //TODO would be cool to fetch national phone prefix based on country
+  //TODO:would be cool to fetch national phone prefix based on country
   phoneNumber: "+",
   email: "@",
   contactPerson: "",

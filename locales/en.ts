@@ -1,11 +1,14 @@
 export default {
   "common.cz": "Czech Republic",
+  "common.yes": "Yes",
+  "common.no": "No",
   "hero.title": "International youth basketball team tournament",
   "hero.button": "registration to tournament",
   // TODO add pluralization
   "hero.teamcount": "registered x teams from y countries",
   "form.optional": "(optional)",
-  "form.header": "Team registration",
+  "form.credentialsHeader": "Registrace tymu",
+  "form.servicesHeader": "Objednavka sluzeb",
   "form.teamName": "Team name",
   "form.teamName.error": "Team name should have at least 11 characters.",
   "form.country": "Country",
@@ -25,11 +28,13 @@ export default {
   "form.arrivalTime": "Arrival time",
   "form.selectArrivalTime": "Select arrival time",
   "form.arrivalTimeTooltip": "Time of arrival to the tournament",
-  "form.meansOfTransport": "Means of transport",
+  "form.meansOfTransport": "Means of transport (optional)",
   "form.meansOfTransportTooltip": "How will you get to the tournament?",
   "form.note": "Note for organizers",
   "form.notePlaceholder": "Anything you want to tell us?",
   "form.nextStep": "Next step",
+  "form.previousStep": "Go back",
+  "form.submit": "Submit",
   "form.teamName.minError": "Team name must be at least 10 characters long.",
   "form.teamName.maxError": "Team name must not exceed 50 characters.",
   "form.country.error": "Please select a valid country.",
@@ -47,4 +52,7 @@ export default {
   "form.transport.maxError":
     "Means of transport must not exceed 50 characters.",
   "form.note.maxError": "Note must not exceed 900 characters.",
+  "form.accomodation": "Are you interested in accomodation?",
+  "form.catering": "Are you interested in catering?",
+  "form.interestInTshirts": "Are you interested in tournament Tshirts?",
 } as const;
