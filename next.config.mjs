@@ -10,6 +10,9 @@ await import("./src/env.mjs");
 /** @type {import("next").NextConfig} */
 const config = {
   transpilePackages: ["next-international"],
+  experimental: {
+    swcPlugins: [["@swc-jotai/react-refresh", {}]],
+  },
 };
 
 export default withSvgr(config);

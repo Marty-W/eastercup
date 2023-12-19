@@ -1,20 +1,18 @@
-import Image from "next/image";
+import Footer from "@/components/footer";
 import TimeCounter from "@/components/timeCounter";
 import { getI18n } from "locales/server";
-import Navbar from "@/components/navbar";
 import Link from "next/link";
+import Image from "next/image";
 
 export default async function Landing() {
   const t = await getI18n();
   return (
-    <main className="flex flex-col font-display">
-      <div className="flex h-[100svh] flex-col justify-between">
-        <Navbar />
+    <>
+      <div className="flex h-[calc(100svh-160px)] flex-col justify-between">
         <div className="flex flex-1 flex-col justify-between px-5 pt-7 text-center text-lg">
           <div>
             <div className="mb-6">
               <h2 className="font-bold">28.-31.3.2023</h2>
-              {/* <span>Klatovy, Czech Republic</span> */}
               <span>{`Klatovy, ${t("common.cz")}`}</span>
             </div>
             <div className="font-bold">
@@ -40,78 +38,7 @@ export default async function Landing() {
           className="mx-auto pb-8"
         />
       </div>
-      <footer className="mt-auto">
-        <div className="h-2 w-full bg-brand-blue" />
-        <div className="flex flex-col p-6 text-sm">
-          <div className="mb-2 flex flex-col">
-            <span className="font-bold">BK Klatovy</span>
-            <span>Voriskova 715, Klatovy III.</span>
-            <span>33901</span>
-            <span>IČ:22850490</span>
-            <span>c.u: 241338205/0300 ČSOB Klatovy</span>
-          </div>
-          <div className="mb-4">
-            <a href="https://basketbal-klatovy.cz" target="_blank">
-              www.basketbal-klatovy.cz
-            </a>
-            {/* TODO format as email */}
-            <p>bk.klatovy@seznam.cz</p>
-            <p>All rights reserved</p>
-          </div>
-          <div className="my-auto grid grid-cols-3 grid-rows-2 place-items-center pb-6">
-            {/* TODO get logos in higher res / svg */}
-
-            <Image
-              src="/brand_logos/czbasketball.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/dragonpress.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/fiba.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/klatovy.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/meks.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/peak.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/plzenskykraj.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-            <Image
-              src="/brand_logos/smucler.png"
-              width={50}
-              height={50}
-              alt="Czech basketball federation logo"
-            />
-          </div>
-        </div>
-      </footer>
-    </main>
+      <Footer />
+    </>
   );
 }

@@ -28,6 +28,7 @@ export default function TeamServiceForm() {
           fieldName="interestInTshirts"
           fieldLabel="form.interestInTshirts"
         />
+        {/* @ts-expect-error: due to zod transform, I need to check the literal, not the boolean */}
         {interestedInTshirts === "yes" ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
             <TshirtInput fieldName="noXsShirts" fieldLabel="XS" />

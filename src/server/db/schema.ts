@@ -8,6 +8,7 @@ import {
   timestamp,
   varchar,
   serial,
+  boolean,
 } from "drizzle-orm/mysql-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -25,11 +26,22 @@ export const TeamsTable = mysqlTable(
     id: serial("id").primaryKey(),
     name: varchar("name", { length: 255 }).notNull().unique(),
     country: varchar("country", { length: 255 }).notNull(),
+    category: varchar("category", { length: 255 }).notNull(),
+    contactPerson: varchar("contact_person", { length: 255 }).notNull(),
     phoneNumber: varchar("phone_number", { length: 255 }).notNull(),
     email: varchar("email", { length: 255 }).notNull(),
-    arrival: varchar("arrival", { length: 255 }),
-    transportation: varchar("transportation", { length: 255 }),
-    note: varchar("note", { length: 255 }),
+    arrivalTime: varchar("arrival_time", { length: 255 }).notNull(),
+    meansOfTransport: varchar("means_of_transport", { length: 255 }),
+    note: text("note"),
+    interestInCatering: boolean("interest_in_catering").notNull(),
+    interestInAccomodation: boolean("interest_in_accomodation").notNull(),
+    interestInTshirts: boolean("interest_in_tshirts").notNull(),
+    noXsShirts: int("no_xs_shirts"),
+    noSShirts: int("no_s_shirts"),
+    noMShirts: int("no_m_shirts"),
+    noLShirts: int("no_l_shirts"),
+    noXLShirts: int("no_xl_shirts"),
+    noXXLShirts: int("no_xxl_shirts"),
   },
   (teams) => {
     return { nameIdx: index("name_idx").on(teams.name) };

@@ -40,14 +40,10 @@ export const TIMES_BY_30_MINUTES = [
 export const teamFormSchema = z.object({
   teamName: z
     .string()
-    .min(10, { message: "form.teamName.minError" })
+    .min(5, { message: "form.teamName.minError" })
     .max(50, { message: "form.teamName.maxError" }),
-  country: z.custom<TCountryCode>((val) => val, {
-    message: "form.country.error",
-  }),
-  category: z.enum(TEAM_CATEGORIRES, {
-    errorMap: () => ({ message: "form.category.error" }),
-  }),
+  country: z.string().min(2, { message: "form.country.error" }),
+  category: z.string().min(2, { message: "form.category.error" }),
   contactPerson: z
     .string()
     .min(1, { message: "form.contactPerson.minError" })
@@ -60,9 +56,7 @@ export const teamFormSchema = z.object({
     .max(50, { message: "form.phoneNumber.maxError" })
     .startsWith("+", { message: "form.phoneNumber.startsWithError" }),
   email: z.string().email({ message: "form.email.error" }),
-  arrivalTime: z.enum(TIMES_BY_30_MINUTES, {
-    errorMap: () => ({ message: "form.arrivalTime.error" }),
-  }),
+  arrivalTime: z.string().min(4, { message: "form.arrivalTime.error" }),
   meansOfTransport: z
     .string()
     .max(50, {
@@ -93,6 +87,12 @@ export const teamFormSchema = z.object({
   noXXLShirts: z.coerce.number().min(0).max(50).optional(),
 });
 
+export const teamFormSchemaServer = teamFormSchema.extend({
+  interestInCatering: z.boolean(),
+  interestInAccomodation: z.boolean(),
+  interestInTshirts: z.boolean(),
+});
+
 export const teamFormDefaultValues = {
   teamName: "",
   //TODO:would be cool to fetch national phone prefix based on country
@@ -101,4 +101,16 @@ export const teamFormDefaultValues = {
   contactPerson: "",
   meansOfTransport: "",
   note: "",
+  country: "",
+  category: "",
+  arrivalTime: "",
+  interestInCatering: false,
+  interestInAccomodation: false,
+  interestInTshirts: false,
+  noXsShirts: 0,
+  noSShirts: 0,
+  noMShirts: 0,
+  noLShirts: 0,
+  noXLShirts: 0,
+  noXXLShirts: 0,
 };

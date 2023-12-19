@@ -29,13 +29,7 @@ export default function FormSubmitDialog() {
   return (
     <AlertDialog>
       <AlertDialogTrigger disabled={!form.formState.isValid}>
-        <Button
-          type="submit"
-          className="mx-auto w-32 font-sans"
-          disabled={!form.formState.isValid}
-        >
-          {t("form.submit")}
-        </Button>
+        <Button className="mx-auto w-32 font-sans">{t("form.submit")}</Button>
       </AlertDialogTrigger>
       <AlertDialogContent className="font-sans">
         <AlertDialogHeader>

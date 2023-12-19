@@ -1,12 +1,15 @@
 import LangSwitcher from "./langSwitcher";
 import LogoBig from "public/logo_big.svg";
 import HeroStripe from "public/header_stripe.svg";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <header className="px-4 pt-4">
+    <header className="h-[160px] px-4 pt-4">
       <div className="flex h-16 items-center justify-between">
-        <LogoBig height="auto" />
+        <Link href="/">
+          <LogoBig height={60} width="auto" />
+        </Link>
         <nav>
           <LangSwitcher />
           {/* TODO add hamburger menu */}

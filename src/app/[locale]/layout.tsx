@@ -7,6 +7,8 @@ import { cookies } from "next/headers";
 import { TRPCReactProvider } from "@/trpc/react";
 import { I18nProviderClient } from "../../../locales/client";
 import { Toaster } from "@/components/ui/toaster";
+import Navbar from "@/components/navbar";
+import Footer from "@/components/footer";
 
 const pano = localFont({
   src: [
@@ -38,10 +40,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${pano.variable}`}>
-      <body className={`font-pano ${GeistSans.variable}`}>
+      <body className={`font-pano ${GeistSans.variable} font-display`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <I18nProviderClient locale={locale}>
-            {children}
+            <div className="flex flex-col">
+              <Navbar />
+              {children}
+            </div>
             <Toaster />
           </I18nProviderClient>
         </TRPCReactProvider>
