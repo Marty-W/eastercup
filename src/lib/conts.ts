@@ -64,6 +64,12 @@ export const teamFormSchema = z.object({
     })
     .optional(),
   note: z.string().max(900, { message: "form.note.maxError" }).optional(),
+  companyName: z.string().min(5, { message: "form.required" }),
+  address: z.string().min(5, { message: "form.required" }),
+  city: z.string().min(3, { message: "form.required" }),
+  zipCode: z.string().min(5, { message: "form.required" }),
+  ic: z.string().min(5, { message: "form.required" }),
+  dic: z.string().min(5, { message: "form.required" }).optional(),
   interestInCatering: z
     .enum(["yes", "no"], {
       required_error: "form.catering.error",
@@ -104,6 +110,12 @@ export const teamFormDefaultValues = {
   country: "",
   category: "",
   arrivalTime: "",
+  companyName: "",
+  address: "",
+  city: "",
+  zipCode: "",
+  ic: "",
+  dic: "",
   interestInCatering: false,
   interestInAccomodation: false,
   interestInTshirts: false,

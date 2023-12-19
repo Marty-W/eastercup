@@ -66,4 +66,11 @@ export default {
   "form.tshirts.error": "This field is required",
   "form.accomodation.error": "This field is required",
   "form.catering.error": "This field is required",
+  "form.required": "This field is required",
+  "form.companyName": "Company name",
+  "form.address": "Address",
+  "form.city": "City",
+  "form.zipCode": "Zip code",
+  "form.ic": "Bussiness ID",
+  "form.dic": "VAT Number",
 } as const;

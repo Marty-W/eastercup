@@ -23,6 +23,7 @@ export default function TeamRegistrationForm() {
 
   return (
     <Form {...form}>
+      <h3 className="text-center text-lg font-semibold">Tymove udaje</h3>
       <div className="space-y-6 font-sans">
         <TextInput fieldName="teamName" fieldLabel="form.teamName" />
         <FormSelect
@@ -106,6 +107,15 @@ export default function TeamRegistrationForm() {
             </FormItem>
           )}
         />
+      </div>
+      <h3 className="text-center text-lg font-semibold">Fakturacni udaje</h3>
+      <div className="flex flex-col space-y-6 pt-6">
+        <TextInput fieldName="companyName" fieldLabel="form.companyName" />
+        <TextInput fieldName="address" fieldLabel="form.address" />
+        <TextInput fieldName="city" fieldLabel="form.city" />
+        <TextInput fieldName="zipCode" fieldLabel="form.zipCode" />
+        <TextInput fieldName="ic" fieldLabel="form.ic" />
+        <TextInput fieldName="dic" fieldLabel="form.dic" />
       </div>
     </Form>
   );

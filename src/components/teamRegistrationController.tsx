@@ -86,11 +86,6 @@ export default function TeamRegistrationController() {
 
   return (
     <div>
-      <h1 className="text-center font-display">
-        {step === "credentials"
-          ? t("form.credentialsHeader")
-          : t("form.servicesHeader")}
-      </h1>
       <FormProvider {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
