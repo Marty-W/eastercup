@@ -19,7 +19,7 @@ export default async function Landing() {
               <h1>{t("hero.title")}</h1>
             </div>
           </div>
-          <Link href="/form" className="mx-16 bg-brand-yellow px-2 py-2">
+          <Link href="/form/info" className="mx-16 bg-brand-yellow px-2 py-2">
             {t("hero.button")}
           </Link>
           <div className="flex flex-col justify-between space-y-2 pb-8 text-sm">

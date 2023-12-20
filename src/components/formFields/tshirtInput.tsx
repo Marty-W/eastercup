@@ -1,4 +1,4 @@
-import { type teamFormSchema } from "@/lib/conts";
+import { type teamFormServicesSchema } from "@/lib/conts";
 import { useFormContext } from "react-hook-form";
 import { type z } from "zod";
 import {
@@ -25,7 +25,7 @@ interface Props {
 }
 
 export default function TshirtInput({ fieldName, fieldLabel }: Props) {
-  const form = useFormContext<z.infer<typeof teamFormSchema>>();
+  const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
 
   return (
     <FormField
@@ -37,7 +37,6 @@ export default function TshirtInput({ fieldName, fieldLabel }: Props) {
           <FormControl>
             <Input {...field} className="w-16" type="number" max={50} min={0} />
           </FormControl>
-          <FormMessage isTranslated />
         </FormItem>
       )}
     />

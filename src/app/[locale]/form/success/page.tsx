@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import WrongStateRedirect from "@/components/wrongStateRedirect";
-import { formSubmissionAtom } from "@/lib/atoms";
+import { teamFormAtom } from "@/lib/atoms";
 import { useAtomValue } from "jotai";
 import Link from "next/link";
 import SuccessSVG from "public/icons8-ok-480.svg";
@@ -11,9 +11,9 @@ import SuccessSVG from "public/icons8-ok-480.svg";
 // TODO add pdf generation
 
 export default function FormSuccess() {
-  const formSubmissionResult = useAtomValue(formSubmissionAtom);
+  const formValues = useAtomValue(teamFormAtom);
 
-  if (!formSubmissionResult) {
+  if (!formValues) {
     return <WrongStateRedirect />;
   }
 
@@ -23,8 +23,7 @@ export default function FormSuccess() {
       <div className="pt-8">
         <h1 className="mb-5 text-center font-display text-xl">Thank you!</h1>
         <p className="text-center">
-          Your team{" "}
-          <span className="font-bold">{formSubmissionResult?.teamName}</span>{" "}
+          Your team <span className="font-bold">{formValues?.teamName}</span>{" "}
           was successfully registered.
         </p>
       </div>

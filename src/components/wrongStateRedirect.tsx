@@ -11,6 +11,9 @@ export default function WrongStateRedirect() {
       <Button asChild>
         <Link href="/">Go home</Link>
       </Button>
+      <Button asChild>
+        <Link href="/form/info">Redo registration</Link>
+      </Button>
     </div>
   );
 }

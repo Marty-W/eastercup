@@ -1,5 +1,5 @@
-import { type TCountryCode } from "countries-list";
 import * as z from "zod";
+import { teamServicesAtom } from "./atoms";
 
 export const TEAM_CATEGORIRES = [
   "U11 MIX",
@@ -37,7 +37,7 @@ export const TIMES_BY_30_MINUTES = [
   "18:00",
 ] as const;
 
-export const teamFormSchema = z.object({
+export const teamFormInfoSchema = z.object({
   teamName: z
     .string()
     .min(5, { message: "form.teamName.minError" })
@@ -64,12 +64,40 @@ export const teamFormSchema = z.object({
     })
     .optional(),
   note: z.string().max(900, { message: "form.note.maxError" }).optional(),
+});
+
+export const teamFormInfoDefaultValues = {
+  teamName: "",
+  //TODO:would be cool to fetch national phone prefix based on country
+  phoneNumber: "+",
+  email: "@",
+  contactPerson: "",
+  meansOfTransport: "",
+  note: "",
+  country: "",
+  category: "",
+  arrivalTime: "",
+};
+
+export const teamFormBillingSchema = z.object({
   companyName: z.string().min(5, { message: "form.required" }),
   address: z.string().min(5, { message: "form.required" }),
   city: z.string().min(3, { message: "form.required" }),
   zipCode: z.string().min(5, { message: "form.required" }),
   ic: z.string().min(5, { message: "form.required" }),
   dic: z.string().min(5, { message: "form.required" }).optional(),
+});
+
+export const teamFormBillingDefaultValues = {
+  companyName: "",
+  address: "",
+  city: "",
+  zipCode: "",
+  ic: "",
+  dic: "",
+};
+
+export const teamFormServicesSchema = z.object({
   interestInCatering: z
     .enum(["yes", "no"], {
       required_error: "form.catering.error",
@@ -93,29 +121,7 @@ export const teamFormSchema = z.object({
   noXXLShirts: z.coerce.number().min(0).max(50).optional(),
 });
 
-export const teamFormSchemaServer = teamFormSchema.extend({
-  interestInCatering: z.boolean(),
-  interestInAccomodation: z.boolean(),
-  interestInTshirts: z.boolean(),
-});
-
-export const teamFormDefaultValues = {
-  teamName: "",
-  //TODO:would be cool to fetch national phone prefix based on country
-  phoneNumber: "+",
-  email: "@",
-  contactPerson: "",
-  meansOfTransport: "",
-  note: "",
-  country: "",
-  category: "",
-  arrivalTime: "",
-  companyName: "",
-  address: "",
-  city: "",
-  zipCode: "",
-  ic: "",
-  dic: "",
+export const teamFormServicesDefaultValues = {
   interestInCatering: false,
   interestInAccomodation: false,
   interestInTshirts: false,
@@ -126,3 +132,12 @@ export const teamFormDefaultValues = {
   noXLShirts: 0,
   noXXLShirts: 0,
 };
+
+export const teamFormSchemaServer = teamFormInfoSchema
+  .merge(teamFormBillingSchema)
+  .merge(teamFormServicesSchema)
+  .extend({
+    interestInCatering: z.boolean(),
+    interestInAccomodation: z.boolean(),
+    interestInTshirts: z.boolean(),
+  });

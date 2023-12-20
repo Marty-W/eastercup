@@ -9,21 +9,23 @@ import {
   FormControl,
   FormMessage,
 } from "./ui/form";
-import { TEAM_CATEGORIRES, TIMES_BY_30_MINUTES } from "@/lib/conts";
+import {
+  TEAM_CATEGORIRES,
+  TIMES_BY_30_MINUTES,
+  type teamFormInfoSchema,
+} from "@/lib/conts";
 import { SelectItem } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { useScopedI18n } from "locales/client";
-import { type teamFormSchema } from "@/lib/conts";
 import TextInput from "./formFields/textInput";
 import FormSelect from "./formFields/formSelect";
 
 export default function TeamRegistrationForm() {
   const t = useScopedI18n("form");
-  const form = useFormContext<z.infer<typeof teamFormSchema>>();
+  const form = useFormContext<z.infer<typeof teamFormInfoSchema>>();
 
   return (
     <Form {...form}>
-      <h3 className="text-center text-lg font-semibold">Tymove udaje</h3>
       <div className="space-y-6 font-sans">
         <TextInput fieldName="teamName" fieldLabel="form.teamName" />
         <FormSelect
@@ -108,15 +110,15 @@ export default function TeamRegistrationForm() {
           )}
         />
       </div>
-      <h3 className="text-center text-lg font-semibold">Fakturacni udaje</h3>
-      <div className="flex flex-col space-y-6 pt-6">
-        <TextInput fieldName="companyName" fieldLabel="form.companyName" />
-        <TextInput fieldName="address" fieldLabel="form.address" />
-        <TextInput fieldName="city" fieldLabel="form.city" />
-        <TextInput fieldName="zipCode" fieldLabel="form.zipCode" />
-        <TextInput fieldName="ic" fieldLabel="form.ic" />
-        <TextInput fieldName="dic" fieldLabel="form.dic" />
-      </div>
+      {/* <h3 className="text-center text-lg font-semibold">Fakturacni udaje</h3> */}
+      {/* <div className="flex flex-col space-y-6 pt-6"> */}
+      {/*   <TextInput fieldName="companyName" fieldLabel="form.companyName" /> */}
+      {/*   <TextInput fieldName="address" fieldLabel="form.address" /> */}
+      {/*   <TextInput fieldName="city" fieldLabel="form.city" /> */}
+      {/*   <TextInput fieldName="zipCode" fieldLabel="form.zipCode" /> */}
+      {/*   <TextInput fieldName="ic" fieldLabel="form.ic" /> */}
+      {/*   <TextInput fieldName="dic" fieldLabel="form.dic" /> */}
+      {/* </div> */}
     </Form>
   );
 }
