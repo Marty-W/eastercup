@@ -48,7 +48,6 @@ export default function InterestRadio({ fieldName, fieldLabel }: Props) {
               </FormItem>
             </RadioGroup>
           </FormControl>
-          <FormMessage isTranslated />
         </FormItem>
       )}
     />

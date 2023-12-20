@@ -24,7 +24,7 @@ export const TeamsTable = mysqlTable(
   "teams",
   {
     id: serial("id").primaryKey(),
-    name: varchar("name", { length: 255 }).notNull().unique(),
+    name: varchar("name", { length: 255 }).notNull(),
     country: varchar("country", { length: 255 }).notNull(),
     category: varchar("category", { length: 255 }).notNull(),
     contactPerson: varchar("contact_person", { length: 255 }).notNull(),
@@ -49,9 +49,10 @@ export const TeamsTable = mysqlTable(
     noXLShirts: int("no_xl_shirts"),
     noXXLShirts: int("no_xxl_shirts"),
   },
-  (teams) => {
-    return { nameIdx: index("name_idx").on(teams.name) };
-  },
+  // NOTE: without being unique, this index is useless
+  // (teams) => {
+  //   return { nameIdx: index("name_idx").on(teams.name) };
+  // },
 );
 
 export const users = mysqlTable("user", {

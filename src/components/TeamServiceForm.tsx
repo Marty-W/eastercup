@@ -1,5 +1,5 @@
 import { useFormContext, useWatch } from "react-hook-form";
-import { Form, FormMessage } from "./ui/form";
+import { Form } from "./ui/form";
 import { type teamFormServicesSchema } from "@/lib/conts";
 import { type z } from "zod";
 import InterestRadio from "./formFields/interestRadio";
@@ -28,7 +28,8 @@ export default function TeamServiceForm() {
           fieldName="interestInTshirts"
           fieldLabel="form.interestInTshirts"
         />
-        {interestedInTshirts ? (
+        {/* @ts-expect-error   due to zod transform being applied at runtime, this is indeed a string now*/}
+        {interestedInTshirts === "yes" ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
             <TshirtInput fieldName="noXsShirts" fieldLabel="XS" />
             <TshirtInput fieldName="noSShirts" fieldLabel="S" />
