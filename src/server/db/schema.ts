@@ -20,7 +20,7 @@ import { type AdapterAccount } from "next-auth/adapters";
  */
 export const mysqlTable = mysqlTableCreator((name) => `eastercup_${name}`);
 
-export const TeamsTable = mysqlTable(
+export const teams = mysqlTable(
   "teams",
   {
     id: serial("id").primaryKey(),

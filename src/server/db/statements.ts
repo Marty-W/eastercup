@@ -1,20 +1,17 @@
 import { db } from ".";
 import { count, countDistinct } from "drizzle-orm";
-import { TeamsTable } from "@/server/db/schema";
+import { teams } from "@/server/db/schema";
 
-export const getTeamCount = db
-  .select({ value: count() })
-  .from(TeamsTable)
-  .prepare();
+export const getTeamCount = db.select({ value: count() }).from(teams).prepare();
 
 export const getCountryCount = db
-  .select({ value: countDistinct(TeamsTable.country) })
-  .from(TeamsTable)
+  .select({ value: countDistinct(teams.country) })
+  .from(teams)
   .prepare();
 
 export const getPresentCountries = db
   .selectDistinct({
-    country: TeamsTable.country,
+    country: teams.country,
   })
-  .from(TeamsTable)
+  .from(teams)
   .prepare();
