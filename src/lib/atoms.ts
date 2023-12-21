@@ -1,9 +1,13 @@
 import { atom } from "jotai";
+import { createJSONStorage } from "jotai/utils";
 import {
   type TeamInfoFormValues,
   type TeamBillingFormValues,
   type TeamServicesFormValues,
 } from "./types";
+
+// FIXME: doesnt work, saves only to localstorage
+export const sessionStorage = createJSONStorage(() => window.sessionStorage);
 
 export const formSubmissionError = atom<string | null>(null);
 
@@ -27,4 +31,9 @@ export const teamFormAtom = atom((get) => {
     ...teamBilling,
     ...teamServices,
   };
+});
+
+export const finishedFormStepsAtom = atom({
+  info: false,
+  billing: false,
 });

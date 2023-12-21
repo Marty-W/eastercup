@@ -18,3 +18,18 @@ export type TeamInfoFormValues = z.infer<typeof teamFormInfoSchema>;
 export type TeamBillingFormValues = z.infer<typeof teamFormBillingSchema>;
 
 export type TeamServicesFormValues = z.infer<typeof teamFormServicesSchema>;
+
+export type FormSegment =
+  | "info"
+  | "billing"
+  | "services"
+  | "success"
+  | "failure";
+
+export type FormFinalSegment = Extract<FormSegment, "success" | "failure">;
+
+export const isFormFinalSegment = (
+  segment: FormSegment,
+): segment is FormFinalSegment => {
+  return segment === "success" || segment === "failure";
+};

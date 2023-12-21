@@ -2,6 +2,7 @@
 import TeamServiceForm from "@/components/TeamServiceForm";
 import { Button } from "@/components/ui/button";
 import {
+  finishedFormStepsAtom,
   formSubmissionError,
   teamBillingAtom,
   teamInfoAtom,

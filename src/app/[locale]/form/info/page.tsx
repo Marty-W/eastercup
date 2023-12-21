@@ -1,7 +1,7 @@
 "use client";
 import TeamRegistrationForm from "@/components/teamRegistrationForm";
 import { Button } from "@/components/ui/button";
-import { teamInfoAtom } from "@/lib/atoms";
+import { finishedFormStepsAtom, teamInfoAtom } from "@/lib/atoms";
 import { teamFormInfoSchema, teamFormInfoDefaultValues } from "@/lib/conts";
 import { type TeamInfoFormValues } from "@/lib/types";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,9 +23,13 @@ export default function TeamInfo() {
   const router = useRouter();
   const locale = useCurrentLocale();
   const setTeamInfoFormValues = useSetAtom(teamInfoAtom);
+  const setFinishedFormStepsAtom = useSetAtom(finishedFormStepsAtom);
 
   const onSubmit = (values: TeamInfoFormValues) => {
     setTeamInfoFormValues(values);
+    setFinishedFormStepsAtom({
+      info: true,
+    });
     router.push(`/${locale}/form/billing`);
   };
 

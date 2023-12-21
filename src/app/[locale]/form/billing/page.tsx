@@ -1,7 +1,7 @@
 "use client";
 import TeamBillingForm from "@/components/teamBillingForm";
 import { Button } from "@/components/ui/button";
-import { teamBillingAtom } from "@/lib/atoms";
+import { finishedFormStepsAtom, teamBillingAtom } from "@/lib/atoms";
 import {
   teamFormBillingSchema,
   teamFormBillingDefaultValues,
@@ -26,9 +26,14 @@ export default function TeamBilling() {
   const router = useRouter();
   const locale = useCurrentLocale();
   const setTeamBillingFormValues = useSetAtom(teamBillingAtom);
+  const setFinishedFormStepsAtom = useSetAtom(finishedFormStepsAtom);
 
   const onSubmit = (values: TeamBillingFormValues) => {
     setTeamBillingFormValues(values);
+    setFinishedFormStepsAtom((prev) => ({
+      ...prev,
+      billing: true,
+    }));
     router.push(`/${locale}/form/services`);
   };
 
