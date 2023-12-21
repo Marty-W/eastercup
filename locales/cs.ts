@@ -6,7 +6,10 @@ export default {
   "hero.title": "Mezinarodni basketbalovy turnaj mladeze",
   "hero.button": "registrace do turnaje",
   // TODO add pluralization
-  "hero.teamcount": "prihlaseno x tymu z y zemi",
+  "hero.registered": "registrovano",
+  "hero.teams": "tymu",
+  "hero.from": "z",
+  "hero.countries": "zemi",
   "form.nextStep": "Dalsi krok",
   "form.previousStep": "Zpet",
   "form.submit": "Odeslat",

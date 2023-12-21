@@ -5,7 +5,10 @@ export default {
   "hero.title": "International youth basketball team tournament",
   "hero.button": "registration to tournament",
   // TODO add pluralization
-  "hero.teamcount": "registered x teams from y countries",
+  "hero.registered": "registered",
+  "hero.teams": "teams",
+  "hero.from": "from",
+  "hero.countries": "countires",
   "form.optional": "(optional)",
   "form.credentialsHeader": "Registrace tymu",
   "form.servicesHeader": "Objednavka sluzeb",
