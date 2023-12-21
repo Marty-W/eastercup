@@ -1,24 +1,21 @@
-import { type teamFormSchema } from "@/lib/conts";
+import { type teamFormServicesSchema } from "@/lib/conts";
 import { useFormContext } from "react-hook-form";
 import { type z } from "zod";
-import {
-  FormField,
-  FormItem,
-  FormLabel,
-  FormControl,
-  FormMessage,
-} from "../ui/form";
+import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { useI18n } from "locales/client";
 import { type FormFieldName, type LocaleKey } from "@/lib/types";
 
 interface Props {
-  fieldName: FormFieldName;
+  fieldName: Extract<
+    FormFieldName,
+    "interestInTshirts" | "interestInAcommodation" | "interestInCatering"
+  >;
   fieldLabel: LocaleKey;
 }
 
 export default function InterestRadio({ fieldName, fieldLabel }: Props) {
-  const form = useFormContext<z.infer<typeof teamFormSchema>>();
+  const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
   const t = useI18n();
 
   return (
@@ -31,7 +28,6 @@ export default function InterestRadio({ fieldName, fieldLabel }: Props) {
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}
-              defaultValue={field.value as string}
               className="flex flex-col space-y-1"
             >
               <FormItem className="flex items-center space-x-3 space-y-0">
