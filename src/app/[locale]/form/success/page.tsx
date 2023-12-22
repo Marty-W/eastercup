@@ -10,7 +10,6 @@ import { useCurrentLocale } from "locales/client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import SuccessSVG from "public/icons8-ok-480.svg";
 import { useEffect } from "react";
 import { usePDF } from "react-to-pdf";
 
@@ -42,7 +41,9 @@ export default function FormSuccess() {
     <>
       <div className="flex flex-col space-y-4 md:pt-8">
         <Image
-          src={SuccessSVG as string}
+          src="/icons8-ok-480.svg"
+          width={480}
+          height={480}
           alt="Success icon"
           className="mx-auto h-24 w-24"
         />

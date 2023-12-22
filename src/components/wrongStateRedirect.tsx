@@ -1,4 +1,3 @@
-import FailureSVG from "public/icons8-cancel-500.svg";
 import FormWrongStateButtons from "./formWrongStateButtons";
 import Image from "next/image";
 
@@ -8,7 +7,9 @@ export default function WrongStateRedirect() {
     <>
       <div className="flex flex-col space-y-3 text-center">
         <Image
-          src={FailureSVG as string}
+          src="/icons8-cancel-500.svg"
+          width={500}
+          height={500}
           alt="Failure icon"
           className="mx-auto h-24 w-24"
         />
