@@ -9,6 +9,7 @@ export default {
   "hero.teams": "teams",
   "hero.from": "from",
   "hero.countries": "countires",
+  "form.infoHeader": "Team info",
   "form.optional": "(optional)",
   "form.credentialsHeader": "Registrace tymu",
   "form.servicesHeader": "Objednavka sluzeb",

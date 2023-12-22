@@ -11,7 +11,7 @@ export default function FormLayout({
 }) {
   const segment = useSelectedLayoutSegment() as FormSegment;
   return (
-    <main className="container pt-8 font-sans">
+    <main className="container pb-8">
       <FormStepper activeSegment={segment} />
       {children}
     </main>

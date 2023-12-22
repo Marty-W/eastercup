@@ -85,7 +85,7 @@ export const teamFormBillingSchema = z.object({
   city: z.string().min(3, { message: "form.required" }),
   zipCode: z.string().min(5, { message: "form.required" }),
   ic: z.string().min(5, { message: "form.required" }),
-  dic: z.string().min(5, { message: "form.required" }).optional(),
+  dic: z.string().optional(),
 });
 
 export const teamFormBillingDefaultValues = {

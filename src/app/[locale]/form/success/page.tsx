@@ -7,6 +7,7 @@ import WrongStateRedirect from "@/components/wrongStateRedirect";
 import { finishedFormStepsAtom, teamFormAtom } from "@/lib/atoms";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useCurrentLocale } from "locales/client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SuccessSVG from "public/icons8-ok-480.svg";
@@ -39,8 +40,12 @@ export default function FormSuccess() {
 
   return (
     <>
-      <div>
-        <SuccessSVG className="mx-auto h-24 w-24" />
+      <div className="flex flex-col">
+        <Image
+          src={SuccessSVG as string}
+          alt="Success icon"
+          className="mx-auto h-24 w-24"
+        />
         <div className="pt-8">
           <h1 className="mb-5 text-center font-display text-xl">Thank you!</h1>
           <p className="text-center">

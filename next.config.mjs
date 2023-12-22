@@ -3,8 +3,6 @@
  * for Docker builds.
  */
 
-// @ts-expect-error - next-plugin-svgr is not typed
-import withSvgr from "next-plugin-svgr";
 await import("./src/env.mjs");
 
 /** @type {import("next").NextConfig} */
@@ -15,4 +13,4 @@ const config = {
   },
 };
 
-export default withSvgr(config);
+export default config;

@@ -13,7 +13,7 @@ export default function FormStepper({ activeSegment }: Props) {
   }
 
   return (
-    <div className="flex justify-around py-6 text-center text-sm text-foreground/30">
+    <div className="flex justify-around pb-6 text-center text-sm text-foreground/30">
       <div className="flex w-1/4 flex-col space-y-1">
         <span className={cn(activeSegment === "info" && "text-foreground")}>
           team info
