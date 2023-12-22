@@ -9,7 +9,7 @@ import { type FormFieldName, type LocaleKey } from "@/lib/types";
 interface Props {
   fieldName: Extract<
     FormFieldName,
-    "interestInTshirts" | "interestInAcommodation" | "interestInCatering"
+    "interestInTshirts" | "interestInAccomodation" | "interestInCatering"
   >;
   fieldLabel: LocaleKey;
 }

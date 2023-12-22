@@ -13,6 +13,15 @@ export type Form = z.infer<typeof teamFormSchemaServer>;
 
 export type FormFieldName = keyof Form;
 
+type FormWithTextInputs = z.infer<typeof teamFormInfoSchema> &
+  z.infer<typeof teamFormBillingSchema>;
+export type FormFieldTextInputName = keyof FormWithTextInputs;
+
+export type FormFieldCategoryName = Extract<
+  "category" | "country" | "arrivalTime",
+  FormFieldName
+>;
+
 export type TeamInfoFormValues = z.infer<typeof teamFormInfoSchema>;
 
 export type TeamBillingFormValues = z.infer<typeof teamFormBillingSchema>;

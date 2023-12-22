@@ -1,4 +1,7 @@
-import { type teamFormSchema } from "@/lib/conts";
+import {
+  type teamFormBillingSchema,
+  type teamFormInfoSchema,
+} from "@/lib/conts";
 import { useFormContext } from "react-hook-form";
 import { type z } from "zod";
 import {
@@ -10,15 +13,18 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { useI18n } from "locales/client";
-import { type LocaleKey, type FormFieldName } from "@/lib/types";
+import { type LocaleKey, type FormFieldTextInputName } from "@/lib/types";
 
 interface Props {
-  fieldName: FormFieldName;
+  fieldName: FormFieldTextInputName;
   fieldLabel: LocaleKey;
 }
 
 export default function TextInput({ fieldName, fieldLabel }: Props) {
-  const form = useFormContext<z.infer<typeof teamFormSchema>>();
+  const form =
+    useFormContext<
+      z.infer<typeof teamFormInfoSchema | typeof teamFormBillingSchema>
+    >();
   const t = useI18n();
 
   return (

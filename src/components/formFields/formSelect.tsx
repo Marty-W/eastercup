@@ -1,4 +1,4 @@
-import { type teamFormSchema } from "@/lib/conts";
+import { type teamFormInfoSchema } from "@/lib/conts";
 import { useFormContext } from "react-hook-form";
 import { type z } from "zod";
 import {
@@ -8,9 +8,8 @@ import {
   FormControl,
   FormMessage,
 } from "../ui/form";
-import { Input } from "../ui/input";
 import { useI18n } from "locales/client";
-import { type LocaleKey, type FormFieldName } from "@/lib/types";
+import { type LocaleKey, type FormFieldCategoryName } from "@/lib/types";
 import {
   Select,
   SelectTrigger,
@@ -21,7 +20,7 @@ import {
 import InfoTooltip from "../ui/infoTooltip";
 
 interface Props {
-  fieldName: FormFieldName;
+  fieldName: FormFieldCategoryName;
   fieldLabel: LocaleKey;
   placeholderLabel: LocaleKey;
   children: React.ReactNode;
@@ -35,7 +34,7 @@ export default function FormSelect({
   tooltipContent,
   children,
 }: Props) {
-  const form = useFormContext<z.infer<typeof teamFormSchema>>();
+  const form = useFormContext<z.infer<typeof teamFormInfoSchema>>();
   const t = useI18n();
 
   return (
