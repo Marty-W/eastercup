@@ -43,7 +43,7 @@ export default function RootLayout({
       <body className={`font-pano ${GeistSans.variable} font-sans antialiased`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <I18nProviderClient locale={locale}>
-            <div className="flex flex-col">
+            <div className="flex flex-col" id="top">
               <Navbar />
               <div className="container">{children}</div>
               <Footer />

@@ -21,11 +21,11 @@ export default function Sponsors() {
   ];
 
   return (
-    <div className="my-auto grid grid-cols-2 place-items-center gap-4 pb-6 md:grid-cols-4">
+    <div className="my-auto grid grid-cols-2 place-items-center gap-4 pb-6 md:grid-cols-4 md:pb-10">
       {sponsorLogos.map((logo, index) => (
         <div
           key={index}
-          className="flex h-16 w-32 items-center justify-center overflow-hidden"
+          className="flex h-16 w-32 items-center justify-center overflow-hidden md:h-32 md:w-40"
         >
           <Image
             src={logo as string}

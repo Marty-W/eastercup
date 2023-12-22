@@ -2,7 +2,6 @@
 import TeamServiceForm from "@/components/TeamServiceForm";
 import { Button } from "@/components/ui/button";
 import {
-  finishedFormStepsAtom,
   formSubmissionError,
   teamBillingAtom,
   teamInfoAtom,
@@ -35,7 +34,7 @@ export default function TeamServices() {
   const teamFormInfoValues = useAtomValue(teamInfoAtom);
   const teamFormBillingValues = useAtomValue(teamBillingAtom);
   const setFormSubmissionError = useSetAtom(formSubmissionError);
-  const { mutate } = api.registration.team.useMutation({
+  const registerMutation = api.registration.team.useMutation({
     onSuccess: () => {
       router.push("/form/success");
     },
@@ -47,7 +46,7 @@ export default function TeamServices() {
       } else {
         setFormSubmissionError(error.message);
       }
-      router.push("/form/failure");
+      router.push("/form/failure#top");
     },
   });
 
@@ -59,7 +58,9 @@ export default function TeamServices() {
       ...values,
     };
     // NOTE: i dont like this hack, but now i need to move on
-    mutate(finalFormValues as z.infer<typeof teamFormSchemaServer>);
+    registerMutation.mutate(
+      finalFormValues as z.infer<typeof teamFormSchemaServer>,
+    );
   };
 
   return (

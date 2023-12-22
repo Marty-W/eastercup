@@ -2,12 +2,14 @@ import { finishedFormStepsAtom } from "@/lib/atoms";
 import { isFormFinalSegment, type FormSegment } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useAtomValue } from "jotai";
+import { useCurrentLocale, useI18n } from "locales/client";
 
 interface Props {
   activeSegment: FormSegment;
 }
 export default function FormStepper({ activeSegment }: Props) {
   const finishedSteps = useAtomValue(finishedFormStepsAtom);
+  const t = useI18n();
   if (isFormFinalSegment(activeSegment)) {
     return null;
   }
@@ -16,7 +18,7 @@ export default function FormStepper({ activeSegment }: Props) {
     <div className="flex justify-around pb-6 text-center text-sm text-foreground/30">
       <div className="flex w-1/4 flex-col space-y-1">
         <span className={cn(activeSegment === "info" && "text-foreground")}>
-          team info
+          {t("stepper.one")}
         </span>
         <div
           className={cn(
@@ -28,7 +30,7 @@ export default function FormStepper({ activeSegment }: Props) {
       </div>
       <div className="flex w-1/4 flex-col space-y-1">
         <span className={cn(activeSegment === "billing" && "text-foreground")}>
-          billing
+          {t("stepper.two")}
         </span>
         <div
           className={cn(
@@ -40,7 +42,7 @@ export default function FormStepper({ activeSegment }: Props) {
       </div>
       <div className="flex w-1/4 flex-col space-y-1">
         <span className={cn(activeSegment === "services" && "text-foreground")}>
-          services
+          {t("stepper.three")}
         </span>
         <div
           className={cn(

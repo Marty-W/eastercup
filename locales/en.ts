@@ -77,4 +77,7 @@ export default {
   "form.zipCode": "Zip code",
   "form.ic": "Bussiness ID",
   "form.dic": "VAT Number",
+  "stepper.one": "team info",
+  "stepper.two": "billing",
+  "stepper.three": "services",
 } as const;

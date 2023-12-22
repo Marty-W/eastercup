@@ -40,7 +40,7 @@ export default function FormSuccess() {
 
   return (
     <>
-      <div className="flex flex-col">
+      <div className="flex flex-col space-y-4 md:pt-8">
         <Image
           src={SuccessSVG as string}
           alt="Success icon"
@@ -53,7 +53,7 @@ export default function FormSuccess() {
             was successfully registered.
           </p>
         </div>
-        <div className="flex flex-col space-y-3 pt-4">
+        <div className="mx-auto flex max-w-sm flex-col space-y-3 pt-4">
           <Button onClick={() => toPDF()}>Generate PDF</Button>
           <Button asChild variant="secondary">
             <Link href="/">Go home</Link>

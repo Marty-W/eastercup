@@ -27,7 +27,7 @@ export default function TeamInfo() {
   const onSubmit = (values: TeamInfoFormValues) => {
     setTeamInfoFormValues(values);
     setFinishedFormStepsAtom((prev) => ({ ...prev, info: true }));
-    router.push(`/${locale}/form/billing`);
+    router.push(`/${locale}/form/billing#top`);
   };
 
   return (

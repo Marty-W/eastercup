@@ -4,8 +4,10 @@ export default function Footer() {
   return (
     <footer className="mt-auto">
       <div className="mb-10 h-2 w-full bg-brand-blue" />
-      <Socials />
-      <div className="flex flex-col p-6 text-center text-sm">
+      <div className="md:hidden">
+        <Socials />
+      </div>
+      <div className="flex flex-col p-6 text-center text-sm md:text-base">
         <div className="flex flex-col space-y-4">
           <div className="flex flex-col">
             <span className="font-bold">BK Klatovy</span>

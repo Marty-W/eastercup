@@ -33,7 +33,7 @@ export default function TeamBilling() {
       ...prev,
       billing: true,
     }));
-    router.push(`/${locale}/form/services`);
+    router.push(`/${locale}/form/services#top`);
   };
 
   return (

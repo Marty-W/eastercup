@@ -10,8 +10,7 @@ export default {
   "hero.teams": "týmů",
   "hero.from": "z",
   "hero.countries": "zemí",
-  // pridej diakritikuV
-  "form.infoHeader": "Tymove udaje",
+  "form.infoHeader": "Týmové údaje",
   "form.nextStep": "Další krok",
   "form.previousStep": "Zpět",
   "form.submit": "Odeslat",
@@ -74,4 +73,7 @@ export default {
   "form.zipCode": "PSČ",
   "form.ic": "IČ",
   "form.dic": "DIČ (volitelně)",
+  "stepper.one": "info",
+  "stepper.two": "fakturace",
+  "stepper.three": "služby",
 } as const;
