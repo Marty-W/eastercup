@@ -31,7 +31,7 @@ export default function FormSuccess() {
       info: false,
       billing: false,
     });
-  }, [pathname]);
+  }, [pathname, setFinishedFormStepsAction]);
 
   if (!formValues) {
     return <WrongStateRedirect />;

@@ -1,5 +1,5 @@
 import TimeCounter from "@/components/timeCounter";
-import { getCurrentLocale, getI18n } from "locales/server";
+import { getI18n } from "locales/server";
 import { type TCountryCode, getEmojiFlag } from "countries-list";
 import Link from "next/link";
 import Image from "next/image";

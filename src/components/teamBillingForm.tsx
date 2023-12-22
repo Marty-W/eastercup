@@ -2,11 +2,9 @@ import { useFormContext } from "react-hook-form";
 import type * as z from "zod";
 import { Form } from "./ui/form";
 import { type teamFormBillingSchema } from "@/lib/conts";
-import { useScopedI18n } from "locales/client";
 import TextInput from "./formFields/textInput";
 
 export default function TeamBillingForm() {
-  const t = useScopedI18n("form");
   const form = useFormContext<z.infer<typeof teamFormBillingSchema>>();
 
   return (

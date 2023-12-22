@@ -2,7 +2,7 @@ import { finishedFormStepsAtom } from "@/lib/atoms";
 import { isFormFinalSegment, type FormSegment } from "@/lib/types";
 import { cn } from "@/lib/utils";
 import { useAtomValue } from "jotai";
-import { useCurrentLocale, useI18n } from "locales/client";
+import { useI18n } from "locales/client";
 
 interface Props {
   activeSegment: FormSegment;
