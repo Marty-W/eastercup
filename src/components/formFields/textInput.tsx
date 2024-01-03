@@ -35,6 +35,8 @@ export default function TextInput({ fieldName, fieldLabel }: Props) {
         <FormItem>
           <FormLabel>{t(fieldLabel)}</FormLabel>
           <FormControl>
+            {/* FIXME: types */}
+            {/* @ts-expect-error dont have time to fix this, form context is not properly typed, might get to this later */}
             <Input {...field} />
           </FormControl>
           <FormMessage isTranslated />

@@ -59,7 +59,9 @@ export default function FormSubmitDialog() {
                           <MinusCircle />
                         </TableCell>
                       ) : (
-                        <TableCell className="text-right">{value}</TableCell>
+                        <TableCell className="text-right">
+                          {value.toString()}
+                        </TableCell>
                       )}
                     </TableRow>
                   );
