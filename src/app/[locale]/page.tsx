@@ -49,15 +49,14 @@ export default async function Landing() {
           </div>
         </div>
       </div>
-      <div className="flex justify-center py-10">
-        {/* TODO remove this, only a thumbnail */}
-        <Image
-          src="/landing_thumbnail.png"
-          alt="group"
-          width={258}
-          height={183}
-          className="mx-auto pb-8"
-        />
+      <div className="flex justify-center px-5 py-32">
+        <iframe
+          className="aspect-video w-full max-w-screen-lg border-[12px] border-brand-red"
+          src="https://www.youtube.com/embed/9hkAsNXRFP4?si=qP5xtRzzukx7mKlV"
+          title="Eastern Cup 2023 Aftermovie"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
+          allowFullScreen
+        ></iframe>
       </div>
     </>
   );
