@@ -19,6 +19,7 @@ import { Textarea } from "./ui/textarea";
 import { useScopedI18n } from "locales/client";
 import TextInput from "./formFields/textInput";
 import FormSelect from "./formFields/formSelect";
+import { ArrivalDateInput } from "./formFields/dateInput";
 
 export default function TeamRegistrationForm() {
   const t = useScopedI18n("form");
@@ -86,6 +87,7 @@ export default function TeamRegistrationForm() {
             </SelectItem>
           ))}
         </FormSelect>
+        <ArrivalDateInput />
         <TextInput
           fieldName="meansOfTransport"
           fieldLabel="form.meansOfTransport"

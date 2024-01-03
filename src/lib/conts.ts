@@ -1,5 +1,7 @@
 import * as z from "zod";
 
+export const TOURNAMENT_START = new Date("2024-03-28");
+
 export const TEAM_CATEGORIRES = [
   "U11 MIX",
   "U12B",
@@ -81,6 +83,9 @@ export const teamFormInfoSchema = z.object({
     .startsWith("+", { message: "form.phoneNumber.startsWithError" }),
   email: z.string().email({ message: "form.email.error" }),
   arrivalTime: z.string().optional(),
+  arrivalDate: z.date({
+    required_error: "form.arrivalDate.error",
+  }),
   meansOfTransport: z
     .string()
     .max(50, {
@@ -101,6 +106,7 @@ export const teamFormInfoDefaultValues = {
   country: "",
   category: "",
   arrivalTime: "",
+  arrivalDate: TOURNAMENT_START,
 };
 
 export const teamFormBillingSchema = z.object({

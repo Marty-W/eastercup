@@ -9,6 +9,7 @@ import {
   varchar,
   serial,
   boolean,
+  date,
 } from "drizzle-orm/mysql-core";
 import { type AdapterAccount } from "next-auth/adapters";
 
@@ -31,6 +32,7 @@ export const teams = mysqlTable(
     phoneNumber: varchar("phone_number", { length: 255 }).notNull(),
     email: varchar("email", { length: 255 }).notNull(),
     arrivalTime: varchar("arrival_time", { length: 255 }),
+    arrivalDate: date("arrival_date").notNull(),
     meansOfTransport: varchar("means_of_transport", { length: 255 }),
     note: text("note"),
     companyName: varchar("company_name", { length: 255 }).notNull(),

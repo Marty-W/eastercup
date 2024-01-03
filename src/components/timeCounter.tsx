@@ -1,19 +1,18 @@
 "use client";
+import { TOURNAMENT_START } from "@/lib/conts";
 import { intervalToDuration } from "date-fns";
 import { useEffect, useState } from "react";
-
-const CUP_DATE = new Date("2024-03-28");
 
 const TimeCounter = () => {
   const today = new Date();
   const [diff, setDiff] = useState(() =>
-    intervalToDuration({ start: today, end: CUP_DATE }),
+    intervalToDuration({ start: today, end: TOURNAMENT_START }),
   );
 
   useEffect(() => {
     const interval = window.setInterval(() => {
       const today = new Date();
-      const diff = intervalToDuration({ start: today, end: CUP_DATE });
+      const diff = intervalToDuration({ start: today, end: TOURNAMENT_START });
       setDiff(diff);
     }, 1000);
     return () => window.clearInterval(interval);
