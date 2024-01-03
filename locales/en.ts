@@ -29,6 +29,7 @@ export default {
   "form.category.U16G": "U16G (girls born in 2009 and younger)",
   "form.contactPerson": "Contact person",
   "form.phoneNumber": "Phone number",
+  "form.phoneNumber.description": "Please include country code.",
   "form.email": "Email",
   "form.arrivalTime": "Arrival time (optional)",
   "form.selectArrivalTime": "Select arrival time",

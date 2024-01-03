@@ -73,7 +73,11 @@ export default function TeamRegistrationForm() {
           ))}
         </FormSelect>
         <TextInput fieldName="contactPerson" fieldLabel="form.contactPerson" />
-        <TextInput fieldName="phoneNumber" fieldLabel="form.phoneNumber" />
+        <TextInput
+          fieldName="phoneNumber"
+          fieldLabel="form.phoneNumber"
+          description="form.phoneNumber.description"
+        />
         <TextInput fieldName="email" fieldLabel="form.email" />
         <FormSelect
           fieldName="arrivalTime"

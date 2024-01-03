@@ -30,6 +30,7 @@ export default {
   "form.category.U16G": "U16G (narozené 2009 a mladší)",
   "form.contactPerson": "Kontaktní osoba",
   "form.phoneNumber": "Telefonní číslo",
+  "form.phoneNumber.description": "Prosím včetně předvolby země",
   "form.email": "Email",
   "form.arrivalTime": "Čas příjezdu (volitelně)",
   "form.selectArrivalTime": "Vyberte čas příjezdu",
