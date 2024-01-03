@@ -72,7 +72,7 @@ export default function TeamServices() {
         >
           <TeamServiceForm />
           <Button className="mx-auto mt-8 w-32 font-sans" type="submit">
-            {t("form.nextStep")}
+            {t("form.submit")}
           </Button>
         </form>
       </FormProvider>
