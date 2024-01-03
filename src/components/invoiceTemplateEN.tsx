@@ -10,11 +10,12 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 import { useAtomValue } from "jotai";
-import { teamFormAtom } from "@/lib/atoms";
+import { teamDbDataAtom, teamFormAtom } from "@/lib/atoms";
 import { TOURNAMENT_START } from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
+  const dbData = useAtomValue(teamDbDataAtom);
 
   return (
     <div className="bg-white px-10 pt-10">
@@ -37,7 +38,7 @@ export default function InvoiceTemplate() {
             <p>IBAN: CZ54 0300 0000 0002 4134 1615</p>
             <p>SWIFT: CEKOCZPP</p>
             {/* TODO: add variable symbol (you gotta generate it and save to db first) */}
-            <p>Var. symbol: 1908050</p>
+            <p>Var. symbol: {dbData?.invoiceId}</p>
             <p>Issue date: {format(new Date(), "dd/MM/yyyy")}</p>
             <p>Due date: {format(TOURNAMENT_START, "dd/MM/yyyy")}</p>
           </div>

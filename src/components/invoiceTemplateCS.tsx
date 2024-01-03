@@ -8,13 +8,14 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
-import { addDays, format } from "date-fns";
+import { format } from "date-fns";
 import { useAtomValue } from "jotai";
-import { teamFormAtom } from "@/lib/atoms";
+import { teamDbDataAtom, teamFormAtom } from "@/lib/atoms";
 import { TOURNAMENT_START } from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
+  const dbData = useAtomValue(teamDbDataAtom);
 
   return (
     <div className="bg-white px-10 pt-10">
@@ -40,7 +41,7 @@ export default function InvoiceTemplate() {
             <p>IBAN: CZ54 0300 0000 0002 4134 1615</p>
             <p>SWIFT: CEKOCZPP</p>
             {/* TODO: add variable symbol (you gotta generate it and save to db first) */}
-            <p>Variabilní symbol: 1908050</p>
+            <p>Variabilní symbol: {dbData?.invoiceId}</p>
             {/* TODO add proper date of registration */}
             <p>Datum vystavení: {format(new Date(), "dd.M.yyyy")}</p>
             <p>Datum splatnosti: {format(TOURNAMENT_START, "dd.M.yyyy")}</p>

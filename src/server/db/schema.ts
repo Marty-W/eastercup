@@ -41,6 +41,7 @@ export const teams = mysqlTable(
     zipCode: varchar("zip_code", { length: 255 }).notNull(),
     ic: varchar("ic", { length: 255 }).notNull(),
     dic: varchar("dic", { length: 255 }),
+    invoiceId: varchar("invoice_id", { length: 255 }),
     interestInCatering: boolean("interest_in_catering").notNull(),
     interestInAccomodation: boolean("interest_in_accomodation").notNull(),
     interestInTshirts: boolean("interest_in_tshirts").notNull(),

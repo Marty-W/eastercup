@@ -15,7 +15,6 @@ import { usePDF } from "react-to-pdf";
 
 // TODO: add translations
 // TODO: add check if user just posted a form, otherwise redirect him to the form
-// TODO add pdf generation
 
 export default function FormSuccess() {
   const formValues = useAtomValue(teamFormAtom);

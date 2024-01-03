@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import {
   formSubmissionError,
   teamBillingAtom,
+  teamDbDataAtom,
   teamInfoAtom,
   teamServicesAtom,
 } from "@/lib/atoms";
@@ -34,8 +35,10 @@ export default function TeamServices() {
   const teamFormInfoValues = useAtomValue(teamInfoAtom);
   const teamFormBillingValues = useAtomValue(teamBillingAtom);
   const setFormSubmissionError = useSetAtom(formSubmissionError);
+  const setTeamDbData = useSetAtom(teamDbDataAtom);
   const registerMutation = api.registration.team.useMutation({
-    onSuccess: () => {
+    onSuccess: (data) => {
+      setTeamDbData({ invoiceId: data[0]?.invoiceId ?? "" });
       router.push("/form/success");
     },
     onError: (error) => {
