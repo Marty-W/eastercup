@@ -11,16 +11,18 @@ const TimeCounter = () => {
   );
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const interval = window.setInterval(() => {
       const today = new Date();
       const diff = intervalToDuration({ start: today, end: CUP_DATE });
       setDiff(diff);
     }, 1000);
-    return () => clearInterval(interval);
+    return () => window.clearInterval(interval);
   });
 
   return (
-    <span>{`${diff.months}m : ${diff.days}d : ${diff.hours}h : ${diff.minutes}m : ${diff.seconds} s`}</span>
+    <span
+      suppressHydrationWarning
+    >{`${diff.months}m : ${diff.days}d : ${diff.hours}h : ${diff.minutes}m : ${diff.seconds} s`}</span>
   );
 };
 
