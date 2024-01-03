@@ -1,5 +1,4 @@
 import * as z from "zod";
-import { teamServicesAtom } from "./atoms";
 
 export const TEAM_CATEGORIRES = [
   "U11 MIX",
@@ -11,7 +10,21 @@ export const TEAM_CATEGORIRES = [
   "U16G",
 ] as const;
 
-export const TIMES_BY_30_MINUTES = [
+export const TIME_BY_30_MINUTES = [
+  "00:00",
+  "00:30",
+  "01:00",
+  "01:30",
+  "02:00",
+  "02:30",
+  "03:00",
+  "03:30",
+  "04:00",
+  "04:30",
+  "05:00",
+  "05:30",
+  "06:00",
+  "06:30",
   "07:00",
   "07:30",
   "08:00",
@@ -35,7 +48,18 @@ export const TIMES_BY_30_MINUTES = [
   "17:00",
   "17:30",
   "18:00",
-] as const;
+  "18:30",
+  "19:00",
+  "19:30",
+  "20:00",
+  "20:30",
+  "21:00",
+  "21:30",
+  "22:00",
+  "22:30",
+  "23:00",
+  "23:30",
+];
 
 export const teamFormInfoSchema = z.object({
   teamName: z
@@ -56,7 +80,7 @@ export const teamFormInfoSchema = z.object({
     .max(50, { message: "form.phoneNumber.maxError" })
     .startsWith("+", { message: "form.phoneNumber.startsWithError" }),
   email: z.string().email({ message: "form.email.error" }),
-  arrivalTime: z.string().min(4, { message: "form.arrivalTime.error" }),
+  arrivalTime: z.string().optional(),
   meansOfTransport: z
     .string()
     .max(50, {

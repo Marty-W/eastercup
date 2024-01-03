@@ -11,7 +11,7 @@ import {
 } from "./ui/form";
 import {
   TEAM_CATEGORIRES,
-  TIMES_BY_30_MINUTES,
+  TIME_BY_30_MINUTES,
   type teamFormInfoSchema,
 } from "@/lib/conts";
 import { SelectItem } from "./ui/select";
@@ -80,7 +80,7 @@ export default function TeamRegistrationForm() {
           placeholderLabel="form.selectArrivalTime"
           tooltipContent={<p className="">{t("arrivalTimeTooltip")}</p>}
         >
-          {Object.entries(TIMES_BY_30_MINUTES).map(([key, value]) => (
+          {Object.entries(TIME_BY_30_MINUTES).map(([key, value]) => (
             <SelectItem className="font-sans" key={key} value={value}>
               {value}
             </SelectItem>

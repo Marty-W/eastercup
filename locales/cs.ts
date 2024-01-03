@@ -31,7 +31,7 @@ export default {
   "form.contactPerson": "Kontaktní osoba",
   "form.phoneNumber": "Telefonní číslo",
   "form.email": "Email",
-  "form.arrivalTime": "Čas příjezdu",
+  "form.arrivalTime": "Čas příjezdu (volitelně)",
   "form.selectArrivalTime": "Vyberte čas příjezdu",
   "form.arrivalTimeTooltip": "Čas příjezdu na turnaj",
   "form.meansOfTransport": "Doprava (volitelně)",
@@ -50,7 +50,6 @@ export default {
   "form.phoneNumber.startsWithError":
     "Telefonní číslo musí začínat znakem '+'.",
   "form.email.error": "Prosím zadejte platnou emailovou adresu.",
-  "form.arrivalTime.error": "Prosím vyberte čas příjezdu.",
   "form.transport.minError": "Způsob dopravy je vyžadován.",
   "form.transport.maxError": "Způsob dopravy nesmí překročit 50 znaků.",
   "form.note.maxError": "Poznámka nesmí překročit 900 znaků.",

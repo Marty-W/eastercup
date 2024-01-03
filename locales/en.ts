@@ -30,7 +30,7 @@ export default {
   "form.contactPerson": "Contact person",
   "form.phoneNumber": "Phone number",
   "form.email": "Email",
-  "form.arrivalTime": "Arrival time",
+  "form.arrivalTime": "Arrival time (optional)",
   "form.selectArrivalTime": "Select arrival time",
   "form.arrivalTimeTooltip": "Time of arrival to the tournament",
   "form.meansOfTransport": "Means of transport (optional)",
@@ -52,7 +52,6 @@ export default {
   "form.phoneNumber.startsWithError":
     "Phone number must start with a '+' sign.",
   "form.email.error": "Please enter a valid email address.",
-  "form.arrivalTime.error": "Please select an arrival time.",
   "form.transport.minError": "Means of transport is required.",
   "form.transport.maxError":
     "Means of transport must not exceed 50 characters.",

@@ -30,7 +30,7 @@ export const teams = mysqlTable(
     contactPerson: varchar("contact_person", { length: 255 }).notNull(),
     phoneNumber: varchar("phone_number", { length: 255 }).notNull(),
     email: varchar("email", { length: 255 }).notNull(),
-    arrivalTime: varchar("arrival_time", { length: 255 }).notNull(),
+    arrivalTime: varchar("arrival_time", { length: 255 }),
     meansOfTransport: varchar("means_of_transport", { length: 255 }),
     note: text("note"),
     companyName: varchar("company_name", { length: 255 }).notNull(),
