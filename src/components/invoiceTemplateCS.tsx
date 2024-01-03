@@ -11,6 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { addDays, format } from "date-fns";
 import { useAtomValue } from "jotai";
 import { teamFormAtom } from "@/lib/atoms";
+import { TOURNAMENT_START } from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
@@ -42,9 +43,7 @@ export default function InvoiceTemplate() {
             <p>Variabilní symbol: 1908050</p>
             {/* TODO add proper date of registration */}
             <p>Datum vystavení: {format(new Date(), "dd.M.yyyy")}</p>
-            <p>
-              Datum splatnosti: {format(addDays(new Date(), 7), "dd.M.yyyy")}
-            </p>
+            <p>Datum splatnosti: {format(TOURNAMENT_START, "dd.M.yyyy")}</p>
           </div>
           <Separator className="col-span-3 row-start-2 h-[3px]" />
           <div className="col-start-3">

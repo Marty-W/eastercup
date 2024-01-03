@@ -8,9 +8,10 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
-import { addDays, format } from "date-fns";
+import { format } from "date-fns";
 import { useAtomValue } from "jotai";
 import { teamFormAtom } from "@/lib/atoms";
+import { TOURNAMENT_START } from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
@@ -37,9 +38,8 @@ export default function InvoiceTemplate() {
             <p>SWIFT: CEKOCZPP</p>
             {/* TODO: add variable symbol (you gotta generate it and save to db first) */}
             <p>Var. symbol: 1908050</p>
-            {/* TODO add proper date of registration */}
-            <p>Issue date: {format(new Date(), "dd.M.yyyy")}</p>
-            <p>Due date: {format(addDays(new Date(), 7), "dd.M.yyyy")}</p>
+            <p>Issue date: {format(new Date(), "dd/MM/yyyy")}</p>
+            <p>Due date: {format(TOURNAMENT_START, "dd/MM/yyyy")}</p>
           </div>
           <Separator className="col-span-3 row-start-2 h-[3px]" />
           <div className="col-start-3">
