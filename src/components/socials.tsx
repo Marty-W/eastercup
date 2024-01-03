@@ -11,7 +11,6 @@ export default function Socials() {
         <Image
           src="/socials/instagram.svg"
           alt="Instagram"
-          className=""
           width={50}
           height={50}
         />
@@ -24,7 +23,6 @@ export default function Socials() {
         <Image
           src="/socials/facebook.svg"
           alt="Facebook"
-          className=""
           width={50}
           height={50}
         />
@@ -37,7 +35,6 @@ export default function Socials() {
         <Image
           src="/socials/youtube.svg"
           alt="Youtube"
-          className=""
           width={50}
           height={50}
         />
@@ -47,13 +44,7 @@ export default function Socials() {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Image
-          src="/socials/tiktok.svg"
-          alt="Tiktok"
-          className=""
-          width={50}
-          height={50}
-        />
+        <Image src="/socials/tiktok.svg" alt="Tiktok" width={50} height={50} />
       </Link>
     </div>
   );

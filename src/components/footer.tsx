@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Socials from "./socials";
 import Sponsors from "./sponsors";
 export default function Footer() {
@@ -8,20 +9,27 @@ export default function Footer() {
         <Socials />
       </div>
       <div className="flex flex-col p-6 text-center text-sm md:text-base">
-        <div className="flex flex-col space-y-4">
+        <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="flex flex-col">
             <span className="font-bold">BK Klatovy</span>
-            <span>Voriskova 715, Klatovy III.</span>
+            <span>Voriškova 715, Klatovy III.</span>
             <span>33901</span>
             <span>IČ:22850490</span>
-            <span>c.u: 241338205/0300 ČSOB Klatovy</span>
+            <span>č.ú.: 241338205/0300 ČSOB Klatovy</span>{" "}
           </div>
           <div className="">
-            <a href="https://basketbal-klatovy.cz" target="_blank">
+            <Link
+              href="https://basketbal-klatovy.cz"
+              target="_blank"
+              className="cursor-pointer"
+            >
               www.basketbal-klatovy.cz
-            </a>
-            {/* TODO format as email */}
-            <p>bk.klatovy@seznam.cz</p>
+            </Link>
+            <p>
+              <a href="mailto:bk.klatovy@seznam.cz" className="cursor-pointer">
+                bk.klatovy@seznam.cz
+              </a>
+            </p>
             <p>All rights reserved</p>
           </div>
           <Sponsors />

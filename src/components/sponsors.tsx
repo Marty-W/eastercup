@@ -17,16 +17,23 @@ export default function Sponsors() {
       {sponsorLogos.map((logo, index) => (
         <div
           key={index}
-          className="flex h-16 w-32 items-center justify-center overflow-hidden md:h-32 md:w-40"
+          className="relative flex h-16 w-32 items-center justify-center overflow-hidden md:h-32 md:w-40"
         >
-          <Image
-            src={`/brand_logos/${logo}.svg`}
-            alt={`${logo} logo`}
-            width={500}
-            height={500}
-            layout="responsive"
-            className="max-h-full max-w-full object-scale-down"
-          />
+          {logo === "fiba" ? (
+            <Image
+              src={`/brand_logos/${logo}.svg`}
+              alt={`${logo} logo`}
+              className="object-cover"
+              fill
+            />
+          ) : (
+            <Image
+              src={`/brand_logos/${logo}.svg`}
+              alt={`${logo} logo`}
+              className="object-scale-down"
+              fill
+            />
+          )}
         </div>
       ))}
     </div>
