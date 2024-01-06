@@ -82,4 +82,10 @@ export default {
   "stepper.one": "team info",
   "stepper.two": "billing",
   "stepper.three": "services",
+  "catering.tooltip.headline": "Catering fees in school canteen",
+  "catering.tooltip.breakfastPrice": "Breakfast: 5 EUR",
+  "catering.tooltip.lunchPrice": "Lunch: 8 EUR",
+  "catering.tooltip.dinnerPrice": "Dinner: 6.5 EUR",
+  "catering.tooltip.note":
+    "In case of accomodation in category A or B, the price of breakfast will be specified after confirmation of the specific accommodation facility.",
 } as const;

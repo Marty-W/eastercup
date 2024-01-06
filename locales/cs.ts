@@ -78,4 +78,10 @@ export default {
   "stepper.one": "info",
   "stepper.two": "fakturace",
   "stepper.three": "služby",
+  "catering.tooltip.headline": "Ceny stravování ve školní jídelně",
+  "catering.tooltip.breakfastPrice": "Snídaně: 110 Kč",
+  "catering.tooltip.lunchPrice": "Oběd: 175 Kč",
+  "catering.tooltip.dinnerPrice": "Večeře: 155 Kč",
+  "catering.tooltip.note":
+    "V případě ubytování v kategorii A nebo B bude cena snídaně upřesněna po potvrzení konkrétního ubytovacího zařízení.",
 } as const;

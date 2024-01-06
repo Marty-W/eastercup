@@ -5,6 +5,8 @@ import { type z } from "zod";
 import InterestRadio from "./formFields/interestRadio";
 import React from "react";
 import TshirtInput from "./formFields/tshirtInput";
+import InfoTooltip from "./ui/infoTooltip";
+import { useI18n } from "locales/client";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -12,6 +14,7 @@ export default function TeamServiceForm() {
     control: form.control,
     name: "interestInTshirts",
   });
+  const t = useI18n();
 
   return (
     <Form {...form}>
@@ -19,6 +22,25 @@ export default function TeamServiceForm() {
         <InterestRadio
           fieldName="interestInCatering"
           fieldLabel="form.interestInCatering"
+          infoTooltip={
+            <InfoTooltip>
+              <div className="flex flex-col space-y-1 text-center">
+                <h4 className="text-md font-semibold">
+                  {t("catering.tooltip.headline")}
+                </h4>
+                <div className="text-center">
+                  <p className="text-sm">
+                    {t("catering.tooltip.breakfastPrice")}
+                  </p>
+                  <p className="text-sm">{t("catering.tooltip.lunchPrice")}</p>
+                  <p className="text-sm">{t("catering.tooltip.dinnerPrice")}</p>
+                </div>
+                <p className="mx-auto max-w-[200px] text-sm">
+                  {t("catering.tooltip.note")}
+                </p>
+              </div>
+            </InfoTooltip>
+          }
         />
         <InterestRadio
           fieldName="interestInAccomodation"
@@ -28,7 +50,7 @@ export default function TeamServiceForm() {
           fieldName="interestInTshirts"
           fieldLabel="form.interestInTshirts"
         />
-        {/* @ts-expect-error   due to zod transform being applied at runtime, this is indeed a string now*/}
+        {/* @ts-expect-error   due to zod transform being applied at runtime, this is indeed a string now */}
         {interestedInTshirts === "yes" ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
             <TshirtInput fieldName="noXsShirts" fieldLabel="XS" />

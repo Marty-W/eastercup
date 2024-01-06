@@ -12,9 +12,14 @@ interface Props {
     "interestInTshirts" | "interestInAccomodation" | "interestInCatering"
   >;
   fieldLabel: LocaleKey;
+  infoTooltip?: React.ReactNode;
 }
 
-export default function InterestRadio({ fieldName, fieldLabel }: Props) {
+export default function InterestRadio({
+  fieldName,
+  fieldLabel,
+  infoTooltip,
+}: Props) {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
   const t = useI18n();
 
@@ -24,7 +29,14 @@ export default function InterestRadio({ fieldName, fieldLabel }: Props) {
       name={fieldName}
       render={({ field }) => (
         <FormItem className="space-y-3">
-          <FormLabel>{t(fieldLabel)}</FormLabel>
+          {infoTooltip ? (
+            <div className="flex items-center space-x-2">
+              <FormLabel>{t(fieldLabel)}</FormLabel>
+              {infoTooltip}
+            </div>
+          ) : (
+            <FormLabel>{t(fieldLabel)}</FormLabel>
+          )}
           <FormControl>
             <RadioGroup
               onValueChange={field.onChange}
