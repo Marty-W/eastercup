@@ -30,27 +30,6 @@ export default function TeamRegistrationForm() {
       <div className="space-y-6 font-sans">
         <TextInput fieldName="teamName" fieldLabel="form.teamName" />
         <FormSelect
-          fieldName="country"
-          fieldLabel="form.country"
-          placeholderLabel="form.selectCountry"
-        >
-          <SelectItem
-            className="font-sans"
-            key={crypto.randomUUID()}
-            value={"CZ"}
-          >
-            {countries.CZ.name}
-          </SelectItem>
-          {Object.entries(countries).map(([key, value]) => {
-            if (value.name === countries.CZ.name) return;
-            return (
-              <SelectItem className="font-sans" key={key} value={key}>
-                {value.name}
-              </SelectItem>
-            );
-          })}
-        </FormSelect>
-        <FormSelect
           fieldName="category"
           fieldLabel="form.teamCategory"
           placeholderLabel="form.selectCategory"
@@ -71,6 +50,27 @@ export default function TeamRegistrationForm() {
               {value}
             </SelectItem>
           ))}
+        </FormSelect>
+        <FormSelect
+          fieldName="country"
+          fieldLabel="form.country"
+          placeholderLabel="form.selectCountry"
+        >
+          <SelectItem
+            className="font-sans"
+            key={crypto.randomUUID()}
+            value={"CZ"}
+          >
+            {countries.CZ.name}
+          </SelectItem>
+          {Object.entries(countries).map(([key, value]) => {
+            if (value.name === countries.CZ.name) return;
+            return (
+              <SelectItem className="font-sans" key={key} value={key}>
+                {value.name}
+              </SelectItem>
+            );
+          })}
         </FormSelect>
         <TextInput fieldName="contactPerson" fieldLabel="form.contactPerson" />
         <TextInput
