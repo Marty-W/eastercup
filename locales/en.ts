@@ -53,8 +53,7 @@ export default {
     "Contact person's name must not exceed 50 characters.",
   "form.phoneNumber.minError": "Phone number is required.",
   "form.phoneNumber.maxError": "Phone number must not exceed 50 characters.",
-  "form.phoneNumber.startsWithError":
-    "Phone number must start with a '+' sign.",
+  "form.countryCode.minError": "Country calling code is required.",
   "form.email.error": "Please enter a valid email address.",
   "form.transport.minError": "Means of transport is required.",
   "form.transport.maxError":

@@ -6,8 +6,10 @@ export const registrationRouter = createTRPCRouter({
   team: publicProcedure.input(teamFormSchemaServer).mutation(async (opts) => {
     const { input, ctx } = opts;
     const currYear = String(new Date().getFullYear());
+    const { countryCode, phoneNumber } = input;
     const newTeam = await ctx.db.insert(teams).values({
       ...input,
+      phoneNumber: `+${countryCode}${phoneNumber}`,
       name: input.teamName,
     });
 

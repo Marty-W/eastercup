@@ -31,6 +31,7 @@ export default {
   "form.contactPerson": "Kontaktní osoba",
   "form.phoneNumber": "Telefonní číslo",
   "form.phoneNumber.description": "Prosím včetně předvolby země",
+  "form.countryCode.minError": "Předvolba země je povinná",
   "form.email": "Email",
   "form.arrivalTime": "Čas příjezdu (volitelně)",
   "form.selectArrivalTime": "Vyberte čas příjezdu",
@@ -51,8 +52,6 @@ export default {
     "Jméno kontaktní osoby nesmí překročit 50 znaků.",
   "form.phoneNumber.minError": "Telefonní číslo je vyžadováno.",
   "form.phoneNumber.maxError": "Telefonní číslo nesmí překročit 50 znaků.",
-  "form.phoneNumber.startsWithError":
-    "Telefonní číslo musí začínat znakem '+'.",
   "form.email.error": "Prosím zadejte platnou emailovou adresu.",
   "form.transport.minError": "Způsob dopravy je vyžadován.",
   "form.transport.maxError": "Způsob dopravy nesmí překročit 50 znaků.",

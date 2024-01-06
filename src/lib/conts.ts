@@ -78,9 +78,9 @@ export const teamFormInfoSchema = z.object({
     }),
   phoneNumber: z
     .string()
-    .min(9, { message: "form.phoneNumber.minError" })
-    .max(50, { message: "form.phoneNumber.maxError" })
-    .startsWith("+", { message: "form.phoneNumber.startsWithError" }),
+    .min(6, { message: "form.phoneNumber.minError" })
+    .max(50, { message: "form.phoneNumber.maxError" }),
+  countryCode: z.string().min(3, { message: "form.countryCode.minError" }),
   email: z.string().email({ message: "form.email.error" }),
   arrivalTime: z.string().optional(),
   arrivalDate: z.date({
@@ -98,7 +98,8 @@ export const teamFormInfoSchema = z.object({
 export const teamFormInfoDefaultValues = {
   teamName: "",
   //TODO:would be cool to fetch national phone prefix based on country
-  phoneNumber: "+",
+  phoneNumber: "",
+  countryCode: "",
   email: "@",
   contactPerson: "",
   meansOfTransport: "",

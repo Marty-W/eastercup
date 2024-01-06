@@ -20,6 +20,7 @@ import { useScopedI18n } from "locales/client";
 import TextInput from "./formFields/textInput";
 import FormSelect from "./formFields/formSelect";
 import { ArrivalDateInput } from "./formFields/dateInput";
+import PhoneNumberInput from "./formFields/phoneNumber";
 
 export default function TeamRegistrationForm() {
   const t = useScopedI18n("form");
@@ -73,11 +74,7 @@ export default function TeamRegistrationForm() {
           })}
         </FormSelect>
         <TextInput fieldName="contactPerson" fieldLabel="form.contactPerson" />
-        <TextInput
-          fieldName="phoneNumber"
-          fieldLabel="form.phoneNumber"
-          description="form.phoneNumber.description"
-        />
+        <PhoneNumberInput />
         <TextInput fieldName="email" fieldLabel="form.email" />
         <FormSelect
           fieldName="arrivalTime"
