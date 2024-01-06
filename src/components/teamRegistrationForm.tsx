@@ -21,6 +21,7 @@ import TextInput from "./formFields/textInput";
 import FormSelect from "./formFields/formSelect";
 import { ArrivalDateInput } from "./formFields/dateInput";
 import PhoneNumberInput from "./formFields/phoneNumber";
+import Transport from "./formFields/transport";
 
 export default function TeamRegistrationForm() {
   const t = useScopedI18n("form");
@@ -89,10 +90,7 @@ export default function TeamRegistrationForm() {
           ))}
         </FormSelect>
         <ArrivalDateInput />
-        <TextInput
-          fieldName="meansOfTransport"
-          fieldLabel="form.meansOfTransport"
-        />
+        <Transport />
         <FormField
           control={form.control}
           name="note"
@@ -113,15 +111,6 @@ export default function TeamRegistrationForm() {
           )}
         />
       </div>
-      {/* <h3 className="text-center text-lg font-semibold">Fakturacni udaje</h3> */}
-      {/* <div className="flex flex-col space-y-6 pt-6"> */}
-      {/*   <TextInput fieldName="companyName" fieldLabel="form.companyName" /> */}
-      {/*   <TextInput fieldName="address" fieldLabel="form.address" /> */}
-      {/*   <TextInput fieldName="city" fieldLabel="form.city" /> */}
-      {/*   <TextInput fieldName="zipCode" fieldLabel="form.zipCode" /> */}
-      {/*   <TextInput fieldName="ic" fieldLabel="form.ic" /> */}
-      {/*   <TextInput fieldName="dic" fieldLabel="form.dic" /> */}
-      {/* </div> */}
     </Form>
   );
 }

@@ -88,16 +88,26 @@ export const teamFormInfoSchema = z.object({
   }),
   meansOfTransport: z
     .string()
-    .max(50, {
-      message: "form.transport.maxError",
+    .min(1, { message: "form.meansOfTransport.minError" }),
+  willTransportStayOver: z
+    .boolean({
+      required_error: "form.meansOfTransport.stayOver.error",
     })
+    .default(false)
     .optional(),
+  willNeedTransportFromAirport: z
+    .boolean({
+      required_error: "form.meansOfTransport.stayOver.error",
+    })
+    .default(false)
+    .optional(),
+  flightNumber: z.string().optional(),
+  placeOfLanding: z.string().optional(),
   note: z.string().max(900, { message: "form.note.maxError" }).optional(),
 });
 
 export const teamFormInfoDefaultValues = {
   teamName: "",
-  //TODO:would be cool to fetch national phone prefix based on country
   phoneNumber: "",
   countryCode: "",
   email: "@",
@@ -108,6 +118,8 @@ export const teamFormInfoDefaultValues = {
   category: "",
   arrivalTime: "",
   arrivalDate: TOURNAMENT_START,
+  willTransportStayOver: false,
+  willNeedTransportFromAirport: false,
 };
 
 export const teamFormBillingSchema = z.object({
@@ -171,4 +183,6 @@ export const teamFormSchemaServer = teamFormInfoSchema
     interestInCatering: z.boolean(),
     interestInAccomodation: z.boolean(),
     interestInTshirts: z.boolean(),
+    willTransportStayOver: z.boolean(),
+    willNeedTransportFromAirport: z.boolean(),
   });

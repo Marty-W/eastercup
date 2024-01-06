@@ -20,12 +20,14 @@ interface Props {
   fieldName: FormFieldTextInputName;
   fieldLabel: LocaleKey;
   description?: LocaleKey;
+  className?: string;
 }
 
 export default function TextInput({
   fieldName,
   fieldLabel,
   description,
+  className,
 }: Props) {
   const form =
     useFormContext<
@@ -43,7 +45,7 @@ export default function TextInput({
           <FormControl>
             {/* FIXME: types */}
             {/* @ts-expect-error dont have time to fix this, form context is not properly typed, might get to this later */}
-            <Input {...field} />
+            <Input {...field} className={className} />
           </FormControl>
           {description && <FormDescription>{t(description)}</FormDescription>}
           <FormMessage isTranslated />
