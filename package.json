@@ -9,7 +9,7 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "types": "tsc --noEmit --project tscconfig.json",
+    "types": "tsc --noEmit --project tsconfig.json",
     "addcomp": "pnpm dlx shadcn-ui@latest add ",
     "prepare": "husky install",
     "lint-staged": "lint-staged"
@@ -69,8 +69,6 @@
     "drizzle-kit": "^0.20.7",
     "eslint": "^8.47.0",
     "eslint-config-next": "^14.0.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^15.2.0",
     "mysql2": "^3.6.5",
     "next-plugin-svgr": "^1.1.10",
     "postcss": "^8.4.27",
