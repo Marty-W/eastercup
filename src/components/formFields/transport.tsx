@@ -14,7 +14,7 @@ import {
   FormMessage,
   FormDescription,
 } from "../ui/form";
-import { type teamFormInfoSchema } from "@/lib/conts";
+import { TRANSPORT_OPTIONS, type teamFormInfoSchema } from "@/lib/conts";
 import { useFormContext, useWatch } from "react-hook-form";
 import { type z } from "zod";
 import { type LocaleKey } from "@/lib/types";
@@ -23,8 +23,6 @@ import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import PlaneOptions from "./planeOptions";
 import { Checkbox } from "../ui/checkbox";
 import { Link } from "lucide-react";
-
-const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"];
 
 const COULD_STAY_THROUGHOUT_TOURNAMENT = ["bus", "car"];
 

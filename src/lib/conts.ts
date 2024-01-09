@@ -1,5 +1,7 @@
 import * as z from "zod";
 
+export const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"] as const;
+
 export const TOURNAMENT_START = new Date("2024-03-28");
 
 export const TEAM_CATEGORIRES = [
