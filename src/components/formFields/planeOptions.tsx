@@ -10,6 +10,7 @@ import { Checkbox } from "../ui/checkbox";
 export default function PlaneOptions() {
   const form = useFormContext<z.infer<typeof teamFormInfoSchema>>();
   const t = useI18n();
+  // TODO: fix untrontrolled to controlled error
   return (
     <SubQuestionContainer>
       <FormField
@@ -43,11 +44,13 @@ export default function PlaneOptions() {
         fieldName="flightNumber"
         fieldLabel="form.meansOfTransport.plane.flightNumber"
         className="w-[180px]"
+        control={form.control}
       />
       <TextInput
         fieldName="placeOfLanding"
         fieldLabel="form.meansOfTransport.plane.placeOfLanding"
         className="w-[180px]"
+        control={form.control}
       />
     </SubQuestionContainer>
   );

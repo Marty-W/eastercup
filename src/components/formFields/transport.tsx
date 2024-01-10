@@ -12,17 +12,14 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-  FormDescription,
 } from "../ui/form";
 import { TRANSPORT_OPTIONS, type teamFormInfoSchema } from "@/lib/conts";
 import { useFormContext, useWatch } from "react-hook-form";
 import { type z } from "zod";
 import { type LocaleKey } from "@/lib/types";
 import { useI18n } from "locales/client";
-import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import PlaneOptions from "./planeOptions";
 import { Checkbox } from "../ui/checkbox";
-import { Link } from "lucide-react";
 
 const COULD_STAY_THROUGHOUT_TOURNAMENT = ["bus", "car"];
 
@@ -33,12 +30,10 @@ export default function Transport() {
     control: form.control,
     name: "meansOfTransport",
   });
-  const willTransportStayOver = useWatch({
+  useWatch({
     control: form.control,
     name: "willTransportStayOver",
   });
-
-  console.log(willTransportStayOver);
 
   return (
     <div className="flex flex-col space-y-4">

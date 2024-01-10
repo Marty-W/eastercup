@@ -1,31 +1,27 @@
-import { type teamFormServicesSchema } from "@/lib/conts";
-import { useFormContext } from "react-hook-form";
-import { type z } from "zod";
+import { type Control, type FieldValues, type Path } from "react-hook-form";
 import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 import { useI18n } from "locales/client";
-import { type FormFieldName, type LocaleKey } from "@/lib/types";
+import { type LocaleKey } from "@/lib/types";
 
-interface Props {
-  fieldName: Extract<
-    FormFieldName,
-    "interestInTshirts" | "interestInAccomodation" | "interestInCatering"
-  >;
+interface Props<T extends FieldValues> {
+  fieldName: Path<T>;
+  control: Control<T>;
   fieldLabel: LocaleKey;
   infoTooltip?: React.ReactNode;
 }
 
-export default function InterestRadio({
+export default function InterestRadio<T extends FieldValues>({
   fieldName,
   fieldLabel,
   infoTooltip,
-}: Props) {
-  const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
+  control,
+}: Props<T>) {
   const t = useI18n();
 
   return (
     <FormField
-      control={form.control}
+      control={control}
       name={fieldName}
       render={({ field }) => (
         <FormItem className="space-y-3">
@@ -39,7 +35,9 @@ export default function InterestRadio({
           )}
           <FormControl>
             <RadioGroup
-              onValueChange={field.onChange}
+              onValueChange={(val) =>
+                field.onChange(val === "yes" ? true : false)
+              }
               className="flex flex-col space-y-1"
             >
               <FormItem className="flex items-center space-x-3 space-y-0">

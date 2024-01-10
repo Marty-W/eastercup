@@ -4,12 +4,12 @@ import {
   type teamFormServicesSchema,
   type teamFormBillingSchema,
   type teamFormInfoSchema,
-  type teamFormSchemaServer,
+  type fullFormSchema,
 } from "./conts";
 
 export type LocaleKey = keyof typeof locale;
 
-export type Form = z.infer<typeof teamFormSchemaServer>;
+export type Form = z.infer<typeof fullFormSchema>;
 
 export type FormFieldName = keyof Form;
 

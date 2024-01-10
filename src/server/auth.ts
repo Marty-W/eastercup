@@ -8,6 +8,8 @@ import {
 import { db } from "@/server/db";
 import { mysqlTable } from "@/server/db/schema";
 
+// TODO: get rid of auth logic, not really needed
+
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.

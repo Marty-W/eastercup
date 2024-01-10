@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 import { useAtomValue } from "jotai";
 import { teamDbDataAtom, teamFormAtom } from "@/lib/atoms";
-import { TOURNAMENT_START } from "@/lib/conts";
+import { REGISTRATION_FEE_EUR, TOURNAMENT_START } from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
@@ -77,8 +77,8 @@ export default function InvoiceTemplate() {
                 <TableCell>Tournament fee: ({formValues?.category})</TableCell>
                 <TableCell>1</TableCell>
                 {/* TODO: get proper price in eur */}
-                <TableCell>120 €</TableCell>
-                <TableCell>120 € </TableCell>
+                <TableCell>{REGISTRATION_FEE_EUR} €</TableCell>
+                <TableCell>{REGISTRATION_FEE_EUR} € </TableCell>
               </TableRow>
               <Separator className="" />
             </TableBody>

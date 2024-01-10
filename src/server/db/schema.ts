@@ -22,27 +22,16 @@ export const teams = pgTable("teams", {
   registerDate: date("registered_on").notNull().defaultNow(),
 });
 
-export const teamRelations = relations(teams, ({ one }) => ({
-  transportInfo: one(teamTransportInfo, {
-    fields: [teams.id],
-    references: [teamTransportInfo.teamId],
-  }),
-  billingInfo: one(teamBillingInfo, {
-    fields: [teams.id],
-    references: [teamBillingInfo.teamId],
-  }),
-  servicesInfo: one(teamServicesInfo, {
-    fields: [teams.id],
-    references: [teamServicesInfo.teamId],
-  }),
-  tshirtOrder: one(tshirtOrders, {
-    fields: [teams.id],
-    references: [tshirtOrders.teamId],
-  }),
+export const teamRelations = relations(teams, ({ one, many }) => ({
+  transportInfo: one(teamTransportInfo),
+  servicesInfo: one(teamServicesInfo),
+  tshirtOrder: one(tshirtOrders),
+  invoices: many(invoice),
 }));
 
 export const teamTransportInfo = pgTable("team_transport_info", {
   id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
   arrivalTime: text("arrival_time"),
   arrivalDate: date("arrival_date").notNull(),
   meansOfTransport: varchar("means_of_transport", {
@@ -52,29 +41,57 @@ export const teamTransportInfo = pgTable("team_transport_info", {
   willNeedTransportFromAirport: boolean("will_need_transport_from_airport"),
   flightNumber: text("flight_number"),
   placeOfLanding: text("place_of_landing"),
-  teamId: integer("team_id").references(() => teams.id),
 });
+
+export const teamTransportInfoRelations = relations(
+  teamTransportInfo,
+  ({ one }) => ({
+    team: one(teams, {
+      fields: [teamTransportInfo.teamId],
+      references: [teams.id],
+    }),
+  }),
+);
 
 export const teamBillingInfo = pgTable("team_billing_info", {
   id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
   companyName: text("company_name").notNull(),
   address: text("address").notNull(),
   city: text("city").notNull(),
   zipCode: text("zip_code").notNull(),
   ic: text("ic").notNull(),
   dic: text("dic"),
-  invoiceId: text("invoice_id"),
-  teamId: integer("team_id").references(() => teams.id),
 });
+
+export const teamBillingInfoRelations = relations(
+  teamBillingInfo,
+  ({ one }) => ({
+    team: one(teams, {
+      fields: [teamBillingInfo.teamId],
+      references: [teams.id],
+    }),
+  }),
+);
 
 export const teamServicesInfo = pgTable("team_services_info", {
   id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
   interestInCatering: boolean("interest_in_catering").notNull(),
   interestInAccomodation: boolean("interest_in_accomodation").notNull(),
   interestInTshirts: boolean("interest_in_tshirts").notNull(),
-  teamId: integer("team_id").references(() => teams.id),
   tshirtOrderId: integer("tshirt_order_id").references(() => tshirtOrders.id),
 });
+
+export const teamServicesInfoRelations = relations(
+  teamServicesInfo,
+  ({ one }) => ({
+    team: one(teams, {
+      fields: [teamServicesInfo.teamId],
+      references: [teams.id],
+    }),
+  }),
+);
 
 export const tshirtOrders = pgTable("tshirt_orders", {
   id: serial("id").primaryKey(),
@@ -86,3 +103,29 @@ export const tshirtOrders = pgTable("tshirt_orders", {
   noXLShirts: integer("no_xl_shirts"),
   noXXLShirts: integer("no_xxl_shirts"),
 });
+
+export const tshirtOrdersRelations = relations(tshirtOrders, ({ one }) => ({
+  team: one(teams, {
+    fields: [tshirtOrders.teamId],
+    references: [teams.id],
+  }),
+}));
+
+export const invoice = pgTable("invoice", {
+  id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
+  varSymbol: varchar("var_symbol", { length: 256 }).notNull(),
+  type: varchar("type", {
+    enum: ["registration", "tshirts", "accomodation", "catering"],
+  }).notNull(),
+  paid: boolean("paid").default(false),
+  amount: text("amount").notNull(),
+  issueDate: date("issue_date").defaultNow(),
+});
+
+export const invoiceRelations = relations(invoice, ({ one }) => ({
+  team: one(teams, {
+    fields: [invoice.teamId],
+    references: [teams.id],
+  }),
+}));

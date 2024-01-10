@@ -1,9 +1,4 @@
-import {
-  type teamFormBillingSchema,
-  type teamFormInfoSchema,
-} from "@/lib/conts";
-import { useFormContext } from "react-hook-form";
-import { type z } from "zod";
+import { type Control, type FieldValues, type Path } from "react-hook-form";
 import {
   FormField,
   FormItem,
@@ -14,37 +9,33 @@ import {
 } from "../ui/form";
 import { Input } from "../ui/input";
 import { useI18n } from "locales/client";
-import { type LocaleKey, type FormFieldTextInputName } from "@/lib/types";
+import { type LocaleKey } from "@/lib/types";
 
-interface Props {
-  fieldName: FormFieldTextInputName;
+interface Props<T extends FieldValues> {
+  fieldName: Path<T>;
   fieldLabel: LocaleKey;
-  description?: LocaleKey;
+  control: Control<T>;
   className?: string;
+  description?: LocaleKey;
 }
 
-export default function TextInput({
+export default function TextInput<T extends FieldValues>({
   fieldName,
   fieldLabel,
-  description,
+  control,
   className,
-}: Props) {
-  const form =
-    useFormContext<
-      z.infer<typeof teamFormInfoSchema | typeof teamFormBillingSchema>
-    >();
+  description,
+}: Props<T>) {
   const t = useI18n();
 
   return (
     <FormField
-      control={form.control}
+      control={control}
       name={fieldName}
       render={({ field }) => (
         <FormItem>
           <FormLabel>{t(fieldLabel)}</FormLabel>
           <FormControl>
-            {/* FIXME: types */}
-            {/* @ts-expect-error dont have time to fix this, form context is not properly typed, might get to this later */}
             <Input {...field} className={className} />
           </FormControl>
           {description && <FormDescription>{t(description)}</FormDescription>}

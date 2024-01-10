@@ -22,6 +22,7 @@ export default function TeamServiceForm() {
         <InterestRadio
           fieldName="interestInCatering"
           fieldLabel="form.interestInCatering"
+          control={form.control}
           infoTooltip={
             <InfoTooltip>
               <div className="flex flex-col space-y-1 text-center">
@@ -43,15 +44,16 @@ export default function TeamServiceForm() {
           }
         />
         <InterestRadio
+          control={form.control}
           fieldName="interestInAccomodation"
           fieldLabel="form.interestInAccomodation"
         />
         <InterestRadio
+          control={form.control}
           fieldName="interestInTshirts"
           fieldLabel="form.interestInTshirts"
         />
-        {/* @ts-expect-error   due to zod transform being applied at runtime, this is indeed a string now */}
-        {interestedInTshirts === "yes" ? (
+        {interestedInTshirts ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
             <TshirtInput fieldName="noXsShirts" fieldLabel="XS" />
             <TshirtInput fieldName="noSShirts" fieldLabel="S" />

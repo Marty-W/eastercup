@@ -11,7 +11,6 @@ import {
 import {
   teamFormServicesSchema,
   teamFormServicesDefaultValues,
-  type teamFormSchemaServer,
 } from "@/lib/conts";
 import { type TeamServicesFormValues } from "@/lib/types";
 import { api } from "@/trpc/react";
@@ -29,6 +28,7 @@ export default function TeamServices() {
     reValidateMode: "onBlur",
     defaultValues: teamFormServicesDefaultValues,
   });
+
   const t = useI18n();
   const router = useRouter();
   const setTeamServicesFormValues = useSetAtom(teamServicesAtom);
@@ -38,7 +38,7 @@ export default function TeamServices() {
   const setTeamDbData = useSetAtom(teamDbDataAtom);
   const registerMutation = api.registration.team.useMutation({
     onSuccess: (data) => {
-      setTeamDbData({ invoiceId: data[0]?.invoiceId ?? "" });
+      setTeamDbData({ invoiceId: data.registrationInvoiceVarSymbol });
       router.push("/form/success");
     },
     onError: (error) => {
@@ -55,15 +55,11 @@ export default function TeamServices() {
 
   const onSubmit = (values: TeamServicesFormValues) => {
     setTeamServicesFormValues(values);
-    const finalFormValues = {
-      ...teamFormInfoValues,
-      ...teamFormBillingValues,
-      ...values,
-    };
-    // NOTE: i dont like this hack, but now i need to move on
-    registerMutation.mutate(
-      finalFormValues as z.infer<typeof teamFormSchemaServer>,
-    );
+    registerMutation.mutate({
+      info: teamFormInfoValues,
+      billing: teamFormBillingValues,
+      services: values,
+    });
   };
 
   return (

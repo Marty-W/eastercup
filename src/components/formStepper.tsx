@@ -1,3 +1,4 @@
+import { FormStep } from "@/app/[locale]/form/layout";
 import { finishedFormStepsAtom } from "@/lib/atoms";
 import { isFormFinalSegment, type FormSegment } from "@/lib/types";
 import { cn } from "@/lib/utils";
@@ -6,8 +7,9 @@ import { useI18n } from "locales/client";
 
 interface Props {
   activeSegment: FormSegment;
+  formStep: FormStep;
 }
-export default function FormStepper({ activeSegment }: Props) {
+export default function FormStepper({ activeSegment, formStep }: Props) {
   const finishedSteps = useAtomValue(finishedFormStepsAtom);
   const t = useI18n();
   if (isFormFinalSegment(activeSegment)) {

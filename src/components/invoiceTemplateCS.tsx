@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { format } from "date-fns";
 import { useAtomValue } from "jotai";
 import { teamDbDataAtom, teamFormAtom } from "@/lib/atoms";
-import { TOURNAMENT_START } from "@/lib/conts";
+import { REGISTRATION_FEE_CZK, TOURNAMENT_START } from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
@@ -83,11 +83,11 @@ export default function InvoiceTemplate() {
               <TableRow>
                 <TableCell>Startovné: ({formValues?.category})</TableCell>
                 <TableCell>1</TableCell>
-                <TableCell>5 000,00 Kč</TableCell>
-                <TableCell>5 000,00 Kč</TableCell>
+                <TableCell>{REGISTRATION_FEE_CZK} Kč</TableCell>
+                <TableCell>{REGISTRATION_FEE_CZK} Kč</TableCell>
                 <TableCell>0%</TableCell>
                 <TableCell>0,00 Kč</TableCell>
-                <TableCell>5 000,00 Kč</TableCell>
+                <TableCell>{REGISTRATION_FEE_CZK} Kč</TableCell>
               </TableRow>
               <Separator className="" />
             </TableBody>

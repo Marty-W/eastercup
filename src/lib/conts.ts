@@ -2,6 +2,9 @@ import * as z from "zod";
 
 export const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"] as const;
 
+export const REGISTRATION_FEE_EUR = 120;
+export const REGISTRATION_FEE_CZK = 5000;
+
 export const TOURNAMENT_START = new Date("2024-03-28");
 
 export const TEAM_CATEGORIRES = [
@@ -68,10 +71,10 @@ export const TIME_BY_30_MINUTES = [
 export const teamFormInfoSchema = z.object({
   teamName: z
     .string()
-    .min(5, { message: "form.teamName.minError" })
+    .min(2, { message: "form.teamName.minError" })
     .max(50, { message: "form.teamName.maxError" }),
   country: z.string().min(2, { message: "form.country.error" }),
-  category: z.string().min(2, { message: "form.category.error" }),
+  category: z.enum(TEAM_CATEGORIRES),
   contactPerson: z
     .string()
     .min(1, { message: "form.contactPerson.minError" })
@@ -88,21 +91,17 @@ export const teamFormInfoSchema = z.object({
   arrivalDate: z.date({
     required_error: "form.arrivalDate.error",
   }),
-  meansOfTransport: z
-    .string()
-    .min(1, { message: "form.meansOfTransport.minError" }),
+  meansOfTransport: z.enum(TRANSPORT_OPTIONS),
   willTransportStayOver: z
     .boolean({
       required_error: "form.meansOfTransport.stayOver.error",
     })
-    .default(false)
-    .optional(),
+    .default(false),
   willNeedTransportFromAirport: z
     .boolean({
       required_error: "form.meansOfTransport.stayOver.error",
     })
-    .default(false)
-    .optional(),
+    .default(false),
   flightNumber: z.string().optional(),
   placeOfLanding: z.string().optional(),
   note: z.string().max(900, { message: "form.note.maxError" }).optional(),
@@ -114,10 +113,10 @@ export const teamFormInfoDefaultValues = {
   countryCode: "",
   email: "@",
   contactPerson: "",
-  meansOfTransport: "",
+  meansOfTransport: TRANSPORT_OPTIONS[0],
   note: "",
   country: "",
-  category: "",
+  category: TEAM_CATEGORIRES[0],
   arrivalTime: "",
   arrivalDate: TOURNAMENT_START,
   willTransportStayOver: false,
@@ -143,21 +142,9 @@ export const teamFormBillingDefaultValues = {
 };
 
 export const teamFormServicesSchema = z.object({
-  interestInCatering: z
-    .enum(["yes", "no"], {
-      required_error: "form.catering.error",
-    })
-    .transform((value) => (value === "yes" ? true : false)),
-  interestInAccomodation: z
-    .enum(["yes", "no"], {
-      required_error: "form.accomodation.error",
-    })
-    .transform((value) => (value === "yes" ? true : false)),
-  interestInTshirts: z
-    .enum(["yes", "no"], {
-      required_error: "form.tshirts.error",
-    })
-    .transform((value) => (value === "yes" ? true : false)),
+  interestInCatering: z.boolean().default(false),
+  interestInAccomodation: z.boolean().default(false),
+  interestInTshirts: z.boolean().default(false),
   noXsShirts: z.coerce.number().min(0).max(50).optional(),
   noSShirts: z.coerce.number().min(0).max(50).optional(),
   noMShirts: z.coerce.number().min(0).max(50).optional(),
@@ -178,13 +165,12 @@ export const teamFormServicesDefaultValues = {
   noXXLShirts: 0,
 };
 
-export const teamFormSchemaServer = teamFormInfoSchema
+export const fullFormSchema = teamFormInfoSchema
   .merge(teamFormBillingSchema)
-  .merge(teamFormServicesSchema)
-  .extend({
-    interestInCatering: z.boolean(),
-    interestInAccomodation: z.boolean(),
-    interestInTshirts: z.boolean(),
-    willTransportStayOver: z.boolean(),
-    willNeedTransportFromAirport: z.boolean(),
-  });
+  .merge(teamFormServicesSchema);
+
+export const registrationInputSchema = z.object({
+  info: teamFormInfoSchema,
+  billing: teamFormBillingSchema,
+  services: teamFormServicesSchema,
+});

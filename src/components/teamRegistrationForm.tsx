@@ -30,8 +30,13 @@ export default function TeamRegistrationForm() {
   return (
     <Form {...form}>
       <div className="space-y-6 font-sans">
-        <TextInput fieldName="teamName" fieldLabel="form.teamName" />
+        <TextInput
+          fieldName="teamName"
+          fieldLabel="form.teamName"
+          control={form.control}
+        />
         <FormSelect
+          control={form.control}
           fieldName="category"
           fieldLabel="form.teamCategory"
           placeholderLabel="form.selectCategory"
@@ -54,6 +59,7 @@ export default function TeamRegistrationForm() {
           ))}
         </FormSelect>
         <FormSelect
+          control={form.control}
           fieldName="country"
           fieldLabel="form.country"
           placeholderLabel="form.selectCountry"
@@ -74,10 +80,19 @@ export default function TeamRegistrationForm() {
             );
           })}
         </FormSelect>
-        <TextInput fieldName="contactPerson" fieldLabel="form.contactPerson" />
+        <TextInput
+          fieldName="contactPerson"
+          fieldLabel="form.contactPerson"
+          control={form.control}
+        />
         <PhoneNumberInput />
-        <TextInput fieldName="email" fieldLabel="form.email" />
+        <TextInput
+          fieldName="email"
+          fieldLabel="form.email"
+          control={form.control}
+        />
         <FormSelect
+          control={form.control}
           fieldName="arrivalTime"
           fieldLabel="form.arrivalTime"
           placeholderLabel="form.selectArrivalTime"

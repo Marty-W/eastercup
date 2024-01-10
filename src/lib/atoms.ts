@@ -5,17 +5,26 @@ import {
   type TeamBillingFormValues,
   type TeamServicesFormValues,
 } from "./types";
+import {
+  teamFormBillingDefaultValues,
+  teamFormInfoDefaultValues,
+  teamFormServicesDefaultValues,
+} from "./conts";
 
 // FIXME: doesnt work, saves only to localstorage
 export const sessionStorage = createJSONStorage(() => window.sessionStorage);
 
 export const formSubmissionError = atom<string | null>(null);
 
-export const teamInfoAtom = atom<TeamInfoFormValues | null>(null);
+export const teamInfoAtom = atom<TeamInfoFormValues>(teamFormInfoDefaultValues);
 
-export const teamBillingAtom = atom<TeamBillingFormValues | null>(null);
+export const teamBillingAtom = atom<TeamBillingFormValues>(
+  teamFormBillingDefaultValues,
+);
 
-export const teamServicesAtom = atom<TeamServicesFormValues | null>(null);
+export const teamServicesAtom = atom<TeamServicesFormValues>(
+  teamFormServicesDefaultValues,
+);
 
 export const teamDbDataAtom = atom<null | {
   invoiceId: string;

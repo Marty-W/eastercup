@@ -1,5 +1,5 @@
 import { type teamFormInfoSchema } from "@/lib/conts";
-import { useFormContext } from "react-hook-form";
+import { Control, FieldValues, Path, useFormContext } from "react-hook-form";
 import { type z } from "zod";
 import {
   FormField,
@@ -19,27 +19,28 @@ import {
 } from "../ui/select";
 import InfoTooltip from "../ui/infoTooltip";
 
-interface Props {
-  fieldName: FormFieldCategoryName;
+interface Props<T extends FieldValues> {
+  fieldName: Path<T>;
   fieldLabel: LocaleKey;
+  control: Control<T>;
   placeholderLabel: LocaleKey;
   children: React.ReactNode;
   tooltipContent?: React.ReactNode;
 }
 
-export default function FormSelect({
+export default function FormSelect<T extends FieldValues>({
   fieldName,
   fieldLabel,
+  control,
   placeholderLabel,
   tooltipContent,
   children,
-}: Props) {
-  const form = useFormContext<z.infer<typeof teamFormInfoSchema>>();
+}: Props<T>) {
   const t = useI18n();
 
   return (
     <FormField
-      control={form.control}
+      control={control}
       name={fieldName}
       render={({ field }) => (
         <FormItem>
