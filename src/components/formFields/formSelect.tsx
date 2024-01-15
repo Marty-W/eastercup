@@ -18,14 +18,16 @@ import {
   SelectGroup,
 } from "../ui/select";
 import InfoTooltip from "../ui/infoTooltip";
+import { cn } from "@/lib/utils";
 
 interface Props<T extends FieldValues> {
   fieldName: Path<T>;
   fieldLabel: LocaleKey;
   control: Control<T>;
-  placeholderLabel: LocaleKey;
+  placeholderLabel?: LocaleKey;
   children: React.ReactNode;
   tooltipContent?: React.ReactNode;
+  className?: string;
 }
 
 export default function FormSelect<T extends FieldValues>({
@@ -34,6 +36,7 @@ export default function FormSelect<T extends FieldValues>({
   control,
   placeholderLabel,
   tooltipContent,
+  className,
   children,
 }: Props<T>) {
   const t = useI18n();
@@ -50,8 +53,10 @@ export default function FormSelect<T extends FieldValues>({
           </div>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
-              <SelectTrigger className="w-[180px]">
-                <SelectValue placeholder={t(placeholderLabel)} />
+              <SelectTrigger className={cn("w-[180px]", className)}>
+                {placeholderLabel ? (
+                  <SelectValue placeholder={t(placeholderLabel)} />
+                ) : null}
               </SelectTrigger>
             </FormControl>
             <SelectContent className="z-50">

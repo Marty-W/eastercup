@@ -7,6 +7,8 @@ import React from "react";
 import TshirtInput from "./formFields/tshirtInput";
 import InfoTooltip from "./ui/infoTooltip";
 import { useI18n } from "locales/client";
+import CateringOptions from "./formFields/cateringOptions";
+import SubQuestionContainerWithReturn from "./ui/subQuestionWithReturn";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -14,35 +16,60 @@ export default function TeamServiceForm() {
     control: form.control,
     name: "interestInTshirts",
   });
+
+  const interestInCatering = useWatch({
+    control: form.control,
+    name: "interestInCatering",
+  });
+
   const t = useI18n();
 
   return (
     <Form {...form}>
       <div className="space-y-6 font-sans">
-        <InterestRadio
-          fieldName="interestInCatering"
-          fieldLabel="form.interestInCatering"
-          control={form.control}
-          infoTooltip={
-            <InfoTooltip>
-              <div className="flex flex-col space-y-1 text-center">
-                <h4 className="text-md font-semibold">
-                  {t("catering.tooltip.headline")}
-                </h4>
-                <div className="text-center">
-                  <p className="text-sm">
-                    {t("catering.tooltip.breakfastPrice")}
+        {!interestInCatering ? (
+          <InterestRadio
+            fieldName="interestInCatering"
+            fieldLabel="form.interestInCatering"
+            control={form.control}
+            infoTooltip={
+              <InfoTooltip>
+                <div className="flex flex-col space-y-1 text-center">
+                  <h4 className="text-md font-semibold">
+                    {t("catering.tooltip.headline")}
+                  </h4>
+                  <div className="text-center">
+                    <p className="text-sm">
+                      {t("catering.tooltip.breakfastPrice")}
+                    </p>
+                    <p className="text-sm">
+                      {t("catering.tooltip.lunchPrice")}
+                    </p>
+                    <p className="text-sm">
+                      {t("catering.tooltip.dinnerPrice")}
+                    </p>
+                  </div>
+                  <p className="mx-auto max-w-[200px] text-sm">
+                    {t("catering.tooltip.note")}
                   </p>
-                  <p className="text-sm">{t("catering.tooltip.lunchPrice")}</p>
-                  <p className="text-sm">{t("catering.tooltip.dinnerPrice")}</p>
                 </div>
-                <p className="mx-auto max-w-[200px] text-sm">
-                  {t("catering.tooltip.note")}
-                </p>
-              </div>
-            </InfoTooltip>
-          }
-        />
+              </InfoTooltip>
+            }
+          />
+        ) : (
+          // TODO: restyle this bad boy, consider adding it to a popover or something
+          <SubQuestionContainerWithReturn
+            header="Zpet"
+            headerAction={() => {
+              form.setValue("interestInCatering", false, {
+                shouldTouch: true,
+                shouldValidate: true,
+              });
+            }}
+          >
+            <CateringOptions />
+          </SubQuestionContainerWithReturn>
+        )}
         <InterestRadio
           control={form.control}
           fieldName="interestInAccomodation"

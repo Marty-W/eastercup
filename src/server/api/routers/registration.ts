@@ -1,7 +1,7 @@
 import {
+  cateringOrder,
   invoice,
   teamBillingInfo,
-  teamServicesInfo,
   teamTransportInfo,
   teams,
   tshirtOrders,
@@ -12,6 +12,7 @@ import {
   REGISTRATION_FEE_EUR,
   registrationInputSchema,
 } from "@/lib/conts";
+
 export const registrationRouter = createTRPCRouter({
   team: publicProcedure
     .input(registrationInputSchema)
@@ -42,11 +43,6 @@ export const registrationRouter = createTRPCRouter({
         teamId: teamID,
       });
 
-      await ctx.db.insert(teamServicesInfo).values({
-        ...services,
-        teamId: teamID,
-      });
-
       const registrationInvoiceVarSymbol = `${currYear}${String(
         teamID,
       ).padStart(4, "0")}`;
@@ -70,6 +66,28 @@ export const registrationRouter = createTRPCRouter({
         noXLShirts: services.noXLShirts,
         noXXLShirts: services.noXXLShirts,
         teamId: teamID,
+      });
+
+      await ctx.db.insert(cateringOrder).values({
+        teamId: teamID,
+        thuBreakfast: services.thuBreakfast,
+        thuLunch: services.thuLunch,
+        thuDinner: services.thuDinner,
+        friBreakfast: services.friBreakfast,
+        friLunch: services.friLunch,
+        friDinner: services.friDinner,
+        satBreakfast: services.satBreakfast,
+        satLunch: services.satLunch,
+        satDinner: services.satDinner,
+        sunBreakfast: services.sunBreakfast,
+        sunLunch: services.sunLunch,
+        sunDinner: services.sunDinner,
+        halalCount: services.halalCount,
+        vegetarianCount: services.vegetarianCount,
+        lactoseFreeCount: services.lactoseFreeCount,
+        glutenFreeCount: services.glutenFreeCount,
+        otherAllergyCount: services.otherAllergyCount,
+        otherAllergyNote: services.otherAllergyNote,
       });
 
       return {

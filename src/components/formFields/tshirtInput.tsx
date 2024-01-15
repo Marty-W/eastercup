@@ -29,7 +29,14 @@ export default function TshirtInput({ fieldName, fieldLabel }: Props) {
         <FormItem className="flex items-center space-x-2 place-self-center">
           <FormLabel className="w-6">{fieldLabel}</FormLabel>
           <FormControl>
-            <Input {...field} className="w-16" type="number" max={50} min={0} />
+            <Input
+              {...field}
+              className="w-16"
+              type="number"
+              max={50}
+              min={0}
+              onChange={(e) => field.onChange(Number(e.target.value))}
+            />
           </FormControl>
         </FormItem>
       )}

@@ -17,16 +17,16 @@ interface Props<T extends FieldValues> {
   control: Control<T>;
   className?: string;
   description?: LocaleKey;
-  type?: "text" | "email" | "password" | "number";
+  max: number;
 }
 
-export default function TextInput<T extends FieldValues>({
+export default function NumberInput<T extends FieldValues>({
   fieldName,
   fieldLabel,
   control,
   className,
   description,
-  type = "text",
+  max,
 }: Props<T>) {
   const t = useI18n();
 
@@ -38,7 +38,7 @@ export default function TextInput<T extends FieldValues>({
         <FormItem>
           {fieldLabel && <FormLabel>{t(fieldLabel)}</FormLabel>}
           <FormControl>
-            <Input {...field} className={className} type={type} />
+            <Input {...field} className={className} type="number" max={max} />
           </FormControl>
           {description && <FormDescription>{t(description)}</FormDescription>}
           <FormMessage isTranslated />

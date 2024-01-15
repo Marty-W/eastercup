@@ -24,9 +24,9 @@ export const teams = pgTable("teams", {
 
 export const teamRelations = relations(teams, ({ one, many }) => ({
   transportInfo: one(teamTransportInfo),
-  servicesInfo: one(teamServicesInfo),
   tshirtOrder: one(tshirtOrders),
   invoices: many(invoice),
+  cateringOrder: one(cateringOrder),
 }));
 
 export const teamTransportInfo = pgTable("team_transport_info", {
@@ -74,25 +74,6 @@ export const teamBillingInfoRelations = relations(
   }),
 );
 
-export const teamServicesInfo = pgTable("team_services_info", {
-  id: serial("id").primaryKey(),
-  teamId: integer("team_id").references(() => teams.id),
-  interestInCatering: boolean("interest_in_catering").notNull(),
-  interestInAccomodation: boolean("interest_in_accomodation").notNull(),
-  interestInTshirts: boolean("interest_in_tshirts").notNull(),
-  tshirtOrderId: integer("tshirt_order_id").references(() => tshirtOrders.id),
-});
-
-export const teamServicesInfoRelations = relations(
-  teamServicesInfo,
-  ({ one }) => ({
-    team: one(teams, {
-      fields: [teamServicesInfo.teamId],
-      references: [teams.id],
-    }),
-  }),
-);
-
 export const tshirtOrders = pgTable("tshirt_orders", {
   id: serial("id").primaryKey(),
   teamId: integer("team_id").references(() => teams.id),
@@ -126,6 +107,36 @@ export const invoice = pgTable("invoice", {
 export const invoiceRelations = relations(invoice, ({ one }) => ({
   team: one(teams, {
     fields: [invoice.teamId],
+    references: [teams.id],
+  }),
+}));
+
+export const cateringOrder = pgTable("catering_order", {
+  id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
+  thuBreakfast: integer("thu_breakfast").default(0),
+  thuLunch: integer("thu_lunch").default(0),
+  thuDinner: integer("thu_dinner").default(0),
+  friBreakfast: integer("fri_breakfast").default(0),
+  friLunch: integer("fri_lunch").default(0),
+  friDinner: integer("fri_dinner").default(0),
+  satBreakfast: integer("sat_breakfast").default(0),
+  satLunch: integer("sat_lunch").default(0),
+  satDinner: integer("sat_dinner").default(0),
+  sunBreakfast: integer("sun_breakfast").default(0),
+  sunLunch: integer("sun_lunch").default(0),
+  sunDinner: integer("sun_dinner").default(0),
+  halalCount: integer("halal_count").default(0),
+  vegetarianCount: integer("vegetarian_count").default(0),
+  lactoseFreeCount: integer("lactose_free_count").default(0),
+  glutenFreeCount: integer("gluten_free_count").default(0),
+  otherAllergyCount: integer("other_allergy_count").default(0),
+  otherAllergyNote: text("other_allergy_note"),
+});
+
+export const cateringOrderRelations = relations(cateringOrder, ({ one }) => ({
+  team: one(teams, {
+    fields: [cateringOrder.teamId],
     references: [teams.id],
   }),
 }));
