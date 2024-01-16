@@ -141,36 +141,7 @@ export const teamFormBillingDefaultValues = {
   dic: "",
 };
 
-export const RoleCategoryTypes = [
-  "player",
-  "coach-men",
-  "coach-women",
-  "support-men",
-  "support-women",
-] as const;
-
-export const RoleRoomTypes = ["coach", "support"] as const;
-export const RoomTypes = ["single", "double", "twin", "other"] as const;
-export const DayTypes = [
-  "wednesday",
-  "thursday",
-  "friday",
-  "saturday",
-] as const;
-export const AccommodationTypes = ["A", "B", "C", "D"] as const;
-
-const accomodationDaySchema = z.object({
-  day: z.enum(DayTypes),
-  accommodation: z.enum(AccommodationTypes),
-  role: z.enum(RoleCategoryTypes),
-  count: z.number().min(0),
-});
-
-const roomDaySchema = z.object({
-  day: z.enum(DayTypes),
-  roomType: z.enum(RoomTypes),
-  role: z.enum(RoleRoomTypes),
-});
+const dynamicFieldSchema = z.record(z.number().min(0).max(50));
 
 export const teamFormServicesSchema = z.object({
   interestInCatering: z.boolean().default(false),
@@ -206,8 +177,7 @@ export const teamFormServicesSchema = z.object({
   otherAllergyCount: z.number().min(0).optional(),
   otherAllergyNote: z.string().optional(),
   hasAllergies: z.boolean().default(false),
-  accomodationSchema: z.array(accomodationDaySchema),
-  roomSchema: z.array(roomDaySchema),
+  accomodationCategoryFields: dynamicFieldSchema,
 });
 
 export const teamFormServicesDefaultValues = {

@@ -8,6 +8,17 @@ import {
   Table,
   TableCaption,
 } from "../ui/table";
+import { type teamFormServicesSchema } from "@/lib/conts";
+import { useFormContext } from "react-hook-form";
+import { type z } from "zod";
+import AccomodationCountInput from "./accomodationCountInput";
+const roleTypes = [
+  "player",
+  "coach-men",
+  "coach-women",
+  "support-men",
+  "support-women",
+];
 
 interface Props {
   day: "wednesday" | "thursday" | "friday" | "saturday";
@@ -15,6 +26,8 @@ interface Props {
 
 export default function AccomodationTable({ day }: Props) {
   const t = useI18n();
+  const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
+
   return (
     <Table>
       <TableCaption>Please don't forget to fill out all days.</TableCaption>
@@ -39,35 +52,55 @@ export default function AccomodationTable({ day }: Props) {
       <TableBody>
         <TableRow>
           <TableCell>A</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
+          {roleTypes.map((role) => {
+            return (
+              <TableCell key={role}>
+                <AccomodationCountInput
+                  control={form.control}
+                  fieldName={`accomodationCategory.${day}.${role}.A`}
+                />
+              </TableCell>
+            );
+          })}
         </TableRow>
         <TableRow>
           <TableCell>B</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
+          {roleTypes.map((role) => {
+            return (
+              <TableCell key={role}>
+                <AccomodationCountInput
+                  control={form.control}
+                  fieldName={`accomodationCategory.${day}.${role}.B`}
+                />
+              </TableCell>
+            );
+          })}
         </TableRow>
         <TableRow>
           <TableCell>C</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
+          {roleTypes.map((role) => {
+            return (
+              <TableCell key={role}>
+                <AccomodationCountInput
+                  control={form.control}
+                  fieldName={`accomodationCategory.${day}.${role}.C`}
+                />
+              </TableCell>
+            );
+          })}
         </TableRow>
         <TableRow>
           <TableCell>D</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
+          {roleTypes.map((role) => {
+            return (
+              <TableCell key={role}>
+                <AccomodationCountInput
+                  control={form.control}
+                  fieldName={`accomodationCategory.${day}.${role}.D`}
+                />
+              </TableCell>
+            );
+          })}
         </TableRow>
       </TableBody>
     </Table>
