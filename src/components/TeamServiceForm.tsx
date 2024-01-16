@@ -10,6 +10,7 @@ import { useI18n } from "locales/client";
 import CateringOptions from "./formFields/cateringOptions";
 import SubQuestionContainerWithReturn from "./ui/subQuestionWithReturn";
 import AccomodationOptions from "./formFields/accomodationOptions";
+import AccomodationTooltip from "./accomodationTooltip";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -63,7 +64,6 @@ export default function TeamServiceForm() {
             }
           />
         ) : (
-          // TODO: restyle this bad boy, consider adding it to a popover or something
           <SubQuestionContainerWithReturn
             header="Zpet"
             headerAction={() => {
@@ -77,16 +77,16 @@ export default function TeamServiceForm() {
           </SubQuestionContainerWithReturn>
         )}
         {!interestInAccomodation ? (
-          // TODO: do we have any tooltip for this bad boy?
           <InterestRadio
             fieldName="interestInAccomodation"
             fieldLabel="form.interestInAccomodation"
             control={form.control}
+            infoTooltip={<AccomodationTooltip />}
           />
         ) : (
           <SubQuestionContainerWithReturn
-            header="Zpet"
-            // FIXME: this is not working
+            header={t("common.accomodation")}
+            tooltip={<AccomodationTooltip />}
             headerAction={() => {
               form.setValue("interestInAccomodation", false, {
                 shouldTouch: true,

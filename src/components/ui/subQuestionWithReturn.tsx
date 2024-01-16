@@ -7,6 +7,7 @@ interface Props {
   children: React.ReactNode;
   header: string;
   headerAction?: () => void;
+  tooltip?: React.ReactNode;
 }
 
 export default function SubQuestionContainerWithReturn({
@@ -14,16 +15,22 @@ export default function SubQuestionContainerWithReturn({
   children,
   header,
   headerAction,
+  tooltip,
 }: Props) {
   return (
     <div className={cn(className)}>
-      <div className="flex items-center space-x-4 text-muted-foreground">
-        <Button variant="ghost" onClick={headerAction}>
+      <div className="grid grid-cols-3 items-center">
+        <Button
+          variant="ghost"
+          onClick={headerAction}
+          className="justify-self-start text-muted-foreground"
+        >
           <MoveLeft className="" />
         </Button>
-        <h3 className="text-sm">{header}</h3>
+        <h3 className="text-md col-start-2 justify-self-center">{header}</h3>
+        {tooltip && <div className="justify-self-end">{tooltip}</div>}
       </div>
-      <div className="border p-2">{children}</div>
+      <div className="rounded-md border p-2">{children}</div>
     </div>
   );
 }

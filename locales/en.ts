@@ -13,6 +13,7 @@ export default {
   "common.sunday": "Sunday",
   "common.men": "Men",
   "common.women": "Women",
+  "common.accomodation": "Accomodation",
   "hero.title": "International youth basketball team tournament",
   "hero.button": "registration to tournament",
   // TODO add pluralization
@@ -128,4 +129,31 @@ export default {
     "Categories of accomodation. Please don't forget to fill out all days.",
   "accomodation.captionTwo":
     "Room types. Please don't forget to fill out all days.",
+  "accomodation.tooltip.headline": "Accomodation fees",
+  "accomodation.tooltip.categoryA": "Category A - hotel",
+  "accomodation.tooltip.categoryB": "Category B - pension",
+  "accomodation.tooltip.categoryC": "Category C - hostel or internat",
+  "accomodation.tooltip.categoryD":
+    "Category D - clasess at school – own sleepig bags and pads",
+  "accomodation.tooltip.categoryA.price":
+    "Price based on hotel - starting from 34,- EUR per person and night",
+  "accomodation.tooltip.categoryB.price":
+    "Price from 26 EUR per person and night.",
+  "accomodation.tooltip.categoryC.price":
+    "Price from 19 EUR per person and night.",
+  "accomodation.tooltip.categoryD.price": "Price 7 EUR per person and night.",
+  "accomodation.tooltip.note":
+    "The prices of accommodation type A, B and C are preliminary and are without any breakfast.",
+  "accomodation.tooltip.note2":
+    "Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
+  "accomodation.tooltip.note3":
+    "We will accommodate teams first, then parents and other supporters.",
+  "accomodation.tooltip.storno":
+    "Cancellation conditions for typa A and B reservation",
+  "accomodation.tooltip.storno.one":
+    "cancelation 48 hours before arrival - no costs",
+  "accomodation.tooltip.storno.two":
+    "cancelation 24 hours before arrival - 50% from price of first night",
+  "accomodation.tooltip.storno.three":
+    "cancelation later than 24 hours before arrival (4 p.m.) - 100% from price of first night",
 } satisfies Record<keyof typeof Locale, string>;

@@ -33,9 +33,7 @@ export default function AccomodationTable({ day }: Props) {
   return (
     <div className="flex flex-col space-y-2">
       <Table>
-        <TableCaption>
-          Categories of accomodation. Please don't forget to fill out all days.
-        </TableCaption>
+        <TableCaption>{t("accomodation.captionOne")}</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead></TableHead>
@@ -110,9 +108,7 @@ export default function AccomodationTable({ day }: Props) {
         </TableBody>
       </Table>
       <Table>
-        <TableCaption>
-          Room types. Please don't forget to fill out all days.
-        </TableCaption>
+        <TableCaption>{t("accomodation.captionTwo")}</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead></TableHead>

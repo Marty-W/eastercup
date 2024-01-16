@@ -13,6 +13,7 @@ export default {
   "common.sunday": "Neděle",
   "common.men": "Muži",
   "common.women": "Ženy",
+  "common.accomodation": "Ubytování",
   "hero.title": "Mezinárodní basketbalový turnaj mládeže",
   "hero.button": "Registrace do turnaje",
   // TODO add pluralization
@@ -127,4 +128,27 @@ export default {
     "Kategorie ubytovani. Nezapomente vyplnit formular pro vsechny dny.",
   "accomodation.captionTwo":
     "Typy pokoju. Nezapomente vyplnit formular pro vsechny dny.",
+  "accomodation.tooltip.headline": "Ceny ubytování",
+  "accomodation.tooltip.categoryA": "Kategorie A - hotel",
+  "accomodation.tooltip.categoryB": "Kategorie B - pension",
+  "accomodation.tooltip.categoryC": "Kategorie C - domov mládeže",
+  "accomodation.tooltip.categoryD":
+    "Kategorie D - ubytování ve třídě ve škole - vlastní spací pytle",
+  "accomodation.tooltip.categoryA.price": "Cena od 840 Kč na osobu a noc",
+  "accomodation.tooltip.categoryB.price": "Cena od 620,- Kč na osobu a noc",
+  "accomodation.tooltip.categoryC.price": "Cena od 460,- Kč na osobu a noc",
+  "accomodation.tooltip.categoryD.price": "Cena od 160,- Kč na osobu a noc",
+  "accomodation.tooltip.note":
+    "Ceny ubytování typu A, B a C jsou předběžné a jsou bez snídaně.",
+  "accomodation.tooltip.note2":
+    "Přesný název ubytovacího zařízení a cena bude upřesněna před odesláním předfaktury za objednané služby.",
+  "accomodation.tooltip.note3":
+    "Prednostne ubytujeme tymy, pote rodice a doprovod mimo tym.",
+  "accomodation.tooltip.storno": "Storno podmínky:",
+  "accomodation.tooltip.storno.one":
+    "zrušení rezervace do 48 hodin před příjezdem - zdarma",
+  "accomodation.tooltip.storno.two":
+    "zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
+  "accomodation.tooltip.storno.three":
+    "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
 } as const;
