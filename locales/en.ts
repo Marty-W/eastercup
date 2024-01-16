@@ -124,4 +124,8 @@ export default {
   "accomodation.threeroom": "Triple",
   "accomodation.other": "Other",
   "accomodation.room": "Room",
+  "accomodation.captionOne":
+    "Categories of accomodation. Please don't forget to fill out all days.",
+  "accomodation.captionTwo":
+    "Room types. Please don't forget to fill out all days.",
 } satisfies Record<keyof typeof Locale, string>;

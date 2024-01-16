@@ -123,4 +123,8 @@ export default {
   "accomodation.threeroom": "Třílůžkový",
   "accomodation.other": "Ostatní",
   "accomodation.room": "Pokoj",
+  "accomodation.captionOne":
+    "Kategorie ubytovani. Nezapomente vyplnit formular pro vsechny dny.",
+  "accomodation.captionTwo":
+    "Typy pokoju. Nezapomente vyplnit formular pro vsechny dny.",
 } as const;

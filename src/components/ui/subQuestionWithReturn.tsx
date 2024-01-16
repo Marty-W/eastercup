@@ -23,7 +23,7 @@ export default function SubQuestionContainerWithReturn({
         </Button>
         <h3 className="text-sm">{header}</h3>
       </div>
-      {children}
+      <div className="border p-2">{children}</div>
     </div>
   );
 }
