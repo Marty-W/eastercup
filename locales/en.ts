@@ -11,6 +11,8 @@ export default {
   "common.friday": "Friday",
   "common.saturday": "Saturday",
   "common.sunday": "Sunday",
+  "common.men": "Men",
+  "common.women": "Women",
   "hero.title": "International youth basketball team tournament",
   "hero.button": "registration to tournament",
   // TODO add pluralization
@@ -114,4 +116,12 @@ export default {
   "allergies.glutenFree": "Gluten free",
   "allergies.others": "Others",
   "allergies.specifyPlaceholder": "Please specify",
+  "accomodation.players": "Players",
+  "accomodation.coaches": "Coaches",
+  "accomodation.support": "Support",
+  "accomodation.oneroom": "Single",
+  "accomodation.tworoom": "Double",
+  "accomodation.threeroom": "Triple",
+  "accomodation.other": "Other",
+  "accomodation.room": "Room",
 } satisfies Record<keyof typeof Locale, string>;

@@ -11,6 +11,8 @@ export default {
   "common.friday": "Pátek",
   "common.saturday": "Sobota",
   "common.sunday": "Neděle",
+  "common.men": "Muži",
+  "common.women": "Ženy",
   "hero.title": "Mezinárodní basketbalový turnaj mládeže",
   "hero.button": "Registrace do turnaje",
   // TODO add pluralization
@@ -113,4 +115,12 @@ export default {
   "allergies.glutenFree": "Bez lepku",
   "allergies.others": "Jiné",
   "allergies.specifyPlaceholder": "Prosím specifikujte",
+  "accomodation.players": "Hráči",
+  "accomodation.coaches": "Trenéři",
+  "accomodation.support": "Doprovod",
+  "accomodation.oneroom": "Jednolůžkový",
+  "accomodation.tworoom": "Dvoulůžkový",
+  "accomodation.threeroom": "Třílůžkový",
+  "accomodation.other": "Ostatní",
+  "accomodation.room": "Pokoj",
 } as const;

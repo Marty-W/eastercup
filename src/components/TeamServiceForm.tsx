@@ -9,6 +9,7 @@ import InfoTooltip from "./ui/infoTooltip";
 import { useI18n } from "locales/client";
 import CateringOptions from "./formFields/cateringOptions";
 import SubQuestionContainerWithReturn from "./ui/subQuestionWithReturn";
+import AccomodationOptions from "./formFields/accomodationOptions";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -20,6 +21,11 @@ export default function TeamServiceForm() {
   const interestInCatering = useWatch({
     control: form.control,
     name: "interestInCatering",
+  });
+
+  const interestInAccomodation = useWatch({
+    control: form.control,
+    name: "interestInAccomodation",
   });
 
   const t = useI18n();
@@ -70,11 +76,27 @@ export default function TeamServiceForm() {
             <CateringOptions />
           </SubQuestionContainerWithReturn>
         )}
-        <InterestRadio
-          control={form.control}
-          fieldName="interestInAccomodation"
-          fieldLabel="form.interestInAccomodation"
-        />
+        {!interestInAccomodation ? (
+          // TODO: do we have any tooltip for this bad boy?
+          <InterestRadio
+            fieldName="interestInAccomodation"
+            fieldLabel="form.interestInAccomodation"
+            control={form.control}
+          />
+        ) : (
+          <SubQuestionContainerWithReturn
+            header="Zpet"
+            // FIXME: this is not working
+            headerAction={() => {
+              form.setValue("interestInAccomodation", false, {
+                shouldTouch: true,
+                shouldValidate: true,
+              });
+            }}
+          >
+            <AccomodationOptions />
+          </SubQuestionContainerWithReturn>
+        )}
         <InterestRadio
           control={form.control}
           fieldName="interestInTshirts"
