@@ -27,6 +27,8 @@ export const teamRelations = relations(teams, ({ one, many }) => ({
   tshirtOrder: one(tshirtOrders),
   invoices: many(invoice),
   cateringOrder: one(cateringOrder),
+  accommodationInfo: one(teamAccommodationInfo),
+  roomInfo: one(teamRoomInfo),
 }));
 
 export const teamTransportInfo = pgTable("team_transport_info", {
@@ -137,6 +139,57 @@ export const cateringOrder = pgTable("catering_order", {
 export const cateringOrderRelations = relations(cateringOrder, ({ one }) => ({
   team: one(teams, {
     fields: [cateringOrder.teamId],
+    references: [teams.id],
+  }),
+}));
+
+export const teamAccommodationInfo = pgTable("team_accommodation_info", {
+  id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
+  day: varchar("day", {
+    enum: ["wednesday", "thursday", "friday", "saturday"],
+  }).notNull(),
+  role: varchar("role", {
+    enum: [
+      "player",
+      "coach_men",
+      "coach_women",
+      "support_men",
+      "support_women",
+    ],
+  }).notNull(),
+  accommodation: varchar("accommodation", {
+    enum: ["A", "B", "C", "D"],
+  }).notNull(),
+  count: integer("count").notNull(),
+});
+
+export const teamAccommodationInfoRelations = relations(
+  teamAccommodationInfo,
+  ({ one }) => ({
+    team: one(teams, {
+      fields: [teamAccommodationInfo.teamId],
+      references: [teams.id],
+    }),
+  }),
+);
+
+export const teamRoomInfo = pgTable("team_room_info", {
+  id: serial("id").primaryKey(),
+  teamId: integer("team_id").references(() => teams.id),
+  day: varchar("day", {
+    enum: ["wednesday", "thursday", "friday", "saturday"],
+  }).notNull(),
+  role: varchar("role", { enum: ["coach", "support"] }).notNull(),
+  roomType: varchar("room_type", {
+    enum: ["single", "double", "twin", "other"],
+  }).notNull(),
+  count: integer("count").notNull(),
+});
+
+export const teamRoomInfoRelations = relations(teamRoomInfo, ({ one }) => ({
+  team: one(teams, {
+    fields: [teamRoomInfo.teamId],
     references: [teams.id],
   }),
 }));
