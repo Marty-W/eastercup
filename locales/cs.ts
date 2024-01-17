@@ -152,4 +152,132 @@ export default {
   "accomodation.tooltip.storno.three":
     "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
   "navbar.info": "informace",
+  "info.header": "informace",
+  "info.categories.header": "kategorie",
+  "info.categories.subheader1": "MINI EASTER CUP:",
+  "info.categories.subheader2": "EASTER CUP:",
+  "info.categories.mini.category1": "U11 DÍVKY a MIX (narozeni 2013 a mladší)",
+  "info.categories.mini.category2":
+    "U11 CHLAPCI a MIX (narozeni 2013 a mladší)",
+  "info.categories.mini.category3": "U12 DÍVKY (narozené 2012 a mladší)",
+  "info.categories.mini.category4": "U12 CHLAPCI (narození 2012 a mladší)",
+  "info.categories.normal.category1": "U14 DÍVKY (narozené 2010 a mladší)",
+  "info.categories.normal.category2": "U14 CHLAPCI (narození 2010 a mladší)",
+  "info.categories.normal.category3": "U16 DÍVKY (narozené 2008 a mladší)",
+  "info.categories.normal.category4": "U16 CHLAPCI (narození 2008 a mladší)",
+  "info.term.header": "termín",
+  "info.place.header": "MÍSTO KONÁNÍ:",
+  "info.place.place1": "Hala BK Klatovy (Voříškova 715, Klatovy)",
+  "info.place.place2": "Hala CMS Klatovy (U Elektrárny 917, Klatovy)",
+  "info.place.place3": "Městská sportovní hala (Čapkova 136, Klatovy)",
+  "info.place.place4": "Tělocvična ZŠ Plánická (Studentská 624, Klatovy)",
+  "info.place.place5": "Tělocvična ZŠ Masarykova (Národních mučedníků 185)",
+  "info.place.place6": "Tělocvična Gymnázium Klatovy (Národních mučedníků 347)",
+  "info.place.place7": "Tělocvična SPŠ Klatovy (Kpt. Nálepky 362)",
+  "info.place.place8": "Tělocvična Obchodní akademie (Hálkova 131)",
+  "info.fee.header": "startovné",
+  "info.fee.text":
+    "5 000 Kč – v případě zrušení turnaje z důvodu vyšší moci se startovné nevrací a bude použito na úhradu již vynaložených nákladů ze strany pořadatele a nezbytných poplatků spojených se zrušením turnaje.",
+  "info.system.header": "hrací systém",
+  "info.system.text":
+    "Základní skupiny v každé kategorii (podle počtu přihlášených týmů), zápasy o vítězství a o umístění.",
+  "info.rules.header": "pravidla",
+  "info.rules.text": `Dle platných pravidel minibasketbalu a basketbalu pro sezonu 2023/2024
+s výjimkami uvedenými v sekci „Pravidla“.`,
+  "info.prizes.header": "Ceny",
+  "info.prizes.text":
+    "První 3 místa pohár a medaile, pro každé družstvo diplom + věcné ceny, v každé kategorii vyhlášení All-Stars pětky a nejužitečnějšího hráče.",
+  "info.tshirts.header": "Turnajová trika",
+  "info.registration.header": "Registrace",
+  "info.registration.text": "Odkaz na formulář",
+  "info.contact.header": "Kontakty",
+  "info.contact.text":
+    "Zaplacením startovného účastníci turnaje souhlasí s podmínkami účasti, propozicemi a pravidly turnaje",
+  "info.tournamentRules.header": "pravidla turnaje",
+  "info.tournamentRules.rule1.text1": "Turnaj je vyhlášen pro kategorie:",
+  "info.tournamentRules.rule1.text2":
+    "U11 dívky, chlapci a mix (nar. 1. 1. 2014 a mladší)",
+  "info.tournamentRules.rule1.text3":
+    "U12 dívky, chlapci a mix (nar. 1. 1. 2013 a mladší)",
+  "info.tournamentRules.rule1.text4":
+    "U14 dívky a chlapci (nar. 1. 1. 2011 a mladší)",
+  "info.tournamentRules.rule1.text5":
+    "U16 dívky a chlapci (nar. 1. 1. 2009 a mladší)",
+  "info.tournamentRules.rule2":
+    "Každé družstvo je složeno z maximálně 15 hráčů, v kategorii U15 z maximálně 12 hráčů",
+  "info.tournamentRules.rule3":
+    "Kategorie U11 a U12 hrají s míčem velikosti 5, dívky U14 a U15 s míčem vel. 6 a chlapci U14 a U15 s míčem vel. 7",
+  "info.tournamentRules.rule4":
+    "Výška košů v kategoriích U11 a U12 je 260 cm, v kategoriích U14 a U15 je výška koše 305 cm",
+  "info.tournamentRules.rule5":
+    "Každý účastník je povinen na vyžádání předložit doklad totožnosti pro ověření věku. Nutné je foto a datum narození",
+  "info.tournamentRules.rule6.text1":
+    "Hraje se podle platných pravidel basketbalu a minibasketbalu pro sezónu 2023/2024 s těmito změnami:",
+  "info.tournamentRules.rule6.text2":
+    "– v kategoriích U11 a U12 se hraje 4x8 minut hrubého času, čas se zastavuje pouze při oddechovém čase",
+  "info.tournamentRules.rule6.text3":
+    "– v kategorie U15 a U14 se hraje 4x8 minut čistého času",
+  "info.tournamentRules.rule6.text4":
+    "– oddechový čas je 60 sec., družstvo má v 1. poločase k dispozici 1 oddechový čas, ve 2. poločase 2 oddechové časy a v prodloužení 1 oddechový čas",
+  "info.tournamentRules.rule6.text5":
+    "– všechny přestávky mezi čtvrtinami a před prodloužením jsou 2 minuty, poločasová přestávka je 5 minut",
+  "info.tournamentRules.rule6.text6":
+    "– povinné střídání hráče nastává při 4 faulech",
+  "info.tournamentRules.rule6.text7":
+    "– v případě nerozhodného stavu se prodloužení hraje 3 minuty čistého času. Pokud nebude ani po prodloužení rozhodnuto, přijde na řadu střelba trestných hodů (3 série) a poté po jednom až do úplného rozhodnutí",
+  "info.tournamentRules.rule6.text8":
+    "při rovnosti bodů ve skupinách rozhodují následující kritéria: 1. vzájemný zápas, 2. rozdíl skóre, 3. vyšší počet vstřelených bodů, 4. menší počet obdržených bodů 5. rozstřel – q– šestky",
+  "info.tournamentRules.rule6.text9":
+    "– každý tým musí být přítomen nejméně 5 minut před začátkem každého utkání. Nedodržení tohoto pravidla bude potrestáno 5 body pro tým soupeře",
+  "info.tournamentRules.rule6.text10":
+    "– v kategorii U11 a U12 platí pravidlo obranných 3 vteřin",
+  "info.tournamentRules.rule6.text11":
+    "– v kategorii U11 a U12 smí každý hráč nastoupit pouze ve 2 čtvrtinách",
+  "info.tournamentRules.rule6.text12":
+    "– v kategorii U11 a U12 nesmí hráči clonit",
+  "info.tournamentRules.rule6.text13":
+    "– v kategorii U11 a U12 neplatí tříbodové koše",
+  "info.tournamentRules.rule7":
+    "Každý tým je oprávněný podat protest proti výsledku zápasu nebo řízení hry organizačnímu výboru, a to nejpozději 10 minut po skončení zápasu společně s kaucí 500 Kč (20 EUR). V případě zamítnutí kauce propadá ve prospěch organizátora.",
+  "info.tournamentRules.rule8":
+    "Pořadatel nemá hmotnou zodpovědnost za majetek hráčů a trenérů. Všechny týmy jsou povinné dbát na své věci tak, aby předcházeli případným krádežím",
+  "info.tournamentRules.rule9":
+    "Rozlosování turnaje proběhne po uzávěrce přihlášek a bude zasláno společně s hracím systémem na adresu uvedenou v přihlášce",
+  "info.tournamentRules.rule10":
+    "Každý tým se rozcvičuje s vlastními míči. Pořadatel zajišťuje pouze hrací míče.",
+  "info.accomodation.header": "Ubytování",
+  "info.accomodation.text":
+    "Ubytování typu A, B a C jsou početně omezeny.Ceny budou upřesněné.",
+  "info.accomodation.hotel.header": "Typ A: Hotel",
+  "info.accomodation.hotel.text": "– 2–3 lůžkové pokoje",
+  "info.accomodation.pension.header": "Typ B: Penzion",
+  "info.accomodation.pension.text": "– 2–3 lůžkové pokoje",
+  "info.accomodation.hostel.header": "Typ C: Hostel nebo internát",
+  "info.accomodation.hostel.text": "– 2–3 lůžkové pokoje",
+  "info.accomodation.school.header": "Typ D: Ve třídách základní školy",
+  "info.accomodation.school.text": "– na karimatce ve vlastním spacáku",
+  "info.accomodation.storno.header": "Storno podmínky:",
+  "info.accomodation.storno.text1":
+    "– zrušení rezervace do 48 hodin před příjezdem – zdarma",
+  "info.accomodation.storno.text2":
+    "– zrušení rezervace do 24 hodin před příjezdem – 50 % z ceny první noci",
+  "info.accomodation.storno.text3":
+    "– zrušení rezervace méně než 24 hodin před příjezdem – poplatek 100 % z ceny první noci",
+  "info.catering.header": "STRAVOVÁNÍ:",
+  "info.catering.text1":
+    "V průběhu turnaje mají hráči a trenéři možnost se stravovat ve 2 jídelnách, kde mají zajištěné plnohodnotné jídlo po celou dobu turnaje – snídaně, obědy, večeře. Dále nabízíme možnost diety (stačí napsat do poznámky při registraci). Obsah obrázku text, snímek obrazovky, obloha, strom",
+  "info.catering.place1.header": "Jídelna A – ZŠ PLÁNICKÁ:",
+  "info.catering.place1.text":
+    "Plánická 194, Klatovy (vchod z ulice Pavlíkova, naproti restauraci Segafredo)",
+  "info.catering.place2.header": "Jídelna B – ZŠ ČAPKOVA:",
+  "info.catering.place2.text": "Hálkova 134, Klatovy",
+  "info.city.header": "MĚSTO KLATOVY:",
+  "info.city.text1":
+    "Klatovy leží v šumavském podhůří poblíž jihozápadní hranice České republiky s Německou spolkovou republikou, 40 km jižně od Plzně. Bývalé královské město Klatovy jsou moderním městem s bohatou historickou tradicí. Počtem obyvatel jsou po Plzni druhým největším městem Plzeňského kraje.",
+  "info.city.text2":
+    "Náměstí Klatovy - Černá věž a jezuitský kostel a katakombamiDominantou města je na náměstí stojící Černá věž. Z 81,6 metrů vysoké věže je výhled na celé Klatovy a za příznivého počasí i na velkou část Šumavy.",
+  "info.city.text3":
+    "Vedle Černé věže se na náměstí nachází jezuitský kostel, pod kterým jsou klatovské katakomby, podzemní prostory určené k pohřbívání jezuitů i osob, které nebyly členy řádu. Větrací systém katakomb umožňuje udržovat optimální teplotu pro konzervaci mumifikovaných těl. Návštěvníci jich mohou v klatovských katakombách zhlédnout 30, dalších 7 je uloženo ve veřejnosti nepřístupné části krypt.",
+  "info.city.text4":
+    "Za návštěvu stojí i další klatovské pamětihodnosti, např. barokní lékárna U Bílého jednorožce, kde je nyní muzeum dokumentující vývoj lékárnictví od roku 1776 do roku 1966, kdy lékárna ukončila svoji činnost.",
 } as const;
