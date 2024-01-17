@@ -60,7 +60,8 @@ export default function FormSubmitDialog() {
                         </TableCell>
                       ) : (
                         <TableCell className="text-right">
-                          {value.toString()}
+                          {/* NOTE: this is not a good way to display values, plus it blocks deploy :W */}
+                          {/* {value.toString()} */}
                         </TableCell>
                       )}
                     </TableRow>
