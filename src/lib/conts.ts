@@ -141,7 +141,32 @@ export const teamFormBillingDefaultValues = {
   dic: "",
 };
 
-const dynamicFieldSchema = z.record(z.number().min(0).max(50));
+const accomodationCategorySchema = z.object({
+  A: z.number().min(0).max(50).optional().default(0),
+  B: z.number().min(0).max(50).optional().default(0),
+  C: z.number().min(0).max(50).optional().default(0),
+  D: z.number().min(0).max(50).optional().default(0),
+});
+
+const accomodationWithRoleSchema = z.object({
+  player: accomodationCategorySchema,
+  "coach-men": accomodationCategorySchema,
+  "coach-women": accomodationCategorySchema,
+  "support-men": accomodationCategorySchema,
+  "support-women": accomodationCategorySchema,
+});
+
+const roomSchema = z.object({
+  single: z.number().min(0).max(50).optional().default(0),
+  double: z.number().min(0).max(50).optional().default(0),
+  triple: z.number().min(0).max(50).optional().default(0),
+  other: z.number().min(0).max(50).optional().default(0),
+});
+
+const roomWithRoleSchema = z.object({
+  coaches: roomSchema,
+  support: roomSchema,
+});
 
 export const teamFormServicesSchema = z.object({
   interestInCatering: z.boolean().default(false),
@@ -177,7 +202,18 @@ export const teamFormServicesSchema = z.object({
   otherAllergyCount: z.number().min(0).optional(),
   otherAllergyNote: z.string().optional(),
   hasAllergies: z.boolean().default(false),
-  accomodationCategoryFields: dynamicFieldSchema,
+  accomodationCategory: z.object({
+    wednesday: accomodationWithRoleSchema.optional(),
+    thursday: accomodationWithRoleSchema.optional(),
+    friday: accomodationWithRoleSchema.optional(),
+    saturday: accomodationWithRoleSchema.optional(),
+  }),
+  accomodationRoom: z.object({
+    wednesday: roomWithRoleSchema.optional(),
+    thursday: roomWithRoleSchema.optional(),
+    friday: roomWithRoleSchema.optional(),
+    saturday: roomWithRoleSchema.optional(),
+  }),
 });
 
 export const teamFormServicesDefaultValues = {
@@ -214,6 +250,8 @@ export const teamFormServicesDefaultValues = {
   otherAllergyCount: 0,
   otherAllergyNote: "",
   hasAllergies: false,
+  accomodationCategory: {},
+  accomodationRoom: {},
 };
 
 export const fullFormSchema = teamFormInfoSchema

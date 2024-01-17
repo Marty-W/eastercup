@@ -27,7 +27,7 @@ export const teamRelations = relations(teams, ({ one, many }) => ({
   tshirtOrder: one(tshirtOrders),
   invoices: many(invoice),
   cateringOrder: one(cateringOrder),
-  accommodationInfo: one(teamAccommodationInfo),
+  accomodationInfo: one(teamAccomodationInfo),
   roomInfo: one(teamRoomInfo),
 }));
 
@@ -143,32 +143,20 @@ export const cateringOrderRelations = relations(cateringOrder, ({ one }) => ({
   }),
 }));
 
-export const teamAccommodationInfo = pgTable("team_accommodation_info", {
+export const teamAccomodationInfo = pgTable("team_accomodation_info", {
   id: serial("id").primaryKey(),
   teamId: integer("team_id").references(() => teams.id),
-  day: varchar("day", {
-    enum: ["wednesday", "thursday", "friday", "saturday"],
-  }).notNull(),
-  role: varchar("role", {
-    enum: [
-      "player",
-      "coach_men",
-      "coach_women",
-      "support_men",
-      "support_women",
-    ],
-  }).notNull(),
-  accommodation: varchar("accommodation", {
-    enum: ["A", "B", "C", "D"],
-  }).notNull(),
+  day: text("day").notNull(),
+  role: text("role").notNull(),
+  accomodation: text("accomodation"),
   count: integer("count").notNull(),
 });
 
-export const teamAccommodationInfoRelations = relations(
-  teamAccommodationInfo,
+export const teamAccomodationInfoRelations = relations(
+  teamAccomodationInfo,
   ({ one }) => ({
     team: one(teams, {
-      fields: [teamAccommodationInfo.teamId],
+      fields: [teamAccomodationInfo.teamId],
       references: [teams.id],
     }),
   }),
@@ -177,13 +165,9 @@ export const teamAccommodationInfoRelations = relations(
 export const teamRoomInfo = pgTable("team_room_info", {
   id: serial("id").primaryKey(),
   teamId: integer("team_id").references(() => teams.id),
-  day: varchar("day", {
-    enum: ["wednesday", "thursday", "friday", "saturday"],
-  }).notNull(),
-  role: varchar("role", { enum: ["coach", "support"] }).notNull(),
-  roomType: varchar("room_type", {
-    enum: ["single", "double", "twin", "other"],
-  }).notNull(),
+  day: text("day").notNull(),
+  role: text("role").notNull(),
+  roomType: text("room_type").notNull(),
   count: integer("count").notNull(),
 });
 

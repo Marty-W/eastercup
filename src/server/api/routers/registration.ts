@@ -1,7 +1,9 @@
 import {
   cateringOrder,
   invoice,
+  teamAccomodationInfo,
   teamBillingInfo,
+  teamRoomInfo,
   teamTransportInfo,
   teams,
   tshirtOrders,
@@ -89,6 +91,51 @@ export const registrationRouter = createTRPCRouter({
         otherAllergyCount: services.otherAllergyCount,
         otherAllergyNote: services.otherAllergyNote,
       });
+
+      if (services.accomodationCategory) {
+        await ctx.db.insert(teamAccomodationInfo).values(
+          Object.entries(services.accomodationCategory).flatMap(
+            ([day, roles]) =>
+              roles
+                ? Object.entries(roles).flatMap(([role, accomodations]) =>
+                    accomodations
+                      ? Object.entries(accomodations)
+                          .filter(([_, count]) => count > 0)
+                          .map(([accomodation, count]) => ({
+                            teamId: teamID,
+                            day,
+                            role: role.replace("-", "_"),
+                            accomodation,
+                            count,
+                          }))
+                      : [],
+                  )
+                : [],
+          ),
+        );
+      }
+
+      if (services.accomodationRoom) {
+        await ctx.db.insert(teamRoomInfo).values(
+          Object.entries(services.accomodationRoom).flatMap(([day, roles]) =>
+            roles
+              ? Object.entries(roles).flatMap(([role, roomTypes]) =>
+                  roomTypes
+                    ? Object.entries(roomTypes)
+                        .filter(([_, count]) => count > 0)
+                        .map(([roomType, count]) => ({
+                          teamId: teamID,
+                          day,
+                          role,
+                          roomType,
+                          count,
+                        }))
+                    : [],
+                )
+              : [],
+          ),
+        );
+      }
 
       return {
         registrationInvoiceVarSymbol,

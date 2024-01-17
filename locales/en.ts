@@ -143,9 +143,9 @@ export default {
     "Price from 19 EUR per person and night.",
   "accomodation.tooltip.categoryD.price": "Price 7 EUR per person and night.",
   "accomodation.tooltip.note":
-    "The prices of accommodation type A, B and C are preliminary and are without any breakfast.",
+    "The prices of accomodation type A, B and C are preliminary and are without any breakfast.",
   "accomodation.tooltip.note2":
-    "Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
+    "Exact name of accomodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
   "accomodation.tooltip.note3":
     "We will accommodate teams first, then parents and other supporters.",
   "accomodation.tooltip.storno":

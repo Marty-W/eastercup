@@ -1,5 +1,5 @@
 "use client";
-import TeamServiceForm from "@/components/teamServiceForm";
+import TeamServiceForm from "@/components/TeamServiceForm";
 import { Button } from "@/components/ui/button";
 import {
   formSubmissionError,
