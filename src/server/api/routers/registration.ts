@@ -92,9 +92,8 @@ export const registrationRouter = createTRPCRouter({
         otherAllergyNote: services.otherAllergyNote,
       });
 
-      if (services.accomodationCategory) {
-        await ctx.db.insert(teamAccomodationInfo).values(
-          Object.entries(services.accomodationCategory).flatMap(
+      const accomodationCategoryValues = services.accomodationCategory
+        ? Object.entries(services.accomodationCategory).flatMap(
             ([day, roles]) =>
               roles
                 ? Object.entries(roles).flatMap(([role, accomodations]) =>
@@ -111,13 +110,17 @@ export const registrationRouter = createTRPCRouter({
                       : [],
                   )
                 : [],
-          ),
-        );
+          )
+        : [];
+
+      if (accomodationCategoryValues.length > 0) {
+        await ctx.db
+          .insert(teamAccomodationInfo)
+          .values(accomodationCategoryValues);
       }
 
-      if (services.accomodationRoom) {
-        await ctx.db.insert(teamRoomInfo).values(
-          Object.entries(services.accomodationRoom).flatMap(([day, roles]) =>
+      const accomodationRoomValues = services.accomodationRoom
+        ? Object.entries(services.accomodationRoom).flatMap(([day, roles]) =>
             roles
               ? Object.entries(roles).flatMap(([role, roomTypes]) =>
                   roomTypes
@@ -133,8 +136,11 @@ export const registrationRouter = createTRPCRouter({
                     : [],
                 )
               : [],
-          ),
-        );
+          )
+        : [];
+
+      if (accomodationRoomValues.length > 0) {
+        await ctx.db.insert(teamRoomInfo).values(accomodationRoomValues);
       }
 
       return {
