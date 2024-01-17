@@ -151,4 +151,5 @@ export default {
     "zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
   "accomodation.tooltip.storno.three":
     "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
+  "navbar.info": "informace",
 } as const;

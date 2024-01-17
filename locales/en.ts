@@ -156,4 +156,5 @@ export default {
     "cancelation 24 hours before arrival - 50% from price of first night",
   "accomodation.tooltip.storno.three":
     "cancelation later than 24 hours before arrival (4 p.m.) - 100% from price of first night",
+  "navbar.info": "information",
 } satisfies Record<keyof typeof Locale, string>;
