@@ -172,8 +172,8 @@ export default {
   "info.term.header": "DATE:",
   "info.term.date": "March 28th – March 31th 2024",
   "info.place.header": "PLACE",
-  "info.place.place1": "Hala BK Klatovy (Voříškova 715, Klatovy)",
-  "info.place.place2": "Hala CMS Klatovy (U Elektrárny 917, Klatovy)",
+  "info.place.place1": "BK Klatovy hall (Voříškova 715, Klatovy)",
+  "info.place.place2": "CMS Klatovy hall (U Elektrárny 917, Klatovy)",
   "info.place.place3": "City sports hall (Čapkova 136, Klatovy)",
   "info.place.place4": "School's gym ZŠ Plánická (Studentská 624, Klatovy)",
   "info.place.place5": "School's gym ZŠ Masarykova (Národních mučedníků 185)",
@@ -198,47 +198,13 @@ export default {
   "info.contact.header": "CONTACTS:",
   "info.contact.text":
     "Tournament fee paying means tournaments participants agree with tournament's conditions, propositions and rules.",
-  "info.tournamentRules.header": "",
-  "info.tournamentRules.rule1.text1": "",
-  "info.tournamentRules.rule1.text2": "",
-  "info.tournamentRules.rule1.text3": "",
-  "info.tournamentRules.rule1.text4": "",
-  "info.tournamentRules.rule1.text5": "",
-  "info.tournamentRules.rule2": "",
-  "info.tournamentRules.rule3": "",
-  "info.tournamentRules.rule4": "",
-  "info.tournamentRules.rule5": "",
-  "info.tournamentRules.rule6.text1": "",
-  "info.tournamentRules.rule6.text2": "",
-  "info.tournamentRules.rule6.text3": "",
-  "info.tournamentRules.rule6.text4": "",
-  "info.tournamentRules.rule6.text5": "",
-  "info.tournamentRules.rule6.text6": "",
-  "info.tournamentRules.rule6.text7": "",
-  "info.tournamentRules.rule6.text8": "",
-  "info.tournamentRules.rule6.text9": "",
-  "info.tournamentRules.rule6.text10": "",
-  "info.tournamentRules.rule6.text11": "",
-  "info.tournamentRules.rule6.text12": "",
-  "info.tournamentRules.rule6.text13": "",
-  "info.tournamentRules.rule7": "",
-  "info.tournamentRules.rule8": "",
-  "info.tournamentRules.rule9": "",
-  "info.tournamentRules.rule10": "",
   "info.accomodation.header": "ACCOMMODATION:",
   "info.accomodation.text":
     "The prices of accommodation type A, B and C are preliminary and are without any breakfast. Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
   "info.accomodation.hotel.header": "Category A: Hotel",
-  "info.accomodation.hotel.text": "– price based on hotel",
-  "info.accomodation.hotel.text2":
-    "– starting from 34 EUR per person and night",
   "info.accomodation.pension.header": "Category B: Pension",
-  "info.accomodation.pension.text": "– price from 26 EUR per person/night",
   "info.accomodation.hostel.header": "Category C: Hostel or internat",
-  "info.accomodation.hostel.text": "– price from 19 EUR per person/night",
   "info.accomodation.school.header": "Category D: clasess at school",
-  "info.accomodation.school.text": "– own sleepig bags and pads",
-  "info.accomodation.school.text2": "– price 7 EUR per person and night",
   "info.accomodation.storno.header":
     "Cancellation conditions for typa A and B reservation:",
   "info.accomodation.storno.text1":
@@ -248,13 +214,8 @@ export default {
   "info.accomodation.storno.text3":
     "– cancellation later than 24 hours before arrival (4 p.m.) - 100% from priceof first night",
   "info.catering.header": "MEAL:",
-  "info.catering.text1":
+  "info.catering.text":
     "During the tournament, players and coaches have the opportunity to eat in 2 dining rooms, where they have a full meal provided throughout the tournament - breakfast, lunch, dinner. We also offer the option of dieting (just write in the note when registering).",
-  "info.catering.price1":
-    "breakfast – 5 EUR (rich buffet tables including fruit and vegetables)",
-  "info.catering.price2":
-    "lunch – 8 EUR (soup, main course, fruit or vegetable salad)",
-  "info.catering.price3": "dinner – 6,5 EUR (the hot meal + fruit)",
   "info.catering.place1.header": "Canteen A – ZŠ PLÁNICKÁ:",
   "info.catering.place1.text":
     "Plánická 194, Klatovy (entrance from Pavlíkova street, opposite Segafredo restaurant)",
