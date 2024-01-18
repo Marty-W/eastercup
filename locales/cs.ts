@@ -151,4 +151,78 @@ export default {
     "zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
   "accomodation.tooltip.storno.three":
     "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
+  "navbar.info": "informace",
+  "info.header": "informace",
+  "info.categories.header": "kategorie:",
+  "info.categories.subheader1": "MINI EASTER CUP:",
+  "info.categories.subheader2": "EASTER CUP:",
+  "info.categories.mini.category1": "U11 DÍVKY a MIX (narozeni 2013 a mladší)",
+  "info.categories.mini.category2":
+    "U11 CHLAPCI a MIX (narozeni 2013 a mladší)",
+  "info.categories.mini.category3": "U12 DÍVKY (narozené 2012 a mladší)",
+  "info.categories.mini.category4": "U12 CHLAPCI (narození 2012 a mladší)",
+  "info.categories.normal.category1": "U14 DÍVKY (narozené 2010 a mladší)",
+  "info.categories.normal.category2": "U14 CHLAPCI (narození 2010 a mladší)",
+  "info.categories.normal.category3": "U16 DÍVKY (narozené 2008 a mladší)",
+  "info.categories.normal.category4": "U16 CHLAPCI (narození 2008 a mladší)",
+  "info.term.header": "termín:",
+  "info.term.date": "28.3 - 31.3.2024",
+  "info.place.header": "MÍSTO KONÁNÍ:",
+  "info.place.place1": "Hala BK Klatovy (Voříškova 715, Klatovy)",
+  "info.place.place2": "Hala CMS Klatovy (U Elektrárny 917, Klatovy)",
+  "info.place.place3": "Městská sportovní hala (Čapkova 136, Klatovy)",
+  "info.place.place4": "Tělocvična ZŠ Plánická (Studentská 624, Klatovy)",
+  "info.place.place5": "Tělocvična ZŠ Masarykova (Národních mučedníků 185)",
+  "info.place.place6": "Tělocvična Gymnázium Klatovy (Národních mučedníků 347)",
+  "info.place.place7": "Tělocvična SPŠ Klatovy (Kpt. Nálepky 362)",
+  "info.place.place8": "Tělocvična Obchodní akademie (Hálkova 131)",
+  "info.fee.header": "startovné:",
+  "info.fee.text":
+    "5 000 Kč – v případě zrušení turnaje z důvodu vyšší moci se startovné nevrací a bude použito na úhradu již vynaložených nákladů ze strany pořadatele a nezbytných poplatků spojených se zrušením turnaje.",
+  "info.system.header": "hrací systém:",
+  "info.system.text":
+    "Základní skupiny v každé kategorii (podle počtu přihlášených týmů), zápasy o vítězství a o umístění.",
+  "info.rules.header": "pravidla:",
+  "info.rules.text": `Dle platných pravidel minibasketbalu a basketbalu pro sezonu 2023/2024
+s výjimkami uvedenými v sekci „Pravidla“.`,
+  "info.prizes.header": "Ceny:",
+  "info.prizes.text":
+    "První 3 místa pohár a medaile, pro každé družstvo diplom + věcné ceny, v každé kategorii vyhlášení All-Stars pětky a nejužitečnějšího hráče.",
+  "info.tshirts.header": "Turnajová trika:",
+  "info.registration.header": "Registrace:",
+  "info.registration.text": "Odkaz na formulář",
+  "info.contact.header": "Kontakty:",
+  "info.contact.text":
+    "Zaplacením startovného účastníci turnaje souhlasí s podmínkami účasti, propozicemi a pravidly turnaje",
+  "info.accomodation.header": "Ubytování:",
+  "info.accomodation.text":
+    "Ubytování typu A, B a C jsou početně omezeny. Ceny budou upřesněné.",
+  "info.accomodation.hotel.header": "Typ A: Hotel",
+  "info.accomodation.pension.header": "Typ B: Penzion",
+  "info.accomodation.hostel.header": "Typ C: Hostel nebo internát",
+  "info.accomodation.school.header": "Typ D: Ve třídách základní školy",
+  "info.accomodation.storno.header": "Storno podmínky:",
+  "info.accomodation.storno.text1":
+    "– zrušení rezervace do 48 hodin před příjezdem – zdarma",
+  "info.accomodation.storno.text2":
+    "– zrušení rezervace do 24 hodin před příjezdem – 50 % z ceny první noci",
+  "info.accomodation.storno.text3":
+    "– zrušení rezervace méně než 24 hodin před příjezdem – poplatek 100 % z ceny první noci",
+  "info.catering.header": "STRAVOVÁNÍ:",
+  "info.catering.text":
+    "V průběhu turnaje mají hráči a trenéři možnost se stravovat ve 2 jídelnách, kde mají zajištěné plnohodnotné jídlo po celou dobu turnaje – snídaně, obědy, večeře. Dále nabízíme možnost diety (stačí napsat do poznámky při registraci). Obsah obrázku text, snímek obrazovky, obloha, strom",
+  "info.catering.place1.header": "Jídelna A – ZŠ PLÁNICKÁ:",
+  "info.catering.place1.text":
+    "Plánická 194, Klatovy (vchod z ulice Pavlíkova, naproti restauraci Segafredo)",
+  "info.catering.place2.header": "Jídelna B – ZŠ ČAPKOVA:",
+  "info.catering.place2.text": "Hálkova 134, Klatovy",
+  "info.city.header": "MĚSTO KLATOVY:",
+  "info.city.text1":
+    "Klatovy leží v šumavském podhůří poblíž jihozápadní hranice České republiky s Německou spolkovou republikou, 40 km jižně od Plzně. Bývalé královské město Klatovy jsou moderním městem s bohatou historickou tradicí. Počtem obyvatel jsou po Plzni druhým největším městem Plzeňského kraje.",
+  "info.city.text2":
+    "Náměstí Klatovy - Černá věž a jezuitský kostel a katakombamiDominantou města je na náměstí stojící Černá věž. Z 81,6 metrů vysoké věže je výhled na celé Klatovy a za příznivého počasí i na velkou část Šumavy.",
+  "info.city.text3":
+    "Vedle Černé věže se na náměstí nachází jezuitský kostel, pod kterým jsou klatovské katakomby, podzemní prostory určené k pohřbívání jezuitů i osob, které nebyly členy řádu. Větrací systém katakomb umožňuje udržovat optimální teplotu pro konzervaci mumifikovaných těl. Návštěvníci jich mohou v klatovských katakombách zhlédnout 30, dalších 7 je uloženo ve veřejnosti nepřístupné části krypt.",
+  "info.city.text4":
+    "Za návštěvu stojí i další klatovské pamětihodnosti, např. barokní lékárna U Bílého jednorožce, kde je nyní muzeum dokumentující vývoj lékárnictví od roku 1776 do roku 1966, kdy lékárna ukončila svoji činnost.",
 } as const;
