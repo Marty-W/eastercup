@@ -1,5 +1,4 @@
 import { env } from "@/env.mjs";
-// import postmark from "postmark";
 import * as postmark from "postmark";
 
 const WELCOME_TEMPLATE_ID_CS = 34509365;
@@ -21,6 +20,6 @@ export async function sendPostRegEmail({
     TemplateModel: {},
     TemplateId: lang === "cs" ? WELCOME_TEMPLATE_ID_CS : WELCOME_TEMPLATE_ID_EN,
     From: "info@eastercupklatovy.cz",
-    To: "info@eastercupklatovy.cz",
+    To: recipientEmail,
   });
 }
