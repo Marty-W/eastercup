@@ -165,7 +165,7 @@ export default {
   "info.categories.normal.category2": "U14 CHLAPCI (narození 2010 a mladší)",
   "info.categories.normal.category3": "U16 DÍVKY (narozené 2008 a mladší)",
   "info.categories.normal.category4": "U16 CHLAPCI (narození 2008 a mladší)",
-  "info.term.header": "termín",
+  "info.term.header": "termín:",
   "info.term.date": "28.3 - 31.3.2024",
   "info.place.header": "MÍSTO KONÁNÍ:",
   "info.place.place1": "Hala BK Klatovy (Voříškova 715, Klatovy)",
@@ -176,25 +176,25 @@ export default {
   "info.place.place6": "Tělocvična Gymnázium Klatovy (Národních mučedníků 347)",
   "info.place.place7": "Tělocvična SPŠ Klatovy (Kpt. Nálepky 362)",
   "info.place.place8": "Tělocvična Obchodní akademie (Hálkova 131)",
-  "info.fee.header": "startovné",
+  "info.fee.header": "startovné:",
   "info.fee.text":
     "5 000 Kč – v případě zrušení turnaje z důvodu vyšší moci se startovné nevrací a bude použito na úhradu již vynaložených nákladů ze strany pořadatele a nezbytných poplatků spojených se zrušením turnaje.",
-  "info.system.header": "hrací systém",
+  "info.system.header": "hrací systém:",
   "info.system.text":
     "Základní skupiny v každé kategorii (podle počtu přihlášených týmů), zápasy o vítězství a o umístění.",
-  "info.rules.header": "pravidla",
+  "info.rules.header": "pravidla:",
   "info.rules.text": `Dle platných pravidel minibasketbalu a basketbalu pro sezonu 2023/2024
 s výjimkami uvedenými v sekci „Pravidla“.`,
-  "info.prizes.header": "Ceny",
+  "info.prizes.header": "Ceny:",
   "info.prizes.text":
     "První 3 místa pohár a medaile, pro každé družstvo diplom + věcné ceny, v každé kategorii vyhlášení All-Stars pětky a nejužitečnějšího hráče.",
-  "info.tshirts.header": "Turnajová trika",
-  "info.registration.header": "Registrace",
+  "info.tshirts.header": "Turnajová trika:",
+  "info.registration.header": "Registrace:",
   "info.registration.text": "Odkaz na formulář",
-  "info.contact.header": "Kontakty",
+  "info.contact.header": "Kontakty:",
   "info.contact.text":
     "Zaplacením startovného účastníci turnaje souhlasí s podmínkami účasti, propozicemi a pravidly turnaje",
-  "info.accomodation.header": "Ubytování",
+  "info.accomodation.header": "Ubytování:",
   "info.accomodation.text":
     "Ubytování typu A, B a C jsou početně omezeny. Ceny budou upřesněné.",
   "info.accomodation.hotel.header": "Typ A: Hotel",

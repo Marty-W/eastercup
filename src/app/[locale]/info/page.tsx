@@ -6,44 +6,48 @@ import People from "public/info/people.png";
 import Klatovy1 from "public/info/klatovy_1.jpeg";
 import Klatovy2 from "public/info/klatovy_2.jpeg";
 import Klatovy3 from "public/info/klatovy_3.jpeg";
-import InfoSection from "@/components/ui/infoSection";
+import { InfoSection, InfoSubsection } from "@/components/ui/infoSection";
 import { getCurrentLocale, getScopedI18n } from "locales/server";
 
 export default async function InformationPage() {
   const t = await getScopedI18n("info");
   const curLocale = getCurrentLocale();
   return (
-    <div className="container space-y-3 pb-8 font-display">
+    <div className="container space-y-6 pb-8 font-display lg:px-8">
       <div>
-        <h2 className="mx-auto w-fit border-2 border-brand-blue px-6 py-4 text-center text-2xl font-bold uppercase leading-5 text-brand-blue">
-          {t("header")}
-        </h2>
-        {/* TODO: figure out spacing, maybe set a padding on the navbar or somethingV */}
+        <div className="lg:py-8">
+          <h2 className="mx-auto w-fit border-2 border-brand-blue px-6 py-4 text-center text-2xl font-bold uppercase leading-5 text-brand-blue lg:text-4xl">
+            {t("header")}
+          </h2>
+        </div>
         <Image src={InfoHero} alt="Hero" className="my-6" />
       </div>
       <InfoSection header={t("categories.header")}>
-        <div className="space-y-1 text-xs">
-          <p className="font-bold">{t("categories.subheader1")}</p>
-          <p>{t("categories.mini.category1")}</p>
-          <p>{t("categories.mini.category2")}</p>
-          <p>{t("categories.mini.category3")}</p>
-          <p>{t("categories.mini.category4")}</p>
-        </div>
-        <div className="space-y-1 text-xs">
-          <p className="font-bold">{t("categories.subheader2")}</p>
-          <p>{t("categories.normal.category1")}</p>
-          <p>{t("categories.normal.category2")}</p>
-          <p>{t("categories.normal.category3")}</p>
-          <p>{t("categories.normal.category4")}</p>
+        <div className="space-y-3 lg:flex lg:justify-between lg:space-y-0 lg:pr-4">
+          <InfoSubsection>
+            <p className="font-bold">{t("categories.subheader1")}</p>
+            <p>{t("categories.mini.category1")}</p>
+            <p>{t("categories.mini.category2")}</p>
+            <p>{t("categories.mini.category3")}</p>
+            <p>{t("categories.mini.category4")}</p>
+          </InfoSubsection>
+          <InfoSubsection>
+            <p className="font-bold">{t("categories.subheader2")}</p>
+            <p>{t("categories.normal.category1")}</p>
+            <p>{t("categories.normal.category2")}</p>
+            <p>{t("categories.normal.category3")}</p>
+            <p>{t("categories.normal.category4")}</p>
+          </InfoSubsection>
         </div>
       </InfoSection>
-      <InfoSection header={t("term.header")}>
-        <div className="space-y-1 text-xs">
-          <p className="font-bold">{t("term.date")}</p>
-        </div>
+      <InfoSection
+        header={t("term.header")}
+        className="flex items-center space-x-3 space-y-0 lg:space-x-0"
+      >
+        <p className="font-bold">{t("term.date")}</p>
       </InfoSection>
       <InfoSection header={t("place.header")}>
-        <div className="space-y-1 text-xs">
+        <InfoSubsection>
           <p>{t("place.place1")}</p>
           <p>{t("place.place2")}</p>
           <p>{t("place.place3")}</p>
@@ -52,27 +56,19 @@ export default async function InformationPage() {
           <p>{t("place.place6")}</p>
           <p>{t("place.place7")}</p>
           <p>{t("place.place8")}</p>
-        </div>
+        </InfoSubsection>
       </InfoSection>
       <InfoSection header={t("fee.header")}>
-        <div className="space-y-1 text-xs">
-          <p>{t("fee.text")}</p>
-        </div>
+        <p className="lg:leading-5">{t("fee.text")}</p>
       </InfoSection>
       <InfoSection header={t("system.header")}>
-        <div className="space-y-1 text-xs">
-          <p>{t("system.text")}</p>
-        </div>
+        <p className="lg:leading-5">{t("system.text")}</p>
       </InfoSection>
       <InfoSection header={t("rules.header")}>
-        <div className="space-y-1 text-xs">
-          <p>{t("rules.text")}</p>
-        </div>
+        <p className="lg:leading-5">{t("rules.text")}</p>
       </InfoSection>
       <InfoSection header={t("prizes.header")}>
-        <div className="space-y-1 text-xs">
-          <p>{t("prizes.text")}</p>
-        </div>
+        <p className="lg:leading-5">{t("prizes.text")}</p>
       </InfoSection>
       <InfoSection header={t("tshirts.header")}>
         <div className="">
@@ -80,159 +76,151 @@ export default async function InformationPage() {
         </div>
       </InfoSection>
       <InfoSection header={t("registration.header")}>
-        <Link href="/form/info" className="text-xs text-brand-blue">
+        <Link href="/form/info" className="text-brand-blue">
           {t("registration.text")}
         </Link>
       </InfoSection>
       <InfoSection header={t("contact.header")}>
-        <div className="space-y-2 text-xs">
-          <div className="space-y-1">
-            <p>
-              <span className="mr-1 font-bold">email:</span>
-              info@eastercupklatovy.cz
-            </p>
-            <p>
-              <span className="mr-1 font-bold">web:</span>
-              <Link href="https://eastercupklatovy.cz" target="_blank">
-                www.eastercupklatovy.cz
-              </Link>
-            </p>
-            <p>
-              <span className="mr-1 inline-block font-bold">facebook:</span>
-              www.facebook.com/EasterCupKlatovy
-            </p>
-          </div>
-          <p>{t("contact.text")}</p>
+        <div className="mb-4 space-y-1">
+          <p>
+            <span className="mr-1 font-bold">email:</span>
+            info@eastercupklatovy.cz
+          </p>
+          <p>
+            <span className="mr-1 font-bold">web:</span>
+            <Link href="https://eastercupklatovy.cz" target="_blank">
+              www.eastercupklatovy.cz
+            </Link>
+          </p>
+          <p>
+            <span className="mr-1 inline-block font-bold">facebook:</span>
+            www.facebook.com/EasterCupKlatovy
+          </p>
         </div>
+        <p className="lg:leading-5">{t("contact.text")}</p>
       </InfoSection>
       {curLocale === "cs" && (
         <InfoSection header="Pravidla turnaje">
-          <ol className="list-inside list-decimal space-y-2 text-xs font-bold">
+          <ol className="list-inside list-decimal space-y-2 text-xs marker:inline marker:font-bold">
             <li className="space-y-1">
-              <p className="font-normal">Turnaj je vyhlášen pro kategorie:</p>
-              <p className="font-normal">
-                U11 dívky, chlapci a mix (nar. 1. 1. 2014 a mladší)
-              </p>
-              <p className="font-normal">
-                U12 dívky, chlapci a mix (nar. 1. 1. 2013 a mladší)
-              </p>
-              <p className="font-normal">
-                U14 dívky a chlapci (nar. 1. 1. 2011 a mladší)
-              </p>
-              <p className="font-normal">
-                U16 dívky a chlapci (nar. 1. 1. 2009 a mladší)
-              </p>
+              <span>Turnaj je vyhlášen pro kategorie:</span>
+              <p>U11 dívky, chlapci a mix (nar. 1. 1. 2014 a mladší)</p>
+              <p>U12 dívky, chlapci a mix (nar. 1. 1. 2013 a mladší)</p>
+              <p>U14 dívky a chlapci (nar. 1. 1. 2011 a mladší)</p>
+              <p>U16 dívky a chlapci (nar. 1. 1. 2009 a mladší)</p>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Každé družstvo je složeno z maximálně 15 hráčů, v kategorii U15
                 z maximálně 12 hráčů
-              </p>
+              </span>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Kategorie U11 a U12 hrají s míčem velikosti 5, dívky U14 a U15 s
                 míčem vel. 6 a chlapci U14 a U15 s míčem vel. 7
-              </p>
+              </span>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Výška košů v kategoriích U11 a U12 je 260 cm, v kategoriích U14
                 a U15 je výška koše 305 cm
-              </p>
+              </span>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Každý účastník je povinen na vyžádání předložit doklad
                 totožnosti pro ověření věku. Nutné je foto a datum narození
-              </p>
+              </span>
             </li>
             <li>
-              <div className="font-normal">
+              <span>
+                Hraje se podle platných pravidel basketbalu a minibasketbalu pro
+                sezónu 2023/2024 s těmito změnami:
+              </span>
+              <div className="space-y-1">
                 <p>
-                  Hraje se podle platných pravidel basketbalu a minibasketbalu
-                  pro sezónu 2023/2024 s těmito změnami:
+                  – v kategoriích U11 a U12 se hraje 4x8 minut hrubého času, čas
+                  se zastavuje pouze při oddechovém čase
                 </p>
-                <div className="space-y-1">
-                  <p>
-                    – v kategoriích U11 a U12 se hraje 4x8 minut hrubého času,
-                    čas se zastavuje pouze při oddechovém čase
-                  </p>
-                  <p>
-                    – v kategorie U15 a U14 se hraje 4x8 minut čistého času –
-                    oddechový čas je 60 sec., družstvo má v 1. poločase k
-                    dispozici 1 oddechový čas, ve 2. poločase 2 oddechové časy a
-                    v prodloužení 1 oddechový čas
-                  </p>
-                  <p>
-                    – všechny přestávky mezi čtvrtinami a před prodloužením jsou
-                    2 minuty, poločasová přestávka je 5 minut
-                  </p>
-                  <p>– povinné střídání hráče nastává při 4 faulech</p>
-                  <p>
-                    – v případě nerozhodného stavu se prodloužení hraje 3 minuty
-                    čistého času. Pokud nebude ani po prodloužení rozhodnuto,
-                    přijde na řadu střelba trestných hodů (3 série) a poté po
-                    jednom až do úplného rozhodnutí
-                  </p>
-                  <p>
-                    – při rovnosti bodů ve skupinách rozhodují následující
-                    kritéria: 1. vzájemný zápas, 2. rozdíl skóre, 3. vyšší počet
-                    vstřelených bodů, 4. menší počet obdržených bodů 5. rozstřel
-                    – – šestky
-                  </p>
-                  <p>
-                    – každý tým musí být přítomen nejméně 5 minut před začátkem
-                    každého utkání. Nedodržení tohoto pravidla bude potrestáno 5
-                    body pro tým soupeře
-                  </p>
-                  <p>
-                    – v kategorii U11 a U12 platí pravidlo obranných 3 vteřin
-                  </p>
-                  <p>
-                    – v kategorii U11 a U12 smí každý hráč nastoupit pouze ve 2
-                    čtvrtinách
-                  </p>
-                  <p>– v kategorii U11 a U12 nesmí hráči clonit</p>
-                  <p>– v kategorii U11 a U12 neplatí tříbodové koše</p>
-                </div>
+                <p>
+                  – v kategorie U15 a U14 se hraje 4x8 minut čistého času –
+                  oddechový čas je 60 sec., družstvo má v 1. poločase k
+                  dispozici 1 oddechový čas, ve 2. poločase 2 oddechové časy a v
+                  prodloužení 1 oddechový čas
+                </p>
+                <p>
+                  – všechny přestávky mezi čtvrtinami a před prodloužením jsou 2
+                  minuty, poločasová přestávka je 5 minut
+                </p>
+                <p>– povinné střídání hráče nastává při 4 faulech</p>
+                <p>
+                  – v případě nerozhodného stavu se prodloužení hraje 3 minuty
+                  čistého času. Pokud nebude ani po prodloužení rozhodnuto,
+                  přijde na řadu střelba trestných hodů (3 série) a poté po
+                  jednom až do úplného rozhodnutí
+                </p>
+                <p>
+                  – při rovnosti bodů ve skupinách rozhodují následující
+                  kritéria: 1. vzájemný zápas, 2. rozdíl skóre, 3. vyšší počet
+                  vstřelených bodů, 4. menší počet obdržených bodů 5. rozstřel –
+                  – šestky
+                </p>
+                <p>
+                  – každý tým musí být přítomen nejméně 5 minut před začátkem
+                  každého utkání. Nedodržení tohoto pravidla bude potrestáno 5
+                  body pro tým soupeře
+                </p>
+                <p>– v kategorii U11 a U12 platí pravidlo obranných 3 vteřin</p>
+                <p>
+                  – v kategorii U11 a U12 smí každý hráč nastoupit pouze ve 2
+                  čtvrtinách
+                </p>
+                <p>– v kategorii U11 a U12 nesmí hráči clonit</p>
+                <p>– v kategorii U11 a U12 neplatí tříbodové koše</p>
               </div>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Každý tým je oprávněný podat protest proti výsledku zápasu nebo
                 řízení hry organizačnímu výboru, a to nejpozději 10 minut po
                 skončení zápasu společně s kaucí 500 Kč (20 EUR). V případě
                 zamítnutí kauce propadá ve prospěch organizátora.
-              </p>
+              </span>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Pořadatel nemá hmotnou zodpovědnost za majetek hráčů a trenérů.
                 Všechny týmy jsou povinné dbát na své věci tak, aby předcházeli
                 případným krádežím
-              </p>
+              </span>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Rozlosování turnaje proběhne po uzávěrce přihlášek a bude
                 zasláno společně s hracím systémem na adresu uvedenou v
                 přihlášce
-              </p>
+              </span>
             </li>
             <li>
-              <p className="font-normal">
+              <span>
                 Každý tým se rozcvičuje s vlastními míči. Pořadatel zajišťuje
                 pouze hrací míče.
-              </p>
+              </span>
             </li>
           </ol>
         </InfoSection>
       )}
-      <Image src={People} alt="People" />
+      <InfoSection subSectionClassName="lg:col-start-2">
+        <Image
+          src={People}
+          alt="People"
+          className="mx-auto block w-full max-w-screen-md py-8"
+        />
+      </InfoSection>
       <InfoSection header={t("accomodation.header")}>
-        <div className="space-y-1 text-xs">
-          <div className="space-y-2">
+        <InfoSubsection>
+          <div className="space-y-2 lg:grid lg:grid-cols-2 lg:grid-rows-2">
             <div>
               <h4 className="font-bold">{t("accomodation.hotel.header")}</h4>
               {curLocale === "cs" ? (
@@ -272,22 +260,22 @@ export default async function InformationPage() {
               )}
             </div>
           </div>
-          <div>
+          <div className="lg:py-4">
             <p>{t("accomodation.text")}</p>
           </div>
-          <div>
+          <div className="pt-6 lg:pt-0 lg:leading-5">
             <p className="font-bold">{t("accomodation.storno.header")}</p>
             <p>{t("accomodation.storno.text1")}</p>
             <p>{t("accomodation.storno.text2")}</p>
             <p>{t("accomodation.storno.text3")}</p>
           </div>
-        </div>
+        </InfoSubsection>
       </InfoSection>
       <InfoSection header={t("catering.header")}>
-        <div className="space-y-2 text-xs">
-          <p>{t("catering.text")}</p>
+        <InfoSubsection>
+          <p className="lg:leading-5">{t("catering.text")}</p>
           {curLocale === "en" && (
-            <div>
+            <div className="lg:leading-5">
               <p>
                 breakfast – 5 EUR (rich buffet tables including fruit and
                 vegetables)
@@ -296,28 +284,44 @@ export default async function InformationPage() {
               <p>dinner – 6,5 EUR (the hot meal + fruit)</p>
             </div>
           )}
-          <div>
-            <p className="font-bold">{t("catering.place1.header")}</p>
-            <p>{t("catering.place1.text")}</p>
+          <div className="space-y-2 lg:grid lg:grid-cols-2 lg:space-y-0">
+            <div className="flex-col lg:flex lg:space-y-1">
+              <p className="font-bold">{t("catering.place1.header")}</p>
+              <p>{t("catering.place1.text")}</p>
+            </div>
+            <div className="lg:flex lg:flex-col lg:space-y-1">
+              <p className="font-bold">{t("catering.place2.header")}</p>
+              <p>{t("catering.place2.text")}</p>
+            </div>
           </div>
-          <div>
-            <p className="font-bold">{t("catering.place2.header")}</p>
-            <p>{t("catering.place2.header")}</p>
-          </div>
-        </div>
+        </InfoSubsection>
       </InfoSection>
       <InfoSection header={t("city.header")}>
-        <div className="space-y-2 text-xs">
+        <InfoSubsection className="space-y-4 lg:space-y-7 lg:leading-5">
           <p>{t("city.text1")}</p>
           <p>{t("city.text2")}</p>
           <p>{t("city.text3")}</p>
           <p>{t("city.text4")}</p>
-        </div>
+        </InfoSubsection>
       </InfoSection>
-      <div className="flex flex-col space-y-1">
-        <Image src={Klatovy1} alt="Image from the city of Klatovy" />
-        <Image src={Klatovy2} alt="Image from the city of Klatovy" />
-        <Image src={Klatovy3} alt="Image from the city of Klatovy" />
+      <div className="lg:grid lg:grid-cols-[0.6fr_2fr] lg:gap-x-1">
+        <div className="flex flex-col space-y-1 lg:col-start-2 lg:grid lg:grid-cols-3 lg:gap-x-1">
+          <Image
+            src={Klatovy1}
+            alt="Image from the city of Klatovy"
+            className="mx-auto inline-block w-full max-w-lg lg:max-h-[200px] lg:object-cover"
+          />
+          <Image
+            src={Klatovy2}
+            alt="Image from the city of Klatovy"
+            className="mx-auto inline-block w-full max-w-lg lg:max-h-[200px] lg:object-cover"
+          />
+          <Image
+            src={Klatovy3}
+            alt="Image from the city of Klatovy"
+            className="mx-auto inline-block w-full max-w-lg lg:max-h-[200px] lg:object-cover"
+          />
+        </div>
       </div>
     </div>
   );

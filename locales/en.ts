@@ -171,7 +171,7 @@ export default {
   "info.categories.normal.category4": "U16 BOYS (born 2008 and younger)",
   "info.term.header": "DATE:",
   "info.term.date": "March 28th – March 31th 2024",
-  "info.place.header": "PLACE",
+  "info.place.header": "PLACE:",
   "info.place.place1": "BK Klatovy hall (Voříškova 715, Klatovy)",
   "info.place.place2": "CMS Klatovy hall (U Elektrárny 917, Klatovy)",
   "info.place.place3": "City sports hall (Čapkova 136, Klatovy)",
