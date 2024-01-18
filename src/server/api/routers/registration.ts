@@ -14,6 +14,9 @@ import {
   REGISTRATION_FEE_EUR,
   registrationInputSchema,
 } from "@/lib/conts";
+import postmark from "postmark";
+import { env } from "@/env.mjs";
+import { sendPostRegEmail } from "../helpers";
 
 export const registrationRouter = createTRPCRouter({
   team: publicProcedure
@@ -142,6 +145,16 @@ export const registrationRouter = createTRPCRouter({
       if (accomodationRoomValues.length > 0) {
         await ctx.db.insert(teamRoomInfo).values(accomodationRoomValues);
       }
+
+      const { email, country } = info;
+      const emailLang = country === "CZ" || country === "SK" ? "cs" : "en";
+
+      sendPostRegEmail({ recipientEmail: email, lang: emailLang }).catch(
+        (err) => {
+          // TODO: add sentry
+          console.error("email service", err);
+        },
+      );
 
       return {
         registrationInvoiceVarSymbol,
