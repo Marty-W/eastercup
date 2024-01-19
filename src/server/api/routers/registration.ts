@@ -149,7 +149,7 @@ export const registrationRouter = createTRPCRouter({
       const { email, country } = info;
       const emailLang = country === "CZ" || country === "SK" ? "cs" : "en";
 
-      sendPostRegEmail({ recipientEmail: email, lang: emailLang }).catch(
+      await sendPostRegEmail({ recipientEmail: email, lang: emailLang }).catch(
         (err) => {
           // TODO: add sentry
           console.error("email service", err);
