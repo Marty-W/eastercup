@@ -148,17 +148,20 @@ export const registrationRouter = createTRPCRouter({
 
       const { email, country } = info;
       const emailLang = country === "CZ" || country === "SK" ? "cs" : "en";
-      const url =
-        process.env.NODE_ENV === "production"
-          ? `https://${process.env.VERCEL_URL}`
-          : "http://localhost:3000";
 
-      // NOTE: I don't want to rely on this to success in order to register the team and also this fn should be fast
-      fetch(`${url}/api/sendEmail`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, lang: emailLang }),
-      }).catch((err) => console.error("Failed to request email sending:", err));
+      if (env.NODE_ENV === "production") {
+        // NOTE: I don't want to rely on this to success in order to register the team and also this fn should be fast
+        fetch(`https://eastercup/vercel.app/api/sendEmail`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            EMAIL_SECRET: env.EMAIL_SECRET,
+          },
+          body: JSON.stringify({ email, lang: emailLang }),
+        }).catch((err) =>
+          console.error("Failed to request email sending:", err),
+        );
+      }
 
       return {
         registrationInvoiceVarSymbol,
