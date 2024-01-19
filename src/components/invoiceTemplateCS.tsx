@@ -100,11 +100,12 @@ export default function InvoiceTemplate() {
       <div className="mb-[600px] text-center font-bold">
         <p>POZOR !!! TOTO NENÍ DAŇOVÝ DOKLAD, POUZE VÝZVA K ÚHRADĚ !!!</p>
         <p>
-          Do 15 dnů po provedení úhrady bude zaslán daňový doklad (faktura).
+          Daňový doklad bude vystaven při akreditaci družstva do turnaje v
+          kanceláři organizátora akce.
         </p>
         <p>
-          Případné změny ve Vašich požadavcích budou řešené v hotovosti při
-          akreditaci na začátku turnaje.
+          Družstvo bude zaregistrováno do turnaje až po zaplacení účastnického
+          poplatku.
         </p>
       </div>
       <div className="text-center text-sm">

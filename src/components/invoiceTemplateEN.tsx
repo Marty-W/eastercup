@@ -91,12 +91,12 @@ export default function InvoiceTemplate() {
       <div className="mb-[600px] text-center font-bold">
         <p>ATTENTION! This is not a tax document, only a payment request!</p>
         <p>
-          A tax document (invoice) will be sent within 15 days after the payment
-          has been made.
+          The tax document will be issued upon the accreditation of the team
+          into the tournament at the event organizer&apos;s office.{" "}
         </p>
         <p>
-          Any changes in your requests will be handled in cash during the
-          accreditation at the start of the tournament.
+          The team will be registered for the tournament only after the
+          participation fee has been paid.
         </p>
       </div>
       <div className="text-center text-sm">
