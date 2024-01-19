@@ -1,6 +1,7 @@
 "use client";
 import TeamServiceForm from "@/components/TeamServiceForm";
 import { Button } from "@/components/ui/button";
+import Spinner from "@/components/ui/spinner";
 import {
   formSubmissionError,
   teamBillingAtom,
@@ -70,9 +71,21 @@ export default function TeamServices() {
           className="mx-auto flex flex-col font-sans"
         >
           <TeamServiceForm />
-          <Button className="mx-auto mt-8 w-32 font-sans" type="submit">
-            {t("form.submit")}
-          </Button>
+          {registerMutation.isLoading ||
+          registerMutation.isSuccess ||
+          registerMutation.isError ? (
+            <Button
+              className="mx-auto mt-8 w-32 font-sans"
+              type="submit"
+              disabled
+            >
+              <Spinner />
+            </Button>
+          ) : (
+            <Button className="mx-auto mt-8 w-32 font-sans" type="submit">
+              {t("form.submit")}
+            </Button>
+          )}
         </form>
       </FormProvider>
     </div>
