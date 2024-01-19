@@ -34,6 +34,7 @@ export default function TeamRegistrationForm() {
           fieldName="teamName"
           fieldLabel="form.teamName"
           control={form.control}
+          autoFocus
         />
         <FormSelect
           control={form.control}

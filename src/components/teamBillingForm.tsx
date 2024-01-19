@@ -16,6 +16,7 @@ export default function TeamBillingForm() {
           fieldName="companyName"
           fieldLabel="form.companyName"
           control={form.control}
+          autoFocus
         />
         <TextInput
           fieldName="address"

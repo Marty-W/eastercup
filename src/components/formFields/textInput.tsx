@@ -18,6 +18,7 @@ interface Props<T extends FieldValues> {
   className?: string;
   description?: LocaleKey;
   type?: "text" | "email" | "password" | "number";
+  autoFocus?: boolean;
 }
 
 export default function TextInput<T extends FieldValues>({
@@ -27,6 +28,7 @@ export default function TextInput<T extends FieldValues>({
   className,
   description,
   type = "text",
+  autoFocus = false,
 }: Props<T>) {
   const t = useI18n();
 
@@ -38,7 +40,12 @@ export default function TextInput<T extends FieldValues>({
         <FormItem>
           {fieldLabel && <FormLabel>{t(fieldLabel)}</FormLabel>}
           <FormControl>
-            <Input {...field} className={className} type={type} />
+            <Input
+              {...field}
+              className={className}
+              type={type}
+              autoFocus={autoFocus}
+            />
           </FormControl>
           {description && <FormDescription>{t(description)}</FormDescription>}
           <FormMessage isTranslated />
