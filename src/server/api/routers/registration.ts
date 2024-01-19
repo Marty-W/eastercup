@@ -14,9 +14,7 @@ import {
   REGISTRATION_FEE_EUR,
   registrationInputSchema,
 } from "@/lib/conts";
-import postmark from "postmark";
 import { env } from "@/env.mjs";
-import { sendPostRegEmail } from "../helpers";
 
 export const registrationRouter = createTRPCRouter({
   team: publicProcedure
@@ -146,23 +144,32 @@ export const registrationRouter = createTRPCRouter({
         await ctx.db.insert(teamRoomInfo).values(accomodationRoomValues);
       }
 
-      const { email, country } = info;
-      const emailLang = country === "CZ" || country === "SK" ? "cs" : "en";
+      // NOTE: I don't want to rely on this to success in order to register the team and also this fn should be fast
+      if (process.env.VERCEL_ENV === "production") {
+        const { email, country } = info;
+        const emailLang = country === "CZ" || country === "SK" ? "cs" : "en";
 
-      if (env.NODE_ENV === "production") {
-        // NOTE: I don't want to rely on this to success in order to register the team and also this fn should be fast
-        fetch(`https://eastercup/vercel.app/api/sendEmail`, {
+        fetch(`https://eastercup.vercel.app/api/sendEmail`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
             EMAIL_SECRET: env.EMAIL_SECRET,
           },
           body: JSON.stringify({ email, lang: emailLang }),
-        }).catch((err) =>
-          console.error("Failed to request email sending:", err),
-        );
+        })
+          .then((response) => {
+            if (!response.ok) {
+              console.error(
+                "Response status",
+                response.status,
+                "Response",
+                response,
+              );
+              throw new Error("Failed to request email sending");
+            }
+          })
+          .catch((err) => console.error(err));
       }
-
       return {
         registrationInvoiceVarSymbol,
       };
