@@ -61,15 +61,25 @@ export const registrationRouter = createTRPCRouter({
         amount: registrationFee,
       });
 
-      await ctx.db.insert(tshirtOrders).values({
-        noXsShirts: services.noXsShirts,
-        noSShirts: services.noSShirts,
-        noMShirts: services.noMShirts,
-        noLShirts: services.noLShirts,
-        noXLShirts: services.noXLShirts,
-        noXXLShirts: services.noXXLShirts,
-        teamId: teamID,
-      });
+      const tshirtOrderOnly = {
+        noXsShirts: services.noXsShirts ?? 0,
+        noSShirts: services.noSShirts ?? 0,
+        noMShirts: services.noMShirts ?? 0,
+        noLShirts: services.noLShirts ?? 0,
+        noXLShirts: services.noXLShirts ?? 0,
+        noXXLShirts: services.noXXLShirts ?? 0,
+      };
+
+      const hasTshirtOrder = Object.values(tshirtOrderOnly).some(
+        (count) => count > 0,
+      );
+
+      if (hasTshirtOrder) {
+        await ctx.db.insert(tshirtOrders).values({
+          ...tshirtOrderOnly,
+          teamId: teamID,
+        });
+      }
 
       await ctx.db.insert(cateringOrder).values({
         teamId: teamID,
