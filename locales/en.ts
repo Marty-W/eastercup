@@ -156,6 +156,10 @@ export default {
     "cancelation 24 hours before arrival - 50% from price of first night",
   "accomodation.tooltip.storno.three":
     "cancelation later than 24 hours before arrival (4 p.m.) - 100% from price of first night",
+  "tshirts.tooltip.headline": "Tournament t-shirts",
+  "tshirts.tooltip.price":
+    //TODO dopln cenu v EUR
+    "The price is 300 Kc when you buy in advance, 350 Kc when you buy it on the spot",
   "navbar.info": "information",
   "info.header": "INFORMATION",
   "info.categories.header": "CATEGORIES:",

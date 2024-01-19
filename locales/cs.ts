@@ -151,6 +151,8 @@ export default {
     "zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
   "accomodation.tooltip.storno.three":
     "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
+  "tshirts.tooltip.headline": "Turnajová trika",
+  "tshirts.tooltip.price": "Cena za kus: 300 Kč předem, 350 Kč na místě",
   "navbar.info": "informace",
   "info.header": "informace",
   "info.categories.header": "kategorie:",

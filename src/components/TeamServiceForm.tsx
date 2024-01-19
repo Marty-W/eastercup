@@ -1,4 +1,5 @@
 import { useFormContext, useWatch } from "react-hook-form";
+import TshirtsImage from "public/info/tshirts.png";
 import { Form } from "./ui/form";
 import { type teamFormServicesSchema } from "@/lib/conts";
 import { type z } from "zod";
@@ -13,6 +14,7 @@ import AccomodationOptions from "./formFields/accomodationCategories";
 import AccomodationTooltip from "./accomodationTooltip";
 import AccomodationCategories from "./formFields/accomodationCategories";
 import AccomodationRooms from "./formFields/accomodationRooms";
+import Image from "next/image";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -106,6 +108,25 @@ export default function TeamServiceForm() {
           control={form.control}
           fieldName="interestInTshirts"
           fieldLabel="form.interestInTshirts"
+          infoTooltip={
+            <InfoTooltip>
+              <div className="flex max-w-sm flex-col space-y-1 text-center">
+                <h4 className="text-md font-semibold">
+                  {t("tshirts.tooltip.headline")}
+                </h4>
+                <Image
+                  src={TshirtsImage}
+                  className="mx-auto"
+                  width={200}
+                  height={200}
+                  alt="tshirt"
+                />
+                <div className="text-center">
+                  <p className="text-sm">{t("tshirts.tooltip.price")}</p>
+                </div>
+              </div>
+            </InfoTooltip>
+          }
         />
         {interestedInTshirts ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
