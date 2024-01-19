@@ -29,6 +29,7 @@ export const env = createEnv({
       process.env.VERCEL ? z.string() : z.string().url(),
     ),
     POSTMARK_API_TOKEN: z.string(),
+    EMAIL_SECRET: z.string(),
   },
 
   /**
@@ -50,6 +51,7 @@ export const env = createEnv({
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     POSTMARK_API_TOKEN: process.env.POSTMARK_API_TOKEN,
+    EMAIL_SECRET: process.env.EMAIL_SECRET,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially

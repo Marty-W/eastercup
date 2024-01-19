@@ -1,15 +1,21 @@
 import { sendPostRegEmail } from "@/server/api/helpers";
 import { type NextRequest } from "next/server";
+import { headers } from "next/headers";
 import { z } from "zod";
+import { env } from "@/env.mjs";
 
 const emailSchema = z.object({
   lang: z.enum(["cs", "en"]),
   email: z.string().email(),
 });
 
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
+  const headersList = headers();
+  if (headersList.get("EMAIL_SECRET") !== env.EMAIL_SECRET) {
+    return new Response("Get outta here", { status: 500 });
+  }
   try {
-    const rawBody = await request.json();
+    const rawBody = await req.json();
     const reqBody = emailSchema.parse(rawBody);
 
     await sendPostRegEmail({
