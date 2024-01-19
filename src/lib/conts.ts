@@ -4,6 +4,7 @@ export const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"] as const;
 
 export const REGISTRATION_FEE_EUR = 120;
 export const REGISTRATION_FEE_CZK = 5000;
+export const REGISTRATION_INVOICE_DUE_DAYS = 10;
 
 export const TOURNAMENT_START = new Date("2024-03-28");
 

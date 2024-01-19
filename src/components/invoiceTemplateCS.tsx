@@ -8,14 +8,21 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
-import { format } from "date-fns";
+import { addDays, format } from "date-fns";
 import { useAtomValue } from "jotai";
 import { teamDbDataAtom, teamFormAtom } from "@/lib/atoms";
-import { REGISTRATION_FEE_CZK, TOURNAMENT_START } from "@/lib/conts";
+import {
+  REGISTRATION_FEE_CZK,
+  REGISTRATION_INVOICE_DUE_DAYS,
+  TOURNAMENT_START,
+} from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
   const dbData = useAtomValue(teamDbDataAtom);
+
+  const today = new Date();
+  const dueDate = addDays(today, REGISTRATION_INVOICE_DUE_DAYS);
 
   return (
     <div className="bg-white px-10 pt-10">
@@ -36,15 +43,12 @@ export default function InvoiceTemplate() {
           </div>
           <div className="row-start-3">
             <p>Číslo účtu:</p>
-            {/* TODO hide from public code */}
             <p>241341615/0300 ČSOB Klatovy</p>
             <p>IBAN: CZ54 0300 0000 0002 4134 1615</p>
             <p>SWIFT: CEKOCZPP</p>
-            {/* TODO: add variable symbol (you gotta generate it and save to db first) */}
             <p>Variabilní symbol: {dbData?.invoiceId}</p>
-            {/* TODO add proper date of registration */}
-            <p>Datum vystavení: {format(new Date(), "dd.M.yyyy")}</p>
-            <p>Datum splatnosti: {format(TOURNAMENT_START, "dd.M.yyyy")}</p>
+            <p>Datum vystavení: {format(today, "dd.M.yyyy")}</p>
+            <p>Datum splatnosti: {format(dueDate, "dd.M.yyyy")}</p>
           </div>
           <Separator className="col-span-3 row-start-2 h-[3px]" />
           <div className="col-start-3">

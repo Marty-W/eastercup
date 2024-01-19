@@ -8,14 +8,21 @@ import {
   Table,
 } from "@/components/ui/table";
 import { Separator } from "@/components/ui/separator";
-import { format } from "date-fns";
+import { addDays, format } from "date-fns";
 import { useAtomValue } from "jotai";
 import { teamDbDataAtom, teamFormAtom } from "@/lib/atoms";
-import { REGISTRATION_FEE_EUR, TOURNAMENT_START } from "@/lib/conts";
+import {
+  REGISTRATION_FEE_EUR,
+  TOURNAMENT_START,
+  REGISTRATION_INVOICE_DUE_DAYS,
+} from "@/lib/conts";
 
 export default function InvoiceTemplate() {
   const formValues = useAtomValue(teamFormAtom);
   const dbData = useAtomValue(teamDbDataAtom);
+
+  const today = new Date();
+  const dueDate = addDays(today, REGISTRATION_INVOICE_DUE_DAYS);
 
   return (
     <div className="bg-white px-10 pt-10">
@@ -37,10 +44,9 @@ export default function InvoiceTemplate() {
             <p>241341615/0300 ČSOB Klatovy</p>
             <p>IBAN: CZ54 0300 0000 0002 4134 1615</p>
             <p>SWIFT: CEKOCZPP</p>
-            {/* TODO: add variable symbol (you gotta generate it and save to db first) */}
             <p>Var. symbol: {dbData?.invoiceId}</p>
-            <p>Issue date: {format(new Date(), "dd/MM/yyyy")}</p>
-            <p>Due date: {format(TOURNAMENT_START, "dd/MM/yyyy")}</p>
+            <p>Issue date: {format(today, "dd/MM/yyyy")}</p>
+            <p>Due date: {format(dueDate, "dd/MM/yyyy")}</p>
           </div>
           <Separator className="col-span-3 row-start-2 h-[3px]" />
           <div className="col-start-3">
