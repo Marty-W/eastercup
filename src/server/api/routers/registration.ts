@@ -148,13 +148,17 @@ export const registrationRouter = createTRPCRouter({
 
       const { email, country } = info;
       const emailLang = country === "CZ" || country === "SK" ? "cs" : "en";
+      const url =
+        process.env.NODE_ENV === "production"
+          ? `https://${process.env.VERCEL_URL}`
+          : "http://localhost:3000";
 
-      await sendPostRegEmail({ recipientEmail: email, lang: emailLang }).catch(
-        (err) => {
-          // TODO: add sentry
-          console.error("email service", err);
-        },
-      );
+      // NOTE: I don't want to rely on this to success in order to register the team and also this fn should be fast
+      fetch(`${url}/api/sendEmail`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, lang: emailLang }),
+      }).catch((err) => console.error("Failed to request email sending:", err));
 
       return {
         registrationInvoiceVarSymbol,

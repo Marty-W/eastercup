@@ -15,9 +15,6 @@ export async function sendPostRegEmail({
 }: WelcomeEmailInput) {
   const client = new postmark.ServerClient(env.POSTMARK_API_TOKEN);
 
-  // start a timer to know how long does sending the email take
-  const timer = new Date();
-
   await client.sendEmailWithTemplate({
     // TODO: add some customization, maybe team name?
     TemplateModel: {},
@@ -25,7 +22,4 @@ export async function sendPostRegEmail({
     From: "info@eastercupklatovy.cz",
     To: recipientEmail,
   });
-
-  // log the time it took to send the email
-  console.log(`sending email took ${new Date().getTime() - timer.getTime()}ms`);
 }
