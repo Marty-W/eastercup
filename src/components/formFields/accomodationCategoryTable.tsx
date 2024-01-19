@@ -20,13 +20,11 @@ const roleTypes = [
   "support-women",
 ];
 
-const roomTypes = ["coaches", "support"];
-
 interface Props {
   day: "wednesday" | "thursday" | "friday" | "saturday";
 }
 
-export default function AccomodationTable({ day }: Props) {
+export default function AccomodationCategoryTable({ day }: Props) {
   const t = useI18n();
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
 
@@ -100,70 +98,6 @@ export default function AccomodationTable({ day }: Props) {
                   <AccomodationCountInput
                     control={form.control}
                     fieldName={`accomodationCategory.${day}.${role}.D`}
-                  />
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        </TableBody>
-      </Table>
-      <Table>
-        <TableCaption>{t("accomodation.captionTwo")}</TableCaption>
-        <TableHeader>
-          <TableRow>
-            <TableHead></TableHead>
-            <TableHead>{t("accomodation.coaches")}</TableHead>
-            <TableHead>{t("accomodation.support")}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          <TableRow>
-            <TableCell>{t("accomodation.oneroom")}</TableCell>
-            {roomTypes.map((role) => {
-              return (
-                <TableCell key={role}>
-                  <AccomodationCountInput
-                    control={form.control}
-                    fieldName={`accomodationRoom.${day}.${role}.single`}
-                  />
-                </TableCell>
-              );
-            })}
-          </TableRow>
-          <TableRow>
-            <TableCell>{t("accomodation.tworoom")}</TableCell>
-            {roomTypes.map((role) => {
-              return (
-                <TableCell key={role}>
-                  <AccomodationCountInput
-                    control={form.control}
-                    fieldName={`accomodationRoom.${day}.${role}.double`}
-                  />
-                </TableCell>
-              );
-            })}
-          </TableRow>
-          <TableRow>
-            <TableCell>{t("accomodation.threeroom")}</TableCell>
-            {roomTypes.map((role) => {
-              return (
-                <TableCell key={role}>
-                  <AccomodationCountInput
-                    control={form.control}
-                    fieldName={`accomodationRoom.${day}.${role}.triple`}
-                  />
-                </TableCell>
-              );
-            })}
-          </TableRow>
-          <TableRow>
-            <TableCell>{t("accomodation.other")}</TableCell>
-            {roomTypes.map((role) => {
-              return (
-                <TableCell key={role}>
-                  <AccomodationCountInput
-                    control={form.control}
-                    fieldName={`accomodationRoom.${day}.${role}.other`}
                   />
                 </TableCell>
               );

@@ -1,8 +1,8 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { useI18n } from "locales/client";
-import AccomodationTable from "./accomodationTable";
+import AccomodationCategoryTable from "./accomodationCategoryTable";
 
-export default function AccomodationOptions() {
+export default function AccomodationCategories() {
   const t = useI18n();
   return (
     <Tabs defaultValue="wednesday">
@@ -21,16 +21,16 @@ export default function AccomodationOptions() {
         </TabsTrigger>
       </TabsList>
       <TabsContent value="wednesday">
-        <AccomodationTable day="wednesday" />
+        <AccomodationCategoryTable day="wednesday" />
       </TabsContent>
       <TabsContent value="thursday">
-        <AccomodationTable day="thursday" />
+        <AccomodationCategoryTable day="thursday" />
       </TabsContent>
       <TabsContent value="friday">
-        <AccomodationTable day="friday" />
+        <AccomodationCategoryTable day="friday" />
       </TabsContent>
       <TabsContent value="saturday">
-        <AccomodationTable day="saturday" />
+        <AccomodationCategoryTable day="saturday" />
       </TabsContent>
     </Tabs>
   );

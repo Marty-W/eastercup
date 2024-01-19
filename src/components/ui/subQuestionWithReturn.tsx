@@ -30,7 +30,7 @@ export default function SubQuestionContainerWithReturn({
         <h3 className="text-md col-start-2 justify-self-center">{header}</h3>
         {tooltip && <div className="justify-self-end">{tooltip}</div>}
       </div>
-      <div className="rounded-md border p-2">{children}</div>
+      <div className="rounded-md border p-1 lg:p-6">{children}</div>
     </div>
   );
 }

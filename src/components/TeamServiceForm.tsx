@@ -9,8 +9,10 @@ import InfoTooltip from "./ui/infoTooltip";
 import { useI18n } from "locales/client";
 import CateringOptions from "./formFields/cateringOptions";
 import SubQuestionContainerWithReturn from "./ui/subQuestionWithReturn";
-import AccomodationOptions from "./formFields/accomodationOptions";
+import AccomodationOptions from "./formFields/accomodationCategories";
 import AccomodationTooltip from "./accomodationTooltip";
+import AccomodationCategories from "./formFields/accomodationCategories";
+import AccomodationRooms from "./formFields/accomodationRooms";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -94,7 +96,10 @@ export default function TeamServiceForm() {
               });
             }}
           >
-            <AccomodationOptions />
+            <div className="space-y-4">
+              <AccomodationCategories />
+              <AccomodationRooms />
+            </div>
           </SubQuestionContainerWithReturn>
         )}
         <InterestRadio
