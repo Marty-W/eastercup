@@ -22,6 +22,7 @@ import {
   teamAccomodationInfo,
   teamRoomInfo,
 } from "../db/schema";
+import { TRPCError } from "@trpc/server";
 
 const WELCOME_TEMPLATE_ID_CS = 34509365;
 const WELCOME_TEMPLATE_ID_EN = 34509317;
@@ -47,19 +48,38 @@ export async function sendPostRegEmail({
 }
 
 export async function createTeam(teamInfo: InfoServerValues) {
-  const newTeam = await db
-    .insert(teams)
-    .values({
-      ...teamInfo,
-      phoneNumber: `+${teamInfo.countryCode}${teamInfo.phoneNumber}`,
-      name: `${teamInfo.teamName} | ${teamInfo.category}`,
-    })
-    .returning();
+  let newTeam;
+  try {
+    newTeam = await db
+      .insert(teams)
+      .values({
+        ...teamInfo,
+        phoneNumber: `+${teamInfo.countryCode}${teamInfo.phoneNumber}`,
+        name: `${teamInfo.teamName} | ${teamInfo.category}`,
+      })
+      .returning();
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Database error occurred while creating the team",
+      cause: e,
+    });
+  }
+
+  if (Array.isArray(newTeam) && newTeam.length === 0) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Failed to create team, no records returned",
+    });
+  }
 
   const teamID = newTeam[0]?.id;
 
-  if (!teamID) {
-    throw new Error("Failed to create team");
+  if (typeof teamID !== "number" || teamID <= 0) {
+    throw new TRPCError({
+      code: "PRECONDITION_FAILED",
+      message: "Failed to get team ID",
+    });
   }
 
   return teamID;
@@ -69,21 +89,37 @@ export async function addTeamTransportInfo(
   teamInfo: InfoServerValues,
   teamID: number,
 ) {
-  await db.insert(teamTransportInfo).values({
-    ...teamInfo,
-    arrivalDate: teamInfo.arrivalDate,
-    teamId: teamID,
-  });
+  try {
+    await db.insert(teamTransportInfo).values({
+      ...teamInfo,
+      arrivalDate: teamInfo.arrivalDate,
+      teamId: teamID,
+    });
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Database error occurred while creating the team transport info",
+      cause: e,
+    });
+  }
 }
 
 export async function addTeamBillingInfo(
   billingInfo: BillingFormValues,
   teamID: number,
 ) {
-  await db.insert(teamBillingInfo).values({
-    ...billingInfo,
-    teamId: teamID,
-  });
+  try {
+    await db.insert(teamBillingInfo).values({
+      ...billingInfo,
+      teamId: teamID,
+    });
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Database error occurred while creating the team billing info",
+      cause: e,
+    });
+  }
 }
 
 export async function generateRegistrationInvoice(
@@ -93,12 +129,21 @@ export async function generateRegistrationInvoice(
   const registrationInvoiceVarSymbol = getInvoiceVarSymbol(teamID);
   const registrationFee = getRegistrationFee(teamCountry);
 
-  await db.insert(invoice).values({
-    teamId: teamID,
-    varSymbol: registrationInvoiceVarSymbol,
-    type: "registration",
-    amount: registrationFee,
-  });
+  try {
+    await db.insert(invoice).values({
+      teamId: teamID,
+      varSymbol: registrationInvoiceVarSymbol,
+      type: "registration",
+      amount: registrationFee,
+    });
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message:
+        "Database error occurred while creating the registration invoice",
+      cause: e,
+    });
+  }
 }
 
 export function getInvoiceVarSymbol(teamID: number) {
@@ -119,10 +164,18 @@ export async function generateTshirtOrder(
   const hasTshirtOrder = Object.values(tshirtOrder).some((count) => count > 0);
 
   if (hasTshirtOrder) {
-    await db.insert(tshirtOrders).values({
-      ...tshirtOrder,
-      teamId: teamID,
-    });
+    try {
+      await db.insert(tshirtOrders).values({
+        ...tshirtOrder,
+        teamId: teamID,
+      });
+    } catch (e) {
+      throw new TRPCError({
+        code: "INTERNAL_SERVER_ERROR",
+        message: "Database error occurred while creating the tshirt order",
+        cause: e,
+      });
+    }
   }
 }
 
@@ -142,16 +195,25 @@ export async function generateCateringOrder(
     otherAllergyCount,
     otherAllergyNote,
   } = cateringOrder.allergies;
-  await db.insert(cateringOrderDb).values({
-    ...cateringOrder,
-    teamId: teamID,
-    halalCount,
-    vegetarianCount,
-    lactoseFreeCount,
-    glutenFreeCount,
-    otherAllergyCount,
-    otherAllergyNote,
-  });
+
+  try {
+    await db.insert(cateringOrderDb).values({
+      ...cateringOrder,
+      teamId: teamID,
+      halalCount,
+      vegetarianCount,
+      lactoseFreeCount,
+      glutenFreeCount,
+      otherAllergyCount,
+      otherAllergyNote,
+    });
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message: "Database error occurred while creating the catering order",
+      cause: e,
+    });
+  }
 }
 
 function sumCateringOrder(cateringOrder: z.infer<typeof cateringOrderSchema>) {
