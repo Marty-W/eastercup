@@ -169,28 +169,7 @@ const roomWithRoleSchema = z.object({
   support: roomSchema,
 });
 
-export const teamFormServicesSchema = z.object({
-  interestInCatering: z.boolean().default(false),
-  interestInAccomodation: z.boolean().default(false),
-  interestInTshirts: z.boolean().default(false),
-  noXsShirts: z.number().min(0).max(50).optional(),
-  noSShirts: z.number().min(0).max(50).optional(),
-  noMShirts: z.number().min(0).max(50).optional(),
-  noLShirts: z.number().min(0).max(50).optional(),
-  noXLShirts: z.number().min(0).max(50).optional(),
-  noXXLShirts: z.number().min(0).max(50).optional(),
-  thuBreakfast: z.number().min(0).optional(),
-  thuLunch: z.number().min(0).optional(),
-  thuDinner: z.number().min(0).optional(),
-  friBreakfast: z.number().min(0).optional(),
-  friLunch: z.number().min(0).optional(),
-  friDinner: z.number().min(0).optional(),
-  satBreakfast: z.number().min(0).optional(),
-  satLunch: z.number().min(0).optional(),
-  satDinner: z.number().min(0).optional(),
-  sunBreakfast: z.number().min(0).optional(),
-  sunLunch: z.number().min(0).optional(),
-  sunDinner: z.number().min(0).optional(),
+const allergiesSchema = z.object({
   hasHalal: z.boolean().default(false),
   hasGlutenFree: z.boolean().default(false),
   hasLactoseFree: z.boolean().default(false),
@@ -203,54 +182,97 @@ export const teamFormServicesSchema = z.object({
   otherAllergyCount: z.number().min(0).optional(),
   otherAllergyNote: z.string().optional(),
   hasAllergies: z.boolean().default(false),
-  accomodationCategory: z.object({
-    wednesday: accomodationWithRoleSchema.optional(),
-    thursday: accomodationWithRoleSchema.optional(),
-    friday: accomodationWithRoleSchema.optional(),
-    saturday: accomodationWithRoleSchema.optional(),
-  }),
-  accomodationRoom: z.object({
-    wednesday: roomWithRoleSchema.optional(),
-    thursday: roomWithRoleSchema.optional(),
-    friday: roomWithRoleSchema.optional(),
-    saturday: roomWithRoleSchema.optional(),
-  }),
+});
+
+export const tshirtOrderSchema = z.object({
+  noXsShirts: z.number().min(0).max(50).optional(),
+  noSShirts: z.number().min(0).max(50).optional(),
+  noMShirts: z.number().min(0).max(50).optional(),
+  noLShirts: z.number().min(0).max(50).optional(),
+  noXLShirts: z.number().min(0).max(50).optional(),
+  noXXLShirts: z.number().min(0).max(50).optional(),
+});
+
+export const cateringOrderSchema = z.object({
+  thuBreakfast: z.number().min(0).optional(),
+  thuLunch: z.number().min(0).optional(),
+  thuDinner: z.number().min(0).optional(),
+  friBreakfast: z.number().min(0).optional(),
+  friLunch: z.number().min(0).optional(),
+  friDinner: z.number().min(0).optional(),
+  satBreakfast: z.number().min(0).optional(),
+  satLunch: z.number().min(0).optional(),
+  satDinner: z.number().min(0).optional(),
+  sunBreakfast: z.number().min(0).optional(),
+  sunLunch: z.number().min(0).optional(),
+  sunDinner: z.number().min(0).optional(),
+  allergies: allergiesSchema,
+});
+
+export const accomodationCategoryDaySchema = z.object({
+  wednesday: accomodationWithRoleSchema.optional(),
+  thursday: accomodationWithRoleSchema.optional(),
+  friday: accomodationWithRoleSchema.optional(),
+  saturday: accomodationWithRoleSchema.optional(),
+});
+
+export const accomodationRoomDaySchema = z.object({
+  wednesday: roomWithRoleSchema.optional(),
+  thursday: roomWithRoleSchema.optional(),
+  friday: roomWithRoleSchema.optional(),
+  saturday: roomWithRoleSchema.optional(),
+});
+
+export const teamFormServicesSchema = z.object({
+  interestInCatering: z.boolean().default(false),
+  interestInAccomodation: z.boolean().default(false),
+  interestInTshirts: z.boolean().default(false),
+  tshirtOrder: tshirtOrderSchema,
+  cateringOrder: cateringOrderSchema,
+  accomodationCategory: accomodationCategoryDaySchema.optional(),
+  accomodationRoom: accomodationRoomDaySchema.optional(),
 });
 
 export const teamFormServicesDefaultValues = {
   interestInCatering: false,
   interestInAccomodation: false,
   interestInTshirts: false,
-  noXsShirts: 0,
-  noSShirts: 0,
-  noMShirts: 0,
-  noLShirts: 0,
-  noXLShirts: 0,
-  noXXLShirts: 0,
-  thuBreakfast: 0,
-  thuLunch: 0,
-  thuDinner: 0,
-  friBreakfast: 0,
-  friLunch: 0,
-  friDinner: 0,
-  satBreakfast: 0,
-  satLunch: 0,
-  satDinner: 0,
-  sunBreakfast: 0,
-  sunLunch: 0,
-  sunDinner: 0,
-  hasHalal: false,
-  hasVegetarian: false,
-  hasLactoseFree: false,
-  hasGlutenFree: false,
-  hasOtherAllergy: false,
-  halalCount: 0,
-  vegetarianCount: 0,
-  lactoseFreeCount: 0,
-  glutenFreeCount: 0,
-  otherAllergyCount: 0,
-  otherAllergyNote: "",
-  hasAllergies: false,
+  tshirtOrder: {
+    noXsShirts: 0,
+    noSShirts: 0,
+    noMShirts: 0,
+    noLShirts: 0,
+    noXLShirts: 0,
+    noXXLShirts: 0,
+  },
+  cateringOrder: {
+    thuBreakfast: 0,
+    thuLunch: 0,
+    thuDinner: 0,
+    friBreakfast: 0,
+    friLunch: 0,
+    friDinner: 0,
+    satBreakfast: 0,
+    satLunch: 0,
+    satDinner: 0,
+    sunBreakfast: 0,
+    sunLunch: 0,
+    sunDinner: 0,
+    allergies: {
+      hasHalal: false,
+      hasVegetarian: false,
+      hasLactoseFree: false,
+      hasGlutenFree: false,
+      hasOtherAllergy: false,
+      halalCount: 0,
+      vegetarianCount: 0,
+      lactoseFreeCount: 0,
+      glutenFreeCount: 0,
+      otherAllergyCount: 0,
+      otherAllergyNote: "",
+      hasAllergies: false,
+    },
+  },
   accomodationCategory: {},
   accomodationRoom: {},
 };
@@ -259,8 +281,15 @@ export const fullFormSchema = teamFormInfoSchema
   .merge(teamFormBillingSchema)
   .merge(teamFormServicesSchema);
 
+export const teamServerInfoSchema = teamFormInfoSchema.extend({
+  arrivalDate: z.string(),
+});
 export const registrationInputSchema = z.object({
-  info: teamFormInfoSchema,
+  info: teamServerInfoSchema,
   billing: teamFormBillingSchema,
   services: teamFormServicesSchema,
 });
+
+export type InfoFormValues = z.infer<typeof teamFormInfoSchema>;
+export type BillingFormValues = z.infer<typeof teamFormBillingSchema>;
+export type InfoServerValues = z.infer<typeof teamServerInfoSchema>;

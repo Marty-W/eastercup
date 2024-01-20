@@ -14,27 +14,27 @@ export default function Allergies() {
 
   const isOtherAllergyChecked = useWatch({
     control: form.control,
-    name: "hasOtherAllergy",
+    name: "cateringOrder.allergies.hasOtherAllergy",
   });
 
   const isHasAllergyCheckboxChecked = useWatch({
     control: form.control,
-    name: "hasAllergies",
+    name: "cateringOrder.allergies.hasAllergies",
   });
 
   useEffect(() => {
     if (isHasAllergyCheckboxChecked) {
-      form.resetField("hasVegetarian");
-      form.resetField("hasLactoseFree");
-      form.resetField("hasGlutenFree");
-      form.resetField("hasHalal");
-      form.resetField("hasOtherAllergy");
-      form.resetField("vegetarianCount");
-      form.resetField("lactoseFreeCount");
-      form.resetField("glutenFreeCount");
-      form.resetField("halalCount");
-      form.resetField("otherAllergyCount");
-      form.resetField("otherAllergyNote");
+      form.resetField("cateringOrder.allergies.hasVegetarian");
+      form.resetField("cateringOrder.allergies.hasLactoseFree");
+      form.resetField("cateringOrder.allergies.hasGlutenFree");
+      form.resetField("cateringOrder.allergies.hasHalal");
+      form.resetField("cateringOrder.allergies.hasOtherAllergy");
+      form.resetField("cateringOrder.allergies.vegetarianCount");
+      form.resetField("cateringOrder.allergies.lactoseFreeCount");
+      form.resetField("cateringOrder.allergies.glutenFreeCount");
+      form.resetField("cateringOrder.allergies.halalCount");
+      form.resetField("cateringOrder.allergies.otherAllergyCount");
+      form.resetField("cateringOrder.allergies.otherAllergyNote");
     }
   }, [isHasAllergyCheckboxChecked]);
 
@@ -43,7 +43,7 @@ export default function Allergies() {
       <div className="flex w-full items-center justify-center space-x-2">
         <FormField
           control={form.control}
-          name="hasAllergies"
+          name="cateringOrder.allergies.hasAllergies"
           render={({ field }) => (
             <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4">
               <FormControl>
@@ -63,40 +63,40 @@ export default function Allergies() {
         <div className="mx-auto flex w-full justify-between">
           <AllergyCheckbox
             control={form.control}
-            checkBoxFieldName="hasVegetarian"
+            checkBoxFieldName="cateringOrder.allergies.hasVegetarian"
             fieldLabel="allergies.vegetarian"
-            numberFieldName="vegetarianCount"
+            numberFieldName="cateringOrder.allergies.vegetarianCount"
           />
           <AllergyCheckbox
             control={form.control}
-            checkBoxFieldName="hasGlutenFree"
+            checkBoxFieldName="cateringOrder.allergies.hasGlutenFree"
             fieldLabel="allergies.glutenFree"
-            numberFieldName="glutenFreeCount"
+            numberFieldName="cateringOrder.allergies.glutenFreeCount"
           />
           <AllergyCheckbox
             control={form.control}
-            checkBoxFieldName="hasLactoseFree"
+            checkBoxFieldName="cateringOrder.allergies.hasLactoseFree"
             fieldLabel="allergies.lactoseFree"
-            numberFieldName="lactoseFreeCount"
+            numberFieldName="cateringOrder.allergies.lactoseFreeCount"
           />
           <AllergyCheckbox
             control={form.control}
-            checkBoxFieldName="hasHalal"
+            checkBoxFieldName="cateringOrder.allergies.hasHalal"
             fieldLabel="allergies.halal"
-            numberFieldName="halalCount"
+            numberFieldName="cateringOrder.allergies.halalCount"
           />
           <AllergyCheckbox
             control={form.control}
-            checkBoxFieldName="hasOtherAllergy"
+            checkBoxFieldName="cateringOrder.allergies.hasOtherAllergy"
             fieldLabel="allergies.others"
-            numberFieldName="otherAllergyCount"
+            numberFieldName="cateringOrder.allergies.otherAllergyCount"
           />
         </div>
       )}
       {isOtherAllergyChecked && (
         <FormField
           control={form.control}
-          name="otherAllergyNote"
+          name="cateringOrder.allergies.otherAllergyNote"
           render={({ field }) => (
             <FormItem className="mx-auto">
               <FormControl>

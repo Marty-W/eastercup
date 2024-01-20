@@ -10,7 +10,6 @@ import InfoTooltip from "./ui/infoTooltip";
 import { useI18n } from "locales/client";
 import CateringOptions from "./formFields/cateringOptions";
 import SubQuestionContainerWithReturn from "./ui/subQuestionWithReturn";
-import AccomodationOptions from "./formFields/accomodationCategories";
 import AccomodationTooltip from "./accomodationTooltip";
 import AccomodationCategories from "./formFields/accomodationCategories";
 import AccomodationRooms from "./formFields/accomodationRooms";
@@ -130,12 +129,36 @@ export default function TeamServiceForm() {
         />
         {interestedInTshirts ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
-            <TshirtInput fieldName="noXsShirts" fieldLabel="XS" />
-            <TshirtInput fieldName="noSShirts" fieldLabel="S" />
-            <TshirtInput fieldName="noMShirts" fieldLabel="M" />
-            <TshirtInput fieldName="noLShirts" fieldLabel="L" />
-            <TshirtInput fieldName="noXLShirts" fieldLabel="XL" />
-            <TshirtInput fieldName="noXXLShirts" fieldLabel="XXL" />
+            <TshirtInput
+              fieldName="tshirtOrder.noXsShirts"
+              fieldLabel="XS"
+              control={form.control}
+            />
+            <TshirtInput
+              fieldName="tshirtOrder.noSShirts"
+              fieldLabel="S"
+              control={form.control}
+            />
+            <TshirtInput
+              fieldName="tshirtOrder.noMShirts"
+              fieldLabel="M"
+              control={form.control}
+            />
+            <TshirtInput
+              fieldName="tshirtOrder.noLShirts"
+              fieldLabel="L"
+              control={form.control}
+            />
+            <TshirtInput
+              fieldName="tshirtOrder.noXLShirts"
+              fieldLabel="XL"
+              control={form.control}
+            />
+            <TshirtInput
+              fieldName="tshirtOrder.noXXLShirts"
+              fieldLabel="XXL"
+              control={form.control}
+            />
           </div>
         ) : (
           <div className="h-20" />

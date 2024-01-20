@@ -32,49 +32,85 @@ export default function CateringOptions() {
           <TableRow>
             <TableCell>{t("common.thursday")}</TableCell>
             <TableCell>
-              <FoodInput fieldName="thuBreakfast" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.thuBreakfast"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="thuLunch" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.thuLunch"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="thuDinner" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.thuDinner"
+                control={form.control}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t("common.friday")}</TableCell>
             <TableCell>
-              <FoodInput fieldName="friBreakfast" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.friBreakfast"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="friLunch" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.friLunch"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="friDinner" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.friDinner"
+                control={form.control}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>Sobota</TableCell>
             <TableCell>
-              <FoodInput fieldName="satBreakfast" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.satBreakfast"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="satLunch" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.satLunch"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="satDinner" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.satDinner"
+                control={form.control}
+              />
             </TableCell>
           </TableRow>
           <TableRow>
             <TableCell>{t("common.sunday")}</TableCell>
             <TableCell>
-              <FoodInput fieldName="sunBreakfast" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.sunBreakfast"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="sunLunch" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.sunLunch"
+                control={form.control}
+              />
             </TableCell>
             <TableCell>
-              <FoodInput fieldName="sunDinner" control={form.control} />
+              <FoodInput
+                fieldName="cateringOrder.sunDinner"
+                control={form.control}
+              />
             </TableCell>
           </TableRow>
         </TableBody>

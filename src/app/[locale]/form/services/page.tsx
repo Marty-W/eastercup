@@ -57,7 +57,10 @@ export default function TeamServices() {
   const onSubmit = (values: TeamServicesFormValues) => {
     setTeamServicesFormValues(values);
     registerMutation.mutate({
-      info: teamFormInfoValues,
+      info: {
+        ...teamFormInfoValues,
+        arrivalDate: teamFormInfoValues.arrivalDate.toISOString(),
+      },
       billing: teamFormBillingValues,
       services: values,
     });

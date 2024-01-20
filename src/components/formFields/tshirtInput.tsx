@@ -1,29 +1,21 @@
-import { type teamFormServicesSchema } from "@/lib/conts";
-import { useFormContext } from "react-hook-form";
-import { type z } from "zod";
+import { type Control, type FieldValues, type Path } from "react-hook-form";
 import { FormField, FormItem, FormLabel, FormControl } from "../ui/form";
 import { Input } from "../ui/input";
-import { type FormFieldName } from "@/lib/types";
 
-interface Props {
-  fieldName: Extract<
-    FormFieldName,
-    | "noXsShirts"
-    | "noSShirts"
-    | "noMShirts"
-    | "noLShirts"
-    | "noXLShirts"
-    | "noXXLShirts"
-  >;
+interface Props<T extends FieldValues> {
+  fieldName: Path<T>;
+  control: Control<T>;
   fieldLabel: string;
 }
 
-export default function TshirtInput({ fieldName, fieldLabel }: Props) {
-  const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
-
+export default function TshirtInput<T extends FieldValues>({
+  fieldName,
+  fieldLabel,
+  control,
+}: Props<T>) {
   return (
     <FormField
-      control={form.control}
+      control={control}
       name={fieldName}
       render={({ field }) => (
         <FormItem className="flex items-center space-x-2 place-self-center">
