@@ -27,26 +27,6 @@ import { TRPCError } from "@trpc/server";
 const WELCOME_TEMPLATE_ID_CS = 34509365;
 const WELCOME_TEMPLATE_ID_EN = 34509317;
 
-interface WelcomeEmailInput {
-  lang: "cs" | "en";
-  recipientEmail: string;
-}
-
-export async function sendPostRegEmail({
-  lang,
-  recipientEmail,
-}: WelcomeEmailInput) {
-  const client = new postmark.ServerClient(env.POSTMARK_API_TOKEN);
-
-  await client.sendEmailWithTemplate({
-    // TODO: add some customization, maybe team name?
-    TemplateModel: {},
-    TemplateId: lang === "cs" ? WELCOME_TEMPLATE_ID_CS : WELCOME_TEMPLATE_ID_EN,
-    From: "info@eastercupklatovy.cz",
-    To: recipientEmail,
-  });
-}
-
 export async function createTeam(teamInfo: InfoServerValues) {
   let newTeam;
   try {
@@ -313,26 +293,27 @@ function flattenAccomodationRooms(
     : [];
 }
 
-export function sendPostRegistrationEmail(
+export async function sendPostRegistrationEmail(
   recipientEmail: string,
   recipientCountry: string,
 ) {
   const emailLang =
     recipientCountry === "CZ" || recipientCountry === "SK" ? "cs" : "en";
 
-  fetch(`https://eastercup.vercel.app/api/sendEmail`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      EMAIL_SECRET: env.EMAIL_SECRET,
-    },
-    body: JSON.stringify({ email: recipientEmail, lang: emailLang }),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        console.error("Response status", response.status, "Response", response);
-        throw new Error("Failed to request email sending");
-      }
-    })
-    .catch((err) => console.error(err));
+  const client = new postmark.ServerClient(env.POSTMARK_API_TOKEN);
+
+  try {
+    await client.sendEmailWithTemplate({
+      // TODO: add some customization, maybe team name?
+      TemplateModel: {},
+      TemplateId:
+        emailLang === "cs" ? WELCOME_TEMPLATE_ID_CS : WELCOME_TEMPLATE_ID_EN,
+      From: "info@eastercupklatovy.cz",
+      To: recipientEmail,
+    });
+  } catch (e) {
+    // NOTE: consider returning error to client and displaying it to user
+    console.error(`Something happend when sending email to ${recipientEmail}.`);
+    console.error(e);
+  }
 }

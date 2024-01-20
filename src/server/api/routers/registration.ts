@@ -35,7 +35,7 @@ export const registrationRouter = createTRPCRouter({
       const registrationInvoiceVarSymbol = getInvoiceVarSymbol(newTeamId);
 
       if (process.env.VERCEL_ENV === "production") {
-        sendPostRegistrationEmail(info.email, info.country);
+        await sendPostRegistrationEmail(info.email, info.country);
       }
 
       const diff = new Date().getTime() - timer.getTime();
