@@ -1,10 +1,9 @@
 import TimeCounter from "@/components/timeCounter";
 import { getI18n } from "locales/server";
-import { type TCountryCode, getEmojiFlag } from "countries-list";
 import Link from "next/link";
-import Image from "next/image";
 import { api } from "@/trpc/server";
 import TeamCountryCount from "@/components/teamCountryCount";
+import CountryFlags from "@/components/countryFlags";
 
 export default async function Landing() {
   const t = await getI18n();
@@ -31,21 +30,13 @@ export default async function Landing() {
               <span>{t("hero.button")}</span>
             </Link>
           </div>
-          <div className="flex flex-col space-y-2 pb-2 text-sm md:space-y-6 md:text-base">
+          <div className="flex flex-col space-y-2 pb-6 text-sm md:space-y-6 md:text-base">
             <TimeCounter />
             <TeamCountryCount
               countryCount={teamCount.countryCount}
               teamCount={teamCount.teamCount}
             />
-            <div>
-              {teamCount.countries.map((countryCode) => {
-                return (
-                  <span key={countryCode} className="p-1 text-lg md:text-5xl">
-                    {getEmojiFlag(countryCode as TCountryCode)}
-                  </span>
-                );
-              })}
-            </div>
+            <CountryFlags countries={teamCount.countries} />
           </div>
         </div>
       </div>
