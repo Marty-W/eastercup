@@ -27,6 +27,7 @@ export default function TshirtInput<T extends FieldValues>({
               type="number"
               max={50}
               min={0}
+              value={field.value === 0 ? "" : field.value}
               onChange={(e) => field.onChange(Number(e.target.value))}
             />
           </FormControl>

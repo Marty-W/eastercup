@@ -15,20 +15,23 @@ export default function FoodInput<T extends FieldValues>({
     <FormField
       control={control}
       name={fieldName}
-      render={({ field }) => (
-        <FormItem className="">
-          <FormControl>
-            <Input
-              {...field}
-              className="max-w-[60px]"
-              type="number"
-              max={99}
-              min={0}
-              onChange={(e) => field.onChange(Number(e.target.value))}
-            />
-          </FormControl>
-        </FormItem>
-      )}
+      render={({ field }) => {
+        return (
+          <FormItem className="">
+            <FormControl>
+              <Input
+                {...field}
+                value={field.value === 0 ? "" : field.value}
+                className="max-w-[60px]"
+                type="number"
+                max={99}
+                min={0}
+                onChange={(e) => field.onChange(Number(e.target.value))}
+              />
+            </FormControl>
+          </FormItem>
+        );
+      }}
     />
   );
 }
