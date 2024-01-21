@@ -7,7 +7,7 @@ interface Props {
   children: React.ReactNode;
   header: string;
   headerAction?: () => void;
-  tooltip?: React.ReactNode;
+  infoPopover?: React.ReactNode;
 }
 
 export default function SubQuestionContainerWithReturn({
@@ -15,7 +15,7 @@ export default function SubQuestionContainerWithReturn({
   children,
   header,
   headerAction,
-  tooltip,
+  infoPopover,
 }: Props) {
   return (
     <div className={cn(className)}>
@@ -28,7 +28,7 @@ export default function SubQuestionContainerWithReturn({
           <MoveLeft className="" />
         </Button>
         <h3 className="text-md col-start-2 justify-self-center">{header}</h3>
-        {tooltip && <div className="justify-self-end">{tooltip}</div>}
+        {infoPopover && <div className="justify-self-end">{infoPopover}</div>}
       </div>
       <div className="rounded-md border p-1 lg:p-6">{children}</div>
     </div>

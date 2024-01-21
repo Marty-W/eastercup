@@ -10,10 +10,13 @@ import InfoTooltip from "./ui/infoTooltip";
 import { useI18n } from "locales/client";
 import CateringOptions from "./formFields/cateringOptions";
 import SubQuestionContainerWithReturn from "./ui/subQuestionWithReturn";
-import AccomodationTooltip from "./accomodationTooltip";
+import AccomodationTooltip from "./accomodationPopover";
 import AccomodationCategories from "./formFields/accomodationCategories";
 import AccomodationRooms from "./formFields/accomodationRooms";
 import Image from "next/image";
+import InfoPopover from "./ui/infoPopover";
+import CateringPopover from "./cateringPopover";
+import AccomodationPopover from "./accomodationPopover";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -42,33 +45,12 @@ export default function TeamServiceForm() {
             fieldName="interestInCatering"
             fieldLabel="form.interestInCatering"
             control={form.control}
-            infoTooltip={
-              <InfoTooltip>
-                <div className="flex flex-col space-y-1 text-center">
-                  <h4 className="text-md font-semibold">
-                    {t("catering.tooltip.headline")}
-                  </h4>
-                  <div className="text-center">
-                    <p className="text-sm">
-                      {t("catering.tooltip.breakfastPrice")}
-                    </p>
-                    <p className="text-sm">
-                      {t("catering.tooltip.lunchPrice")}
-                    </p>
-                    <p className="text-sm">
-                      {t("catering.tooltip.dinnerPrice")}
-                    </p>
-                  </div>
-                  <p className="mx-auto max-w-[200px] text-sm">
-                    {t("catering.tooltip.note")}
-                  </p>
-                </div>
-              </InfoTooltip>
-            }
+            infoPopover={<CateringPopover />}
           />
         ) : (
           <SubQuestionContainerWithReturn
             header="Zpet"
+            infoPopover={<CateringPopover />}
             headerAction={() => {
               form.setValue("interestInCatering", false, {
                 shouldTouch: true,
@@ -84,12 +66,12 @@ export default function TeamServiceForm() {
             fieldName="interestInAccomodation"
             fieldLabel="form.interestInAccomodation"
             control={form.control}
-            infoTooltip={<AccomodationTooltip />}
+            infoPopover={<AccomodationPopover />}
           />
         ) : (
           <SubQuestionContainerWithReturn
             header={t("common.accomodation")}
-            tooltip={<AccomodationTooltip />}
+            infoPopover={<AccomodationPopover />}
             headerAction={() => {
               form.setValue("interestInAccomodation", false, {
                 shouldTouch: true,
@@ -107,8 +89,8 @@ export default function TeamServiceForm() {
           control={form.control}
           fieldName="interestInTshirts"
           fieldLabel="form.interestInTshirts"
-          infoTooltip={
-            <InfoTooltip>
+          infoPopover={
+            <InfoPopover>
               <div className="flex max-w-sm flex-col space-y-1 text-center">
                 <h4 className="text-md font-semibold">
                   {t("tshirts.tooltip.headline")}
@@ -124,7 +106,7 @@ export default function TeamServiceForm() {
                   <p className="text-sm">{t("tshirts.tooltip.price")}</p>
                 </div>
               </div>
-            </InfoTooltip>
+            </InfoPopover>
           }
         />
         {interestedInTshirts ? (

@@ -8,13 +8,13 @@ interface Props<T extends FieldValues> {
   fieldName: Path<T>;
   control: Control<T>;
   fieldLabel: LocaleKey;
-  infoTooltip?: React.ReactNode;
+  infoPopover?: React.ReactNode;
 }
 
 export default function InterestRadio<T extends FieldValues>({
   fieldName,
   fieldLabel,
-  infoTooltip,
+  infoPopover,
   control,
 }: Props<T>) {
   const t = useI18n();
@@ -25,10 +25,10 @@ export default function InterestRadio<T extends FieldValues>({
       name={fieldName}
       render={({ field }) => (
         <FormItem className="space-y-3">
-          {infoTooltip ? (
+          {infoPopover ? (
             <div className="flex items-center space-x-2">
               <FormLabel>{t(fieldLabel)}</FormLabel>
-              {infoTooltip}
+              {infoPopover}
             </div>
           ) : (
             <FormLabel>{t(fieldLabel)}</FormLabel>
