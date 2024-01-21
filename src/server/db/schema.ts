@@ -8,6 +8,7 @@ import {
   serial,
   text,
   varchar,
+  uuid,
 } from "drizzle-orm/pg-core";
 
 export const teams = pgTable("teams", {
@@ -20,6 +21,7 @@ export const teams = pgTable("teams", {
   email: text("email").notNull(),
   note: text("note"),
   registerDate: date("registered_on").notNull().defaultNow(),
+  editUUID: uuid("edit_uuid").defaultRandom(),
 });
 
 export const teamRelations = relations(teams, ({ one, many }) => ({
