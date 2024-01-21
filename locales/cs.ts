@@ -63,7 +63,7 @@ export default {
   "form.meansOfTransport.plane.willNeedTransportFromAirport":
     "Budeme potřebovat dopravu z letiště.",
   "form.meansOfTransport.willStayOver":
-    "Moje doprava zůstane po celou dobu turnaje.",
+    "Můj dopravní prostředek zůstane po celou dobu turnaje v místě konání.",
   "form.note": "Poznámka pro organizátory",
   "form.notePlaceholder": "Něco, co nám chcete říct?",
   "form.teamName.minError": "Název týmu musí mít alespoň 10 znaků.",
