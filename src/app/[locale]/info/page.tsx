@@ -89,13 +89,17 @@ export default async function InformationPage() {
           <p>
             <span className="mr-1 font-bold">web:</span>
             <Link href="https://eastercupklatovy.cz" target="_blank">
-              www.eastercupklatovy.cz
+              eastercupklatovy.cz
             </Link>
           </p>
-          <p>
-            <span className="mr-1 inline-block font-bold">facebook:</span>
-            www.facebook.com/EasterCupKlatovy
-          </p>
+          <div>
+            <span className="mr-1 block font-bold md:inline-block">
+              facebook:
+            </span>
+            <Link href="https://facebook.com/EasterCupKlatovy" target="_blank">
+              facebook.com/EasterCupKlatovy
+            </Link>
+          </div>
         </div>
         <p className="lg:leading-5">{t("contact.text")}</p>
       </InfoSection>
