@@ -5,7 +5,41 @@ interface Props {
   countryCount: number;
 }
 
-// TODO add pluralization
+const getPluralCZ = (count: number) => {
+  switch (count) {
+    case 1:
+      return {
+        registered: "Registrován",
+        team: "tým",
+        country: "země",
+        from: "z",
+      };
+    case 2:
+    case 3:
+    case 4:
+      return {
+        registered: "Registrovány",
+        team: "týmy",
+        country: "zemí",
+        from: "ze",
+      };
+    default:
+      return {
+        registered: "Registrováno",
+        team: "týmů",
+        country: "zemí",
+        from: "z",
+      };
+  }
+};
+
+const getPluralEN = (count: number) => {
+  return {
+    registered: "Registered",
+    teams: count === 1 ? "team" : "teams",
+    countries: count === 1 ? "country" : "countries",
+  };
+};
 
 export default async function TeamCountryCount({
   teamCount,
@@ -15,13 +49,25 @@ export default async function TeamCountryCount({
   const t = await getI18n();
 
   if (locale === "en") {
-    <span>{`${t("hero.registered")} ${teamCount} ${t("hero.teams")} ${t(
-      "hero.from",
-    )} ${countryCount} ${t("hero.countries")}`}</span>;
+    return (
+      <div className="space-x-2">
+        <span>{getPluralEN(teamCount)?.registered}</span>
+        <span>{teamCount}</span>
+        <span>{getPluralEN(teamCount)?.teams}</span>
+        <span>{t("hero.from")} </span>
+        <span>{countryCount}</span>
+        <span>{getPluralEN(countryCount)?.countries}</span>
+      </div>
+    );
   }
   return (
-    <span>{`${t("hero.registered")} ${teamCount} ${t("hero.teams")} ${t(
-      "hero.from",
-    )} ${countryCount} ${t("hero.countries")}`}</span>
+    <div className="space-x-2">
+      <span>{getPluralCZ(teamCount)?.registered}</span>
+      <span>{teamCount}</span>
+      <span>{getPluralCZ(teamCount)?.team}</span>
+      <span>{getPluralCZ(countryCount).from}</span>
+      <span>{countryCount}</span>
+      <span>{getPluralCZ(countryCount)?.country}</span>
+    </div>
   );
 }

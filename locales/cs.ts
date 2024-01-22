@@ -17,10 +17,7 @@ export default {
   "hero.title": "Mezinárodní basketbalový turnaj mládeže",
   "hero.button": "Registrace do turnaje",
   // TODO add pluralization
-  "hero.registered": "Registrováno",
-  "hero.teams": "týmů",
   "hero.from": "z",
-  "hero.countries": "zemí",
   "form.optional": "Volitelně",
   "form.infoHeader": "Týmové údaje",
   "form.nextStep": "Další krok",
