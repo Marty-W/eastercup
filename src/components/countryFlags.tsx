@@ -5,6 +5,7 @@ interface Props {
 }
 
 export default function CountryFlags({ countries }: Props) {
+  if (!countries.length) return null;
   return (
     <div className="space-x-1 space-y-1">
       {countries.map((countryCode) => {

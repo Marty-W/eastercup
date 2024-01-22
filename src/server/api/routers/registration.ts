@@ -8,8 +8,8 @@ import {
   generateRegistrationInvoice,
   generateTshirtOrder,
   getInvoiceVarSymbol,
-  sendPostRegistrationEmail,
 } from "@/server/api/helpers";
+import { client } from "@/trigger";
 
 export const registrationRouter = createTRPCRouter({
   team: publicProcedure
@@ -34,9 +34,13 @@ export const registrationRouter = createTRPCRouter({
 
       const registrationInvoiceVarSymbol = getInvoiceVarSymbol(newTeamId);
 
-      if (process.env.VERCEL_ENV === "production") {
-        await sendPostRegistrationEmail(info.email, info.country);
-      }
+      await client.sendEvent({
+        name: "postreg.email",
+        payload: {
+          recipientEmail: info.email,
+          recipientCountry: info.country,
+        },
+      });
 
       const diff = new Date().getTime() - timer.getTime();
 

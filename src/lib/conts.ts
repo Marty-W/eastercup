@@ -1,5 +1,8 @@
 import * as z from "zod";
 
+export const EMAIL_WELCOME_TEMPLATE_ID_CS = 34509365;
+export const EMAIL_WELCOME_TEMPLATE_ID_EN = 34509317;
+
 export const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"] as const;
 
 export const REGISTRATION_FEE_EUR = 220;
@@ -143,10 +146,10 @@ export const teamFormBillingDefaultValues = {
 };
 
 const accomodationCategorySchema = z.object({
-  A: z.number().min(0).max(50).optional().default(0),
-  B: z.number().min(0).max(50).optional().default(0),
-  C: z.number().min(0).max(50).optional().default(0),
-  D: z.number().min(0).max(50).optional().default(0),
+  A: z.number().min(0).max(99).optional().default(0),
+  B: z.number().min(0).max(99).optional().default(0),
+  C: z.number().min(0).max(99).optional().default(0),
+  D: z.number().min(0).max(99).optional().default(0),
 });
 
 const accomodationWithRoleSchema = z.object({
@@ -158,10 +161,10 @@ const accomodationWithRoleSchema = z.object({
 });
 
 const roomSchema = z.object({
-  single: z.number().min(0).max(50).optional().default(0),
-  double: z.number().min(0).max(50).optional().default(0),
-  triple: z.number().min(0).max(50).optional().default(0),
-  other: z.number().min(0).max(50).optional().default(0),
+  single: z.number().min(0).max(99).optional().default(0),
+  double: z.number().min(0).max(99).optional().default(0),
+  triple: z.number().min(0).max(99).optional().default(0),
+  other: z.number().min(0).max(99).optional().default(0),
 });
 
 const roomWithRoleSchema = z.object({
@@ -185,12 +188,12 @@ const allergiesSchema = z.object({
 });
 
 export const tshirtOrderSchema = z.object({
-  noXsShirts: z.number().min(0).max(50).optional(),
-  noSShirts: z.number().min(0).max(50).optional(),
-  noMShirts: z.number().min(0).max(50).optional(),
-  noLShirts: z.number().min(0).max(50).optional(),
-  noXLShirts: z.number().min(0).max(50).optional(),
-  noXXLShirts: z.number().min(0).max(50).optional(),
+  noXsShirts: z.number().min(0).max(99).optional(),
+  noSShirts: z.number().min(0).max(99).optional(),
+  noMShirts: z.number().min(0).max(99).optional(),
+  noLShirts: z.number().min(0).max(99).optional(),
+  noXLShirts: z.number().min(0).max(99).optional(),
+  noXXLShirts: z.number().min(0).max(99).optional(),
 });
 
 export const cateringOrderSchema = z.object({

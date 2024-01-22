@@ -25,7 +25,7 @@ export default function TshirtInput<T extends FieldValues>({
               {...field}
               className="w-16"
               type="number"
-              max={50}
+              max={99}
               min={0}
               value={field.value === 0 ? "" : field.value}
               onChange={(e) => field.onChange(Number(e.target.value))}

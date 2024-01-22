@@ -99,6 +99,10 @@ export default {
   "form.zipCode": "PSČ",
   "form.ic": "IČ",
   "form.dic": "DIČ (volitelně)",
+  "form.success.one": "Váš tým ",
+  "form.success.two": " byl úspěšně zaregistrován.",
+  "form.success.pdfbutton": "Generovat zálohovou fakturu",
+  "form.success.goHome": "Go home",
   "stepper.one": "info",
   "stepper.two": "fakturace",
   "stepper.three": "služby",
@@ -114,7 +118,7 @@ export default {
   "allergies.count": "Pocet",
   "allergies.question": "Máte nějaké alergie, nebo specialni preference?",
   "allergies.halal": "Halal",
-  "allergies.vegetarian": "Vegetarian",
+  "allergies.vegetarian": "Vegetarián",
   "allergies.lactoseFree": "Bez laktózy",
   "allergies.glutenFree": "Bez lepku",
   "allergies.others": "Jiné",
@@ -128,16 +132,16 @@ export default {
   "accomodation.other": "Ostatní",
   "accomodation.room": "Pokoj",
   "accomodation.captionOne":
-    "Kategorie ubytovani. Nezapomente vyplnit formular pro vsechny dny.",
+    "Kategorie ubytování. Nezapomeňte vyplnit formulář pro všechny dny.",
   "accomodation.captionTwo":
-    "Typy pokoju. Nezapomente vyplnit formular pro vsechny dny.",
+    "Typy pokojů. Nezapomeňte vyplnit formulář pro všechny dny.",
   "accomodation.tooltip.headline": "Ceny ubytování",
   "accomodation.tooltip.categoryA": "Kategorie A - hotel",
   "accomodation.tooltip.categoryB": "Kategorie B - pension",
   "accomodation.tooltip.categoryC": "Kategorie C - domov mládeže",
   "accomodation.tooltip.categoryD":
     "Kategorie D - ubytování ve třídě ve škole - vlastní spací pytle",
-  "accomodation.tooltip.categoryA.price": "Cena od 840 Kč na osobu a noc",
+  "accomodation.tooltip.categoryA.price": "Cena od 840,- Kč na osobu a noc",
   "accomodation.tooltip.categoryB.price": "Cena od 620,- Kč na osobu a noc",
   "accomodation.tooltip.categoryC.price": "Cena od 460,- Kč na osobu a noc",
   "accomodation.tooltip.categoryD.price": "Cena od 160,- Kč na osobu a noc",
@@ -146,7 +150,7 @@ export default {
   "accomodation.tooltip.note2":
     "Přesný název ubytovacího zařízení a cena bude upřesněna před odesláním předfaktury za objednané služby.",
   "accomodation.tooltip.note3":
-    "Prednostne ubytujeme tymy, pote rodice a doprovod mimo tym.",
+    "Přednostně ubytujeme týmy, poté rodiče a doprovod mimo tým.",
   "accomodation.tooltip.storno": "Storno podmínky:",
   "accomodation.tooltip.storno.one":
     "zrušení rezervace do 48 hodin před příjezdem - zdarma",
