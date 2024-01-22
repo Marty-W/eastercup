@@ -1,4 +1,3 @@
-import { env } from "@/env.mjs";
 import { type z } from "zod";
 import {
   type BillingFormValues,
@@ -10,7 +9,6 @@ import {
   type accomodationRoomDaySchema,
   type InfoServerValues,
 } from "@/lib/conts";
-import * as postmark from "postmark";
 import { db } from "../db";
 import {
   invoice,
@@ -23,9 +21,6 @@ import {
   teamRoomInfo,
 } from "../db/schema";
 import { TRPCError } from "@trpc/server";
-
-const WELCOME_TEMPLATE_ID_CS = 34509365;
-const WELCOME_TEMPLATE_ID_EN = 34509317;
 
 export async function createTeam(teamInfo: InfoServerValues) {
   let newTeam;
@@ -291,29 +286,4 @@ function flattenAccomodationRooms(
           : [],
       )
     : [];
-}
-
-export async function sendPostRegistrationEmail(
-  recipientEmail: string,
-  recipientCountry: string,
-) {
-  const emailLang =
-    recipientCountry === "CZ" || recipientCountry === "SK" ? "cs" : "en";
-
-  const client = new postmark.ServerClient(env.POSTMARK_API_TOKEN);
-
-  try {
-    await client.sendEmailWithTemplate({
-      // TODO: add some customization, maybe team name?
-      TemplateModel: {},
-      TemplateId:
-        emailLang === "cs" ? WELCOME_TEMPLATE_ID_CS : WELCOME_TEMPLATE_ID_EN,
-      From: "info@eastercupklatovy.cz",
-      To: recipientEmail,
-    });
-  } catch (e) {
-    // NOTE: consider returning error to client and displaying it to user
-    console.error(`Something happend when sending email to ${recipientEmail}.`);
-    console.error(e);
-  }
 }
