@@ -88,11 +88,7 @@ export default function TeamServices() {
               <Spinner />
             </Button>
           ) : (
-            <Button
-              className="mx-auto mt-8 w-32 font-sans"
-              type="submit"
-              disabled
-            >
+            <Button className="mx-auto mt-8 w-32 font-sans" type="submit">
               {t("form.submit")}
             </Button>
           )}

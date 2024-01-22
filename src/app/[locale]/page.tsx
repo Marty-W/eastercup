@@ -23,23 +23,20 @@ export default async function Landing() {
                 <span>{`Klatovy, ${t("common.cz")}`}</span>
               </div>
             </div>
-            {/* TODO: add back when we have registration ready */}
-            {/* <Link */}
-            {/*   href="/form/info" */}
-            {/*   className="mx-auto max-w-[200px] rounded-md bg-brand-yellow px-4 py-2 active:translate-y-1 md:max-w-[300px] md:px-8 md:py-4" */}
-            {/* > */}
-            {/*   <span>{t("hero.button")}</span> */}
-            {/* </Link> */}
-            <p className="bold text-2xl">{t("hero.registratinionSoonOpen")}</p>
+            <Link
+              href="/form/info"
+              className="mx-auto max-w-[200px] rounded-md bg-brand-yellow px-4 py-2 active:translate-y-1 md:max-w-[300px] md:px-8 md:py-4"
+            >
+              <span>{t("hero.button")}</span>
+            </Link>
           </div>
           <div className="flex flex-col space-y-2 pb-6 text-sm md:space-y-6 md:text-base">
             <TimeCounter />
-            {/* TODO: add back when we have registration ready */}
-            {/* <TeamCountryCount */}
-            {/*   countryCount={teamCount.countryCount} */}
-            {/*   teamCount={teamCount.teamCount} */}
-            {/* /> */}
-            {/* <CountryFlags countries={teamCount.countries} /> */}
+            <TeamCountryCount
+              countryCount={teamCount.countryCount}
+              teamCount={teamCount.teamCount}
+            />
+            <CountryFlags countries={teamCount.countries} />
           </div>
         </div>
       </div>

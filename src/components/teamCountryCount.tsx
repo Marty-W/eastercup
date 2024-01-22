@@ -1,4 +1,4 @@
-import { getCurrentLocale, getI18n } from "locales/server";
+import { getCurrentLocale } from "locales/server";
 
 interface Props {
   teamCount: number;
@@ -41,12 +41,8 @@ const getPluralEN = (count: number) => {
   };
 };
 
-export default async function TeamCountryCount({
-  teamCount,
-  countryCount,
-}: Props) {
+export default function TeamCountryCount({ teamCount, countryCount }: Props) {
   const locale = getCurrentLocale();
-  const t = await getI18n();
 
   if (teamCount === 0 || countryCount === 0) {
     return null;
@@ -58,7 +54,7 @@ export default async function TeamCountryCount({
         <span>{getPluralEN(teamCount)?.registered}</span>
         <span>{teamCount}</span>
         <span>{getPluralEN(teamCount)?.teams}</span>
-        <span>{t("hero.from")} </span>
+        <span>from</span>
         <span>{countryCount}</span>
         <span>{getPluralEN(countryCount)?.countries}</span>
       </div>

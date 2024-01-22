@@ -16,10 +16,7 @@ export default {
   "common.accomodation": "Accomodation",
   "hero.title": "International youth basketball team tournament",
   "hero.button": "registration to tournament",
-  // TODO add pluralization
-  "hero.from": "from",
-  "hero.countries": "countires",
-  "hero.registratinionSoonOpen": "Sign up for the tournament will be open soon",
+  "hero.registrationSoonOpen": "Sign up for the tournament will be open soon",
   "hero.tillStart": "Tournament starts in:",
   "form.optional": "Optional",
   "form.infoHeader": "Team info",
