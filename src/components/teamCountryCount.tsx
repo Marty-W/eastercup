@@ -48,6 +48,10 @@ export default async function TeamCountryCount({
   const locale = getCurrentLocale();
   const t = await getI18n();
 
+  if (teamCount === 0 || countryCount === 0) {
+    return null;
+  }
+
   if (locale === "en") {
     return (
       <div className="space-x-2">

@@ -6,20 +6,18 @@ import { Button } from "@/components/ui/button";
 import WrongStateRedirect from "@/components/wrongStateRedirect";
 import { finishedFormStepsAtom, teamFormAtom } from "@/lib/atoms";
 import { useAtomValue, useSetAtom } from "jotai";
-import { useCurrentLocale } from "locales/client";
+import { useCurrentLocale, useI18n } from "locales/client";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 import { usePDF } from "react-to-pdf";
 
-// TODO: add translations
-// TODO: add check if user just posted a form, otherwise redirect him to the form
-
 export default function FormSuccess() {
   const formValues = useAtomValue(teamFormAtom);
   const pathname = usePathname();
   const locale = useCurrentLocale();
+  const t = useI18n();
   const setFinishedFormStepsAction = useSetAtom(finishedFormStepsAtom);
   const { toPDF, targetRef } = usePDF({
     method: "open",
@@ -49,14 +47,15 @@ export default function FormSuccess() {
         <div className="pt-8">
           <h1 className="mb-5 text-center font-display text-xl">Thank you!</h1>
           <p className="text-center">
-            Your team <span className="font-bold">{formValues?.teamName}</span>{" "}
-            was successfully registered.
+            <span>{t("form.success.one")}</span>
+            <span className="font-bold">{formValues?.teamName}</span>
+            <span>{t("form.success.two")}</span>
           </p>
         </div>
         <div className="mx-auto flex max-w-sm flex-col space-y-3 pt-4">
-          <Button onClick={() => toPDF()}>Generate PDF</Button>
+          <Button onClick={() => toPDF()}>{t("form.success.pdfbutton")}</Button>
           <Button asChild variant="secondary">
-            <Link href="/">Go home</Link>
+            <Link href="/">{t("form.success.goHome")}</Link>
           </Button>
         </div>
       </div>
