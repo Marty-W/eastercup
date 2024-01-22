@@ -18,7 +18,7 @@ export default {
   "hero.button": "Registrace do turnaje",
   // TODO add pluralization
   "hero.from": "z",
-  "form.optional": "Volitelně",
+  "form.optional": "(volitelně)",
   "form.infoHeader": "Týmové údaje",
   "form.nextStep": "Další krok",
   "form.previousStep": "Zpět",
