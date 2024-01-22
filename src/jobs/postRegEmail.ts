@@ -7,8 +7,6 @@ import {
   EMAIL_WELCOME_TEMPLATE_ID_CS,
   EMAIL_WELCOME_TEMPLATE_ID_EN,
 } from "@/lib/conts";
-import { renderToStream } from "@react-pdf/renderer";
-import { MyDocument } from "@/components/dummyPdf";
 
 client.defineJob({
   id: "postreg-email",

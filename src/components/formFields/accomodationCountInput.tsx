@@ -28,7 +28,7 @@ export default function AccomodationCountInput<T extends FieldValues>({
               {...field}
               className={cn("min-w-max", className)}
               type="number"
-              max={50}
+              max={99}
               min={0}
               onChange={(e) => field.onChange(Number(e.target.value))}
               value={field.value}
