@@ -65,6 +65,7 @@ export default {
   "form.meansOfTransport.willStayOver":
     "Můj dopravní prostředek zůstane po celou dobu turnaje v místě konání.",
   "form.note": "Poznámka pro organizátory",
+  "form.catering.header": "Stravování",
   "form.notePlaceholder": "Něco, co nám chcete říct?",
   "form.teamName.minError": "Název týmu musí mít alespoň 3 znaky.",
   "form.teamName.maxError": "Název týmu nesmí překročit 50 znaků.",

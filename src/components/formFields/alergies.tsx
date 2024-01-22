@@ -45,7 +45,7 @@ export default function Allergies() {
           control={form.control}
           name="cateringOrder.allergies.hasAllergies"
           render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md p-4">
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4">
               <FormControl>
                 <Checkbox
                   checked={field.value}
@@ -60,7 +60,7 @@ export default function Allergies() {
         </div>
       </div>
       {isHasAllergyCheckboxChecked && (
-        <div className="mx-auto flex w-full justify-between">
+        <div className="grid grid-cols-2 items-center justify-center md:px-16">
           <AllergyCheckbox
             control={form.control}
             checkBoxFieldName="cateringOrder.allergies.hasVegetarian"
@@ -91,24 +91,24 @@ export default function Allergies() {
             fieldLabel="allergies.others"
             numberFieldName="cateringOrder.allergies.otherAllergyCount"
           />
-        </div>
-      )}
-      {isOtherAllergyChecked && (
-        <FormField
-          control={form.control}
-          name="cateringOrder.allergies.otherAllergyNote"
-          render={({ field }) => (
-            <FormItem className="mx-auto">
-              <FormControl>
-                <Textarea
-                  {...field}
-                  className="w-[300px]"
-                  placeholder={t("allergies.specifyPlaceholder")}
-                />
-              </FormControl>
-            </FormItem>
+          {isOtherAllergyChecked && (
+            <FormField
+              control={form.control}
+              name="cateringOrder.allergies.otherAllergyNote"
+              render={({ field }) => (
+                <FormItem className="row-start-4 mx-auto self-center md:col-start-2 md:row-start-3">
+                  <FormControl>
+                    <Textarea
+                      {...field}
+                      className="w-[300px]"
+                      placeholder={t("allergies.specifyPlaceholder")}
+                    />
+                  </FormControl>
+                </FormItem>
+              )}
+            />
           )}
-        />
+        </div>
       )}
     </div>
   );

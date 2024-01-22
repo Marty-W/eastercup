@@ -80,6 +80,7 @@ export default {
   "form.interestInAccomodation": "Are you interested in accomodation?",
   "form.interestInCatering": "Are you interested in catering?",
   "form.interestInTshirts": "Are you interested in tournament t-shirts?",
+  "form.catering.header": "Catering",
   "form.noXsShirts": "Number of XS t-shirts",
   "form.noSShirts": "Number of S t-shirts",
   "form.noMShirts": "Number of M t-shirts",

@@ -22,7 +22,7 @@ export default function FoodInput<T extends FieldValues>({
               <Input
                 {...field}
                 value={field.value === 0 ? "" : field.value}
-                className="max-w-[60px]"
+                className="mx-auto max-w-fit"
                 type="number"
                 max={99}
                 min={0}
