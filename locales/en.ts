@@ -21,6 +21,7 @@ export default {
   "hero.teams": "teams",
   "hero.from": "from",
   "hero.countries": "countires",
+  "hero.registratinionSoonOpen": "Sign up for the tournament will be open soon",
   "form.optional": "Optional",
   "form.infoHeader": "Team info",
   "form.credentialsHeader": "Registrace tymu",

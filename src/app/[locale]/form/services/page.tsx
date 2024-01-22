@@ -73,6 +73,7 @@ export default function TeamServices() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto flex flex-col font-sans"
         >
+          {/* TODO: add back when we have registration ready */}
           <TeamServiceForm />
           {registerMutation.isLoading ||
           registerMutation.isSuccess ||
@@ -85,7 +86,11 @@ export default function TeamServices() {
               <Spinner />
             </Button>
           ) : (
-            <Button className="mx-auto mt-8 w-32 font-sans" type="submit">
+            <Button
+              className="mx-auto mt-8 w-32 font-sans"
+              type="submit"
+              disabled
+            >
               {t("form.submit")}
             </Button>
           )}

@@ -20,6 +20,7 @@ export default {
   "hero.registered": "Registrováno",
   "hero.teams": "týmů",
   "hero.from": "z",
+  "hero.registratinionSoonOpen": "Registrace bude brzy otevřena",
   "hero.countries": "zemí",
   "form.optional": "Volitelně",
   "form.infoHeader": "Týmové údaje",

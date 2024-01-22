@@ -75,11 +75,13 @@ export default async function InformationPage() {
           <Image src={TshirtsImage} alt="Tshirts" />
         </div>
       </InfoSection>
-      <InfoSection header={t("registration.header")}>
-        <Link href="/form/info" className="text-brand-blue">
-          {t("registration.text")}
-        </Link>
-      </InfoSection>
+
+      {/* TODO: add back when we have registration ready */}
+      {/* <InfoSection header={t("registration.header")}> */}
+      {/*   <Link href="/form/info" className="text-brand-blue"> */}
+      {/*     {t("registration.text")} */}
+      {/*   </Link> */}
+      {/* </InfoSection> */}
       <InfoSection header={t("contact.header")}>
         <div className="mb-4 space-y-1">
           <p>
