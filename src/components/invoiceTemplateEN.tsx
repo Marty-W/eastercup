@@ -91,7 +91,7 @@ export default function InvoiceTemplate() {
           </Table>
         </div>
         <div className="mb-6 text-right font-bold">
-          <p>Total amount: 120 €</p>
+          <p>Total amount: {REGISTRATION_FEE_EUR} €</p>
         </div>
       </div>
       <div className="mb-[600px] text-center font-bold">
