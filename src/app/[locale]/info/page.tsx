@@ -103,118 +103,119 @@ export default async function InformationPage() {
         </div>
         <p className="lg:leading-5">{t("contact.text")}</p>
       </InfoSection>
-      {curLocale === "cs" && (
-        <InfoSection header="Pravidla turnaje">
-          <ol className="list-inside list-decimal space-y-2 text-xs marker:inline marker:font-bold">
-            <li className="space-y-1">
-              <span>Turnaj je vyhlášen pro kategorie:</span>
-              <p>U11 dívky, chlapci a mix (nar. 1. 1. 2014 a mladší)</p>
-              <p>U12 dívky, chlapci a mix (nar. 1. 1. 2013 a mladší)</p>
-              <p>U14 dívky a chlapci (nar. 1. 1. 2011 a mladší)</p>
-              <p>U16 dívky a chlapci (nar. 1. 1. 2009 a mladší)</p>
-            </li>
-            <li>
-              <span>
-                Každé družstvo je složeno z maximálně 15 hráčů, v kategorii U15
-                z maximálně 12 hráčů
-              </span>
-            </li>
-            <li>
-              <span>
-                Kategorie U11 a U12 hrají s míčem velikosti 5, dívky U14 a U15 s
-                míčem vel. 6 a chlapci U14 a U15 s míčem vel. 7
-              </span>
-            </li>
-            <li>
-              <span>
-                Výška košů v kategoriích U11 a U12 je 260 cm, v kategoriích U14
-                a U15 je výška koše 305 cm
-              </span>
-            </li>
-            <li>
-              <span>
-                Každý účastník je povinen na vyžádání předložit doklad
-                totožnosti pro ověření věku. Nutné je foto a datum narození
-              </span>
-            </li>
-            <li>
-              <span>
-                Hraje se podle platných pravidel basketbalu a minibasketbalu pro
-                sezónu 2023/2024 s těmito změnami:
-              </span>
-              <div className="space-y-1">
-                <p>
-                  – v kategoriích U11 a U12 se hraje 4x8 minut hrubého času, čas
-                  se zastavuje pouze při oddechovém čase
-                </p>
-                <p>
-                  – v kategorie U15 a U14 se hraje 4x8 minut čistého času –
-                  oddechový čas je 60 sec., družstvo má v 1. poločase k
-                  dispozici 1 oddechový čas, ve 2. poločase 2 oddechové časy a v
-                  prodloužení 1 oddechový čas
-                </p>
-                <p>
-                  – všechny přestávky mezi čtvrtinami a před prodloužením jsou 2
-                  minuty, poločasová přestávka je 5 minut
-                </p>
-                <p>– povinné střídání hráče nastává při 4 faulech</p>
-                <p>
-                  – v případě nerozhodného stavu se prodloužení hraje 3 minuty
-                  čistého času. Pokud nebude ani po prodloužení rozhodnuto,
-                  přijde na řadu střelba trestných hodů (3 série) a poté po
-                  jednom až do úplného rozhodnutí
-                </p>
-                <p>
-                  – při rovnosti bodů ve skupinách rozhodují následující
-                  kritéria: 1. vzájemný zápas, 2. rozdíl skóre, 3. vyšší počet
-                  vstřelených bodů, 4. menší počet obdržených bodů 5. rozstřel –
-                  – šestky
-                </p>
-                <p>
-                  – každý tým musí být přítomen nejméně 5 minut před začátkem
-                  každého utkání. Nedodržení tohoto pravidla bude potrestáno 5
-                  body pro tým soupeře
-                </p>
-                <p>– v kategorii U11 a U12 platí pravidlo obranných 3 vteřin</p>
-                <p>
-                  – v kategorii U11 a U12 smí každý hráč nastoupit pouze ve 2
-                  čtvrtinách
-                </p>
-                <p>– v kategorii U11 a U12 nesmí hráči clonit</p>
-                <p>– v kategorii U11 a U12 neplatí tříbodové koše</p>
-              </div>
-            </li>
-            <li>
-              <span>
-                Každý tým je oprávněný podat protest proti výsledku zápasu nebo
-                řízení hry organizačnímu výboru, a to nejpozději 10 minut po
-                skončení zápasu společně s kaucí 500 Kč (20 EUR). V případě
-                zamítnutí kauce propadá ve prospěch organizátora.
-              </span>
-            </li>
-            <li>
-              <span>
-                Pořadatel nemá hmotnou zodpovědnost za majetek hráčů a trenérů.
-                Všechny týmy jsou povinné dbát na své věci tak, aby předcházeli
-                případným krádežím
-              </span>
-            </li>
-            <li>
-              <span>
-                Rozlosování turnaje proběhne po uzávěrce přihlášek a bude
-                zasláno společně s hracím systémem na adresu uvedenou v
-                přihlášce
-              </span>
-            </li>
-            <li>
-              <span>
-                Každý tým se rozcvičuje s vlastními míči. Pořadatel zajišťuje
-                pouze hrací míče.
-              </span>
-            </li>
-          </ol>
-        </InfoSection>
-      )}
+      {/* NOTE: removed until reviewed */}
+      {/* {curLocale === "cs" && ( */}
+      {/*   <InfoSection header="Pravidla turnaje"> */}
+      {/*     <ol className="list-inside list-decimal space-y-2 text-xs marker:inline marker:font-bold"> */}
+      {/*       <li className="space-y-1"> */}
+      {/*         <span>Turnaj je vyhlášen pro kategorie:</span> */}
+      {/*         <p>U11 dívky, chlapci a mix (nar. 1. 1. 2014 a mladší)</p> */}
+      {/*         <p>U12 dívky, chlapci a mix (nar. 1. 1. 2013 a mladší)</p> */}
+      {/*         <p>U14 dívky a chlapci (nar. 1. 1. 2011 a mladší)</p> */}
+      {/*         <p>U16 dívky a chlapci (nar. 1. 1. 2009 a mladší)</p> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Každé družstvo je složeno z maximálně 15 hráčů, v kategorii U15 */}
+      {/*           z maximálně 12 hráčů */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Kategorie U11 a U12 hrají s míčem velikosti 5, dívky U14 a U15 s */}
+      {/*           míčem vel. 6 a chlapci U14 a U15 s míčem vel. 7 */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Výška košů v kategoriích U11 a U12 je 260 cm, v kategoriích U14 */}
+      {/*           a U15 je výška koše 305 cm */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Každý účastník je povinen na vyžádání předložit doklad */}
+      {/*           totožnosti pro ověření věku. Nutné je foto a datum narození */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Hraje se podle platných pravidel basketbalu a minibasketbalu pro */}
+      {/*           sezónu 2023/2024 s těmito změnami: */}
+      {/*         </span> */}
+      {/*         <div className="space-y-1"> */}
+      {/*           <p> */}
+      {/*             – v kategoriích U11 a U12 se hraje 4x8 minut hrubého času, čas */}
+      {/*             se zastavuje pouze při oddechovém čase */}
+      {/*           </p> */}
+      {/*           <p> */}
+      {/*             – v kategorie U15 a U14 se hraje 4x8 minut čistého času – */}
+      {/*             oddechový čas je 60 sec., družstvo má v 1. poločase k */}
+      {/*             dispozici 1 oddechový čas, ve 2. poločase 2 oddechové časy a v */}
+      {/*             prodloužení 1 oddechový čas */}
+      {/*           </p> */}
+      {/*           <p> */}
+      {/*             – všechny přestávky mezi čtvrtinami a před prodloužením jsou 2 */}
+      {/*             minuty, poločasová přestávka je 5 minut */}
+      {/*           </p> */}
+      {/*           <p>– povinné střídání hráče nastává při 4 faulech</p> */}
+      {/*           <p> */}
+      {/*             – v případě nerozhodného stavu se prodloužení hraje 3 minuty */}
+      {/*             čistého času. Pokud nebude ani po prodloužení rozhodnuto, */}
+      {/*             přijde na řadu střelba trestných hodů (3 série) a poté po */}
+      {/*             jednom až do úplného rozhodnutí */}
+      {/*           </p> */}
+      {/*           <p> */}
+      {/*             – při rovnosti bodů ve skupinách rozhodují následující */}
+      {/*             kritéria: 1. vzájemný zápas, 2. rozdíl skóre, 3. vyšší počet */}
+      {/*             vstřelených bodů, 4. menší počet obdržených bodů 5. rozstřel – */}
+      {/*             – šestky */}
+      {/*           </p> */}
+      {/*           <p> */}
+      {/*             – každý tým musí být přítomen nejméně 5 minut před začátkem */}
+      {/*             každého utkání. Nedodržení tohoto pravidla bude potrestáno 5 */}
+      {/*             body pro tým soupeře */}
+      {/*           </p> */}
+      {/*           <p>– v kategorii U11 a U12 platí pravidlo obranných 3 vteřin</p> */}
+      {/*           <p> */}
+      {/*             – v kategorii U11 a U12 smí každý hráč nastoupit pouze ve 2 */}
+      {/*             čtvrtinách */}
+      {/*           </p> */}
+      {/*           <p>– v kategorii U11 a U12 nesmí hráči clonit</p> */}
+      {/*           <p>– v kategorii U11 a U12 neplatí tříbodové koše</p> */}
+      {/*         </div> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Každý tým je oprávněný podat protest proti výsledku zápasu nebo */}
+      {/*           řízení hry organizačnímu výboru, a to nejpozději 10 minut po */}
+      {/*           skončení zápasu společně s kaucí 500 Kč (20 EUR). V případě */}
+      {/*           zamítnutí kauce propadá ve prospěch organizátora. */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Pořadatel nemá hmotnou zodpovědnost za majetek hráčů a trenérů. */}
+      {/*           Všechny týmy jsou povinné dbát na své věci tak, aby předcházeli */}
+      {/*           případným krádežím */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Rozlosování turnaje proběhne po uzávěrce přihlášek a bude */}
+      {/*           zasláno společně s hracím systémem na adresu uvedenou v */}
+      {/*           přihlášce */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*       <li> */}
+      {/*         <span> */}
+      {/*           Každý tým se rozcvičuje s vlastními míči. Pořadatel zajišťuje */}
+      {/*           pouze hrací míče. */}
+      {/*         </span> */}
+      {/*       </li> */}
+      {/*     </ol> */}
+      {/*   </InfoSection> */}
+      {/* )} */}
       <InfoSection subSectionClassName="lg:col-start-2">
         <Image
           src={People}
