@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
@@ -51,6 +52,7 @@ export default function RootLayout({
             <Toaster />
           </I18nProviderClient>
         </TRPCReactProvider>
+        <Analytics />
       </body>
     </html>
   );
