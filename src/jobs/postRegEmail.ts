@@ -7,6 +7,8 @@ import {
   EMAIL_WELCOME_TEMPLATE_ID_CS,
   EMAIL_WELCOME_TEMPLATE_ID_EN,
 } from "@/lib/conts";
+import { renderToStream } from "@react-pdf/renderer";
+import { MyDocument } from "@/components/dummyPdf";
 
 client.defineJob({
   id: "postreg-email",
@@ -21,6 +23,11 @@ client.defineJob({
   }),
   run: async (payload, io) => {
     const { recipientEmail, recipientCountry } = payload;
+
+    // await io.runTask("generate-invoice", async () => {
+    //   // const stream = await renderToStream(<MyDocument />);
+    //   const stream = await renderToStream(<MyDocument />);
+    // });
 
     const emailLang =
       recipientCountry === "CZ" || recipientCountry === "SK" ? "cs" : "en";
