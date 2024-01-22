@@ -2,6 +2,7 @@
 import TeamServiceForm from "@/components/TeamServiceForm";
 import { Button } from "@/components/ui/button";
 import Spinner from "@/components/ui/spinner";
+import { usePreventFormExit } from "@/hooks/usePreventFormExit";
 import {
   formSubmissionError,
   teamBillingAtom,
@@ -53,6 +54,7 @@ export default function TeamServices() {
       router.push("/form/failure#top");
     },
   });
+  usePreventFormExit();
 
   const onSubmit = (values: TeamServicesFormValues) => {
     setTeamServicesFormValues(values);
