@@ -2,6 +2,7 @@ import { type Control, type FieldValues, type Path } from "react-hook-form";
 import { FormField, FormItem, FormControl } from "../ui/form";
 import { Input } from "../ui/input";
 import { type LocaleKey } from "@/lib/types";
+import { cn } from "@/lib/utils";
 
 interface Props<T extends FieldValues> {
   fieldName: string;
@@ -25,7 +26,7 @@ export default function AccomodationCountInput<T extends FieldValues>({
             {/* TODO: get actual max number */}
             <Input
               {...field}
-              className={className}
+              className={cn("min-w-max", className)}
               type="number"
               max={50}
               min={0}

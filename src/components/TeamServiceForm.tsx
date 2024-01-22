@@ -49,7 +49,7 @@ export default function TeamServiceForm() {
           />
         ) : (
           <SubQuestionContainerWithReturn
-            header="Zpet"
+            header={t("form.catering.header")}
             infoPopover={<CateringPopover />}
             headerAction={() => {
               form.setValue("interestInCatering", false, {

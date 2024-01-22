@@ -32,7 +32,7 @@ export default function AllergyCheckbox<T extends FieldValues>({
   });
 
   return (
-    <div className="flex flex-col items-center space-y-3 rounded-md border p-4">
+    <div className="grid w-fit grid-cols-[w-min_1fr] items-center space-y-3 p-4">
       <FormField
         control={control}
         name={checkBoxFieldName}
@@ -40,6 +40,7 @@ export default function AllergyCheckbox<T extends FieldValues>({
           <FormItem className="flex flex-row items-start space-x-3 space-y-0">
             <FormControl>
               <Checkbox
+                className="mx-2"
                 checked={field.value}
                 onCheckedChange={(value) => {
                   if (value === false) {
@@ -49,18 +50,18 @@ export default function AllergyCheckbox<T extends FieldValues>({
                 }}
               />
             </FormControl>
-            <div className="space-y-1 leading-none">
-              <FormLabel>{t(fieldLabel)}</FormLabel>
-            </div>
           </FormItem>
         )}
       />
+      <div className="h-full leading-none">
+        <FormLabel>{t(fieldLabel)}</FormLabel>
+      </div>
       <FormField
         control={control}
         name={numberFieldName}
         disabled={!isCheckboxChecked}
         render={({ field }) => (
-          <FormItem>
+          <FormItem className="col-start-2">
             <FormControl>
               <Input
                 {...field}
