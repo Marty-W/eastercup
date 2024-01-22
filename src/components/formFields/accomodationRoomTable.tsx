@@ -25,7 +25,9 @@ export default function AccomodationTable({ day }: Props) {
 
   return (
     <Table>
-      <TableCaption>{t("accomodation.captionTwo")}</TableCaption>
+      <TableCaption className="text-brand-red">
+        {t("accomodation.captionTwo")}
+      </TableCaption>
       <TableHeader>
         <TableRow>
           <TableHead></TableHead>

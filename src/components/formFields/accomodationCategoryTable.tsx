@@ -31,7 +31,9 @@ export default function AccomodationCategoryTable({ day }: Props) {
   return (
     <div className="flex flex-col space-y-2">
       <Table>
-        <TableCaption>{t("accomodation.captionOne")}</TableCaption>
+        <TableCaption className="text-md text-brand-red">
+          {t("accomodation.captionOne")}
+        </TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead></TableHead>
