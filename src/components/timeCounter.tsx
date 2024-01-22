@@ -1,6 +1,7 @@
 "use client";
 import { TOURNAMENT_START } from "@/lib/conts";
 import { intervalToDuration } from "date-fns";
+import { useI18n } from "locales/client";
 import { useEffect, useState } from "react";
 
 const TimeCounter = () => {
@@ -8,6 +9,7 @@ const TimeCounter = () => {
   const [diff, setDiff] = useState(() =>
     intervalToDuration({ start: today, end: TOURNAMENT_START }),
   );
+  const t = useI18n();
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -19,9 +21,12 @@ const TimeCounter = () => {
   });
 
   return (
-    <span
-      suppressHydrationWarning
-    >{`${diff.months}m : ${diff.days}d : ${diff.hours}h : ${diff.minutes}m : ${diff.seconds} s`}</span>
+    <div>
+      <p>{t("hero.tillStart")}</p>
+      <span
+        suppressHydrationWarning
+      >{`${diff.months}m : ${diff.days}d : ${diff.hours}h : ${diff.minutes}m : ${diff.seconds} s`}</span>
+    </div>
   );
 };
 

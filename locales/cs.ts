@@ -18,6 +18,7 @@ export default {
   "hero.button": "Registrace do turnaje",
   // TODO add pluralization
   "hero.registered": "Registrováno",
+  "hero.tillStart": "Do začátku turnaje zbývá:",
   "hero.teams": "týmů",
   "hero.from": "z",
   "hero.registratinionSoonOpen": "Registrace bude brzy otevřena",
