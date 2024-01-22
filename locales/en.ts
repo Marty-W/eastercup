@@ -65,7 +65,7 @@ export default {
   "form.nextStep": "Next step",
   "form.previousStep": "Go back",
   "form.submit": "Submit",
-  "form.teamName.minError": "Team name must be at least 10 characters long.",
+  "form.teamName.minError": "Team name must be at least 3 characters long.",
   "form.teamName.maxError": "Team name must not exceed 50 characters.",
   "form.country.error": "Please select a valid country.",
   "form.category.error": "Please select a team category.",

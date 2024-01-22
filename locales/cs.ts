@@ -66,7 +66,7 @@ export default {
     "Můj dopravní prostředek zůstane po celou dobu turnaje v místě konání.",
   "form.note": "Poznámka pro organizátory",
   "form.notePlaceholder": "Něco, co nám chcete říct?",
-  "form.teamName.minError": "Název týmu musí mít alespoň 10 znaků.",
+  "form.teamName.minError": "Název týmu musí mít alespoň 3 znaky.",
   "form.teamName.maxError": "Název týmu nesmí překročit 50 znaků.",
   "form.country.error": "Prosím vyberte platnou zemi.",
   "form.category.error": "Prosím vyberte kategorii týmu.",
