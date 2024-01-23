@@ -106,7 +106,7 @@ export default {
   "catering.tooltip.lunchPrice": "Oběd: 175 Kč",
   "catering.tooltip.dinnerPrice": "Večeře: 155 Kč",
   "catering.tooltip.note":
-    "V případě ubytování v kategorii A nebo B bude cena snídaně upřesněna po potvrzení konkrétního ubytovacího zařízení.",
+    "V případě ubytování v kategorii A nebo B bude cena snídaně a místo podávání snídaně upřesněno po potvrzení konkrétního ubytovacího zařízení. ",
   "catering.breakfast": "Snídaně",
   "catering.lunch": "Oběd",
   "catering.dinner": "Večeře",
@@ -200,18 +200,20 @@ s výjimkami uvedenými v sekci „Pravidla“.`,
     "Zaplacením startovného účastníci turnaje souhlasí s podmínkami účasti, propozicemi a pravidly turnaje",
   "info.accomodation.header": "Ubytování:",
   "info.accomodation.text":
-    "Ubytování typu A, B a C jsou početně omezeny. Ceny budou upřesněné.",
+    "Ceny ubytování typu A, B a C jsou předběžné a jsou bez snídaně.",
+  "info.accomodation.text2":
+    "Přesný název ubytovacího zařízení a cena bude upřesněna před odesláním předfaktury za objednané služby.",
   "info.accomodation.hotel.header": "Typ A: Hotel",
   "info.accomodation.pension.header": "Typ B: Penzion",
-  "info.accomodation.hostel.header": "Typ C: Hostel nebo internát",
+  "info.accomodation.hostel.header": "Typ C: domov mládeže",
   "info.accomodation.school.header": "Typ D: Ve třídách základní školy",
   "info.accomodation.storno.header": "Storno podmínky:",
   "info.accomodation.storno.text1":
-    "– zrušení rezervace do 48 hodin před příjezdem – zdarma",
+    "- zrušení rezervace do 48 hodin před příjezdem - zdarma",
   "info.accomodation.storno.text2":
-    "– zrušení rezervace do 24 hodin před příjezdem – 50 % z ceny první noci",
+    "- zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
   "info.accomodation.storno.text3":
-    "– zrušení rezervace méně než 24 hodin před příjezdem – poplatek 100 % z ceny první noci",
+    "- zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
   "info.catering.header": "STRAVOVÁNÍ:",
   "info.catering.text":
     "V průběhu turnaje mají hráči a trenéři možnost se stravovat ve 2 jídelnách, kde mají zajištěné plnohodnotné jídlo po celou dobu turnaje – snídaně, obědy, večeře. Dále nabízíme možnost diety (stačí napsat do poznámky při registraci). Obsah obrázku text, snímek obrazovky, obloha, strom",

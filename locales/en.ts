@@ -206,7 +206,9 @@ export default {
     "Tournament fee paying means tournaments participants agree with tournament's conditions, propositions and rules.",
   "info.accomodation.header": "ACCOMMODATION:",
   "info.accomodation.text":
-    "The prices of accommodation type A, B and C are preliminary and are without any breakfast. Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
+    "The prices of accommodation type A, B and C are preliminary and are without any breakfast.",
+  "info.accomodation.text2":
+    "Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
   "info.accomodation.hotel.header": "Category A: Hotel",
   "info.accomodation.pension.header": "Category B: Pension",
   "info.accomodation.hostel.header": "Category C: Hostel or internat",

@@ -230,7 +230,9 @@ export default async function InformationPage() {
             <div>
               <h4 className="font-bold">{t("accomodation.hotel.header")}</h4>
               {curLocale === "cs" ? (
-                <p>- 2–3 lůžkové pokoje</p>
+                <>
+                  <p>- cena od 840 Kč na osobu a noc</p>
+                </>
               ) : (
                 <>
                   <p>– price based on hotel</p>
@@ -241,15 +243,20 @@ export default async function InformationPage() {
             <div>
               <h4 className="font-bold">{t("accomodation.pension.header")}</h4>
               {curLocale === "cs" ? (
-                <p>- 2–3 lůžkové pokoje</p>
+                <>
+                  <p>- cena od 620,- Kč na osobu a noc</p>
+                </>
               ) : (
                 <p>– price from 26 EUR per person/night</p>
               )}
             </div>
             <div>
+              {/* TODO: nemel by tohle byt domov mladeze? */}
               <h4 className="font-bold">{t("accomodation.hostel.header")}</h4>
               {curLocale === "cs" ? (
-                <p>- 2–3 lůžkové pokoje</p>
+                <>
+                  <p>- cena od 460,- Kč na osobu a noc</p>
+                </>
               ) : (
                 <p>– price from 19 EUR per person/night</p>
               )}
@@ -257,7 +264,10 @@ export default async function InformationPage() {
             <div>
               <h4 className="font-bold">{t("accomodation.school.header")}</h4>
               {curLocale === "cs" ? (
-                <p>– na karimatce ve vlastním spacáku</p>
+                <>
+                  <p>- na karimatce ve vlastním spacáku</p>
+                  <p>- cena od 160,- Kč na osobu a noc</p>
+                </>
               ) : (
                 <>
                   <p>– own sleepig bags and pads</p>
@@ -266,8 +276,9 @@ export default async function InformationPage() {
               )}
             </div>
           </div>
-          <div className="lg:py-4">
+          <div className="space-y-2 lg:py-4">
             <p>{t("accomodation.text")}</p>
+            <p>{t("accomodation.text2")}</p>
           </div>
           <div className="pt-6 lg:pt-0 lg:leading-5">
             <p className="font-bold">{t("accomodation.storno.header")}</p>
@@ -280,6 +291,7 @@ export default async function InformationPage() {
       <InfoSection header={t("catering.header")}>
         <InfoSubsection>
           <p className="lg:leading-5">{t("catering.text")}</p>
+          {/* FIXME: this could be in locale, don't have time to do it now */}
           {curLocale === "en" && (
             <div className="lg:leading-5">
               <p>
@@ -290,10 +302,35 @@ export default async function InformationPage() {
               <p>dinner – 6,5 EUR (the hot meal + fruit)</p>
             </div>
           )}
+          {curLocale === "cs" && (
+            <div className="space-y-2 lg:leading-5">
+              <div>
+                <p>
+                  - snídaně 110,- Kč formou bohatých švédských stolů včetně
+                  ovoce a zeleniny
+                </p>
+                <p>
+                  - oběd 175,- Kč polévka, hlavní jídlo, ovoce + ovocný nebo
+                  zeleninový salát
+                </p>
+                <p>- večeře 155,- Kč teplé hlavní jídlo + ovoce</p>
+              </div>
+              <p>Nápoje v neomezeném množství při konzumaci v jídelně.</p>
+              <p>
+                Příprava pokrmů vhodných pro alergiky je možná, ale je třeba ji
+                nahlásit při registraci.
+              </p>
+              <p>
+                V případě ubytování v kategorii A nebo B bude cena snídaně a
+                místo podávání snídaně upřesněno po potvrzení konkrétního
+                ubytovacího zařízení.
+              </p>
+            </div>
+          )}
           <div className="space-y-2 lg:grid lg:grid-cols-2 lg:space-y-0">
             <div className="flex-col lg:flex lg:space-y-1">
               <p className="font-bold">{t("catering.place1.header")}</p>
-              <p>{t("catering.place1.text")}</p>
+              <p className="max-w-sm">{t("catering.place1.text")}</p>
             </div>
             <div className="lg:flex lg:flex-col lg:space-y-1">
               <p className="font-bold">{t("catering.place2.header")}</p>
