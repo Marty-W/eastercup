@@ -19,7 +19,7 @@ export default async function Landing() {
                 <div className="mb-6 text-xl font-bold md:mb-10 md:text-2xl">
                   <h1>{t("hero.title")}</h1>
                 </div>
-                <h2 className="font-bold">28. - 31. 3. 2023</h2>
+                <h2 className="font-bold">28. - 31. 3. 2024</h2>
                 <span>{`Klatovy, ${t("common.cz")}`}</span>
               </div>
             </div>
