@@ -5,6 +5,7 @@ import {
   type teamFormBillingSchema,
   type teamFormInfoSchema,
   type fullFormSchema,
+  type TEAM_CATEGORIRES,
 } from "./conts";
 
 export type LocaleKey = keyof typeof locale;
@@ -42,3 +43,12 @@ export const isFormFinalSegment = (
 ): segment is FormFinalSegment => {
   return segment === "success" || segment === "failure";
 };
+
+export type TeamCategory = (typeof TEAM_CATEGORIRES)[number];
+
+export interface Team {
+  name: string;
+  country: string;
+}
+
+export type TeamsByCategory = Record<TeamCategory, Team[]>;

@@ -238,4 +238,6 @@ export default {
     "Next to the Black Tower, there is a Jesuit church in the square, under which there are Klatovy catacombs, underground spaces designed to bury Both Jesuits and persons who were not members of the order. The ventilation system of the catacombs allows maintaining the optimum temperature for preserving mummified bodies. Visitors can view 30 of them in the Klatovy catacombs, while a further 7 are stored in a publicly inaccessible part of the crypts.",
   "info.city.text4":
     "Other Klatovy historic sights are also worth visiting, e.g. baroque pharmacy U Bílýho unicorn, where there is now a museum documenting the development of pharmacy from 1776 to 1966, when the pharmacy ceased its activities.",
+  "registeredTeams.header": "Registered teams",
+  "registeredTeams.emptyState": "There are no registered teams yet",
 } satisfies Record<keyof typeof Locale, string>;

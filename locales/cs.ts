@@ -231,4 +231,6 @@ s výjimkami uvedenými v sekci „Pravidla“.`,
     "Vedle Černé věže se na náměstí nachází jezuitský kostel, pod kterým jsou klatovské katakomby, podzemní prostory určené k pohřbívání jezuitů i osob, které nebyly členy řádu. Větrací systém katakomb umožňuje udržovat optimální teplotu pro konzervaci mumifikovaných těl. Návštěvníci jich mohou v klatovských katakombách zhlédnout 30, dalších 7 je uloženo ve veřejnosti nepřístupné části krypt.",
   "info.city.text4":
     "Za návštěvu stojí i další klatovské pamětihodnosti, např. barokní lékárna U Bílého jednorožce, kde je nyní muzeum dokumentující vývoj lékárnictví od roku 1776 do roku 1966, kdy lékárna ukončila svoji činnost.",
+  "registeredTeams.header": "Registrované týmy",
+  "registeredTeams.emptyState": "Zatím nejsou registrovány žádné týmy.",
 } as const;
