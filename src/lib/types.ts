@@ -52,3 +52,8 @@ export interface Team {
 }
 
 export type TeamsByCategory = Record<TeamCategory, Team[]>;
+
+export type NavLink = {
+  href: string;
+  text: LocaleKey;
+};

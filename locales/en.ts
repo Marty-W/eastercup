@@ -163,6 +163,9 @@ export default {
     //TODO dopln cenu v EUR
     "The price is 300 Kc when you buy in advance, 350 Kc when you buy it on the spot",
   "navbar.info": "information",
+  "navbar.teams": "teams",
+  "hamburger.info": "info",
+  "hamburger.teams": "teams",
   "info.header": "INFORMATION",
   "info.categories.header": "CATEGORIES:",
   "info.categories.subheader1": "MINI EASTER CUP:",
