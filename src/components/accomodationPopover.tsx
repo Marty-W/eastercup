@@ -14,7 +14,7 @@ export default function AccomodationPopover() {
           <h4 className="text-md py-2 text-center font-semibold">
             {t("headline")}
           </h4>
-          <ul className="list-inside list-disc">
+          <ul className="list-inside list-disc text-sm">
             <li>
               {t("categoryA")}: {t("categoryA.price")}
             </li>
@@ -29,20 +29,22 @@ export default function AccomodationPopover() {
             </li>
           </ul>
         </div>
-        <div className="text-wrap py-2">
-          <p>{t("note")}</p>
-        </div>
-        <div className="text-wrap py-2">
-          <p>{t("note2")}</p>
-        </div>
-        <div className="text-wrap py-2">
-          <p>{t("note3")}</p>
+        <div className="text-sm">
+          <div className="text-wrap py-2">
+            <p>{t("note")}</p>
+          </div>
+          <div className="text-wrap py-2">
+            <p>{t("note2")}</p>
+          </div>
+          <div className="text-wrap py-2">
+            <p>{t("note3")}</p>
+          </div>
         </div>
         <div className="text-wrap">
           <h4 className="text-md py-2 text-center font-semibold">
             {t("storno")}
           </h4>
-          <ul className="list-inside list-disc">
+          <ul className="list-inside list-disc text-sm">
             <li>{t("storno.one")}</li>
             <li>{t("storno.two")}</li>
             <li>{t("storno.three")}</li>

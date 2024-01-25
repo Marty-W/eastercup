@@ -75,6 +75,7 @@ export default function TeamServices() {
           onSubmit={form.handleSubmit(onSubmit)}
           className="mx-auto flex flex-col font-sans"
         >
+          {/* TODO: add back when we have registration ready */}
           <TeamServiceForm />
           {registerMutation.isLoading ||
           registerMutation.isSuccess ||

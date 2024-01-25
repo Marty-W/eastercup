@@ -23,7 +23,6 @@ export default function AccomodationCountInput<T extends FieldValues>({
       render={({ field }) => (
         <FormItem>
           <FormControl>
-            {/* TODO: get actual max number */}
             <Input
               {...field}
               className={cn("min-w-max", className)}
