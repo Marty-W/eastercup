@@ -47,27 +47,17 @@ export default function TeamCountryCount({ teamCount, countryCount }: Props) {
   if (teamCount === 0 || countryCount === 0) {
     return null;
   }
+  const messageEN = `${getPluralEN(teamCount)
+    ?.registered} ${teamCount} ${getPluralEN(teamCount)
+    ?.teams} from ${countryCount} ${getPluralEN(countryCount)?.countries}`;
+  const messageCZ = `${getPluralCZ(teamCount)
+    ?.registered} ${teamCount} ${getPluralCZ(teamCount)?.team} ${
+    getPluralCZ(countryCount).from
+  } ${countryCount} ${getPluralCZ(countryCount)?.country}`;
 
-  if (locale === "en") {
-    return (
-      <div className="space-x-2">
-        <span>{getPluralEN(teamCount)?.registered}</span>
-        <span>{teamCount}</span>
-        <span>{getPluralEN(teamCount)?.teams}</span>
-        <span>from</span>
-        <span>{countryCount}</span>
-        <span>{getPluralEN(countryCount)?.countries}</span>
-      </div>
-    );
-  }
   return (
-    <div className="space-x-2">
-      <span>{getPluralCZ(teamCount)?.registered}</span>
-      <span>{teamCount}</span>
-      <span>{getPluralCZ(teamCount)?.team}</span>
-      <span>{getPluralCZ(countryCount).from}</span>
-      <span>{countryCount}</span>
-      <span>{getPluralCZ(countryCount)?.country}</span>
+    <div>
+      <p>{locale === "en" ? messageEN : messageCZ}</p>
     </div>
   );
 }
