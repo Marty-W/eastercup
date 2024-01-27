@@ -4,6 +4,7 @@ import {
   addTeamBillingInfo,
   addTeamTransportInfo,
   createTeam,
+  generateAccomodationOrder,
   generateCateringOrder,
   generateRegistrationInvoice,
   generateTshirtOrder,
@@ -28,6 +29,11 @@ export const registrationRouter = createTRPCRouter({
         generateRegistrationInvoice(newTeamId, info.country),
         generateTshirtOrder(newTeamId, services.tshirtOrder),
         generateCateringOrder(newTeamId, services.cateringOrder),
+        generateAccomodationOrder(
+          newTeamId,
+          services.accomodationCategory,
+          services.accomodationRoom,
+        ),
       ];
 
       await Promise.all(parallelTasks);

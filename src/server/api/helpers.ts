@@ -216,9 +216,12 @@ function sumCateringOrder(cateringOrder: z.infer<typeof cateringOrderSchema>) {
 
 export async function generateAccomodationOrder(
   teamID: number,
-  accomodationCategories: z.infer<typeof accomodationCategoryDaySchema>,
-  accomodationRooms: z.infer<typeof accomodationRoomDaySchema>,
+  accomodationCategories?: z.infer<typeof accomodationCategoryDaySchema>,
+  accomodationRooms?: z.infer<typeof accomodationRoomDaySchema>,
 ) {
+  if (!accomodationCategories || !accomodationRooms) {
+    return;
+  }
   const accomodationCategoryValues = flattenAccomodationCategories(
     accomodationCategories,
     teamID,
