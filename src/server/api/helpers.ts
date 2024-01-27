@@ -216,25 +216,29 @@ function sumCateringOrder(cateringOrder: z.infer<typeof cateringOrderSchema>) {
 
 export async function generateAccomodationOrder(
   teamID: number,
-  accomodationCategories: z.infer<typeof accomodationCategoryDaySchema>,
-  accomodationRooms: z.infer<typeof accomodationRoomDaySchema>,
+  accomodationCategories?: z.infer<typeof accomodationCategoryDaySchema>,
+  accomodationRooms?: z.infer<typeof accomodationRoomDaySchema>,
 ) {
-  const accomodationCategoryValues = flattenAccomodationCategories(
-    accomodationCategories,
-    teamID,
-  );
+  if (accomodationCategories) {
+    const accomodationCategoryValues = flattenAccomodationCategories(
+      accomodationCategories,
+      teamID,
+    );
 
-  if (accomodationCategoryValues.length > 0) {
-    await db.insert(teamAccomodationInfo).values(accomodationCategoryValues);
+    if (accomodationCategoryValues.length > 0) {
+      await db.insert(teamAccomodationInfo).values(accomodationCategoryValues);
+    }
   }
 
-  const accomodationRoomValues = flattenAccomodationRooms(
-    accomodationRooms,
-    teamID,
-  );
+  if (accomodationRooms) {
+    const accomodationRoomValues = flattenAccomodationRooms(
+      accomodationRooms,
+      teamID,
+    );
 
-  if (accomodationRoomValues.length > 0) {
-    await db.insert(teamRoomInfo).values(accomodationRoomValues);
+    if (accomodationRoomValues.length > 0) {
+      await db.insert(teamRoomInfo).values(accomodationRoomValues);
+    }
   }
 }
 
