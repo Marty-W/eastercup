@@ -13,12 +13,12 @@ export default async function RegisteredTeams() {
         </h1>
       </div>
       <div className="flex flex-col space-y-6 md:grid md:grid-cols-2 md:justify-items-stretch md:gap-x-4 md:gap-y-4 md:space-y-0">
-        <RegisteredTeamsTable category="U12G" team={registeredTeams.U12G} />
-        <RegisteredTeamsTable category="U12B" team={registeredTeams.U12B} />
-        <RegisteredTeamsTable category="U14G" team={registeredTeams.U14G} />
-        <RegisteredTeamsTable category="U14B" team={registeredTeams.U14B} />
         <RegisteredTeamsTable category="U16G" team={registeredTeams.U16G} />
         <RegisteredTeamsTable category="U16B" team={registeredTeams.U16B} />
+        <RegisteredTeamsTable category="U14G" team={registeredTeams.U14G} />
+        <RegisteredTeamsTable category="U14B" team={registeredTeams.U14B} />
+        <RegisteredTeamsTable category="U12G" team={registeredTeams.U12G} />
+        <RegisteredTeamsTable category="U12B" team={registeredTeams.U12B} />
         <RegisteredTeamsTable
           category="U11 MIX"
           team={registeredTeams["U11 MIX"]}
