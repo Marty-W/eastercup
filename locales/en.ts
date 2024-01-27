@@ -14,7 +14,7 @@ export default {
   "common.men": "Men",
   "common.women": "Women",
   "common.accomodation": "Accomodation",
-  "hero.title": "International youth basketball team tournament",
+  "hero.title": "International youth basketball tournament",
   "hero.button": "registration to tournament",
   "hero.registrationSoonOpen": "Sign up for the tournament will be open soon",
   "hero.tillStart": "Tournament starts in:",
