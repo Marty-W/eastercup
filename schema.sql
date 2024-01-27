@@ -10,6 +10,10 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
+CREATE SCHEMA IF NOT EXISTS "drizzle";
+
+ALTER SCHEMA "drizzle" OWNER TO "postgres";
+
 CREATE EXTENSION IF NOT EXISTS "pgsodium" WITH SCHEMA "pgsodium";
 
 CREATE EXTENSION IF NOT EXISTS "pg_graphql" WITH SCHEMA "graphql";
@@ -27,6 +31,26 @@ CREATE EXTENSION IF NOT EXISTS "uuid-ossp" WITH SCHEMA "extensions";
 SET default_tablespace = '';
 
 SET default_table_access_method = "heap";
+
+CREATE TABLE IF NOT EXISTS "drizzle"."__drizzle_migrations" (
+    "id" integer NOT NULL,
+    "hash" text NOT NULL,
+    "created_at" bigint
+);
+
+ALTER TABLE "drizzle"."__drizzle_migrations" OWNER TO "postgres";
+
+CREATE SEQUENCE IF NOT EXISTS "drizzle"."__drizzle_migrations_id_seq"
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+ALTER TABLE "drizzle"."__drizzle_migrations_id_seq" OWNER TO "postgres";
+
+ALTER SEQUENCE "drizzle"."__drizzle_migrations_id_seq" OWNED BY "drizzle"."__drizzle_migrations"."id";
 
 CREATE TABLE IF NOT EXISTS "public"."catering_order" (
     "id" integer NOT NULL,
@@ -257,6 +281,8 @@ ALTER TABLE "public"."tshirt_orders_id_seq" OWNER TO "postgres";
 
 ALTER SEQUENCE "public"."tshirt_orders_id_seq" OWNED BY "public"."tshirt_orders"."id";
 
+ALTER TABLE ONLY "drizzle"."__drizzle_migrations" ALTER COLUMN "id" SET DEFAULT nextval('drizzle.__drizzle_migrations_id_seq'::regclass);
+
 ALTER TABLE ONLY "public"."catering_order" ALTER COLUMN "id" SET DEFAULT nextval('public.catering_order_id_seq'::regclass);
 
 ALTER TABLE ONLY "public"."email_list" ALTER COLUMN "id" SET DEFAULT nextval('public.email_list_id_seq'::regclass);
@@ -274,6 +300,9 @@ ALTER TABLE ONLY "public"."team_transport_info" ALTER COLUMN "id" SET DEFAULT ne
 ALTER TABLE ONLY "public"."teams" ALTER COLUMN "id" SET DEFAULT nextval('public.teams_id_seq'::regclass);
 
 ALTER TABLE ONLY "public"."tshirt_orders" ALTER COLUMN "id" SET DEFAULT nextval('public.tshirt_orders_id_seq'::regclass);
+
+ALTER TABLE ONLY "drizzle"."__drizzle_migrations"
+    ADD CONSTRAINT "__drizzle_migrations_pkey" PRIMARY KEY ("id");
 
 ALTER TABLE ONLY "public"."catering_order"
     ADD CONSTRAINT "catering_order_pkey" PRIMARY KEY ("id");

@@ -131,6 +131,15 @@ COPY "auth"."sso_domains" ("id", "sso_provider_id", "domain", "created_at", "upd
 
 
 --
+-- Data for Name: __drizzle_migrations; Type: TABLE DATA; Schema: drizzle; Owner: postgres
+--
+
+COPY "drizzle"."__drizzle_migrations" ("id", "hash", "created_at") FROM stdin;
+1	dc3ac6d44f65b0af1461dcbcbe9d5ba5d12bc11aa74c9152beeabf304d7b71d0	1706001534587
+\.
+
+
+--
 -- Data for Name: key; Type: TABLE DATA; Schema: pgsodium; Owner: supabase_admin
 --
 
@@ -1696,6 +1705,13 @@ COPY "vault"."secrets" ("id", "name", "description", "secret", "key_id", "nonce"
 --
 
 SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 1, false);
+
+
+--
+-- Name: __drizzle_migrations_id_seq; Type: SEQUENCE SET; Schema: drizzle; Owner: postgres
+--
+
+SELECT pg_catalog.setval('"drizzle"."__drizzle_migrations_id_seq"', 1, true);
 
 
 --
