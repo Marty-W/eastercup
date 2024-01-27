@@ -68,8 +68,6 @@ export default function TeamServices() {
     });
   };
 
-  console.log(form.getValues());
-
   return (
     <div>
       <FormProvider {...form}>

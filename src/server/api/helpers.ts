@@ -219,25 +219,26 @@ export async function generateAccomodationOrder(
   accomodationCategories?: z.infer<typeof accomodationCategoryDaySchema>,
   accomodationRooms?: z.infer<typeof accomodationRoomDaySchema>,
 ) {
-  if (!accomodationCategories || !accomodationRooms) {
-    return;
+  if (accomodationCategories) {
+    const accomodationCategoryValues = flattenAccomodationCategories(
+      accomodationCategories,
+      teamID,
+    );
+
+    if (accomodationCategoryValues.length > 0) {
+      await db.insert(teamAccomodationInfo).values(accomodationCategoryValues);
+    }
   }
-  const accomodationCategoryValues = flattenAccomodationCategories(
-    accomodationCategories,
-    teamID,
-  );
 
-  if (accomodationCategoryValues.length > 0) {
-    await db.insert(teamAccomodationInfo).values(accomodationCategoryValues);
-  }
+  if (accomodationRooms) {
+    const accomodationRoomValues = flattenAccomodationRooms(
+      accomodationRooms,
+      teamID,
+    );
 
-  const accomodationRoomValues = flattenAccomodationRooms(
-    accomodationRooms,
-    teamID,
-  );
-
-  if (accomodationRoomValues.length > 0) {
-    await db.insert(teamRoomInfo).values(accomodationRoomValues);
+    if (accomodationRoomValues.length > 0) {
+      await db.insert(teamRoomInfo).values(accomodationRoomValues);
+    }
   }
 }
 
