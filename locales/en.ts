@@ -195,7 +195,7 @@ export default {
     "220 EUR – In case of tournament's cancelation due to force majeure registration fees will not be returned to participants but will be used to cover expenses already incurred by the organizer and costs associated with cancellation of the event.",
   "info.system.header": "GAME SYSTEM:",
   "info.system.text":
-    "It will be published together with schedule of the matches two weeks prior to the start, each team will play at least 6 games",
+    "It will be published together with schedule of the matches two weeks prior to the start, each team will play at least 5 games",
   "info.rules.header": "RULES:",
   "info.rules.text": `Games will be played under the basketball and minibasketball rules for 2023/2024`,
   "info.prizes.header": "PRIZES:",

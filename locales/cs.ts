@@ -188,7 +188,7 @@ export default {
     "5 000 Kč – v případě zrušení turnaje z důvodu vyšší moci se startovné nevrací a bude použito na úhradu již vynaložených nákladů ze strany pořadatele a nezbytných poplatků spojených se zrušením turnaje.",
   "info.system.header": "hrací systém:",
   "info.system.text":
-    "Základní skupiny v každé kategorii (podle počtu přihlášených týmů), zápasy o vítězství a o umístění.",
+    "Bude zveřejněn spolu s rozpisem zápasů dva týdny před začátkem turnaje, každému týmu garantujeme nejméně 5 zápasů.",
   "info.rules.header": "pravidla:",
   "info.rules.text": `Dle platných pravidel minibasketbalu a basketbalu pro sezonu 2023/2024
 s výjimkami uvedenými v sekci „Pravidla“.`,
