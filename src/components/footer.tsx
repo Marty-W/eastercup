@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="md:hidden">
         <Socials />
       </div>
-      <div className="flex flex-col p-6 text-center text-sm md:text-base">
+      <div className="mx-auto flex max-w-screen-2xl flex-col p-6 text-center text-sm md:text-base">
         <div className="flex flex-col space-y-4 lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <div className="flex flex-col">
             <span className="font-bold">BK Klatovy</span>

@@ -14,7 +14,7 @@ export default {
   "common.men": "Men",
   "common.women": "Women",
   "common.accomodation": "Accomodation",
-  "hero.title": "International youth basketball team tournament",
+  "hero.title": "International youth basketball tournament",
   "hero.button": "registration to tournament",
   "hero.registrationSoonOpen": "Sign up for the tournament will be open soon",
   "hero.tillStart": "Tournament starts in:",
@@ -163,6 +163,9 @@ export default {
     //TODO dopln cenu v EUR
     "The price is 300 Kc when you buy in advance, 350 Kc when you buy it on the spot",
   "navbar.info": "information",
+  "navbar.teams": "teams",
+  "hamburger.info": "info",
+  "hamburger.teams": "teams",
   "info.header": "INFORMATION",
   "info.categories.header": "CATEGORIES:",
   "info.categories.subheader1": "MINI EASTER CUP:",
@@ -192,7 +195,7 @@ export default {
     "220 EUR – In case of tournament's cancelation due to force majeure registration fees will not be returned to participants but will be used to cover expenses already incurred by the organizer and costs associated with cancellation of the event.",
   "info.system.header": "GAME SYSTEM:",
   "info.system.text":
-    "It will be published together with schedule of the matches two weeks prior to the start, each team will play at least 6 games",
+    "It will be published together with schedule of the matches two weeks prior to the start, each team will play at least 5 games",
   "info.rules.header": "RULES:",
   "info.rules.text": `Games will be played under the basketball and minibasketball rules for 2023/2024`,
   "info.prizes.header": "PRIZES:",
@@ -238,4 +241,6 @@ export default {
     "Next to the Black Tower, there is a Jesuit church in the square, under which there are Klatovy catacombs, underground spaces designed to bury Both Jesuits and persons who were not members of the order. The ventilation system of the catacombs allows maintaining the optimum temperature for preserving mummified bodies. Visitors can view 30 of them in the Klatovy catacombs, while a further 7 are stored in a publicly inaccessible part of the crypts.",
   "info.city.text4":
     "Other Klatovy historic sights are also worth visiting, e.g. baroque pharmacy U Bílýho unicorn, where there is now a museum documenting the development of pharmacy from 1776 to 1966, when the pharmacy ceased its activities.",
+  "registeredTeams.header": "Registered teams",
+  "registeredTeams.emptyState": "There are no registered teams yet",
 } satisfies Record<keyof typeof Locale, string>;

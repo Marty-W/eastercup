@@ -156,6 +156,9 @@ export default {
   "tshirts.tooltip.headline": "Turnajová trika",
   "tshirts.tooltip.price": "Cena za kus: 300 Kč předem, 350 Kč na místě",
   "navbar.info": "informace",
+  "navbar.teams": "týmy",
+  "hamburger.info": "info",
+  "hamburger.teams": "týmy",
   "info.header": "informace",
   "info.categories.header": "kategorie:",
   "info.categories.subheader1": "MINI EASTER CUP:",
@@ -185,7 +188,7 @@ export default {
     "5 000 Kč – v případě zrušení turnaje z důvodu vyšší moci se startovné nevrací a bude použito na úhradu již vynaložených nákladů ze strany pořadatele a nezbytných poplatků spojených se zrušením turnaje.",
   "info.system.header": "hrací systém:",
   "info.system.text":
-    "Základní skupiny v každé kategorii (podle počtu přihlášených týmů), zápasy o vítězství a o umístění.",
+    "Bude zveřejněn spolu s rozpisem zápasů dva týdny před začátkem turnaje, každému týmu garantujeme nejméně 5 zápasů.",
   "info.rules.header": "pravidla:",
   "info.rules.text": `Dle platných pravidel minibasketbalu a basketbalu pro sezonu 2023/2024
 s výjimkami uvedenými v sekci „Pravidla“.`,
@@ -231,4 +234,6 @@ s výjimkami uvedenými v sekci „Pravidla“.`,
     "Vedle Černé věže se na náměstí nachází jezuitský kostel, pod kterým jsou klatovské katakomby, podzemní prostory určené k pohřbívání jezuitů i osob, které nebyly členy řádu. Větrací systém katakomb umožňuje udržovat optimální teplotu pro konzervaci mumifikovaných těl. Návštěvníci jich mohou v klatovských katakombách zhlédnout 30, dalších 7 je uloženo ve veřejnosti nepřístupné části krypt.",
   "info.city.text4":
     "Za návštěvu stojí i další klatovské pamětihodnosti, např. barokní lékárna U Bílého jednorožce, kde je nyní muzeum dokumentující vývoj lékárnictví od roku 1776 do roku 1966, kdy lékárna ukončila svoji činnost.",
+  "registeredTeams.header": "Registrované týmy",
+  "registeredTeams.emptyState": "Zatím nejsou registrovány žádné týmy.",
 } as const;
