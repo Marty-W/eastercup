@@ -13,16 +13,16 @@ export default function Navbar() {
           <Image width={500} height={500} src="/logo-big.svg" alt="Logo" />
         </Link>
         <nav className="flex flex-1 items-center justify-end space-x-8">
-          <div className="hidden lg:block">
-            <NavLinks />
-          </div>
+          {/* <div className="hidden lg:block"> */}
+          {/*   <NavLinks /> */}
+          {/* </div> */}
           <div className="hidden md:block">
             <Socials />
           </div>
           <LangSwitcher />
-          <div className="lg:hidden">
-            <HamburgerMenu />
-          </div>
+          {/* <div className="lg:hidden"> */}
+          {/*   <HamburgerMenu /> */}
+          {/* </div> */}
         </nav>
       </div>
       <div
