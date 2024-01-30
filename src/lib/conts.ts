@@ -3,6 +3,12 @@ import * as z from "zod";
 export const EMAIL_WELCOME_TEMPLATE_ID_CS = 34639103;
 export const EMAIL_WELCOME_TEMPLATE_ID_EN = 34639090;
 
+export const BANK_ACCOUNT_NUMBER_CZK = "241341615/0300";
+export const BANK_ACCOUNT_NUMBER_EUR = "278654199/0300";
+export const BANK_ACCOUNT_IBAN_CZK = "CZ54 0300 0000 0002 4134 1615";
+export const BANK_ACCOUNT_IBAN_EUR = "CZ55 0300 0000 0002 7865 4199";
+export const BANK_ACCOUNT_SWIFT = "CEKOCZPP";
+
 export const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"] as const;
 
 export const REGISTRATION_FEE_EUR = 220;

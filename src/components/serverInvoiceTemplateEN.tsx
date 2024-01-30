@@ -1,6 +1,9 @@
 import {
   REGISTRATION_INVOICE_DUE_DAYS,
   REGISTRATION_FEE_EUR,
+  BANK_ACCOUNT_NUMBER_EUR,
+  BANK_ACCOUNT_IBAN_EUR,
+  BANK_ACCOUNT_SWIFT,
 } from "@/lib/conts";
 import {
   View,
@@ -145,11 +148,10 @@ export default function ServerInvoiceTemplateEN({
           }}
         >
           <View style={styles.sectionLeft}>
-            <Text>Bank account: 241341615/0300 ČSOB Klatovy</Text>
-            <Text>IBAN: CZ54 0300 0000 0002 4134 1615</Text>
-            <Text>SWIFT: CEKOCZPP</Text>
+            <Text>Bank account: {BANK_ACCOUNT_NUMBER_EUR}</Text>
+            <Text>IBAN: {BANK_ACCOUNT_IBAN_EUR}</Text>
+            <Text>SWIFT: {BANK_ACCOUNT_SWIFT}</Text>
             <Text>Var. symbol: {invoiceVarSymbol}</Text>
-            <Text>VAT ID: CZ22850490</Text>
             <Text>Issue date: {format(today, "dd/MM/yyyy")}</Text>
             <Text>Due date: {format(dueDate, "dd/MM/yyyy")}</Text>
           </View>
