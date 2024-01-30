@@ -17,7 +17,7 @@ import {
   TOURNAMENT_START,
 } from "@/lib/conts";
 
-export default function InvoiceTemplate() {
+export default function InvoiceTemplateCS() {
   const formValues = useAtomValue(teamFormAtom);
   const dbData = useAtomValue(teamDbDataAtom);
 

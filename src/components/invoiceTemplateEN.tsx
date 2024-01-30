@@ -17,7 +17,7 @@ import {
   REGISTRATION_INVOICE_DUE_DAYS,
 } from "@/lib/conts";
 
-export default function InvoiceTemplate() {
+export default function InvoiceTemplateEN() {
   const formValues = useAtomValue(teamFormAtom);
   const dbData = useAtomValue(teamDbDataAtom);
 

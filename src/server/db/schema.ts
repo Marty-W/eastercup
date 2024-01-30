@@ -106,6 +106,7 @@ export const invoice = pgTable("invoice", {
   paid: boolean("paid").default(false),
   amount: text("amount").notNull(),
   issueDate: date("issue_date").defaultNow(),
+  url: text("url"),
 });
 
 export const invoiceRelations = relations(invoice, ({ one }) => ({

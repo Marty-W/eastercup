@@ -1,7 +1,7 @@
 import * as z from "zod";
 
-export const EMAIL_WELCOME_TEMPLATE_ID_CS = 34509365;
-export const EMAIL_WELCOME_TEMPLATE_ID_EN = 34509317;
+export const EMAIL_WELCOME_TEMPLATE_ID_CS = 34639103;
+export const EMAIL_WELCOME_TEMPLATE_ID_EN = 34639090;
 
 export const TRANSPORT_OPTIONS = ["train", "car", "bus", "plane"] as const;
 

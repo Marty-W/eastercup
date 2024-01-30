@@ -45,6 +45,7 @@ export const registrationRouter = createTRPCRouter({
         payload: {
           recipientEmail: info.email,
           recipientCountry: info.country,
+          teamId: newTeamId,
         },
       });
 
