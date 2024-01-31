@@ -5,29 +5,8 @@ import {
   BANK_ACCOUNT_IBAN_EUR,
   BANK_ACCOUNT_SWIFT,
 } from "@/lib/conts";
-import {
-  View,
-  StyleSheet,
-  Document,
-  Page,
-  Text,
-  Font,
-} from "@react-pdf/renderer";
+import { View, StyleSheet, Document, Page, Text } from "@react-pdf/renderer";
 import { addDays, format } from "date-fns";
-
-Font.register({
-  family: "Roboto",
-  fonts: [
-    {
-      src: "public/fonts/Roboto.ttf",
-      fontWeight: 400,
-    },
-    {
-      src: "public/fonts/RobotoBold.ttf",
-      fontWeight: 700,
-    },
-  ],
-});
 
 const styles = StyleSheet.create({
   page: {
