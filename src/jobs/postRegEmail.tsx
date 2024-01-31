@@ -2,7 +2,7 @@ import { client } from "@/trigger";
 import { put } from "@vercel/blob";
 import { eventTrigger } from "@trigger.dev/sdk";
 import { z } from "zod";
-import { renderToStream } from "@react-pdf/renderer";
+import { Font, renderToStream } from "@react-pdf/renderer";
 import { db } from "@/server/db";
 import { invoice, teamBillingInfo, teams } from "@/server/db/schema";
 import { and, eq } from "drizzle-orm";
@@ -73,6 +73,20 @@ client.defineJob({
 
     const invoiceUrl = await io.runTask("generate-invoice", async () => {
       let stream;
+
+      Font.register({
+        family: "Roboto",
+        fonts: [
+          {
+            src: "public/fonts/Roboto.ttf",
+            fontWeight: 400,
+          },
+          {
+            src: "public/fonts/RobotoBold.ttf",
+            fontWeight: 700,
+          },
+        ],
+      });
 
       if (recipientCountry === "CZ") {
         stream = await renderToStream(<ServerInvoiceTemplateCS {...team} />);
