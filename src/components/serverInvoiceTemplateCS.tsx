@@ -19,11 +19,11 @@ Font.register({
   family: "Roboto",
   fonts: [
     {
-      src: "/fonts/Roboto.ttf",
+      src: "/public/fonts/Roboto.ttf",
       fontWeight: 400,
     },
     {
-      src: "/fonts/RobotoBold.ttf",
+      src: "/public/fonts/RobotoBold.ttf",
       fontWeight: 700,
     },
   ],
