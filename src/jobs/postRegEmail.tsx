@@ -15,6 +15,7 @@ import {
   EMAIL_WELCOME_TEMPLATE_ID_CS,
   EMAIL_WELCOME_TEMPLATE_ID_EN,
 } from "@/lib/conts";
+import { sanitizeTeamNameForFilename } from "@/lib/utils";
 
 client.defineJob({
   id: "postreg-email",
@@ -79,10 +80,14 @@ client.defineJob({
         stream = await renderToStream(<ServerInvoiceTemplateEN {...team} />);
       }
 
-      const blob = await put("invoice", stream as Readable, {
-        contentType: "application/pdf",
-        access: "public",
-      });
+      const blob = await put(
+        `invoices/postreg/${sanitizeTeamNameForFilename(team.teamName)}`,
+        stream as Readable,
+        {
+          contentType: "application/pdf",
+          access: "public",
+        },
+      );
 
       await db
         .update(invoice)
