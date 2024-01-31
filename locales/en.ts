@@ -96,7 +96,8 @@ export default {
   "form.dic": "VAT Number",
   "form.success.one": "Your team ",
   "form.success.two": " was successfully registered",
-  "form.success.pdfbutton": "Generate advance invoice",
+  "form.success.invoiceSent":
+    "Advance invoice will be sent to your email address.",
   "form.success.goHome": "Go home",
   "stepper.one": "team info",
   "stepper.two": "billing",

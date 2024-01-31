@@ -8,7 +8,6 @@ import {
   generateCateringOrder,
   generateRegistrationInvoice,
   generateTshirtOrder,
-  getInvoiceVarSymbol,
 } from "@/server/api/helpers";
 import { client } from "@/trigger";
 
@@ -38,8 +37,6 @@ export const registrationRouter = createTRPCRouter({
 
       await Promise.all(parallelTasks);
 
-      const registrationInvoiceVarSymbol = getInvoiceVarSymbol(newTeamId);
-
       await client.sendEvent({
         name: "postreg.email",
         payload: {
@@ -54,7 +51,7 @@ export const registrationRouter = createTRPCRouter({
       console.log(`Registration took ${diff}ms`);
 
       return {
-        registrationInvoiceVarSymbol,
+        success: true,
       };
     }),
 });
