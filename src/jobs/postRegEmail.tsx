@@ -78,11 +78,11 @@ client.defineJob({
         family: "Roboto",
         fonts: [
           {
-            src: "public/fonts/Roboto.ttf",
+            src: "/fonts/Roboto.ttf",
             fontWeight: 400,
           },
           {
-            src: "public/fonts/RobotoBold.ttf",
+            src: "/fonts/RobotoBold.ttf",
             fontWeight: 700,
           },
         ],
