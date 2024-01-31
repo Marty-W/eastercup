@@ -117,8 +117,8 @@ export default function ServerInvoiceTemplateCS({
             <Text>BK KLATOVY z.s.</Text>
             <Text>Voříškova 715</Text>
             <Text>33901, Klatovy</Text>
-            <Text>ID: 22850490</Text>
-            <Text>VAT ID: CZ22850490</Text>
+            <Text>IČ: 22850490</Text>
+            <Text>DIČ: CZ22850490</Text>
           </View>
           <View style={styles.sectionRight}>
             <Text style={styles.sectionHeader}>ODBĚRATEL:</Text>
