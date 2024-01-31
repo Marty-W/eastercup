@@ -74,7 +74,7 @@ client.defineJob({
     const invoiceUrl = await io.runTask("generate-invoice", async () => {
       let stream;
 
-      if (recipientCountry === "CZ" || recipientCountry === "SK") {
+      if (recipientCountry === "CZ") {
         stream = await renderToStream(<ServerInvoiceTemplateCS {...team} />);
       } else {
         stream = await renderToStream(<ServerInvoiceTemplateEN {...team} />);
