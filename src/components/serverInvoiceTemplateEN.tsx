@@ -113,7 +113,7 @@ export default function ServerInvoiceTemplateEN({
           }}
         >
           <View style={styles.sectionLeft}>
-            <Text style={styles.sectionHeader}>SUPLIER:</Text>
+            <Text style={styles.sectionHeader}>SUPPLIER:</Text>
             <Text>BK KLATOVY z.s.</Text>
             <Text>Voříškova 715</Text>
             <Text>33901, Klatovy</Text>

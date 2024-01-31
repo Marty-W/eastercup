@@ -152,8 +152,8 @@ export default function ServerInvoiceTemplateCS({
             <Text>IBAN: {BANK_ACCOUNT_IBAN_CZK}</Text>
             <Text>SWIFT: {BANK_ACCOUNT_SWIFT}</Text>
             <Text>Variabilní symbol: {invoiceVarSymbol}</Text>
-            <Text>Datum vystavení: {format(today, "dd/MM/yyyy")}</Text>
-            <Text>Datum splatnosti: {format(dueDate, "dd/MM/yyyy")}</Text>
+            <Text>Datum vystavení: {format(today, "dd.M.yyyy")}</Text>
+            <Text>Datum splatnosti: {format(dueDate, "dd.M.yyyy")}</Text>
           </View>
           <View style={styles.sectionRight}>
             <Text>Název týmu: {teamName}</Text>
