@@ -7,9 +7,10 @@ await import("./src/env.mjs");
 
 /** @type {import("next").NextConfig} */
 const config = {
-  transpilePackages: ["next-international", "@react-pdf/renderer"],
+  transpilePackages: ["next-international"],
   experimental: {
     swcPlugins: [["@swc-jotai/react-refresh", {}]],
+    serverComponentsExternalPackages: ["@react-pdf/renderer"],
   },
 };
 

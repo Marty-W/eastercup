@@ -26,17 +26,12 @@ export const teamServicesAtom = atom<TeamServicesFormValues>(
   teamFormServicesDefaultValues,
 );
 
-export const teamDbDataAtom = atom<null | {
-  invoiceId: string;
-}>(null);
-
 export const teamFormAtom = atom((get) => {
   const teamInfo = get(teamInfoAtom);
   const teamBilling = get(teamBillingAtom);
   const teamServices = get(teamServicesAtom);
-  const teamDbData = get(teamDbDataAtom);
 
-  if (!teamInfo || !teamBilling || !teamServices || !teamDbData) {
+  if (!teamInfo || !teamBilling || !teamServices) {
     return null;
   }
 
@@ -44,7 +39,6 @@ export const teamFormAtom = atom((get) => {
     ...teamInfo,
     ...teamBilling,
     ...teamServices,
-    ...teamDbData,
   };
 });
 

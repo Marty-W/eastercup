@@ -96,7 +96,7 @@ export default {
   "form.dic": "DIČ (volitelně)",
   "form.success.one": "Váš tým ",
   "form.success.two": " byl úspěšně zaregistrován.",
-  "form.success.pdfbutton": "Generovat zálohovou fakturu",
+  "form.success.invoiceSent": "Zálohová faktura vám bude zaslána na email.",
   "form.success.goHome": "Go home",
   "stepper.one": "info",
   "stepper.two": "fakturace",
