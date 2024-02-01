@@ -1,5 +1,5 @@
 {
-  "id": "15aa02fe-1fd9-476d-9de7-759c2b757ffb",
+  "id": "7822824b-764a-4d7c-a6f6-353a35e315ce",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -180,6 +180,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "invited": {
+          "name": "invited",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
         }
       },
       "indexes": {},
@@ -234,6 +241,12 @@
           "primaryKey": false,
           "notNull": false,
           "default": "now()"
+        },
+        "url": {
+          "name": "url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

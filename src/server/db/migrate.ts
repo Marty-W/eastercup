@@ -1,20 +1,22 @@
+import { migrate } from "drizzle-orm/postgres-js/migrator";
+import postgres from "postgres";
+import { drizzle } from "drizzle-orm/postgres-js";
 import { env } from "@/env.mjs";
-import { neon, neonConfig } from "@neondatabase/serverless";
-import { drizzle } from "drizzle-orm/neon-http";
-import { migrate } from "drizzle-orm/neon-http/migrator";
+
+const databaseUrl = drizzle(
+  postgres(env.DATABASE_URL, { ssl: "require", max: 1 }),
+);
 
 const main = async () => {
-  neonConfig.fetchConnectionCache = true;
-
-  const sql = neon(env.DATABASE_URL);
-  const db = drizzle(sql);
-
-  await migrate(db, { migrationsFolder: "./drizzle" });
-
-  console.log("Done");
+  try {
+    await migrate(databaseUrl, { migrationsFolder: "drizzle" });
+    console.log("Migration complete");
+  } catch (error) {
+    console.log(error);
+  }
+  process.exit(0);
 };
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+main()
+  .then(() => console.log("Done"))
+  .catch((e) => console.error(e));
