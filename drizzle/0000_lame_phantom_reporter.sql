@@ -23,7 +23,8 @@ CREATE TABLE IF NOT EXISTS "catering_order" (
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "email_list" (
 	"id" serial PRIMARY KEY NOT NULL,
-	"email" text NOT NULL
+	"email" text NOT NULL,
+	"invited" boolean DEFAULT false
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "invoice" (
@@ -33,7 +34,8 @@ CREATE TABLE IF NOT EXISTS "invoice" (
 	"type" varchar NOT NULL,
 	"paid" boolean DEFAULT false,
 	"amount" text NOT NULL,
-	"issue_date" date DEFAULT now()
+	"issue_date" date DEFAULT now(),
+	"url" text
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "team_accomodation_info" (

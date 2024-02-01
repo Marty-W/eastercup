@@ -10,5 +10,5 @@ export default {
   dbCredentials: {
     connectionString: connectionString,
   },
-  out: "./drizzle/",
+  out: "drizzle",
 } satisfies Config;

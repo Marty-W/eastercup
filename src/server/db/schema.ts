@@ -184,4 +184,5 @@ export const teamRoomInfoRelations = relations(teamRoomInfo, ({ one }) => ({
 export const emailList = pgTable("email_list", {
   id: serial("id").primaryKey(),
   email: text("email").notNull(),
+  inviteMailSent: boolean("invite_mail_sent").default(false),
 });

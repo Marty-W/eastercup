@@ -1,6 +1,6 @@
 {
-  "id": "060d4ba0-9c21-4d88-ba1e-e5ec758dd8ec",
-  "prevId": "15aa02fe-1fd9-476d-9de7-759c2b757ffb",
+  "id": "b0937c56-48b7-4885-bcc9-ff0641811061",
+  "prevId": "7822824b-764a-4d7c-a6f6-353a35e315ce",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -180,6 +180,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": true
+        },
+        "invite_mail_sent": {
+          "name": "invite_mail_sent",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
         }
       },
       "indexes": {},
