@@ -5,8 +5,33 @@ import {
   BANK_ACCOUNT_IBAN_CZK,
   BANK_ACCOUNT_SWIFT,
 } from "@/lib/conts";
-import { View, StyleSheet, Document, Page, Text } from "@react-pdf/renderer";
+import {
+  View,
+  StyleSheet,
+  Document,
+  Page,
+  Text,
+  Font,
+} from "@react-pdf/renderer";
 import { addDays, format } from "date-fns";
+import path from "path";
+
+const fontPath = path.join(__dirname, "fonts", "Roboto.ttf");
+const fontBoldPath = path.join(__dirname, "fonts", "RobotoBold.ttf");
+
+Font.register({
+  family: "Roboto",
+  fonts: [
+    {
+      src: fontPath,
+      fontWeight: 400,
+    },
+    {
+      src: fontBoldPath,
+      fontWeight: 700,
+    },
+  ],
+});
 
 const styles = StyleSheet.create({
   page: {

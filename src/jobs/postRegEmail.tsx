@@ -74,20 +74,6 @@ client.defineJob({
     const invoiceUrl = await io.runTask("generate-invoice", async () => {
       let stream;
 
-      Font.register({
-        family: "Roboto",
-        fonts: [
-          {
-            src: "/fonts/Roboto.ttf",
-            fontWeight: 400,
-          },
-          {
-            src: "/fonts/RobotoBold.ttf",
-            fontWeight: 700,
-          },
-        ],
-      });
-
       if (recipientCountry === "CZ") {
         stream = await renderToStream(<ServerInvoiceTemplateCS {...team} />);
       } else {
