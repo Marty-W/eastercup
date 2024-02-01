@@ -15,6 +15,13 @@
       "when": 1706691770822,
       "tag": "0001_sparkling_serpent_society",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1706825170936,
+      "tag": "0002_silly_hulk",
+      "breakpoints": true
     }
   ]
 }

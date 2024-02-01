@@ -1,0 +1,1 @@
+ALTER TABLE "email_list" ADD COLUMN "invited" boolean DEFAULT false;
