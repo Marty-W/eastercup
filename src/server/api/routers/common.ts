@@ -1,25 +1,17 @@
 import { createTRPCRouter, publicProcedure } from "../trpc";
-import { count, countDistinct } from "drizzle-orm";
-import { teams } from "@/server/db/schema";
 import { type TeamsByCategory } from "@/lib/types";
 
 export const commonRouter = createTRPCRouter({
   getTeamsCountInfo: publicProcedure.query(async ({ ctx }) => {
-    const teamCount = await ctx.db.select({ value: count() }).from(teams);
+    const { redis } = ctx;
 
-    const countryCount = await ctx.db
-      .select({ value: countDistinct(teams.country) })
-      .from(teams);
-
-    const presentCountries = await ctx.db
-      .selectDistinct({
-        country: teams.country,
-      })
-      .from(teams);
+    const teamCount = await redis.get("teamCount");
+    const countries = await redis.smembers("teamCountries");
+    const countryCount = countries.length;
     return {
-      teamCount: teamCount[0]?.value ?? 0,
-      countryCount: countryCount[0]?.value ?? 0,
-      countries: presentCountries.map((row) => row.country),
+      teamCount: (teamCount as number) ?? 0,
+      countryCount: countryCount ?? 0,
+      countries,
     };
   }),
   getRegisteredTeams: publicProcedure.query(async ({ ctx }) => {

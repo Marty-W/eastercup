@@ -15,7 +15,7 @@ export const registrationRouter = createTRPCRouter({
   team: publicProcedure
     .input(registrationInputSchema)
     .mutation(async (opts) => {
-      const { input } = opts;
+      const { input, ctx } = opts;
       const { info, services, billing } = input;
 
       const timer = new Date();
@@ -36,6 +36,9 @@ export const registrationRouter = createTRPCRouter({
       ];
 
       await Promise.all(parallelTasks);
+
+      await ctx.redis.incr("teamCount");
+      await ctx.redis.sadd("teamCountries", info.country);
 
       await client.sendEvent({
         name: "postreg.email",
