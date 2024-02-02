@@ -7,7 +7,8 @@ import CountryFlags from "@/components/countryFlags";
 
 export default async function Landing() {
   const t = await getI18n();
-  const teamCount = await api.common.getTeamsCountInfo.query();
+  const { teamCount, countryCount, countries } =
+    await api.common.getTeamsCountInfo.query();
 
   return (
     <>
@@ -33,10 +34,10 @@ export default async function Landing() {
           <div className="flex flex-col space-y-2 pb-6 text-sm md:space-y-6 md:text-base">
             <TimeCounter />
             <TeamCountryCount
-              countryCount={teamCount.countryCount}
-              teamCount={teamCount.teamCount}
+              countryCount={countryCount}
+              teamCount={teamCount}
             />
-            <CountryFlags countries={teamCount.countries} />
+            <CountryFlags countries={countries} />
           </div>
         </div>
       </div>

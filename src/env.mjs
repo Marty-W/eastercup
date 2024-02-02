@@ -29,6 +29,8 @@ export const env = createEnv({
       process.env.VERCEL ? z.string() : z.string().url(),
     ),
     POSTMARK_API_TOKEN: z.string(),
+    REDIS_URL: z.string(),
+    REDIS_TOKEN: z.string(),
   },
 
   /**
@@ -50,6 +52,8 @@ export const env = createEnv({
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
     POSTMARK_API_TOKEN: process.env.POSTMARK_API_TOKEN,
+    REDIS_URL: process.env.REDIS_URL,
+    REDIS_TOKEN: process.env.REDIS_TOKEN,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
