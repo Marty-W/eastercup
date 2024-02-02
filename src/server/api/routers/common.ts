@@ -6,12 +6,28 @@ export const commonRouter = createTRPCRouter({
     const { redis } = ctx;
 
     const teamCount = await redis.get("teamCount");
+
     const countries = await redis.smembers("teamCountries");
+    const sortedCountries = countries.sort((a: string, b: string) => {
+      if (a === "CZ") {
+        return -1;
+      }
+      if (b === "CZ") {
+        return 1;
+      }
+      if (a === "DE") {
+        return -1;
+      }
+      if (b === "DE") {
+        return 1;
+      }
+      return a.localeCompare(b);
+    });
     const countryCount = countries.length;
     return {
       teamCount: (teamCount as number) ?? 0,
       countryCount: countryCount ?? 0,
-      countries,
+      countries: sortedCountries ?? [],
     };
   }),
   getRegisteredTeams: publicProcedure.query(async ({ ctx }) => {
