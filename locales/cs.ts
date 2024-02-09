@@ -236,4 +236,6 @@ s výjimkami uvedenými v sekci „Pravidla“.`,
     "Za návštěvu stojí i další klatovské pamětihodnosti, např. barokní lékárna U Bílého jednorožce, kde je nyní muzeum dokumentující vývoj lékárnictví od roku 1776 do roku 1966, kdy lékárna ukončila svoji činnost.",
   "registeredTeams.header": "Registrované týmy",
   "registeredTeams.emptyState": "Zatím nejsou registrovány žádné týmy.",
+  "registeredTeams.paymentNotice":
+    "Registrace do turnaje platná po zaplacení startovného. Týmy, které ještě nezaplatily, jsou označeny červeně.",
 } as const;

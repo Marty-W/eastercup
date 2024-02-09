@@ -2,6 +2,7 @@ import "/node_modules/flag-icons/css/flag-icons.min.css";
 import { type TeamCategory, type Team } from "@/lib/types";
 import { Separator } from "./ui/separator";
 import { getScopedI18n } from "locales/server";
+import RegisteredTeam from "./registeredTeam";
 
 interface Props {
   category: TeamCategory;
@@ -20,10 +21,12 @@ export default async function RegisteredTeamsTable({ category, team }: Props) {
   return (
     <Wrapper category={category} teamCount={team.length}>
       {team.map((team, index) => (
-        <div key={`${team.name}-${index}`} className="flex space-x-2">
-          <span className={`fi fi-${team.country.toLowerCase()}`}></span>
-          <p>{team.name}</p>
-        </div>
+        <RegisteredTeam
+          key={`${team.name}-${index}`}
+          teamName={team.name}
+          teamCountry={team.country}
+          paidInvoice={team.paidInvoice}
+        />
       ))}
     </Wrapper>
   );
