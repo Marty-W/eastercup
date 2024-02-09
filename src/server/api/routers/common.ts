@@ -37,6 +37,13 @@ export const commonRouter = createTRPCRouter({
         country: true,
         category: true,
       },
+      with: {
+        invoices: {
+          columns: {
+            paid: true,
+          },
+        },
+      },
     });
 
     const teamsByCategory = registeredTeams.reduce<TeamsByCategory>(
@@ -44,6 +51,7 @@ export const commonRouter = createTRPCRouter({
         acc[team.category]?.push({
           name: team.name.replace(/ \| [^|]+$/, ""),
           country: team.country,
+          paidInvoice: team.invoices[0]?.paid ?? false,
         });
 
         return acc;

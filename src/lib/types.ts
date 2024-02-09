@@ -49,6 +49,7 @@ export type TeamCategory = (typeof TEAM_CATEGORIRES)[number];
 export interface Team {
   name: string;
   country: string;
+  paidInvoice: boolean;
 }
 
 export type TeamsByCategory = Record<TeamCategory, Team[]>;
