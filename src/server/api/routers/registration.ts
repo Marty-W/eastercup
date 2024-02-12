@@ -1,9 +1,5 @@
 import { createTRPCRouter, publicProcedure } from "../trpc";
-import {
-  CATEGORY_CAPACITIES,
-  TEAM_CATEGORIRES,
-  registrationInputSchema,
-} from "@/lib/conts";
+import { registrationInputSchema } from "@/lib/conts";
 import {
   addTeamBillingInfo,
   addTeamTransportInfo,
@@ -61,42 +57,4 @@ export const registrationRouter = createTRPCRouter({
         success: true,
       };
     }),
-  getRegistrationCapacities: publicProcedure.query(async (opts) => {
-    const {
-      ctx: { db },
-    } = opts;
-    const presentCategories = await db.query.teams.findMany({
-      columns: {
-        category: true,
-      },
-    });
-
-    const categoriesCount = presentCategories.reduce(
-      (acc, curr) => {
-        if (acc[curr.category]) {
-          acc[curr.category]++;
-        } else {
-          acc[curr.category] = 1;
-        }
-        return acc;
-      },
-      {
-        "U11 MIX": 0,
-        U12B: 0,
-        U12G: 0,
-        U14B: 0,
-        U14G: 0,
-        U16B: 0,
-        U16G: 0,
-      },
-    );
-
-    return TEAM_CATEGORIRES.map((category) => {
-      return {
-        category: category,
-        count: categoriesCount[category],
-        full: CATEGORY_CAPACITIES[category] <= categoriesCount[category],
-      };
-    });
-  }),
 });

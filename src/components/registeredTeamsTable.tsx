@@ -3,6 +3,8 @@ import { type TeamCategory, type Team } from "@/lib/types";
 import { Separator } from "./ui/separator";
 import { getScopedI18n } from "locales/server";
 import RegisteredTeam from "./registeredTeam";
+import { CATEGORY_CAPACITIES } from "@/lib/conts";
+import { Info } from "lucide-react";
 
 interface Props {
   category: TeamCategory;
@@ -32,23 +34,36 @@ export default async function RegisteredTeamsTable({ category, team }: Props) {
   );
 }
 
-function Wrapper({
+async function Wrapper({
   children,
   category,
   teamCount,
 }: {
   children: React.ReactNode;
-  category: string;
+  category: TeamCategory;
   teamCount: number;
 }) {
+  const t = await getScopedI18n("registeredTeams");
   return (
-    <div className="rounded-sm border">
+    <div className="flex flex-col rounded-sm border">
       <div className="flex items-center justify-between bg-muted p-2 text-muted-foreground">
         <h2 className="text-lg">{category}</h2>
-        {teamCount > 0 && <span className="text-sm">{teamCount}</span>}
+        {teamCount > 0 && (
+          <span className="text-sm">
+            {teamCount}/{CATEGORY_CAPACITIES[category]}
+          </span>
+        )}
       </div>
       <Separator />
-      <div className="space-y-2 p-2">{children}</div>
+      <div className="relative flex flex-1 flex-col justify-between">
+        <div className="space-y-2 p-2">{children}</div>
+        <div className="flex items-center space-x-3 px-2 pb-2 pt-4">
+          <Info className="hidden text-red-500 md:block" />
+          {/* TODO: change this after payments are up to date */}
+          {/* <p className="text-sm">{t("paymentNoticeWithRed")}</p> */}
+          <p className="text-sm">{t("paymentNotice")}</p>
+        </div>
+      </div>
     </div>
   );
 }
