@@ -9,11 +9,7 @@ import {
   FormControl,
   FormMessage,
 } from "./ui/form";
-import {
-  TEAM_CATEGORIRES,
-  TIME_BY_30_MINUTES,
-  type teamFormInfoSchema,
-} from "@/lib/conts";
+import { TIME_BY_30_MINUTES, type teamFormInfoSchema } from "@/lib/conts";
 import { SelectItem } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { useScopedI18n } from "locales/client";
@@ -22,6 +18,7 @@ import FormSelect from "./formFields/formSelect";
 import { ArrivalDateInput } from "./formFields/dateInput";
 import PhoneNumberInput from "./formFields/phoneNumber";
 import Transport from "./formFields/transport";
+import TeamCategorySelect from "./formFields/teamCategorySelect";
 
 export default function TeamRegistrationForm() {
   const t = useScopedI18n("form");
@@ -36,29 +33,7 @@ export default function TeamRegistrationForm() {
           control={form.control}
           autoFocus
         />
-        <FormSelect
-          control={form.control}
-          fieldName="category"
-          fieldLabel="form.teamCategory"
-          placeholderLabel="form.selectCategory"
-          tooltipContent={
-            <div className="flex flex-col space-y-2">
-              <p className="text-sm">{t("category.U11MIX")}</p>
-              <p className="text-sm">{t("category.U12B")}</p>
-              <p className="text-sm">{t("category.U12G")}</p>
-              <p className="text-sm">{t("category.U14B")}</p>
-              <p className="text-sm">{t("category.U14G")}</p>
-              <p className="text-sm">{t("category.U16B")}</p>
-              <p className="text-sm">{t("category.U16G")}</p>
-            </div>
-          }
-        >
-          {TEAM_CATEGORIRES.map((value, key) => (
-            <SelectItem className="font-sans" key={key} value={value}>
-              {value}
-            </SelectItem>
-          ))}
-        </FormSelect>
+        <TeamCategorySelect />
         <FormSelect
           control={form.control}
           fieldName="country"
