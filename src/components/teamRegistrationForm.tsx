@@ -9,11 +9,7 @@ import {
   FormControl,
   FormMessage,
 } from "./ui/form";
-import {
-  TEAM_CATEGORIRES,
-  TIME_BY_30_MINUTES,
-  type teamFormInfoSchema,
-} from "@/lib/conts";
+import { TIME_BY_30_MINUTES, type teamFormInfoSchema } from "@/lib/conts";
 import { SelectItem } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { useScopedI18n } from "locales/client";

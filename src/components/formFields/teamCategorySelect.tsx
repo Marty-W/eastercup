@@ -1,21 +1,13 @@
 "use client";
-import { type teamFormInfoSchema } from "@/lib/conts";
+import { TEAM_CATEGORIRES, type teamFormInfoSchema } from "@/lib/conts";
 import { SelectItem } from "@/components/ui/select";
 import FormSelect from "./formSelect";
 import { useFormContext } from "react-hook-form";
 import { useScopedI18n } from "locales/client";
 import { type z } from "zod";
-import { api } from "@/trpc/react";
-import { Info } from "lucide-react";
 
 export default function TeamCategorySelect() {
   const form = useFormContext<z.infer<typeof teamFormInfoSchema>>();
-  const registrationCapacities =
-    api.registration.getRegistrationCapacities.useQuery();
-
-  const fullCategories = registrationCapacities?.data?.filter(
-    (category) => category.full,
-  );
 
   const t = useScopedI18n("form");
   return (
@@ -37,29 +29,18 @@ export default function TeamCategorySelect() {
           </div>
         }
       >
-        {registrationCapacities &&
-          registrationCapacities?.data?.map((value, key) => {
-            if (value.full) return;
-            return (
-              <SelectItem
-                className="font-sans"
-                key={key}
-                value={value.category}
-              >
-                {value.category}
-              </SelectItem>
-            );
-          })}
+        {TEAM_CATEGORIRES.map((cat, index) => {
+          return (
+            <SelectItem
+              className="font-sans"
+              key={`${cat}-${index}`}
+              value={cat}
+            >
+              {cat}
+            </SelectItem>
+          );
+        })}
       </FormSelect>
-      <div className="flex items-center space-x-1">
-        <Info size={12} />
-        <p className="text-sm">
-          These categories are already full:
-          <span className="pl-1">
-            {fullCategories?.map((category) => category.category).join(", ")}
-          </span>
-        </p>
-      </div>
     </div>
   );
 }
