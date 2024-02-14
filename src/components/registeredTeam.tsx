@@ -15,9 +15,7 @@ export default function RegisteredTeam({
   return (
     <div className="flex space-x-2">
       <span className={`fi fi-${teamCountry.toLowerCase()}`}></span>
-      {/* TODO: change this after payments are up to date */}
-      {/* <p className={cn(!paidInvoice && "text-red-500")}>{teamName}</p> */}
-      <p>{teamName}</p>
+      <p className={cn(!paidInvoice && "text-red-500")}>{teamName}</p>
     </div>
   );
 }
