@@ -58,10 +58,8 @@ async function Wrapper({
       <div className="relative flex flex-1 flex-col justify-between">
         <div className="space-y-2 p-2">{children}</div>
         <div className="flex items-center space-x-3 px-2 pb-2 pt-4">
-          <Info className="hidden text-red-500 md:block" />
-          {/* TODO: change this after payments are up to date */}
-          {/* <p className="text-sm">{t("paymentNoticeWithRed")}</p> */}
-          <p className="text-sm">{t("paymentNotice")}</p>
+          <Info className="hidden text-red-500 md:block" size={30} />
+          <p className="text-[12px]">{t("paymentNoticeWithRed")}</p>
         </div>
       </div>
     </div>
