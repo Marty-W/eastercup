@@ -4,7 +4,7 @@ import { Separator } from "./ui/separator";
 import { getScopedI18n } from "locales/server";
 import RegisteredTeam from "./registeredTeam";
 import { CATEGORY_CAPACITIES } from "@/lib/conts";
-import { Info } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface Props {
   category: TeamCategory;
@@ -34,7 +34,7 @@ export default async function RegisteredTeamsTable({ category, team }: Props) {
   );
 }
 
-async function Wrapper({
+function Wrapper({
   children,
   category,
   teamCount,
@@ -43,13 +43,13 @@ async function Wrapper({
   category: TeamCategory;
   teamCount: number;
 }) {
-  const t = await getScopedI18n("registeredTeams");
+  const isFull = teamCount >= CATEGORY_CAPACITIES[category];
   return (
     <div className="flex flex-col rounded-sm border">
       <div className="flex items-center justify-between bg-muted p-2 text-muted-foreground">
         <h2 className="text-lg">{category}</h2>
         {teamCount > 0 && (
-          <span className="text-sm">
+          <span className={cn("text-sm", isFull && "text-brand-red")}>
             {teamCount}/{CATEGORY_CAPACITIES[category]}
           </span>
         )}
@@ -57,10 +57,6 @@ async function Wrapper({
       <Separator />
       <div className="relative flex flex-1 flex-col justify-between">
         <div className="space-y-2 p-2">{children}</div>
-        <div className="flex items-center space-x-3 px-2 pb-2 pt-4">
-          <Info className="hidden text-red-500 md:block" size={30} />
-          <p className="text-[12px]">{t("paymentNoticeWithRed")}</p>
-        </div>
       </div>
     </div>
   );

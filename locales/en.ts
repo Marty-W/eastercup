@@ -34,6 +34,7 @@ export default {
   "form.category.U14G": "U14G (girls born in 2010 and younger)",
   "form.category.U16B": "U16B (boys born in 2008 and younger)",
   "form.category.U16G": "U16G (girls born in 2008 and younger)",
+  "form.category.fullCategories": "Already full categories",
   "form.contactPerson": "Contact person",
   "form.phoneNumber": "Phone number",
   "form.phoneNumber.description": "Please include country code.",
@@ -244,8 +245,8 @@ export default {
     "Other Klatovy historic sights are also worth visiting, e.g. baroque pharmacy U Bílýho unicorn, where there is now a museum documenting the development of pharmacy from 1776 to 1966, when the pharmacy ceased its activities.",
   "registeredTeams.header": "Registered teams",
   "registeredTeams.emptyState": "There are no registered teams yet",
-  "registeredTeams.paymentNoticeWithRed":
-    "Registration for the tournament is valid after payment of the entry fee. Teams that have not yet paid are marked in red.",
-  "registeredTeams.paymentNotice":
+  "registeredTeams.notice1": "Individual categories are capacity limited.",
+  "registeredTeams.notice2":
     "Registration for the tournament is valid after payment of the entry fee.",
+  "registeredTeams.notice3": "Teams that have not yet paid are marked in red.",
 } satisfies Record<keyof typeof Locale, string>;
