@@ -1,13 +1,19 @@
 "use client";
-import { TEAM_CATEGORIRES, type teamFormInfoSchema } from "@/lib/conts";
+import { type teamFormInfoSchema } from "@/lib/conts";
 import { SelectItem } from "@/components/ui/select";
 import FormSelect from "./formSelect";
 import { useFormContext } from "react-hook-form";
 import { useScopedI18n } from "locales/client";
 import { type z } from "zod";
+import { api } from "@/trpc/react";
 
 export default function TeamCategorySelect() {
   const form = useFormContext<z.infer<typeof teamFormInfoSchema>>();
+  const categoryCapacities =
+    api.registration.getRegistrationCapacities.useQuery();
+
+  const fullCategories = categoryCapacities.data?.full;
+  const nonFullCatogories = categoryCapacities.data?.nonFull;
 
   const t = useScopedI18n("form");
   return (
@@ -29,7 +35,7 @@ export default function TeamCategorySelect() {
           </div>
         }
       >
-        {TEAM_CATEGORIRES.map((cat, index) => {
+        {nonFullCatogories?.map((cat, index) => {
           return (
             <SelectItem
               className="font-sans"
@@ -41,6 +47,12 @@ export default function TeamCategorySelect() {
           );
         })}
       </FormSelect>
+      {fullCategories && (
+        <div className="space-x-1 text-[12px]">
+          <span>{t("category.fullCategories")}:</span>
+          <span>{fullCategories.join(", ")}</span>
+        </div>
+      )}
     </div>
   );
 }

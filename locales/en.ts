@@ -34,6 +34,7 @@ export default {
   "form.category.U14G": "U14G (girls born in 2010 and younger)",
   "form.category.U16B": "U16B (boys born in 2008 and younger)",
   "form.category.U16G": "U16G (girls born in 2008 and younger)",
+  "form.category.fullCategories": "Already full categories",
   "form.contactPerson": "Contact person",
   "form.phoneNumber": "Phone number",
   "form.phoneNumber.description": "Please include country code.",

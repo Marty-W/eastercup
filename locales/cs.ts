@@ -37,6 +37,7 @@ export default {
   "form.category.U14G": "U14G (narozené 2010 a mladší)",
   "form.category.U16B": "U16B (narození 2008 a mladší)",
   "form.category.U16G": "U16G (narozené 2008 a mladší)",
+  "form.category.fullCategories": "Již plné kategorie",
   "form.contactPerson": "Kontaktní osoba",
   "form.phoneNumber": "Telefonní číslo",
   "form.phoneNumber.description": "Prosím včetně předvolby země",
