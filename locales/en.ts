@@ -245,8 +245,8 @@ export default {
     "Other Klatovy historic sights are also worth visiting, e.g. baroque pharmacy U Bílýho unicorn, where there is now a museum documenting the development of pharmacy from 1776 to 1966, when the pharmacy ceased its activities.",
   "registeredTeams.header": "Registered teams",
   "registeredTeams.emptyState": "There are no registered teams yet",
-  "registeredTeams.paymentNoticeWithRed":
-    "Registration for the tournament is valid after payment of the entry fee. Teams that have not yet paid are marked in red.",
-  "registeredTeams.paymentNotice":
+  "registeredTeams.notice1": "Individual categories are capacity limited.",
+  "registeredTeams.notice2":
     "Registration for the tournament is valid after payment of the entry fee.",
+  "registeredTeams.notice3": "Teams that have not yet paid are marked in red.",
 } satisfies Record<keyof typeof Locale, string>;
