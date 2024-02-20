@@ -64,8 +64,64 @@ export default async function InformationPage() {
       <InfoSection header={t("system.header")}>
         <p className="lg:leading-5">{t("system.text")}</p>
       </InfoSection>
-      <InfoSection header={t("rules.header")}>
-        <p className="lg:leading-5">{t("rules.text")}</p>
+      <InfoSection header={t("rules.header")} subSectionClassName="leading-5">
+        <ol className="list-inside list-decimal space-y-3">
+          <li>
+            {t("rules.1.h1")}
+            <div className="space-y-1 pl-6 md:pl-14">
+              <p>{t("rules.1.p1")}</p>
+              <p>{t("rules.1.p2")}</p>
+              <p>{t("rules.1.p3")}</p>
+              <p>{t("rules.1.p4")}</p>
+            </div>
+          </li>
+          <li>{t("rules.2")}</li>
+          <li>{t("rules.3")}</li>
+          <li>{t("rules.4")}</li>
+          <li>{t("rules.5")}</li>
+          <li>
+            {t("rules.6.p1")}
+            <div className="py-4 pl-6 md:pl-14">
+              <p className="font-bold">{t("rules.6.h2")}</p>
+              <p>{t("rules.6.h2.p1")}</p>
+              <p>{t("rules.6.h2.p2")}</p>
+              <p>{t("rules.6.h2.p3")}</p>
+              <p>{t("rules.6.h2.p4")}</p>
+              <p>{t("rules.6.h2.p5")}</p>
+              <p>{t("rules.6.h2.p6")}</p>
+            </div>
+            <div className="py-4 pl-6 md:pl-14">
+              <p className="font-bold">{t("rules.6.h3")}</p>
+              <p>{t("rules.6.h3.p1")}</p>
+              <p>{t("rules.6.h3.p2")}</p>
+              <p>{t("rules.6.h3.p3")}</p>
+            </div>
+            <div className="py-4 pl-6 md:pl-14">
+              <p className="font-bold">{t("rules.6.h4")}</p>
+              <p>{t("rules.6.h4.p1")}</p>
+              <p>{t("rules.6.h4.p2")}</p>
+              <p>{t("rules.6.h4.p3")}</p>
+              <p>{t("rules.6.h4.p4")}</p>
+              <p>{t("rules.6.h4.p5")}</p>
+              <p>{t("rules.6.h4.p6")}</p>
+              {curLocale === "cs" && <p>{t("rules.6.h4.p7")}</p>}
+              <p>{t("rules.6.h4.p8")}</p>
+              <div className="pl-8">
+                <p>{t("rules.6.h4.p8.s1")}</p>
+                <p>{t("rules.6.h4.p8.s2")}</p>
+                <p>{t("rules.6.h4.p8.s3")}</p>
+                <p>{t("rules.6.h4.p8.s4")}</p>
+                <p>{t("rules.6.h4.p8.s5")}</p>
+                <p>{t("rules.6.h4.p8.s5.p1")}</p>
+                <p>{t("rules.6.h4.p8.s5.p2")}</p>
+              </div>
+            </div>
+          </li>
+          <li>{t("rules.7")}</li>
+          <li>{t("rules.8")}</li>
+          <li>{t("rules.9")}</li>
+          <li>{t("rules.10")}</li>
+        </ol>
       </InfoSection>
       <InfoSection header={t("prizes.header")}>
         <p className="lg:leading-5">{t("prizes.text")}</p>
