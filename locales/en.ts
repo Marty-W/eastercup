@@ -198,8 +198,57 @@ export default {
   "info.system.header": "GAME SYSTEM:",
   "info.system.text":
     "It will be published together with schedule of the matches two weeks prior to the start, each team will play at least 5 games",
-  "info.rules.header": "RULES:",
-  "info.rules.text": `Games will be played under the basketball and minibasketball rules for 2023/2024`,
+  "info.rules.header": "TOURNAMET RULES:",
+  "info.rules.1.h1": `The tournament is announced for the following categories:`,
+  "info.rules.1.p1": `U11 girls, boys and mix (born on 1.1. 2013 and younger)`,
+  "info.rules.1.p2": `U12 girls, boys and mix (born 1.1. 2012 and younger)`,
+  "info.rules.1.p3": `U14 girls and boys (born 1.1.2010 and younger)`,
+  "info.rules.1.p4": `U16 girls and boys (born 1.1.2008 and younger)`,
+  "info.rules.2": `Each team consists of a maximum of 15 players, in the U14 and U16 category a maximum of
+12 players.`,
+  "info.rules.3": `U11 and U12 categories play with size 5 ball, U14 and U16 girls with size 6 ball and U14 and U16
+boys with size 7 ball.`,
+  "info.rules.4": `The height of the baskets in the U11 and U12 categories is 260 cm, in the U14 and U16 categories the height of the basket is 305 cm.`,
+  "info.rules.5": `Each participant is obliged to present an ID upon request to verify their age. Photo and date
+of birth required.`,
+  "info.rules.6.p1": `The game is played according to the current basketball and mini-basketball rules for the
+2023/24 season with the following changes:`,
+  "info.rules.6.h2": `U11 a U12`,
+  "info.rules.6.h2.p1": `– Played in 4x8 minutes gross time`,
+  "info.rules.6.h2.p2": `– Time stops only during time outs`,
+  "info.rules.6.h2.p3": `– Defensive 3 second rule applies`,
+  "info.rules.6.h2.p4": `– Each player is only allowed to play in 2 quarters`,
+  "info.rules.6.h2.p5": `– Players may not screen`,
+  "info.rules.6.h2.p6": `– No three-point baskets`,
+  "info.rules.6.h3": `U14 a U16`,
+  "info.rules.6.h3.p1": `– The rotation is the same as in adult basketball`,
+  "info.rules.6.h3.p2": `– Played 4x8 minutes net time`,
+  "info.rules.6.h3.p3": `– Timeout is 60 sec`,
+  "info.rules.6.h4": `All categories`,
+  "info.rules.6.h4.p1": `– Each team has 1 timeout in the 1st half, 2 timeouts in the 2nd half and 1 timeout in overtime`,
+  "info.rules.6.h4.p2": `– All breaks between quarters and before overtime are 2 minutes, halftime is 5 minutes`,
+  "info.rules.6.h4.p3": `– Mandatory substitution occurs at 4 fouls`,
+  "info.rules.6.h4.p4": `– Free throws are made on the 5th team foul`,
+  "info.rules.6.h4.p5": `– In the event of a tie, overtime is 3 minutes of net time`,
+  "info.rules.6.h4.p6": `– If no decision is made after overtime, free throws will be taken (3 series) and then one at a
+time until a full decision is made`,
+  "info.rules.6.h4.p7": ``,
+  "info.rules.6.h4.p8": `– In the event of a tie in the groups, the following criteria will be used to break the tie:`,
+  "info.rules.6.h4.p8.s1": `1. Mutual match`,
+  "info.rules.6.h4.p8.s2": `2. Score difference`,
+  "info.rules.6.h4.p8.s3": `3. Higher number of points scored`,
+  "info.rules.6.h4.p8.s4": `4. Fewer points scored`,
+  "info.rules.6.h4.p8.s5": `5. Shot (sixes)`,
+  "info.rules.6.h4.p8.s5.p1": `– Each team must be present at least 5 minutes before the start of each game`,
+  "info.rules.6.h4.p8.s5.p2": `– Failure to comply with this rule will be penalized 5 points for the opposing team`,
+  "info.rules.7": `Each team is entitled to lodge a protest against the result of the match or the management
+of the game with the Organising Committee no later than 10 minutes after the end of the
+match together with a deposit of 500 CZK (20 Eur). In case of rejection, the deposit shall be
+forfeited to the organiser.`,
+  "info.rules.8": `The organizer has no material responsibility for the property of the players and coaches. All
+teams are obliged to take care of their belongings to prevent any theft.`,
+  "info.rules.9": `The tournament draw will take place after the closing date for entries and will be sent together with the playing system to the e-mail address indicated in the entry form`,
+  "info.rules.10": `Each team practices with its own balls. The organizer provides only playing balls.`,
   "info.prizes.header": "PRIZES:",
   "info.prizes.text":
     "1st, 2nd and 3rd places cups and medals, each team diploma + prizes, in each category: All-stars and MVP.",
