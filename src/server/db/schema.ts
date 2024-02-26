@@ -186,3 +186,22 @@ export const emailList = pgTable("email_list", {
   email: text("email").notNull(),
   inviteMailSent: boolean("invite_mail_sent").default(false),
 });
+
+export const accomodationCapacity = pgTable("accomodation_capacity", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  category: varchar("category", { enum: ["A", "B", "C", "D"] }).notNull(),
+  pricePerNight: integer("price_per_night"),
+  contactPerson: text("contact_person"),
+  note: text("note"),
+});
+
+export const room = pgTable("room", {
+  id: serial("id").primaryKey(),
+  accomodationId: integer("accomodation_id").references(
+    () => accomodationCapacity.id,
+    { onDelete: "cascade" },
+  ),
+  bedCount: integer("bed_count").notNull(),
+  teamId: integer("team_id").references(() => teams.id),
+});
