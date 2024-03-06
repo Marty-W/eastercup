@@ -1,5 +1,5 @@
 {
-  "id": "6b263666-fb86-4aef-bac3-d85986e05b15",
+  "id": "5dbeed52-c8b8-468b-ba22-1b1feab6d98f",
   "prevId": "b0937c56-48b7-4885-bcc9-ff0641811061",
   "version": "5",
   "dialect": "pg",
@@ -26,12 +26,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "price_per_night": {
-          "name": "price_per_night",
-          "type": "integer",
-          "primaryKey": false,
-          "notNull": false
-        },
         "contact_person": {
           "name": "contact_person",
           "type": "text",
@@ -40,6 +34,18 @@
         },
         "note": {
           "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_number": {
+          "name": "phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -192,7 +198,15 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "catering_order_team_idx": {
+          "name": "catering_order_team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "catering_order_team_id_teams_id_fk": {
           "name": "catering_order_team_id_teams_id_fk",
@@ -330,9 +344,45 @@
           "primaryKey": false,
           "notNull": false
         },
-        "bed_count": {
-          "name": "bed_count",
+        "bed_capacity": {
+          "name": "bed_capacity",
           "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "free_beds": {
+          "name": "free_beds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "full_beds": {
+          "name": "full_beds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "purchase_price_per_night": {
+          "name": "purchase_price_per_night",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "purchase_currency": {
+          "name": "purchase_currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sell_price_per_night": {
+          "name": "sell_price_per_night",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sell_currency": {
+          "name": "sell_currency",
+          "type": "text",
           "primaryKey": false,
           "notNull": true
         },
@@ -341,9 +391,36 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": false
+        },
+        "occupied_from": {
+          "name": "occupied_from",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "occupied_to": {
+          "name": "occupied_to",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "team_idx": {
+          "name": "team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        },
+        "acc_idx": {
+          "name": "acc_idx",
+          "columns": [
+            "accomodation_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "room_accomodation_id_accomodation_capacity_id_fk": {
           "name": "room_accomodation_id_accomodation_capacity_id_fk",
@@ -416,7 +493,15 @@
           "notNull": true
         }
       },
-      "indexes": {},
+      "indexes": {
+        "acc_order_team_idx": {
+          "name": "acc_order_team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "team_accomodation_info_team_id_teams_id_fk": {
           "name": "team_accomodation_info_team_id_teams_id_fk",
@@ -770,7 +855,15 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "tshirt_order_team_idx": {
+          "name": "tshirt_order_team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "tshirt_orders_team_id_teams_id_fk": {
           "name": "tshirt_orders_team_id_teams_id_fk",
