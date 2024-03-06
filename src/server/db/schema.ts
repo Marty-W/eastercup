@@ -9,6 +9,7 @@ import {
   text,
   varchar,
   uuid,
+  index,
 } from "drizzle-orm/pg-core";
 
 export const teams = pgTable("teams", {
@@ -78,16 +79,24 @@ export const teamBillingInfoRelations = relations(
   }),
 );
 
-export const tshirtOrders = pgTable("tshirt_orders", {
-  id: serial("id").primaryKey(),
-  teamId: integer("team_id").references(() => teams.id),
-  noXsShirts: integer("no_xs_shirts"),
-  noSShirts: integer("no_s_shirts"),
-  noMShirts: integer("no_m_shirts"),
-  noLShirts: integer("no_l_shirts"),
-  noXLShirts: integer("no_xl_shirts"),
-  noXXLShirts: integer("no_xxl_shirts"),
-});
+export const tshirtOrders = pgTable(
+  "tshirt_orders",
+  {
+    id: serial("id").primaryKey(),
+    teamId: integer("team_id").references(() => teams.id),
+    noXsShirts: integer("no_xs_shirts"),
+    noSShirts: integer("no_s_shirts"),
+    noMShirts: integer("no_m_shirts"),
+    noLShirts: integer("no_l_shirts"),
+    noXLShirts: integer("no_xl_shirts"),
+    noXXLShirts: integer("no_xxl_shirts"),
+  },
+  (table) => {
+    return {
+      teamIdx: index("tshirt_order_team_idx").on(table.teamId),
+    };
+  },
+);
 
 export const tshirtOrdersRelations = relations(tshirtOrders, ({ one }) => ({
   team: one(teams, {
@@ -116,28 +125,36 @@ export const invoiceRelations = relations(invoice, ({ one }) => ({
   }),
 }));
 
-export const cateringOrder = pgTable("catering_order", {
-  id: serial("id").primaryKey(),
-  teamId: integer("team_id").references(() => teams.id),
-  thuBreakfast: integer("thu_breakfast").default(0),
-  thuLunch: integer("thu_lunch").default(0),
-  thuDinner: integer("thu_dinner").default(0),
-  friBreakfast: integer("fri_breakfast").default(0),
-  friLunch: integer("fri_lunch").default(0),
-  friDinner: integer("fri_dinner").default(0),
-  satBreakfast: integer("sat_breakfast").default(0),
-  satLunch: integer("sat_lunch").default(0),
-  satDinner: integer("sat_dinner").default(0),
-  sunBreakfast: integer("sun_breakfast").default(0),
-  sunLunch: integer("sun_lunch").default(0),
-  sunDinner: integer("sun_dinner").default(0),
-  halalCount: integer("halal_count").default(0),
-  vegetarianCount: integer("vegetarian_count").default(0),
-  lactoseFreeCount: integer("lactose_free_count").default(0),
-  glutenFreeCount: integer("gluten_free_count").default(0),
-  otherAllergyCount: integer("other_allergy_count").default(0),
-  otherAllergyNote: text("other_allergy_note"),
-});
+export const cateringOrder = pgTable(
+  "catering_order",
+  {
+    id: serial("id").primaryKey(),
+    teamId: integer("team_id").references(() => teams.id),
+    thuBreakfast: integer("thu_breakfast").default(0),
+    thuLunch: integer("thu_lunch").default(0),
+    thuDinner: integer("thu_dinner").default(0),
+    friBreakfast: integer("fri_breakfast").default(0),
+    friLunch: integer("fri_lunch").default(0),
+    friDinner: integer("fri_dinner").default(0),
+    satBreakfast: integer("sat_breakfast").default(0),
+    satLunch: integer("sat_lunch").default(0),
+    satDinner: integer("sat_dinner").default(0),
+    sunBreakfast: integer("sun_breakfast").default(0),
+    sunLunch: integer("sun_lunch").default(0),
+    sunDinner: integer("sun_dinner").default(0),
+    halalCount: integer("halal_count").default(0),
+    vegetarianCount: integer("vegetarian_count").default(0),
+    lactoseFreeCount: integer("lactose_free_count").default(0),
+    glutenFreeCount: integer("gluten_free_count").default(0),
+    otherAllergyCount: integer("other_allergy_count").default(0),
+    otherAllergyNote: text("other_allergy_note"),
+  },
+  (table) => {
+    return {
+      teamIdx: index("catering_order_team_idx").on(table.teamId),
+    };
+  },
+);
 
 export const cateringOrderRelations = relations(cateringOrder, ({ one }) => ({
   team: one(teams, {
@@ -146,14 +163,22 @@ export const cateringOrderRelations = relations(cateringOrder, ({ one }) => ({
   }),
 }));
 
-export const teamAccomodationInfo = pgTable("team_accomodation_info", {
-  id: serial("id").primaryKey(),
-  teamId: integer("team_id").references(() => teams.id),
-  day: text("day").notNull(),
-  role: text("role").notNull(),
-  accomodation: text("accomodation"),
-  count: integer("count").notNull(),
-});
+export const teamAccomodationInfo = pgTable(
+  "team_accomodation_info",
+  {
+    id: serial("id").primaryKey(),
+    teamId: integer("team_id").references(() => teams.id),
+    day: text("day").notNull(),
+    role: text("role").notNull(),
+    accomodation: text("accomodation"),
+    count: integer("count").notNull(),
+  },
+  (table) => {
+    return {
+      teamIdx: index("acc_order_team_idx").on(table.teamId),
+    };
+  },
+);
 
 export const teamAccomodationInfoRelations = relations(
   teamAccomodationInfo,
@@ -191,17 +216,35 @@ export const accomodationCapacity = pgTable("accomodation_capacity", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   category: varchar("category", { enum: ["A", "B", "C", "D"] }).notNull(),
-  pricePerNight: integer("price_per_night"),
   contactPerson: text("contact_person"),
   note: text("note"),
+  phoneNumber: text("phone_number"),
+  email: text("email"),
 });
 
-export const room = pgTable("room", {
-  id: serial("id").primaryKey(),
-  accomodationId: integer("accomodation_id").references(
-    () => accomodationCapacity.id,
-    { onDelete: "cascade" },
-  ),
-  bedCount: integer("bed_count").notNull(),
-  teamId: integer("team_id").references(() => teams.id),
-});
+export const room = pgTable(
+  "room",
+  {
+    id: serial("id").primaryKey(),
+    accomodationId: integer("accomodation_id").references(
+      () => accomodationCapacity.id,
+      { onDelete: "cascade" },
+    ),
+    bedCapacity: integer("bed_capacity").notNull(),
+    freeBeds: integer("free_beds").notNull(),
+    fullBeds: integer("full_beds").notNull(),
+    purchasePricePerNight: integer("purchase_price_per_night").notNull(),
+    purchaseCurrency: text("purchase_currency").notNull(),
+    sellPricePerNight: integer("sell_price_per_night").notNull(),
+    sellCurrency: text("sell_currency").notNull(),
+    teamId: integer("team_id").references(() => teams.id),
+    occupiedFrom: date("occupied_from"),
+    occupiedTo: date("occupied_to"),
+  },
+  (table) => {
+    return {
+      teamIdx: index("team_idx").on(table.teamId),
+      accIdx: index("acc_idx").on(table.accomodationId),
+    };
+  },
+);
