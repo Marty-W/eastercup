@@ -312,3 +312,5 @@ export const CATEGORY_CAPACITIES = {
   U16G: 10,
   U16B: 10,
 };
+
+export const REGISTRATION_CUTOFF = new Date("2024-03-07T23:59:59");

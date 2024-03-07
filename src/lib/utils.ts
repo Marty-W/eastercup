@@ -1,5 +1,8 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
+import { REGISTRATION_CUTOFF } from "./conts";
+import { zonedTimeToUtc } from "date-fns-tz";
+import { isAfter } from "date-fns";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -48,4 +51,16 @@ export function sanitizeTeamNameForFilename(teamName: string): string {
   teamName = teamName.toLowerCase();
 
   return teamName;
+}
+
+export function getIsRegistrationClosed(): boolean {
+  const pragueTimezone = "Europe/Prague";
+  const cutoffDateInPrague = zonedTimeToUtc(
+    REGISTRATION_CUTOFF,
+    pragueTimezone,
+  );
+
+  const now = new Date();
+
+  return isAfter(now, cutoffDateInPrague);
 }
