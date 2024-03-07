@@ -4,6 +4,7 @@ import {
   type TEAM_CATEGORIRES,
   registrationInputSchema,
 } from "@/lib/conts";
+import { getIsRegistrationClosed } from "@/lib/utils";
 import {
   addTeamBillingInfo,
   addTeamTransportInfo,
@@ -14,6 +15,7 @@ import {
   generateTshirtOrder,
 } from "@/server/api/helpers";
 import { client } from "@/trigger";
+import { TRPCError } from "@trpc/server";
 
 export const registrationRouter = createTRPCRouter({
   team: publicProcedure
@@ -21,6 +23,14 @@ export const registrationRouter = createTRPCRouter({
     .mutation(async (opts) => {
       const { input, ctx } = opts;
       const { info, services, billing } = input;
+      const isRegistrationClosed = getIsRegistrationClosed();
+
+      if (isRegistrationClosed) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Registration is closed",
+        });
+      }
 
       const timer = new Date();
 

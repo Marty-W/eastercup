@@ -4,11 +4,14 @@ import Link from "next/link";
 import { api } from "@/trpc/server";
 import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
+import { getIsRegistrationClosed } from "@/lib/utils";
 
 export default async function Landing() {
   const t = await getI18n();
   const { teamCount, countryCount, countries } =
     await api.common.getTeamsCountInfo.query();
+
+  const isRegistrationClosed = getIsRegistrationClosed();
 
   return (
     <>
@@ -24,12 +27,14 @@ export default async function Landing() {
                 <span>{`Klatovy, ${t("common.cz")}`}</span>
               </div>
             </div>
-            <Link
-              href="/form/info"
-              className="mx-auto max-w-[200px] rounded-md bg-brand-yellow px-4 py-2 active:translate-y-1 md:max-w-[300px] md:px-8 md:py-4"
-            >
-              <span>{t("hero.button")}</span>
-            </Link>
+            {!isRegistrationClosed && (
+              <Link
+                href="/form/info"
+                className="mx-auto max-w-[200px] rounded-md bg-brand-yellow px-4 py-2 active:translate-y-1 md:max-w-[300px] md:px-8 md:py-4"
+              >
+                <span>{t("hero.button")}</span>
+              </Link>
+            )}
           </div>
           <div className="flex flex-col space-y-2 pb-6 text-sm md:space-y-6 md:text-base">
             <TimeCounter />

@@ -53,6 +53,7 @@
     "cmdk": "^0.2.0",
     "countries-list": "^3.0.6",
     "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
     "drizzle-orm": "^0.29.1",
     "flag-icons": "^7.1.0",
     "geist": "^1.2.0",
