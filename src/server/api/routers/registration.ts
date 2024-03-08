@@ -25,13 +25,12 @@ export const registrationRouter = createTRPCRouter({
       const { info, services, billing } = input;
       const isRegistrationClosed = getIsRegistrationClosed();
 
-      // TODO: uncomment this when reg is closed
-      // if (isRegistrationClosed) {
-      //   throw new TRPCError({
-      //     code: "FORBIDDEN",
-      //     message: "Registration is closed",
-      //   });
-      // }
+      if (isRegistrationClosed) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "Registration is closed",
+        });
+      }
 
       const timer = new Date();
 
