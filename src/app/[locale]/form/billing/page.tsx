@@ -1,7 +1,6 @@
 "use client";
 import TeamBillingForm from "@/components/teamBillingForm";
 import { Button } from "@/components/ui/button";
-import { usePreventFormExit } from "@/hooks/usePreventFormExit";
 import { finishedFormStepsAtom, teamBillingAtom } from "@/lib/atoms";
 import {
   teamFormBillingSchema,
@@ -27,7 +26,7 @@ export default function TeamBilling() {
   const locale = useCurrentLocale();
   const setTeamBillingFormValues = useSetAtom(teamBillingAtom);
   const setFinishedFormStepsAtom = useSetAtom(finishedFormStepsAtom);
-  usePreventFormExit();
+  // usePreventFormExit();
 
   const onSubmit = (values: TeamBillingFormValues) => {
     setTeamBillingFormValues(values);

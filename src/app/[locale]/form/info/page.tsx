@@ -1,7 +1,6 @@
 "use client";
 import TeamRegistrationForm from "@/components/teamRegistrationForm";
 import { Button } from "@/components/ui/button";
-import { usePreventFormExit } from "@/hooks/usePreventFormExit";
 import { finishedFormStepsAtom, teamInfoAtom } from "@/lib/atoms";
 import { teamFormInfoSchema, teamFormInfoDefaultValues } from "@/lib/conts";
 import { type TeamInfoFormValues } from "@/lib/types";
@@ -24,7 +23,7 @@ export default function TeamInfo() {
   const locale = useCurrentLocale();
   const setTeamInfoFormValues = useSetAtom(teamInfoAtom);
   const setFinishedFormStepsAtom = useSetAtom(finishedFormStepsAtom);
-  usePreventFormExit();
+  // usePreventFormExit();
 
   const onSubmit = (values: TeamInfoFormValues) => {
     setTeamInfoFormValues(values);
