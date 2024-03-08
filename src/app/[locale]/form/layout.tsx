@@ -17,12 +17,16 @@ export default function FormLayout({
   const segment = useSelectedLayoutSegment() as FormSegment;
   const isRegistrationClosed = getIsRegistrationClosed();
 
-  if (isRegistrationClosed) {
-    <main className="container min-h-[60vh] max-w-screen-md pb-8">
-      <p>Registration is closed</p>
-    </main>;
-    return;
-  }
+  // TODO: Uncomment this when registration is closed
+  // if (isRegistrationClosed) {
+  //   return (
+  //     <main className="container flex min-h-[60vh] max-w-screen-md pb-8">
+  //       <span className="mx-auto pt-6 font-display text-2xl">
+  //         Registration is closed
+  //       </span>
+  //     </main>
+  //   );
+  // }
   return (
     <main className="container min-h-[60vh] max-w-screen-md pb-8">
       <FormStepper activeSegment={segment} formStep={activeStep} />
