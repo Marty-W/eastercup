@@ -6,6 +6,8 @@ import {
   type teamFormInfoSchema,
   type fullFormSchema,
   type TEAM_CATEGORIRES,
+  type AccountItemCSSchema,
+  type AccountItemENSchema,
 } from "./conts";
 
 export type LocaleKey = keyof typeof locale;
@@ -58,3 +60,7 @@ export type NavLink = {
   href: string;
   text: LocaleKey;
 };
+
+export type AccountItemCS = z.infer<typeof AccountItemCSSchema>;
+
+export type AccountItemEN = z.infer<typeof AccountItemENSchema>;
