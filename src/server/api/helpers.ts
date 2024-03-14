@@ -126,7 +126,7 @@ export async function generateRegistrationInvoice(
 
 export async function generateAndSaveServiceInvoice(
   teamID: number,
-  amount: number,
+  amount: string,
   currency: string,
 ) {
   const registrationInvoiceVarSymbol = getInvoiceVarSymbol(teamID, "service");

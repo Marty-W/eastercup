@@ -87,7 +87,7 @@ interface Props {
   phoneNumber: string;
   invoiceVarSymbol: string;
   currency: string;
-  totalInvoicePrice: number;
+  totalInvoicePrice: string;
   accountItems: AccountItemEN[];
 }
 
@@ -246,12 +246,12 @@ export default function ServicesPaymentRequestTemplateEN({
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.unitPrice} {currency}
+                  {item.unitPrice} {currency === "czk" ? "Kč" : "€"}
                 </Text>
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalPrice} {currency}
+                  {item.totalPrice} {currency === "czk" ? "Kč" : "€"}
                 </Text>
               </View>
             </View>
@@ -269,7 +269,7 @@ export default function ServicesPaymentRequestTemplateEN({
           }}
         >
           <Text>{`Total price: ${totalInvoicePrice} ${
-            currency === "eur" ? "€" : "Kč"
+            currency === "czk" ? "Kč" : "€"
           }`}</Text>
         </View>
         <View
