@@ -87,7 +87,7 @@ interface Props {
   phoneNumber: string;
   invoiceVarSymbol: string;
   currency: string;
-  totalInvoicePrice: number;
+  totalInvoicePrice: string;
   accountItems: AccountItemCS[];
 }
 
@@ -254,12 +254,12 @@ export default function ServicesPaymentRequestTemplateCS({
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.pricePerItemWithDPH} {currency}
+                  {item.pricePerItemWithDPH} {currency === "czk" ? "Kč" : "€"}
                 </Text>
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalPriceWithoutDPH} {currency}
+                  {item.totalPriceWithoutDPH} {currency === "czk" ? "Kč" : "€"}
                 </Text>
               </View>
               <View style={{ flex: 1, textAlign: "right" }}>
@@ -267,12 +267,12 @@ export default function ServicesPaymentRequestTemplateCS({
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalDPH.toPrecision(2)} {currency}
+                  {item.totalDPH} {currency === "czk" ? "Kč" : "€"}
                 </Text>
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalPriceWithDPH} {currency}
+                  {item.totalPriceWithDPH} {currency === "czk" ? "Kč" : "€"}
                 </Text>
               </View>
             </View>
@@ -289,9 +289,9 @@ export default function ServicesPaymentRequestTemplateCS({
             marginBottom: "10px",
           }}
         >
-          <Text>{`Celkem k úhradě: ${totalInvoicePrice.toPrecision(
-            2,
-          )} ${currency}`}</Text>
+          <Text>{`Celkem k úhradě: ${totalInvoicePrice} ${
+            currency === "czk" ? "Kč" : "€"
+          }`}</Text>
         </View>
         <View
           style={{
