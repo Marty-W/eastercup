@@ -110,7 +110,7 @@ export const invoice = pgTable("invoice", {
   teamId: integer("team_id").references(() => teams.id),
   varSymbol: varchar("var_symbol", { length: 256 }).notNull(),
   type: varchar("type", {
-    enum: ["registration", "tshirts", "accomodation", "catering"],
+    enum: ["registration", "services"],
   }).notNull(),
   paid: boolean("paid").default(false),
   amount: text("amount").notNull(),

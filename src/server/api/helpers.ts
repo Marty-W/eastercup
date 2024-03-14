@@ -101,7 +101,10 @@ export async function generateRegistrationInvoice(
   teamID: number,
   teamCountry: string,
 ) {
-  const registrationInvoiceVarSymbol = getInvoiceVarSymbol(teamID);
+  const registrationInvoiceVarSymbol = getInvoiceVarSymbol(
+    teamID,
+    "registration",
+  );
   const registrationFee = getRegistrationFee(teamCountry);
 
   try {
@@ -121,9 +124,40 @@ export async function generateRegistrationInvoice(
   }
 }
 
-export function getInvoiceVarSymbol(teamID: number) {
+export async function generateAndSaveServiceInvoice(
+  teamID: number,
+  amount: number,
+  currency: string,
+) {
+  const registrationInvoiceVarSymbol = getInvoiceVarSymbol(teamID, "service");
+
+  try {
+    return await db
+      .insert(invoice)
+      .values({
+        teamId: teamID,
+        varSymbol: registrationInvoiceVarSymbol,
+        type: "services",
+        amount: `${amount} ${currency}`,
+      })
+      .returning();
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message:
+        "Database error occurred while creating the registration invoice",
+      cause: e,
+    });
+  }
+}
+
+export function getInvoiceVarSymbol(
+  teamID: number,
+  type: "registration" | "service" = "registration",
+) {
   const currYear = String(new Date().getFullYear());
-  return `${currYear}${String(teamID).padStart(4, "0")}`;
+  const fillString = type === "registration" ? "0" : "1";
+  return `${currYear}${String(teamID).padStart(4, fillString)}`;
 }
 
 export function getRegistrationFee(teamCountry: string) {
