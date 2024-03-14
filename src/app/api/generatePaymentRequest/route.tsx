@@ -168,7 +168,11 @@ export async function POST(request: Request) {
     }
 
     return new Response(
-      JSON.stringify({ message: "Data is valid!", invoiceUrl: blob.url }),
+      JSON.stringify({
+        message: "Data is valid!",
+        invoiceUrl: blob.url,
+        ivoiceId: newInvoice.id,
+      }),
       {
         status: 200,
         headers: {
