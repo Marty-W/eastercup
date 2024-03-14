@@ -17,7 +17,7 @@ import { env } from "@/env.mjs";
 
 const requestSchema = z.object({
   teamID: z.number(),
-  totalPrice: z.number(),
+  totalPrice: z.string(),
   currency: z.string(),
   accountItems: z.union([
     z.array(AccountItemCSSchema),
