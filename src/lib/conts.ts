@@ -317,7 +317,7 @@ export const REGISTRATION_CUTOFF = new Date("2024-03-07T23:59:59");
 
 export const AccountItemCSSchema = z.object({
   description: z.string(),
-  quantity: z.number(),
+  quantity: z.string(),
   pricePerItemWithDPH: z.string(),
   totalPriceWithoutDPH: z.string(),
   DPHRate: z.string(),
