@@ -1,5 +1,4 @@
 import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
-
 import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
 import { AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
@@ -8,7 +7,7 @@ import { db } from "@/server/db";
 import { teams, teamBillingInfo, invoice } from "@/server/db/schema";
 import { renderToStream } from "@react-pdf/renderer";
 import { put } from "@vercel/blob";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 import { type Readable } from "stream";
 import { z } from "zod";
 import { env } from "@/env.mjs";
@@ -138,7 +137,7 @@ export async function POST(request: Request) {
       .set({
         url: blob.url,
       })
-      .where(eq(invoice.teamId, teamID));
+      .where(and(eq(invoice.teamId, teamID), eq(invoice.id, newInvoice.id)));
 
     return new Response(
       JSON.stringify({
