@@ -1,10 +1,9 @@
 import {
-  REGISTRATION_INVOICE_DUE_DAYS,
   BANK_ACCOUNT_NUMBER_EUR,
   BANK_ACCOUNT_IBAN_EUR,
   BANK_ACCOUNT_SWIFT,
 } from "@/lib/conts";
-import { type AccountItemEN } from "@/lib/types";
+import { type AccountItem } from "@/lib/types";
 import {
   View,
   StyleSheet,
@@ -13,7 +12,7 @@ import {
   Text,
   Font,
 } from "@react-pdf/renderer";
-import { addDays, format } from "date-fns";
+import { format } from "date-fns";
 import path from "path";
 
 const Roboto = path.join(process.cwd(), "fonts", "Roboto.ttf");
@@ -88,7 +87,7 @@ interface Props {
   invoiceVarSymbol: string;
   currency: string;
   totalInvoicePrice: string;
-  accountItems: AccountItemEN[];
+  accountItems: AccountItem[];
 }
 
 export default function ServicesPaymentRequestTemplateEN({
@@ -103,7 +102,6 @@ export default function ServicesPaymentRequestTemplateEN({
   accountItems,
 }: Props) {
   const today = new Date();
-  const dueDate = addDays(today, REGISTRATION_INVOICE_DUE_DAYS);
 
   const SEPARATOR_COLOR = "#1B1B1E";
 
@@ -136,7 +134,7 @@ export default function ServicesPaymentRequestTemplateEN({
               {zip}, {city}
             </Text>
             <Text>ID: {ic}</Text>
-            <Text>VAT ID: {dic}</Text>
+            {dic && <Text>VAT ID: {dic}</Text>}
           </View>
         </View>
         <View
@@ -161,7 +159,6 @@ export default function ServicesPaymentRequestTemplateEN({
             <Text>SWIFT: {BANK_ACCOUNT_SWIFT}</Text>
             <Text>Var. symbol: {invoiceVarSymbol}</Text>
             <Text>Issue date: {format(today, "dd/MM/yyyy")}</Text>
-            <Text>Due date: {format(dueDate, "dd/MM/yyyy")}</Text>
           </View>
           <View style={styles.sectionRight}>
             <Text>Team name: {teamName}</Text>
@@ -200,19 +197,32 @@ export default function ServicesPaymentRequestTemplateEN({
             justifyContent: "space-between",
             marginTop: "4px",
             marginBottom: "4px",
+            paddingHorizontal: "2px",
           }}
         >
-          <View style={{ flex: 3 }}>
+          <View style={{ flex: 3, textAlign: "left" }}>
             <Text>Item Description</Text>
           </View>
-          <View style={{ flex: 1, textAlign: "right" }}>
+          <View style={{ flex: 1, textAlign: "center" }}>
             <Text>QTY</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Unit price (VAT incl.)</Text>
+          <View style={{ flex: 1, textAlign: "center" }}>
+            <Text>Unit price</Text>
+            <Text>(VAT incl.)</Text>
+          </View>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Total</Text>
+            <Text>(w/o VAT)</Text>
+          </View>
+          <View style={{ flex: 1, textAlign: "center" }}>
+            <Text>Rate VAT</Text>
+          </View>
+          <View style={{ flex: 1, textAlign: "center" }}>
+            <Text>VAT</Text>
           </View>
           <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Total (VAT incl.)</Text>
+            <Text>Total</Text>
+            <Text>(VAT incl.)</Text>
           </View>
         </View>
         <View
@@ -227,32 +237,50 @@ export default function ServicesPaymentRequestTemplateEN({
         {accountItems.map((item) => {
           return (
             <View
-              key={item.description}
+              key={item.text}
               style={{
                 fontSize: 9,
                 width: "100%",
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
-                marginTop: "2px",
-                marginBottom: "2px",
+                paddingHorizontal: "2px",
               }}
             >
-              <View style={{ flex: 3 }}>
-                <Text>{item.description}</Text>
+              <View
+                style={{ flex: 3, textAlign: "left", paddingVertical: "1px" }}
+              >
+                <Text>{item.text}</Text>
               </View>
-              <View style={{ flex: 1, textAlign: "right" }}>
+              <View
+                style={{ flex: 1, textAlign: "center", paddingVertical: "1px" }}
+              >
                 <Text>{item.quantity}</Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
-                <Text>
-                  {item.unitPrice} {currency === "czk" ? "Kč" : "€"}
-                </Text>
+              <View
+                style={{ flex: 1, textAlign: "center", paddingVertical: "1px" }}
+              >
+                {item.unitPrice && <Text>{item.unitPrice} €</Text>}
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
-                <Text>
-                  {item.totalPrice} {currency === "czk" ? "Kč" : "€"}
-                </Text>
+              <View
+                style={{ flex: 2, textAlign: "center", paddingVertical: "1px" }}
+              >
+                <Text>{item.priceWithoutDPH.toFixed(2)} €</Text>
+              </View>
+              <View
+                style={{ flex: 1, textAlign: "center", paddingVertical: "1px" }}
+              >
+                <Text>{item.dphRate}%</Text>
+              </View>
+              <View
+                style={{ flex: 1, textAlign: "center", paddingVertical: "1px" }}
+              >
+                <Text>{item.dph.toFixed(2)} €</Text>
+              </View>
+              <View
+                style={{ flex: 2, textAlign: "right", paddingVertical: "1px" }}
+              >
+                <Text>{item.priceWithDPH.toFixed(2)} €</Text>
               </View>
             </View>
           );

@@ -1,9 +1,7 @@
 import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
 
-import * as postmark from "postmark";
 import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
-import { AccountItemCSSchema, AccountItemENSchema } from "@/lib/conts";
-import { type AccountItemEN, type AccountItemCS } from "@/lib/types";
+import { AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
 import { generateAndSaveServiceInvoice } from "@/server/api/helpers";
 import { db } from "@/server/db";
@@ -19,11 +17,7 @@ const requestSchema = z.object({
   teamID: z.number(),
   totalPrice: z.string(),
   currency: z.string(),
-  accountItems: z.union([
-    z.array(AccountItemCSSchema),
-    z.array(AccountItemENSchema),
-  ]),
-  sendEmail: z.boolean().optional(),
+  accountItems: z.array(AccountItemSchema),
 });
 
 export async function POST(request: Request) {
@@ -53,8 +47,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 
-    const { teamID, totalPrice, currency, accountItems, sendEmail } =
-      validatedBody;
+    const { teamID, totalPrice, currency, accountItems } = validatedBody;
 
     const dbInvoice = await generateAndSaveServiceInvoice(
       teamID,
@@ -114,7 +107,7 @@ export async function POST(request: Request) {
         <ServicesPaymentRequestTemplateCS
           {...foundTeam}
           invoiceVarSymbol={newInvoice.varSymbol}
-          accountItems={accountItems as AccountItemCS[]}
+          accountItems={accountItems}
           currency={currency}
           totalInvoicePrice={totalPrice}
         />,
@@ -124,7 +117,7 @@ export async function POST(request: Request) {
         <ServicesPaymentRequestTemplateEN
           {...foundTeam}
           invoiceVarSymbol={newInvoice.varSymbol}
-          accountItems={accountItems as AccountItemEN[]}
+          accountItems={accountItems}
           currency={currency}
           totalInvoicePrice={totalPrice}
         />,
@@ -132,9 +125,7 @@ export async function POST(request: Request) {
     }
 
     const blob = await put(
-      `invoices/services/${sanitizeTeamNameForFilename(
-        foundTeam.teamName,
-      )}-test`,
+      `invoices/services/${sanitizeTeamNameForFilename(foundTeam.teamName)}`,
       stream as Readable,
       {
         contentType: "application/pdf",
@@ -148,24 +139,6 @@ export async function POST(request: Request) {
         url: blob.url,
       })
       .where(eq(invoice.teamId, teamID));
-
-    if (sendEmail) {
-      // TODO: send email
-      // TODO: prepare new template
-      // const client = new postmark.ServerClient(env.POSTMARK_API_TOKEN);
-      //
-      // await client.sendEmailWithTemplate({
-      //   TemplateModel: {
-      //     invoiceUrl: blob.url,
-      //   },
-      //   TemplateId:
-      //     foundTeam.country === "CZ" || foundTeam.country === "SK"
-      //       ? EMAIL_WELCOME_TEMPLATE_ID_CS
-      //       : EMAIL_WELCOME_TEMPLATE_ID_EN,
-      //   From: "info@eastercupklatovy.cz",
-      //   To: foundTeam.email,
-      // });
-    }
 
     return new Response(
       JSON.stringify({

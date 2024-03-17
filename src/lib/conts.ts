@@ -315,19 +315,12 @@ export const CATEGORY_CAPACITIES = {
 
 export const REGISTRATION_CUTOFF = new Date("2024-03-07T23:59:59");
 
-export const AccountItemCSSchema = z.object({
-  description: z.string(),
-  quantity: z.string(),
-  pricePerItemWithDPH: z.string(),
-  totalPriceWithoutDPH: z.string(),
-  DPHRate: z.string(),
-  totalDPH: z.string(),
-  totalPriceWithDPH: z.string(),
-});
-
-export const AccountItemENSchema = z.object({
-  description: z.string(),
-  quantity: z.string(),
-  unitPrice: z.string(),
-  totalPrice: z.string(),
+export const AccountItemSchema = z.object({
+  text: z.string(),
+  quantity: z.number(),
+  dphRate: z.number(),
+  dph: z.number(),
+  priceWithoutDPH: z.number(),
+  priceWithDPH: z.number(),
+  unitPrice: z.union([z.number(), z.literal(false)]),
 });
