@@ -199,26 +199,29 @@ export default function ServicesPaymentRequestTemplateEN({
             marginBottom: "4px",
           }}
         >
-          <View style={{ flex: 3 }}>
+          <View style={{ flex: 3, textAlign: "center" }}>
             <Text>Item Description</Text>
           </View>
-          <View style={{ flex: 1, textAlign: "right" }}>
+          <View style={{ flex: 1, textAlign: "center" }}>
             <Text>QTY</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Unit price (VAT incl.)</Text>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Unit price</Text>
+            <Text>(VAT incl.)</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Total (w/o VAT)</Text>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Total</Text>
+            <Text>(w/o VAT)</Text>
           </View>
-          <View style={{ flex: 1, textAlign: "right" }}>
+          <View style={{ flex: 1, textAlign: "center" }}>
             <Text>Rate VAT</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
+          <View style={{ flex: 2, textAlign: "center" }}>
             <Text>VAT</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Total (VAT incl.)</Text>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Total</Text>
+            <Text>(VAT incl.)</Text>
           </View>
         </View>
         <View
@@ -242,31 +245,30 @@ export default function ServicesPaymentRequestTemplateEN({
                 alignItems: "center",
               }}
             >
-              <View style={{ flex: 3 }}>
+              <View style={{ flex: 3, textAlign: "center" }}>
                 <Text>{item.text}</Text>
               </View>
-              <View style={{ flex: 1, textAlign: "right" }}>
+              <View style={{ flex: 1, textAlign: "center" }}>
                 <Text>{item.quantity}</Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 {item.unitPrice && <Text>{item.unitPrice} €</Text>}
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 <Text>{item.priceWithoutDPH.toFixed(2)} €</Text>
               </View>
-              <View style={{ flex: 1, textAlign: "right" }}>
+              <View style={{ flex: 1, textAlign: "center" }}>
                 <Text>{item.dphRate}%</Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 <Text>{item.dph.toFixed(2)} €</Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 <Text>{item.priceWithDPH.toFixed(2)} €</Text>
               </View>
             </View>
           );
         })}
-        ;
         <View
           style={{
             fontSize: 9,

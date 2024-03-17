@@ -201,26 +201,29 @@ export default function ServicesPaymentRequestTemplateCS({
             marginBottom: "4px",
           }}
         >
-          <View style={{ flex: 3 }}>
+          <View style={{ flex: 3, textAlign: "center" }}>
             <Text>Popis položky</Text>
           </View>
-          <View style={{ flex: 1, textAlign: "right" }}>
+          <View style={{ flex: 1, textAlign: "center" }}>
             <Text>MJ</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Cena za MJ s DPH</Text>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Cena za MJ</Text>
+            <Text>(s DPH)</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Celkem bez DPH</Text>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Celkem</Text>
+            <Text>(bez DPH)</Text>
           </View>
-          <View style={{ flex: 1, textAlign: "right" }}>
+          <View style={{ flex: 1, textAlign: "center" }}>
             <Text>Sazba DPH</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
+          <View style={{ flex: 2, textAlign: "center" }}>
             <Text>DPH</Text>
           </View>
-          <View style={{ flex: 2, textAlign: "right" }}>
-            <Text>Cena celkem včetně DPH</Text>
+          <View style={{ flex: 2, textAlign: "center" }}>
+            <Text>Cena celkem</Text>
+            <Text>(včetně DPH)</Text>
           </View>
         </View>
         <View
@@ -244,33 +247,33 @@ export default function ServicesPaymentRequestTemplateCS({
                 alignItems: "center",
               }}
             >
-              <View style={{ flex: 3 }}>
+              <View style={{ flex: 3, textAlign: "center" }}>
                 <Text>{item.text}</Text>
               </View>
-              <View style={{ flex: 1, textAlign: "right" }}>
+              <View style={{ flex: 1, textAlign: "center" }}>
                 <Text>{item.quantity}</Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 {item.unitPrice && (
                   <Text>
                     {item.unitPrice} {currencySymbol}
                   </Text>
                 )}
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 <Text>
                   {item.priceWithoutDPH.toFixed()} {currencySymbol}
                 </Text>
               </View>
-              <View style={{ flex: 1, textAlign: "right" }}>
+              <View style={{ flex: 1, textAlign: "center" }}>
                 <Text>{item.dphRate}%</Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 <Text>
                   {item.dph.toFixed(2)} {currencySymbol}
                 </Text>
               </View>
-              <View style={{ flex: 2, textAlign: "right" }}>
+              <View style={{ flex: 2, textAlign: "center" }}>
                 <Text>
                   {item.priceWithDPH.toFixed(2)} {currencySymbol}
                 </Text>
