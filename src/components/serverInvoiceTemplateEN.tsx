@@ -87,6 +87,8 @@ interface Props {
   };
   phoneNumber: string;
   invoiceVarSymbol: string;
+  serverDueDate?: string;
+  serverIssueDate?: string;
 }
 
 export default function ServerInvoiceTemplateEN({
@@ -97,6 +99,8 @@ export default function ServerInvoiceTemplateEN({
   phoneNumber,
   category,
   invoiceVarSymbol,
+  serverIssueDate,
+  serverDueDate,
 }: Props) {
   const today = new Date();
   const dueDate = addDays(today, REGISTRATION_INVOICE_DUE_DAYS);
@@ -156,8 +160,20 @@ export default function ServerInvoiceTemplateEN({
             <Text>IBAN: {BANK_ACCOUNT_IBAN_EUR}</Text>
             <Text>SWIFT: {BANK_ACCOUNT_SWIFT}</Text>
             <Text>Var. symbol: {invoiceVarSymbol}</Text>
-            <Text>Issue date: {format(today, "dd/MM/yyyy")}</Text>
-            <Text>Due date: {format(dueDate, "dd/MM/yyyy")}</Text>
+            <Text>
+              Issue date:
+              {format(
+                serverIssueDate ? new Date(serverIssueDate) : today,
+                "dd/MM/yyyy",
+              )}
+            </Text>
+            <Text>
+              Due date:
+              {format(
+                serverDueDate ? new Date(serverDueDate) : dueDate,
+                "dd/MM/yyyy",
+              )}
+            </Text>
           </View>
           <View style={styles.sectionRight}>
             <Text>Team name: {teamName}</Text>
