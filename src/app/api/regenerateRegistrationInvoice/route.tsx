@@ -1,8 +1,4 @@
-import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
-import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
-import { AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
-import { generateAndSaveServiceInvoice } from "@/server/api/helpers";
 import { db } from "@/server/db";
 import { teams, teamBillingInfo, invoice } from "@/server/db/schema";
 import { renderToStream } from "@react-pdf/renderer";
@@ -11,15 +7,16 @@ import { eq, and } from "drizzle-orm";
 import { type Readable } from "stream";
 import { z } from "zod";
 import { env } from "@/env.mjs";
+import ServerInvoiceTemplateCS from "@/components/serverInvoiceTemplateCS";
+import ServerInvoiceTemplateEN from "@/components/serverInvoiceTemplateEN";
+import { REGISTRATION_INVOICE_DUE_DAYS } from "@/lib/conts";
+import { addDays } from "date-fns";
 
 const requestSchema = z.object({
   teamID: z.number(),
-  totalPrice: z.string(),
-  currency: z.string(),
-  accountItems: z.array(AccountItemSchema),
 });
 
-export async function POST(request: Request) {
+export async function PATCH(request: Request) {
   const authHeader = request.headers.get("Authorization");
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
@@ -46,13 +43,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 
-    const { teamID, totalPrice, currency, accountItems } = validatedBody;
-
-    const dbInvoice = await generateAndSaveServiceInvoice(
-      teamID,
-      totalPrice,
-      currency,
-    );
+    const { teamID } = validatedBody;
 
     const dbTeam = await db
       .select({
@@ -62,6 +53,7 @@ export async function POST(request: Request) {
         contactPerson: teams.contactPerson,
         email: teams.email,
         phoneNumber: teams.phoneNumber,
+        category: teams.category,
         billing: {
           companyName: teamBillingInfo.companyName,
           address: teamBillingInfo.address,
@@ -70,12 +62,20 @@ export async function POST(request: Request) {
           ic: teamBillingInfo.ic,
           dic: teamBillingInfo.dic,
         },
+        currentInvoice: {
+          url: invoice.url,
+          invoiceVarSymbol: invoice.varSymbol,
+          issueDate: invoice.issueDate,
+        },
       })
       .from(teams)
       .where(eq(teams.id, teamID))
-      .innerJoin(teamBillingInfo, eq(teams.id, teamBillingInfo.teamId));
+      .innerJoin(teamBillingInfo, eq(teams.id, teamBillingInfo.teamId))
+      .innerJoin(
+        invoice,
+        and(eq(teams.id, invoice.teamId), eq(invoice.type, "registration")),
+      );
 
-    const newInvoice = dbInvoice[0];
     const foundTeam = dbTeam[0];
 
     if (!foundTeam) {
@@ -87,44 +87,39 @@ export async function POST(request: Request) {
       });
     }
 
-    if (!newInvoice) {
-      return new Response(
-        JSON.stringify({ error: "Error when creating invoice." }),
-        {
-          status: 404,
-          headers: {
-            "Content-Type": "application/json",
-          },
-        },
-      );
-    }
-
     let stream;
 
     if (foundTeam.country === "CZ") {
       stream = await renderToStream(
-        <ServicesPaymentRequestTemplateCS
+        // NOTE: ugh, this is so fckin ugly, I'm sorry
+        <ServerInvoiceTemplateCS
           {...foundTeam}
-          invoiceVarSymbol={newInvoice.varSymbol}
-          accountItems={accountItems}
-          currency={currency}
-          totalInvoicePrice={totalPrice}
+          invoiceVarSymbol={foundTeam.currentInvoice.invoiceVarSymbol}
+          serverIssueDate={foundTeam.currentInvoice.issueDate!}
+          serverDueDate={addDays(
+            new Date(foundTeam.currentInvoice.issueDate!),
+            REGISTRATION_INVOICE_DUE_DAYS,
+          ).toString()}
         />,
       );
     } else {
       stream = await renderToStream(
-        <ServicesPaymentRequestTemplateEN
+        <ServerInvoiceTemplateEN
           {...foundTeam}
-          invoiceVarSymbol={newInvoice.varSymbol}
-          accountItems={accountItems}
-          currency={currency}
-          totalInvoicePrice={totalPrice}
+          invoiceVarSymbol={foundTeam.currentInvoice.invoiceVarSymbol}
+          serverIssueDate={foundTeam.currentInvoice.issueDate!}
+          serverDueDate={addDays(
+            new Date(foundTeam.currentInvoice.issueDate!),
+            REGISTRATION_INVOICE_DUE_DAYS,
+          ).toString()}
         />,
       );
     }
 
     const blob = await put(
-      `invoices/services/${sanitizeTeamNameForFilename(foundTeam.teamName)}`,
+      `invoices/postreg/${sanitizeTeamNameForFilename(
+        foundTeam.teamName,
+      )}-test`,
       stream as Readable,
       {
         contentType: "application/pdf",
@@ -137,13 +132,12 @@ export async function POST(request: Request) {
       .set({
         url: blob.url,
       })
-      .where(and(eq(invoice.teamId, teamID), eq(invoice.id, newInvoice.id)));
+      .where(eq(invoice.teamId, foundTeam.id));
 
     return new Response(
       JSON.stringify({
-        message: "Data is valid!",
+        message: "Invoice regenerated successfully.",
         invoiceUrl: blob.url,
-        ivoiceId: newInvoice.id,
       }),
       {
         status: 200,
