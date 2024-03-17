@@ -125,9 +125,7 @@ export async function POST(request: Request) {
     }
 
     const blob = await put(
-      `invoices/services/${sanitizeTeamNameForFilename(
-        foundTeam.teamName,
-      )}-test`,
+      `invoices/services/${sanitizeTeamNameForFilename(foundTeam.teamName)}`,
       stream as Readable,
       {
         contentType: "application/pdf",
