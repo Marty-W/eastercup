@@ -1,10 +1,9 @@
 import {
-  REGISTRATION_INVOICE_DUE_DAYS,
   BANK_ACCOUNT_NUMBER_CZK,
   BANK_ACCOUNT_IBAN_CZK,
   BANK_ACCOUNT_SWIFT,
 } from "@/lib/conts";
-import { type AccountItemCS } from "@/lib/types";
+import { type AccountItem } from "@/lib/types";
 import {
   View,
   StyleSheet,
@@ -13,7 +12,7 @@ import {
   Text,
   Font,
 } from "@react-pdf/renderer";
-import { addDays, format } from "date-fns";
+import { format } from "date-fns";
 import path from "path";
 
 const Roboto = path.join(process.cwd(), "fonts", "Roboto.ttf");
@@ -88,7 +87,7 @@ interface Props {
   invoiceVarSymbol: string;
   currency: string;
   totalInvoicePrice: string;
-  accountItems: AccountItemCS[];
+  accountItems: AccountItem[];
 }
 
 export default function ServicesPaymentRequestTemplateCS({
@@ -103,10 +102,10 @@ export default function ServicesPaymentRequestTemplateCS({
   totalInvoicePrice,
 }: Props) {
   const today = new Date();
-  const dueDate = addDays(today, REGISTRATION_INVOICE_DUE_DAYS);
-  // TODO: whats the due date for this bad boy?
 
   const SEPARATOR_COLOR = "#1B1B1E";
+
+  const currencySymbol = currency === "czk" ? "Kč" : "€";
 
   return (
     <Document pageMode="fullScreen" pageLayout="singlePage">
@@ -162,7 +161,6 @@ export default function ServicesPaymentRequestTemplateCS({
             <Text>SWIFT: {BANK_ACCOUNT_SWIFT}</Text>
             <Text>Variabilní symbol: {invoiceVarSymbol}</Text>
             <Text>Datum vystavení: {format(today, "dd.M.yyyy")}</Text>
-            <Text>Datum splatnosti: {format(dueDate, "dd.M.yyyy")}</Text>
           </View>
           <View style={styles.sectionRight}>
             <Text>Název týmu: {teamName}</Text>
@@ -237,7 +235,7 @@ export default function ServicesPaymentRequestTemplateCS({
         {accountItems.map((item) => {
           return (
             <View
-              key={item.description}
+              key={item.text}
               style={{
                 fontSize: 9,
                 width: "100%",
@@ -247,32 +245,34 @@ export default function ServicesPaymentRequestTemplateCS({
               }}
             >
               <View style={{ flex: 3 }}>
-                <Text>{item.description}</Text>
+                <Text>{item.text}</Text>
               </View>
               <View style={{ flex: 1, textAlign: "right" }}>
                 <Text>{item.quantity}</Text>
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
-                <Text>
-                  {item.pricePerItemWithDPH} {currency === "czk" ? "Kč" : "€"}
-                </Text>
+                {item.unitPrice && (
+                  <Text>
+                    {item.unitPrice} {currencySymbol}
+                  </Text>
+                )}
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalPriceWithoutDPH} {currency === "czk" ? "Kč" : "€"}
+                  {item.priceWithoutDPH.toFixed()} {currencySymbol}
                 </Text>
               </View>
               <View style={{ flex: 1, textAlign: "right" }}>
-                <Text>{item.DPHRate}%</Text>
+                <Text>{item.dphRate}%</Text>
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalDPH} {currency === "czk" ? "Kč" : "€"}
+                  {item.dph.toFixed(2)} {currencySymbol}
                 </Text>
               </View>
               <View style={{ flex: 2, textAlign: "right" }}>
                 <Text>
-                  {item.totalPriceWithDPH} {currency === "czk" ? "Kč" : "€"}
+                  {item.priceWithDPH.toFixed(2)} {currencySymbol}
                 </Text>
               </View>
             </View>
