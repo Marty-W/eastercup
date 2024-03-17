@@ -134,7 +134,7 @@ export default function ServicesPaymentRequestTemplateEN({
               {zip}, {city}
             </Text>
             <Text>ID: {ic}</Text>
-            <Text>VAT ID: {dic}</Text>
+            {dic && <Text>VAT ID: {dic}</Text>}
           </View>
         </View>
         <View

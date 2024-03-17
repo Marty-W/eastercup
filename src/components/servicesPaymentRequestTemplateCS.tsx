@@ -136,7 +136,7 @@ export default function ServicesPaymentRequestTemplateCS({
               {zip}, {city}
             </Text>
             <Text>IČ: {ic}</Text>
-            <Text>DIČ: {dic}</Text>
+            {dic && <Text>DIČ: {dic}</Text>}
           </View>
         </View>
         <View
