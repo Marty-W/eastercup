@@ -81,7 +81,7 @@ client.defineJob({
       }
 
       const blob = await put(
-        `invoices/postreg/${sanitizeTeamNameForFilename(team.teamName)}`,
+        `invoices/postreg/${sanitizeTeamNameForFilename(team.teamName)}.pdf`,
         stream as Readable,
         {
           contentType: "application/pdf",
