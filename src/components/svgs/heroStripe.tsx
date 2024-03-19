@@ -3,15 +3,19 @@
 import * as React from "react";
 import { motion, useAnimationFrame, type SVGMotionProps } from "framer-motion";
 
+const SMALL_SCREEN_VIEWBOX = {
+  x: 300,
+  y: 30,
+  width: 800,
+  height: 170,
+};
+
+const BIG_SCREEN_VIEWBOX = { x: 300, y: -120, width: 700, height: 300 };
+
 export const AnimatedHeroStripe = () => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const stripeRef = React.useRef<SVGSVGElement>(null);
-  const [viewBox, setViewBox] = React.useState({
-    x: 300,
-    y: 30,
-    width: 800,
-    height: 170,
-  });
+  const [viewBox, setViewBox] = React.useState(SMALL_SCREEN_VIEWBOX);
 
   useAnimationFrame((t) => {
     if (containerRef.current && stripeRef.current) {
@@ -31,10 +35,30 @@ export const AnimatedHeroStripe = () => {
     }
   });
 
+  const updateViewBox = () => {
+    const screenWidth = window.innerWidth;
+
+    if (screenWidth >= 1024) {
+      // Adjust the viewBox for desktop screens
+      setViewBox(BIG_SCREEN_VIEWBOX);
+    } else {
+      // Use the default viewBox for smaller screens
+      setViewBox(SMALL_SCREEN_VIEWBOX);
+    }
+  };
+
+  React.useEffect(() => {
+    updateViewBox();
+    window.addEventListener("resize", updateViewBox);
+    return () => {
+      window.removeEventListener("resize", updateViewBox);
+    };
+  }, []);
+
   return (
     <div
       ref={containerRef}
-      className="absolute bottom-0 -mx-4 -my-4 w-[calc(100%+2rem)] overflow-hidden lg:h-24"
+      className="absolute bottom-0 -mx-4 -my-4 w-[calc(100%+2rem)] overflow-hidden"
     >
       <HeroStripe
         ref={stripeRef}
