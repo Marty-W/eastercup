@@ -41,15 +41,24 @@ export default async function Landing() {
           </BentoCard>
         </div>
         <div className="grid grid-cols-2 gap-x-4">
-          <BentoCard className="flex h-[150px] flex-col justify-center bg-brand-red text-2xl text-white">
-            <Link href="#">Live stream</Link>
+          <BentoCard
+            className="flex h-[150px] flex-col justify-center bg-brand-red text-2xl text-white"
+            href="#"
+          >
+            Live stream
           </BentoCard>
-          <BentoCard className="flex h-[150px] flex-col justify-center bg-brand-yellow text-2xl text-black">
-            <Link href="#">{t("landingPage.matchSchedule")}</Link>
+          <BentoCard
+            className="flex h-[150px] flex-col justify-center bg-brand-yellow text-2xl text-black"
+            href="#"
+          >
+            {t("landingPage.matchSchedule")}
           </BentoCard>
         </div>
-        <BentoCard className="flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white">
-          <Link href="#">{t("registeredTeams.header")}</Link>
+        <BentoCard
+          className="flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white"
+          href="#"
+        >
+          {t("registeredTeams.header")}
         </BentoCard>
         <iframe
           className="aspect-video h-full w-full rounded-xl border-2 border-black"
