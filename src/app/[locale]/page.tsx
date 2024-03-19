@@ -4,7 +4,6 @@ import Link from "next/link";
 import { api } from "@/trpc/server";
 import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
-import { getIsRegistrationClosed } from "@/lib/utils";
 import { BentoCard } from "@/components/bentoCard";
 import { HeroStripe } from "@/components/svgs/heroStripe";
 
@@ -13,11 +12,9 @@ export default async function Landing() {
   const { teamCount, countryCount, countries } =
     await api.common.getTeamsCountInfo.query();
 
-  const isRegistrationClosed = getIsRegistrationClosed();
-
   return (
     <>
-      <div className="flex h-full flex-col justify-between space-y-4 py-8 text-center font-display text-lg">
+      <div className="flex h-full flex-col justify-between space-y-4 py-8 text-center font-display text-lg sm:px-4">
         <div className="mx-auto flex max-w-screen-md flex-col space-y-10 md:space-y-10">
           <BentoCard className="relative overflow-clip bg-brand-black">
             <div className="relative flex min-h-[200px] flex-col text-left text-white">
@@ -28,17 +25,9 @@ export default async function Landing() {
             </div>
             <HeroStripe
               className="absolute bottom-0 -mx-4 -my-4 h-20 w-[calc(100%+2rem)]"
-              viewBox="0 70 600 130"
+              viewBox="200 70 600 130"
             />
           </BentoCard>
-          {!isRegistrationClosed && (
-            <Link
-              href="/form/info"
-              className="mx-auto max-w-[200px] rounded-md bg-brand-yellow px-4 py-2 active:translate-y-1 md:max-w-[300px] md:px-8 md:py-4"
-            >
-              <span>{t("hero.button")}</span>
-            </Link>
-          )}
         </div>
         <BentoCard className="bg-brand-blue text-white">
           <TimeCounter />
