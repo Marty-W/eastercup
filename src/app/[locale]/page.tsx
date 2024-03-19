@@ -42,13 +42,13 @@ export default async function Landing() {
         </div>
         <div className="grid grid-cols-2 gap-x-4 gap-y-4 lg:grid-cols-3">
           <BentoCard
-            className="flex h-[150px] flex-col justify-center bg-brand-red text-2xl text-white"
+            className="flex h-[150px] flex-col justify-center bg-brand-red text-base text-white md:text-2xl"
             href="#"
           >
             Live stream
           </BentoCard>
           <BentoCard
-            className="col-start-2 flex h-[150px] flex-col justify-center bg-brand-yellow text-2xl text-black"
+            className="col-start-2 flex h-[150px] flex-col justify-center bg-brand-yellow text-base text-black md:text-2xl"
             href="#"
           >
             {t("landingPage.matchSchedule")}
