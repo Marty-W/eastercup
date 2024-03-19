@@ -5,7 +5,7 @@ import { api } from "@/trpc/server";
 import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
 import { BentoCard } from "@/components/bentoCard";
-import { HeroStripe } from "@/components/svgs/heroStripe";
+import { AnimatedHeroStripe, HeroStripe } from "@/components/svgs/heroStripe";
 
 export default async function Landing() {
   const t = await getI18n();
@@ -25,10 +25,7 @@ export default async function Landing() {
                 <h2 className="text-md lg:text-2xl">28. — 31. 3. 2024</h2>
               </div>
             </div>
-            <HeroStripe
-              className="absolute bottom-0 -mx-4 -my-4 h-20 w-[calc(100%+2rem)] lg:h-24"
-              viewBox="300 70 600 130"
-            />
+            <AnimatedHeroStripe />
           </BentoCard>
           <BentoCard className="bg-brand-blue text-white">
             <TimeCounter />
