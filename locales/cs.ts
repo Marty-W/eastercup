@@ -286,4 +286,5 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
     "Registrace do turnaje je platná po zaplacení startovného.",
   "registeredTeams.notice3":
     "Týmy, které ještě nezaplatily, jsou označeny červeně.",
+  "landingPage.matchSchedule": "Rozpis zápasů",
 } as const;

@@ -7,7 +7,7 @@ import NavLinks from "./navLinks";
 
 export default function Navbar() {
   return (
-    <header className="md:grid-rows[1fr_3fr] grid h-[30vh] grid-cols-2 grid-rows-[1fr_3fr] px-4 pt-4">
+    <header className="px-4 pt-4">
       <div className="col-span-2 flex items-center justify-between md:px-6">
         <Link href="/" className="flex w-1/4 max-w-[150px] items-center">
           <Image width={500} height={500} src="/logo-big.svg" alt="Logo" />
@@ -25,9 +25,6 @@ export default function Navbar() {
           </div>
         </nav>
       </div>
-      <div
-        className={`col-span-2 bg-[url('../images/header-stripe.svg')] bg-cover bg-clip-padding bg-repeat-x`}
-      />
     </header>
   );
 }

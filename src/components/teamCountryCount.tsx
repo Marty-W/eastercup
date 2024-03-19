@@ -56,7 +56,7 @@ export default function TeamCountryCount({ teamCount, countryCount }: Props) {
   } ${countryCount} ${getPluralCZ(countryCount)?.country}`;
 
   return (
-    <div>
+    <div className="text-base">
       <p>{locale === "en" ? messageEN : messageCZ}</p>
     </div>
   );

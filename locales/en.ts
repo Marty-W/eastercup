@@ -298,4 +298,5 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "registeredTeams.notice2":
     "Registration for the tournament is valid after payment of the entry fee.",
   "registeredTeams.notice3": "Teams that have not yet paid are marked in red.",
+  "landingPage.matchSchedule": "Match schedule",
 } satisfies Record<keyof typeof Locale, string>;
