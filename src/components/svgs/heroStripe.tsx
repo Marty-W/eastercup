@@ -4,24 +4,26 @@ import * as React from "react";
 import { motion, useAnimationFrame, type SVGMotionProps } from "framer-motion";
 
 export const AnimatedHeroStripe = () => {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const stripeRef = React.useRef<SVGSVGElement>(null);
   const [viewBox, setViewBox] = React.useState({
     x: 300,
-    y: 70,
-    width: 600,
-    height: 130,
+    y: 30,
+    width: 800,
+    height: 170,
   });
-  const svgRef = React.useRef<SVGSVGElement>(null);
 
   useAnimationFrame((t) => {
-    if (svgRef.current) {
-      const svgWidth = svgRef.current.getBBox().width;
-      const resetThreshold = 300 + svgWidth;
+    if (containerRef.current && stripeRef.current) {
+      const containerWidth = containerRef.current.offsetWidth;
+      const stripeWidth = stripeRef.current.getBBox().width;
+      const speed = 0.15;
 
       setViewBox((prevViewBox) => {
-        const newX = 300 + (t / 1000) * 15;
+        const newX = prevViewBox.x + speed;
 
-        if (newX > resetThreshold) {
-          return { ...prevViewBox, x: 300 };
+        if (newX >= stripeWidth - containerWidth) {
+          return { ...prevViewBox, x: 0 };
         }
 
         return { ...prevViewBox, x: newX };
@@ -30,11 +32,15 @@ export const AnimatedHeroStripe = () => {
   });
 
   return (
-    <HeroStripe
-      className="absolute bottom-0 -mx-4 -my-4 h-20 w-[calc(100%+2rem)] lg:h-24"
-      viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
-      ref={svgRef}
-    />
+    <div
+      ref={containerRef}
+      className="absolute bottom-0 -mx-4 -my-4 w-[calc(100%+2rem)] overflow-hidden lg:h-24"
+    >
+      <HeroStripe
+        ref={stripeRef}
+        viewBox={`${viewBox.x} ${viewBox.y} ${viewBox.width} ${viewBox.height}`}
+      />
+    </div>
   );
 };
 
