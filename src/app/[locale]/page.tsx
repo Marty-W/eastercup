@@ -59,7 +59,7 @@ export default async function Landing() {
             </BentoCard>
             <BentoCard
               className="col-span-2 flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white lg:col-span-1 lg:h-full"
-              href="#"
+              href="/teams"
             >
               {t("registeredTeams.header")}
             </BentoCard>
