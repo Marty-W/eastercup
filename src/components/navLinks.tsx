@@ -11,8 +11,8 @@ const LINKS: NavLink[] = [
     text: "navbar.info",
   },
   {
-    href: "/teams",
-    text: "navbar.teams",
+    href: "/#footer",
+    text: "navbar.contacts",
   },
 ];
 
@@ -20,7 +20,7 @@ export default function NavLinks() {
   const pathname = usePathname();
   const t = useI18n();
   return (
-    <div className="space-x-4 font-display decoration-2 ">
+    <div className="flex space-x-8 font-display decoration-2">
       {LINKS.map(({ href, text }) => (
         <Link
           href={href}

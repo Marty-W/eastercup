@@ -3,7 +3,7 @@ import Socials from "./socials";
 import Sponsors from "./sponsors";
 export default function Footer() {
   return (
-    <footer className="mt-auto">
+    <footer className="mt-auto" id="footer">
       <div className="mb-10 h-2 w-full bg-brand-blue" />
       <div className="md:hidden">
         <Socials />
