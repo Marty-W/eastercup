@@ -27,7 +27,7 @@ const TimeCounter = () => {
       </p>
       <span
         suppressHydrationWarning
-        className="text-xs lg:text-lg"
+        className="line-clamp-1 text-xs lg:text-lg"
       >{`${diff.months}m : ${diff.days}d : ${diff.hours}h : ${diff.minutes}m : ${diff.seconds} s`}</span>
     </div>
   );

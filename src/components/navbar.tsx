@@ -9,9 +9,16 @@ export default function Navbar() {
   return (
     <header className="px-4 pt-4 md:px-8">
       <nav className="grid h-[10vh] grid-cols-3 lg:min-h-[12vh]">
-        <Link href="/" className="relative flex h-full w-full">
-          <Image fill src="/logo-big.svg" alt="Logo" />
-        </Link>
+        <div className="relative flex h-full w-full items-center justify-self-start">
+          <Link href="/" className="relative h-full w-full">
+            <Image
+              src="/logo-big.svg"
+              alt="Logo"
+              layout="fill"
+              objectFit="contain"
+            />
+          </Link>
+        </div>
         <div className="hidden self-center justify-self-center lg:block">
           <NavLinks />
         </div>
