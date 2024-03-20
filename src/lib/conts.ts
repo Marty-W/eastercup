@@ -324,5 +324,3 @@ export const AccountItemSchema = z.object({
   priceWithDPH: z.number(),
   unitPrice: z.union([z.number(), z.literal(false)]),
 });
-
-export const HEADER_HEIGHT = "18";
