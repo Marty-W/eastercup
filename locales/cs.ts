@@ -253,24 +253,44 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "info.accomodation.text2":
     "Přesný název ubytovacího zařízení a cena bude upřesněna před odesláním předfaktury za objednané služby.",
   "info.accomodation.hotel.header": "Typ A: Hotel",
+  "info.accomodation.hotel.text": "cena od 840 Kč na osobu a noc",
   "info.accomodation.pension.header": "Typ B: Penzion",
+  "info.accomodation.pension.text": "cena od 620,- Kč na osobu a noc",
   "info.accomodation.hostel.header": "Typ C: domov mládeže",
+  "info.accomodation.hostel.text": "cena od 460,- Kč na osobu a noc",
   "info.accomodation.school.header": "Typ D: Ve třídách základní školy",
+  "info.accomodation.school.text": "cení od 160,- Kč na osobu a noc",
+  "info.accomodation.school.text2": "na karimatce ve vlastním spacáku",
   "info.accomodation.storno.header": "Storno podmínky:",
   "info.accomodation.storno.text1":
-    "- zrušení rezervace do 48 hodin před příjezdem - zdarma",
+    "zrušení rezervace do 48 hodin před příjezdem - zdarma",
   "info.accomodation.storno.text2":
-    "- zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
+    "zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
   "info.accomodation.storno.text3":
-    "- zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
+    "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
   "info.catering.header": "STRAVOVÁNÍ:",
+  "info.catering.subHeader1": "Ceny",
+  "info.catering.subHeader2": "Jídelny",
   "info.catering.text":
-    "V průběhu turnaje mají hráči a trenéři možnost se stravovat ve 2 jídelnách, kde mají zajištěné plnohodnotné jídlo po celou dobu turnaje – snídaně, obědy, večeře. Dále nabízíme možnost diety (stačí napsat do poznámky při registraci). Obsah obrázku text, snímek obrazovky, obloha, strom",
+    "V průběhu turnaje mají hráči a trenéři možnost se stravovat ve 2 jídelnách, kde mají zajištěné plnohodnotné jídlo po celou dobu turnaje – snídaně, obědy, večeře.",
+  "info.catering.text2":
+    "Dále nabízíme možnost diety (stačí napsat do poznámky při registraci).",
   "info.catering.place1.header": "Jídelna A – ZŠ PLÁNICKÁ:",
   "info.catering.place1.text":
     "Plánická 194, Klatovy (vchod z ulice Pavlíkova, naproti restauraci Segafredo)",
   "info.catering.place2.header": "Jídelna B – ZŠ ČAPKOVA:",
   "info.catering.place2.text": "Hálkova 134, Klatovy",
+  "info.catering.breakfast":
+    "snídaně 110,- Kč (formou bohatých švédských stolů včetně ovoce a zeleniny)",
+  "info.catering.lunch":
+    "oběd 175,- Kč (polévka, hlavní jídlo, ovoce + ovocný nebo zeleninový salát)",
+  "info.catering.dinner": "večeře 155,- Kč (teplé hlavní jídlo + ovoce)",
+  "info.catering.unlimitedDrinks":
+    "Nápoje v neomezeném množství při konzumaci v jídelně.",
+  "info.catering.allergies":
+    "Příprava pokrmů vhodných pro alergiky je možná, ale je třeba ji nahlásit při registraci.",
+  "info.catering.breakfastPrice":
+    "V případě ubytování v kategorii A nebo B bude cena snídaně a místo podávání snídaně upřesněno po potvrzení konkrétního ubytovacího zařízení.",
   "info.city.header": "MĚSTO KLATOVY:",
   "info.city.text1":
     "Klatovy leží v šumavském podhůří poblíž jihozápadní hranice České republiky s Německou spolkovou republikou, 40 km jižně od Plzně. Bývalé královské město Klatovy jsou moderním městem s bohatou historickou tradicí. Počtem obyvatel jsou po Plzni druhým největším městem Plzeňského kraje.",
@@ -288,4 +308,12 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "registeredTeams.notice3":
     "Týmy, které ještě nezaplatily, jsou označeny červeně.",
   "landingPage.matchSchedule": "Rozpis zápasů",
+  "info.home.results": "Výsledky",
+  "info.home.matchesSchedule": "Rozpis zápasů",
+  "info.home.halls": "Haly",
+  "info.home.rules": "Pravidla",
+  "info.home.accommodation": "Ubytování",
+  "info.home.catering": "Stravování",
+  "info.home.about": "O turnaji",
+  "info.home.klatovy": "Město Klatovy",
 } as const;

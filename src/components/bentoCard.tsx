@@ -23,7 +23,7 @@ export const BentoCard = ({
           className,
           !disablePadding && "px-4 py-5",
           !disableBorder && "border-2 border-black",
-          "rounded-xl",
+          "rounded-xl text-center",
         )}
       >
         {children}

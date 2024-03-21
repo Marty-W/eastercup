@@ -12,13 +12,17 @@ const SMALL_SCREEN_VIEWBOX = {
 
 const BIG_SCREEN_VIEWBOX = { x: 300, y: -120, width: 700, height: 300 };
 
-export const AnimatedHeroStripe = () => {
+interface Props {
+  disableAnimation?: boolean;
+}
+
+export const AnimatedHeroStripe = ({ disableAnimation }: Props) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const stripeRef = React.useRef<SVGSVGElement>(null);
   const [viewBox, setViewBox] = React.useState(SMALL_SCREEN_VIEWBOX);
 
   useAnimationFrame((t) => {
-    if (containerRef.current && stripeRef.current) {
+    if (containerRef.current && stripeRef.current && !disableAnimation) {
       const containerWidth = containerRef.current.offsetWidth;
       const stripeWidth = stripeRef.current.getBBox().width;
       const speed = 0.15;

@@ -20,11 +20,9 @@ export function InfoSection({
       )}
     >
       {header && (
-        <h3 className="text-sm font-bold uppercase text-brand-blue">
-          {header}
-        </h3>
+        <h3 className="font-bold uppercase text-brand-blue">{header}</h3>
       )}
-      <div className={cn("text-xs", subSectionClassName)}>{children}</div>
+      <div className={cn("text-sm", subSectionClassName)}>{children}</div>
     </div>
   );
 }

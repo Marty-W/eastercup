@@ -265,25 +265,45 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "info.accomodation.text2":
     "Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
   "info.accomodation.hotel.header": "Category A: Hotel",
+  "info.accomodation.hotel.text": "starting from 34 EUR per person and night",
   "info.accomodation.pension.header": "Category B: Pension",
+  "info.accomodation.pension.text": "price from 26 EUR per person/night",
   "info.accomodation.hostel.header": "Category C: Hostel or internat",
+  "info.accomodation.hostel.text": "price from 19 EUR per person/night",
   "info.accomodation.school.header": "Category D: clasess at school",
+  "info.accomodation.school.text": "own sleepig bags and pads",
+  "info.accomodation.school.text2": "price 7 EUR per person and night",
   "info.accomodation.storno.header":
     "Cancellation conditions for typa A and B reservation:",
   "info.accomodation.storno.text1":
-    "– cancellation 48 hours before arrival – no costs",
+    "cancellation 48 hours before arrival – no costs",
   "info.accomodation.storno.text2":
-    "– cancellation 24 hours before arrival - 50% from price of first night",
+    "cancellation 24 hours before arrival - 50% from price of first night",
   "info.accomodation.storno.text3":
-    "– cancellation later than 24 hours before arrival (4 p.m.) - 100% from priceof first night",
+    "cancellation later than 24 hours before arrival (4 p.m.) - 100% from priceof first night",
   "info.catering.header": "MEAL:",
+  "info.catering.subHeader1": "Prices",
+  "info.catering.subHeader2": "Dining halls",
   "info.catering.text":
-    "During the tournament, players and coaches have the opportunity to eat in 2 dining rooms, where they have a full meal provided throughout the tournament - breakfast, lunch, dinner. We also offer the option of dieting (just write in the note when registering).",
+    "During the tournament, players and coaches have the opportunity to eat in 2 dining rooms, where they have a full meal provided throughout the tournament - breakfast, lunch, dinner.",
+  "info.catering.text2":
+    "We also offer the option of dieting (just write in the note when registering).",
   "info.catering.place1.header": "Canteen A – ZŠ PLÁNICKÁ:",
   "info.catering.place1.text":
     "Plánická 194, Klatovy (entrance from Pavlíkova street, opposite Segafredo restaurant)",
   "info.catering.place2.header": "Canteen B – ZŠ ČAPKOVA:",
   "info.catering.place2.text": "Hálkova 134, Klatovy",
+  "info.catering.breakfast":
+    "breakfast – 5 EUR (rich buffet tables including fruit and vegetables)",
+  "info.catering.lunch":
+    "lunch – 8 EUR (soup, main course, fruit or vegetable salad)",
+  "info.catering.dinner": "dinner – 6,5 EUR (the hot meal + fruit)",
+  "info.catering.unlimitedDrinks":
+    "Unlimited drinks when consumed in the dining room.",
+  "info.catering.allergies":
+    "Preparation of meals suitable for people with allergies is possible, but it must be reported during registration.",
+  "info.catering.breakfastPrice":
+    "In the case of accommodation in category A or B, the price of breakfast and the place of serving breakfast will be specified after confirmation of the specific accommodation facility.",
   "info.city.header": "MĚSTO KLATOVY:",
   "info.city.text1":
     "Klatovy is located in the Šumava foothills near the southwestern border of the Czech Republic with the Federal Republic of Germany, 40 km south of Plzeň. The former royal city of Klatovy is a modern city with a rich historical tradition. By population, it is the second largest city in the Plzen Region after Plzen.",
@@ -300,4 +320,12 @@ teams are obliged to take care of their belongings to prevent any theft.`,
     "Registration for the tournament is valid after payment of the entry fee.",
   "registeredTeams.notice3": "Teams that have not yet paid are marked in red.",
   "landingPage.matchSchedule": "Match schedule",
+  "info.home.results": "Results",
+  "info.home.matchesSchedule": "Matches schedule",
+  "info.home.halls": "Halls",
+  "info.home.rules": "Rules",
+  "info.home.accommodation": "Accommodation",
+  "info.home.catering": "Catering",
+  "info.home.about": "About the tournament",
+  "info.home.klatovy": "Klatovy city",
 } satisfies Record<keyof typeof Locale, string>;
