@@ -316,4 +316,5 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "info.home.catering": "Stravování",
   "info.home.about": "O turnaji",
   "info.home.klatovy": "Město Klatovy",
+  "info.home.contact": "Kontakty",
 } as const;

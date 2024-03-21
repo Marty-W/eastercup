@@ -11,7 +11,7 @@ const LINKS: NavLink[] = [
     text: "navbar.info",
   },
   {
-    href: "/#footer",
+    href: "/info/contacts",
     text: "navbar.contacts",
   },
 ];

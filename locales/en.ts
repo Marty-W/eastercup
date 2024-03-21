@@ -328,4 +328,5 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "info.home.catering": "Catering",
   "info.home.about": "About the tournament",
   "info.home.klatovy": "Klatovy city",
+  "info.home.contact": "Contacts",
 } satisfies Record<keyof typeof Locale, string>;
