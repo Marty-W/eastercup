@@ -7,10 +7,10 @@ const I18nMiddleware = createI18nMiddleware({
   urlMappingStrategy: "rewrite",
 });
 
-export function middleware(request: NextRequest) {
-  // Check for the specific domain and redirect if matched
-  const host = request.headers.get("host");
-  console.log(host);
+export function middleware(request: NextRequest) {  
+
+  const host = request.nextUrl.host
+
   if (host === "eastercupklatovy.online") {
     return NextResponse.redirect("https://app.staylive.io/eastercuplatovy");
   }
