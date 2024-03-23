@@ -1,5 +1,5 @@
 import { createI18nMiddleware } from "next-international/middleware";
-import type { NextRequest } from "next/server";
+import { type NextRequest, NextResponse } from "next/server";
 
 const I18nMiddleware = createI18nMiddleware({
   locales: ["en", "cs"],
@@ -8,6 +8,12 @@ const I18nMiddleware = createI18nMiddleware({
 });
 
 export function middleware(request: NextRequest) {
+  // Check for the specific domain and redirect if matched
+  if (request.nextUrl.hostname === "eastercupklatovy.online") {
+    return NextResponse.redirect("https://app.staylive.io/eastercuplatovy");
+  }
+
+  // Otherwise, proceed with the i18n middleware
   return I18nMiddleware(request);
 }
 
