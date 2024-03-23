@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
 
   const host = request.nextUrl.host
 
-  if (host === "eastercupklatovy.online") {
+  if (host === "www.eastercupklatovy.online") {
     return NextResponse.redirect("https://app.staylive.io/eastercuplatovy");
   }
 
