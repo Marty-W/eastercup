@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { REGISTRATION_CUTOFF } from "./conts";
 import { zonedTimeToUtc } from "date-fns-tz";
 import { isAfter } from "date-fns";
+import { type DBMatch } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -64,3 +65,15 @@ export function getIsRegistrationClosed(): boolean {
 
   return isAfter(now, cutoffDateInPrague);
 }
+
+export const removeCategoryFromTeamName = (teamName: string): string => {
+  const parts = teamName.split("|").map((part) => part.trim());
+
+  const teamNamePart = parts[0];
+
+  if (!teamNamePart) {
+    throw new Error(`Invalid team name: ${teamName}`);
+  }
+
+  return teamNamePart;
+};

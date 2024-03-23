@@ -47,7 +47,8 @@ export default async function Landing() {
           <div className="grid grid-cols-2 gap-4 lg:min-h-[200px] lg:grid-cols-3 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
             <BentoCard
               className="flex h-[150px] flex-col justify-center bg-brand-red text-base text-white md:text-2xl lg:h-full"
-              href="#"
+              href="https://app.staylive.io/eastercuplatovy"
+              target="_blank"
             >
               Live stream
             </BentoCard>

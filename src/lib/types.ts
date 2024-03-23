@@ -8,6 +8,10 @@ import {
   type TEAM_CATEGORIRES,
   type AccountItemSchema,
 } from "./conts";
+import { type InferSelectModel } from "drizzle-orm";
+import { type match } from "@/server/db/schema";
+import { InferQueryResult } from "node_modules/@trpc/react-query/dist/utils/inferReactQueryProcedure";
+import { type RouterOutputs } from "@/trpc/shared";
 
 export type LocaleKey = keyof typeof locale;
 
@@ -63,3 +67,9 @@ export type NavLink = {
 export type AccountItem = z.infer<typeof AccountItemSchema>;
 
 export type AccountItems = AccountItem[];
+
+export type Matches = RouterOutputs["match"]["getAllMatches"];
+
+export type Match = Matches[number];
+
+export type DBMatch = InferSelectModel<typeof match>;

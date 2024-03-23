@@ -9,7 +9,7 @@ export default async function InformationPage() {
     <div className="lg:2xl grid flex-1 grid-cols-2 gap-2 font-display md:gap-4 md:text-xl lg:grid-cols-6 lg:gap-y-6">
       <BentoCard
         className="group col-span-2 flex items-center justify-center lg:col-span-3"
-        href="#"
+        href="/results"
       >
         <BouncingArrowText text={t("results")} />
       </BentoCard>

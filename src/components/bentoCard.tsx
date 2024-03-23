@@ -7,6 +7,7 @@ interface Props {
   disablePadding?: boolean;
   disableBorder?: boolean;
   href?: string;
+  target?: string;
 }
 export const BentoCard = ({
   children,
@@ -14,11 +15,13 @@ export const BentoCard = ({
   disablePadding = false,
   disableBorder = false,
   href,
+  target,
 }: Props) => {
   if (href) {
     return (
       <Link
         href={href}
+        target={target}
         className={cn(
           className,
           !disablePadding && "px-4 py-5",
