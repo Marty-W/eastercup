@@ -54,7 +54,8 @@ export default async function Landing() {
             </BentoCard>
             <BentoCard
               className="col-start-2 flex h-[150px] flex-col justify-center bg-brand-yellow text-base text-black md:text-2xl lg:h-full"
-              href="#"
+              href="/EC2024_game_schedule_v06.pdf"
+              target="_blank"
             >
               {t("landingPage.matchSchedule")}
             </BentoCard>
