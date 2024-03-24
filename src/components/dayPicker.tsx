@@ -32,7 +32,9 @@ export const DayPicker = ({ selectedDayIdx, onDayChange }: Props) => {
       <button onClick={handleChevronLeft} className="p-2">
         <ChevronLeft />
       </button>
-      <span className="min-w-[140px] text-center">{selectedDay}</span>
+      <span className="min-w-[140px] text-center md:text-xl">
+        {selectedDay}
+      </span>
       <button onClick={handleChevronRight} className="p-2">
         <ChevronRight />
       </button>

@@ -37,7 +37,7 @@ export const CategoryResults = ({
       <div className="flex justify-center py-4">
         <DayPicker selectedDayIdx={selectedDayIdx} onDayChange={onDayChange} />
       </div>
-      <div className="flex flex-col space-y-1 rounded-md border-2 border-black">
+      <div className="mx-auto flex max-w-[500px] flex-col space-y-1 rounded-md border-2 border-black">
         {matches.map(({ id, time, teamA, teamB, winner }) => (
           <MatchResult
             key={id}

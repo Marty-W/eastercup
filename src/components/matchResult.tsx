@@ -16,10 +16,10 @@ interface Props {
 
 export const MatchResult = ({ time, teamA, teamB, winner }: Props) => {
   return (
-    <div className="flex items-center justify-between border-b-[1px] border-b-slate-800 px-1 py-2 text-xs first:border-t-0 last:border-b-0">
-      <div className="flex items-center justify-between">
+    <div className="flex items-center justify-between border-b-[1px] border-b-slate-800 px-1 py-3 text-xs first:border-t-0 last:border-b-0">
+      <div className="flex items-center justify-between space-x-1">
         <span className="w-16 pl-1 pr-2">{time}</span>
-        <div className="flex flex-col space-y-1">
+        <div className="flex flex-col space-y-2">
           <div className="flex items-start space-x-1">
             <span className={`fi fi-${teamA.country.toLowerCase()}`}></span>
             <span className={cn(teamA.name === winner && "font-semibold")}>
@@ -34,7 +34,7 @@ export const MatchResult = ({ time, teamA, teamB, winner }: Props) => {
           </div>
         </div>
       </div>
-      <div className="line-clamp-1 flex flex-col space-y-1 text-right">
+      <div className="line-clamp-1 flex flex-col space-y-2 text-right">
         <span className={cn(teamA.name === winner && "font-semibold")}>
           {teamA.score}
         </span>

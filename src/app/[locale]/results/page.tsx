@@ -8,6 +8,7 @@ import React, { useState, useMemo } from "react";
 import { getISODay } from "date-fns";
 import Spinner from "@/components/ui/spinner";
 import { Separator } from "@/components/ui/separator";
+import { MixedResults } from "@/components/mixedResults";
 
 const RESULT_CATEGORIES = ["all", ...TEAM_CATEGORIRES];
 
@@ -56,38 +57,54 @@ export default function Results() {
   }
 
   return (
-    <div className="min-h-screen py-4 font-display">
+    <div className="min-h-[600px] py-4 font-display">
       <Tabs
         onValueChange={(value) => setSelectedCategory(value as TeamCategory)}
         value={selectedCategory}
       >
-        <TabsList className="grid h-fit grid-cols-4 grid-rows-[40px_10px_40px] bg-brand-blue">
-          {RESULT_CATEGORIES.map((category, index) => {
-            if (index === 3) {
+        <div className="rounded-md bg-brand-blue md:flex md:justify-center">
+          <TabsList className="mx-auto grid h-fit max-w-md grid-cols-4 grid-rows-[40px_10px_40px] bg-brand-blue">
+            {RESULT_CATEGORIES.map((category, index) => {
+              if (index === 3) {
+                return (
+                  <React.Fragment key={category}>
+                    <TabsTrigger value={category}>{category}</TabsTrigger>
+                    <Separator className="col-span-6" />
+                  </React.Fragment>
+                );
+              }
               return (
-                <React.Fragment key={category}>
-                  <TabsTrigger value={category}>{category}</TabsTrigger>
-                  <Separator className="col-span-6" />
-                </React.Fragment>
+                <TabsTrigger value={category} key={category}>
+                  {category}
+                </TabsTrigger>
               );
-            }
+            })}
+          </TabsList>
+        </div>
+        {RESULT_CATEGORIES.map((category) => {
+          if (category === "all") {
             return (
-              <TabsTrigger value={category} key={category}>
-                {category}
-              </TabsTrigger>
+              <TabsContent value={category} key={category}>
+                <MixedResults
+                  matches={filteredMatches}
+                  category={category}
+                  selectedDayIdx={selectedDayIdx}
+                  onDayChange={onDayChange}
+                />
+              </TabsContent>
             );
-          })}
-        </TabsList>
-        {RESULT_CATEGORIES.map((category) => (
-          <TabsContent value={category} key={category}>
-            <CategoryResults
-              matches={filteredMatches}
-              category={category}
-              selectedDayIdx={selectedDayIdx}
-              onDayChange={onDayChange}
-            />
-          </TabsContent>
-        ))}
+          }
+          return (
+            <TabsContent value={category} key={category}>
+              <CategoryResults
+                matches={filteredMatches}
+                category={category}
+                selectedDayIdx={selectedDayIdx}
+                onDayChange={onDayChange}
+              />
+            </TabsContent>
+          );
+        })}
       </Tabs>
     </div>
   );
