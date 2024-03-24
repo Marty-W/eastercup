@@ -40,7 +40,7 @@ export const env = createEnv({
    * `NEXT_PUBLIC_`.
    */
   client: {
-    // NEXT_PUBLIC_CLIENTVAR: z.string(),
+    NEXT_PUBLIC_GOOGLE_MAPS_API_TOKEN: z.string(),
   },
 
   /**
@@ -56,6 +56,8 @@ export const env = createEnv({
     REDIS_URL: process.env.REDIS_URL,
     REDIS_TOKEN: process.env.REDIS_TOKEN,
     BAKERY_API_TOKEN: process.env.BAKERY_API_TOKEN,
+    NEXT_PUBLIC_GOOGLE_MAPS_API_TOKEN:
+      process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_TOKEN,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
