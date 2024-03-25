@@ -47,7 +47,7 @@ export default function RootLayout({
           <I18nProviderClient locale={locale}>
             <div className="grid grid-rows-[auto_1fr_auto] space-y-4">
               <Navbar />
-              <div className="container">{children}</div>
+              <div className="container h-full">{children}</div>
               <Footer />
             </div>
             <Toaster />

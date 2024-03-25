@@ -12,7 +12,7 @@ export default async function Landing() {
     await api.common.getTeamsCountInfo.query();
 
   return (
-    <div>
+    <div className="flex h-full flex-col">
       <div
         className={`flex h-full flex-col justify-between space-y-4 py-8 text-center font-display text-lg sm:px-4 md:px-8 lg:pb-8`}
       >
