@@ -4,11 +4,13 @@ import { DayPicker } from "@/components/dayPicker";
 import { useScopedI18n } from "locales/client";
 import { TEAM_CATEGORIRES } from "@/lib/conts";
 import { useMemo } from "react";
+import Spinner from "./ui/spinner";
 
 type CategorizedMatches = Record<string, Matches>;
 
 interface Props {
   matches: Matches;
+  matchesLoading: boolean;
   category: string;
   selectedDayIdx: 3 | 4 | 5 | 6 | 7;
   onDayChange: (dayIdx: 3 | 4 | 5 | 6 | 7) => void;
@@ -18,6 +20,7 @@ export const MixedResults = ({
   matches,
   selectedDayIdx,
   onDayChange,
+  matchesLoading,
 }: Props) => {
   const t = useScopedI18n("results");
   const categorizedMatches = useMemo(() => {
@@ -45,7 +48,7 @@ export const MixedResults = ({
     return result;
   }, [matches]);
 
-  if (!matches.length) {
+  if (!matches.length && !matchesLoading) {
     return (
       <div>
         <div className="flex justify-center py-4">
@@ -67,27 +70,30 @@ export const MixedResults = ({
         <DayPicker selectedDayIdx={selectedDayIdx} onDayChange={onDayChange} />
       </div>
       <div className="flex flex-col space-y-2 md:space-y-3">
-        {categorizedMatches.map(({ category, matches }) => {
-          return (
-            <div
-              key={category}
-              className="mx-auto flex w-full max-w-[500px] flex-col"
-            >
-              <h1 className="text-xs md:text-base">{category}</h1>
-              <div className="space-y-1 rounded-md border-2 border-black">
-                {matches.map(({ id, time, teamA, teamB, winner }) => (
-                  <MatchResult
-                    key={id}
-                    time={time}
-                    teamA={teamA}
-                    teamB={teamB}
-                    winner={winner}
-                  />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+        <div className="mx-auto flex w-full max-w-[500px] flex-col">
+          {!matchesLoading ? (
+            categorizedMatches.map(({ category, matches }) => {
+              return (
+                <>
+                  <h1 className="text-xs md:text-base">{category}</h1>
+                  <div className="space-y-1 rounded-md border-2 border-black">
+                    {matches.map(({ id, time, teamA, teamB, winner }) => (
+                      <MatchResult
+                        key={id}
+                        time={time}
+                        teamA={teamA}
+                        teamB={teamB}
+                        winner={winner}
+                      />
+                    ))}
+                  </div>
+                </>
+              );
+            })
+          ) : (
+            <Spinner className="mx-auto h-16 w-16 text-brand-blue" />
+          )}
+        </div>
       </div>
     </div>
   );

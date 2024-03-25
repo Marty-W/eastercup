@@ -6,7 +6,6 @@ import { type TeamCategory } from "@/lib/types";
 import { api } from "@/trpc/react";
 import React, { useState, useMemo } from "react";
 import { getISODay } from "date-fns";
-import Spinner from "@/components/ui/spinner";
 import { Separator } from "@/components/ui/separator";
 import { MixedResults } from "@/components/mixedResults";
 
@@ -48,14 +47,6 @@ export default function Results() {
     setSelectedDayIdx(dayIdx);
   };
 
-  if (matches.isLoading) {
-    return (
-      <div className="flex min-h-[50vh] items-center justify-center">
-        <Spinner className="h-16 w-16 text-brand-blue" />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-[600px] py-4 font-display">
       <Tabs
@@ -86,6 +77,7 @@ export default function Results() {
             return (
               <TabsContent value={category} key={category}>
                 <MixedResults
+                  matchesLoading={matches.isLoading}
                   matches={filteredMatches}
                   category={category}
                   selectedDayIdx={selectedDayIdx}
@@ -97,6 +89,7 @@ export default function Results() {
           return (
             <TabsContent value={category} key={category}>
               <CategoryResults
+                matchesLoading={matches.isLoading}
                 matches={filteredMatches}
                 category={category}
                 selectedDayIdx={selectedDayIdx}

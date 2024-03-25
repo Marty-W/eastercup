@@ -5,6 +5,7 @@ import { useScopedI18n } from "locales/client";
 
 interface Props {
   matches: Matches;
+  matchesLoading: boolean;
   category: string;
   selectedDayIdx: 3 | 4 | 5 | 6 | 7;
   onDayChange: (dayIdx: 3 | 4 | 5 | 6 | 7) => void;
@@ -14,9 +15,10 @@ export const CategoryResults = ({
   matches,
   selectedDayIdx,
   onDayChange,
+  matchesLoading,
 }: Props) => {
   const t = useScopedI18n("results");
-  if (!matches.length) {
+  if (!matches.length && !matchesLoading) {
     return (
       <div>
         <div className="flex justify-center py-4">

@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
@@ -52,6 +53,7 @@ export default function RootLayout({
             </div>
             <Toaster />
           </I18nProviderClient>
+          <ReactQueryDevtools />
         </TRPCReactProvider>
         <Analytics />
         <SpeedInsights />
