@@ -1,6 +1,5 @@
 "use client";
-
-import * as React from "react";
+import { useState, useRef, useEffect, forwardRef } from "react";
 import { motion, useAnimationFrame, type SVGMotionProps } from "framer-motion";
 
 const SMALL_SCREEN_VIEWBOX = {
@@ -14,21 +13,24 @@ const BIG_SCREEN_VIEWBOX = { x: 300, y: -120, width: 700, height: 300 };
 
 interface Props {
   disableAnimation?: boolean;
+  animationSpeed?: number;
 }
 
-export const AnimatedHeroStripe = ({ disableAnimation }: Props) => {
-  const containerRef = React.useRef<HTMLDivElement>(null);
-  const stripeRef = React.useRef<SVGSVGElement>(null);
-  const [viewBox, setViewBox] = React.useState(SMALL_SCREEN_VIEWBOX);
+export const AnimatedHeroStripe = ({
+  disableAnimation,
+  animationSpeed = 0.15,
+}: Props) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const stripeRef = useRef<SVGSVGElement>(null);
+  const [viewBox, setViewBox] = useState(SMALL_SCREEN_VIEWBOX);
 
   useAnimationFrame((t) => {
     if (containerRef.current && stripeRef.current && !disableAnimation) {
       const containerWidth = containerRef.current.offsetWidth;
       const stripeWidth = stripeRef.current.getBBox().width;
-      const speed = 0.15;
 
       setViewBox((prevViewBox) => {
-        const newX = prevViewBox.x + speed;
+        const newX = prevViewBox.x + animationSpeed;
 
         if (newX >= stripeWidth - containerWidth) {
           return { ...prevViewBox, x: 0 };
@@ -51,7 +53,7 @@ export const AnimatedHeroStripe = ({ disableAnimation }: Props) => {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateViewBox();
     window.addEventListener("resize", updateViewBox);
     return () => {
@@ -72,7 +74,7 @@ export const AnimatedHeroStripe = ({ disableAnimation }: Props) => {
   );
 };
 
-export const HeroStripe = React.forwardRef<
+export const HeroStripe = forwardRef<
   SVGSVGElement,
   SVGMotionProps<SVGSVGElement>
 >((props, ref) => (

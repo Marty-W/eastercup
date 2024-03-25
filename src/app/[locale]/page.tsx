@@ -5,6 +5,7 @@ import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
 import { BentoCard } from "@/components/bentoCard";
 import { AnimatedHeroStripe } from "@/components/svgs/heroStripe";
+import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
 
 export default async function Landing() {
   const t = await getI18n();
@@ -18,19 +19,7 @@ export default async function Landing() {
       >
         <div className="space-y-2  lg:grid  lg:h-full lg:gap-y-6 lg:py-2">
           <div className="space-y-4 lg:grid lg:min-h-[400px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-6 lg:space-y-0 2xl:min-h-[600px]">
-            <BentoCard className="relative col-span-2 row-span-2 overflow-clip bg-brand-black">
-              <div className="relative flex min-h-[200px] flex-col text-left text-white">
-                <div className="w-4/5">
-                  <h1 className="pb-3 text-xl font-bold md:text-2xl lg:text-4xl 2xl:text-6xl">
-                    {t("hero.title")}
-                  </h1>
-                  <h2 className="text-md lg:text-2xl 2xl:text-4xl">
-                    28. — 31. 3. 2024
-                  </h2>
-                </div>
-              </div>
-              <AnimatedHeroStripe />
-            </BentoCard>
+            <AnimatedWelcomeBento />
             <BentoCard className="bg-brand-blue text-white">
               <TimeCounter />
             </BentoCard>
