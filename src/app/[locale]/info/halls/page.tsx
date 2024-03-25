@@ -54,6 +54,24 @@ export default function Halls() {
           >
             {HALL_LOCATIONS.map((hall) => {
               const { background, glyphColor } = getPinColors(hall.color);
+              if (hall.name === "CMS1") {
+                return (
+                  <AdvancedMarker
+                    key={hall.name}
+                    position={{ lat: hall.loc.lat, lng: hall.loc.lng }}
+                    title={hall.name}
+                  >
+                    <Pin
+                      background={background}
+                      glyphColor={glyphColor}
+                      borderColor={"#FF0000"}
+                      glyph={"5,6"}
+                    />
+                  </AdvancedMarker>
+                );
+              }
+
+              if (hall.name === "CMS2") return;
               return (
                 <AdvancedMarker
                   key={hall.name}
