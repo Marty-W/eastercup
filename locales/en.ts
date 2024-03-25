@@ -331,4 +331,7 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "info.home.contact": "Contacts",
   "results.emptyState": "No matches found",
   "info.home.goBack": "Go back",
+  "footer.contact": "Contact",
+  "footer.address": "Address",
+  "footer.thankYou": "Thanks to all partners and sponsors",
 } satisfies Record<keyof typeof Locale, string>;

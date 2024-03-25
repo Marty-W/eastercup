@@ -52,7 +52,7 @@ export default function RootLayout({
             </div>
             <Toaster />
           </I18nProviderClient>
-          <ReactQueryDevtools />
+          {/* <ReactQueryDevtools /> */}
         </TRPCReactProvider>
         <Analytics />
       </body>
