@@ -163,8 +163,8 @@ export default {
   "hamburger.teams": "týmy",
   "info.header": "informace",
   "info.categories.header": "kategorie:",
-  "info.categories.subheader1": "MINI EASTER CUP:",
-  "info.categories.subheader2": "EASTER CUP:",
+  "info.categories.subheader1": "MINI EASTER CUP",
+  "info.categories.subheader2": "EASTER CUP",
   "info.categories.mini.category1": "U11 DÍVKY a MIX (narozeni 2013 a mladší)",
   "info.categories.mini.category2":
     "U11 CHLAPCI a MIX (narozeni 2013 a mladší)",
@@ -174,9 +174,9 @@ export default {
   "info.categories.normal.category2": "U14 CHLAPCI (narození 2010 a mladší)",
   "info.categories.normal.category3": "U16 DÍVKY (narozené 2008 a mladší)",
   "info.categories.normal.category4": "U16 CHLAPCI (narození 2008 a mladší)",
-  "info.term.header": "termín:",
+  "info.term.header": "termín",
   "info.term.date": "28.3 - 31.3.2024",
-  "info.place.header": "MÍSTO KONÁNÍ:",
+  "info.place.header": "MÍSTO KONÁNÍ",
   "info.place.place1": "Hala BK Klatovy (Voříškova 715, Klatovy)",
   "info.place.place2": "Hala CMS Klatovy (U Elektrárny 917, Klatovy)",
   "info.place.place3": "Městská sportovní hala (Čapkova 136, Klatovy)",
@@ -185,13 +185,13 @@ export default {
   "info.place.place6": "Tělocvična Gymnázium Klatovy (Národních mučedníků 347)",
   "info.place.place7": "Tělocvična SPŠ Klatovy (Kpt. Nálepky 362)",
   "info.place.place8": "Tělocvična Obchodní akademie (Hálkova 131)",
-  "info.fee.header": "startovné:",
+  "info.fee.header": "startovné",
   "info.fee.text":
     "5 000 Kč – v případě zrušení turnaje z důvodu vyšší moci se startovné nevrací a bude použito na úhradu již vynaložených nákladů ze strany pořadatele a nezbytných poplatků spojených se zrušením turnaje.",
-  "info.system.header": "hrací systém:",
+  "info.system.header": "hrací systém",
   "info.system.text":
     "Bude zveřejněn spolu s rozpisem zápasů dva týdny před začátkem turnaje, každému týmu garantujeme nejméně 5 zápasů.",
-  "info.rules.header": "pravidla turnaje:",
+  "info.rules.header": "pravidla turnaje",
   "info.rules.1.h1": `Turnaj je vyhlášen pro kategorie:`,
   "info.rules.1.p1": `U11 dívky, chlapci a mix (nar. 1. 1. 2013 a mladší)`,
   "info.rules.1.p2": `U12 dívky, chlapci a mix (nar. 1. 1. 2012a mladší)`,
@@ -238,16 +238,16 @@ v případě zamítnutí kauce propadá ve prospěch organizátora.`,
   "info.rules.9": `Rozlosování turnaje proběhne po uzávěrce přihlášek a bude zasláno společně s hracím
 systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "info.rules.10": `Každý tým se rozcvičuje s vlastními míči. Pořadatel zajišťuje pouze hrací míče.`,
-  "info.prizes.header": "Ceny:",
+  "info.prizes.header": "Ceny",
   "info.prizes.text":
     "První 3 místa pohár a medaile, pro každé družstvo diplom + věcné ceny, v každé kategorii vyhlášení All-Stars pětky a nejužitečnějšího hráče.",
-  "info.tshirts.header": "Turnajová trika:",
-  "info.registration.header": "Registrace:",
+  "info.tshirts.header": "Turnajová trika",
+  "info.registration.header": "Registrace",
   "info.registration.text": "Odkaz na formulář",
-  "info.contact.header": "Kontakty:",
+  "info.contact.header": "Kontakty",
   "info.contact.text":
     "Zaplacením startovného účastníci turnaje souhlasí s podmínkami účasti, propozicemi a pravidly turnaje",
-  "info.accomodation.header": "Ubytování:",
+  "info.accomodation.header": "Ubytování",
   "info.accomodation.text":
     "Ceny ubytování typu A, B a C jsou předběžné a jsou bez snídaně.",
   "info.accomodation.text2":
@@ -261,14 +261,14 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "info.accomodation.school.header": "Typ D: Ve třídách základní školy",
   "info.accomodation.school.text": "cení od 160,- Kč na osobu a noc",
   "info.accomodation.school.text2": "na karimatce ve vlastním spacáku",
-  "info.accomodation.storno.header": "Storno podmínky:",
+  "info.accomodation.storno.header": "Storno podmínky",
   "info.accomodation.storno.text1":
     "zrušení rezervace do 48 hodin před příjezdem - zdarma",
   "info.accomodation.storno.text2":
     "zrušení rezervace do 24 hodin před příjezdem - 50% z ceny první noci",
   "info.accomodation.storno.text3":
     "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
-  "info.catering.header": "STRAVOVÁNÍ:",
+  "info.catering.header": "STRAVOVÁNÍ",
   "info.catering.subHeader1": "Ceny",
   "info.catering.subHeader2": "Jídelny",
   "info.catering.text":
@@ -291,7 +291,7 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
     "Příprava pokrmů vhodných pro alergiky je možná, ale je třeba ji nahlásit při registraci.",
   "info.catering.breakfastPrice":
     "V případě ubytování v kategorii A nebo B bude cena snídaně a místo podávání snídaně upřesněno po potvrzení konkrétního ubytovacího zařízení.",
-  "info.city.header": "MĚSTO KLATOVY:",
+  "info.city.header": "MĚSTO KLATOVY",
   "info.city.text1":
     "Klatovy leží v šumavském podhůří poblíž jihozápadní hranice České republiky s Německou spolkovou republikou, 40 km jižně od Plzně. Bývalé královské město Klatovy jsou moderním městem s bohatou historickou tradicí. Počtem obyvatel jsou po Plzni druhým největším městem Plzeňského kraje.",
   "info.city.text2":

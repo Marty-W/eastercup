@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function About() {
   const t = await getScopedI18n("info");
   return (
-    <div className="space-y-2">
+    <div className="space-y-2 text-xs md:text-base">
       <InfoSection header={t("categories.header")}>
         <div className="space-y-3 lg:flex lg:justify-between lg:space-y-0 lg:pr-4">
           <InfoSubsection>

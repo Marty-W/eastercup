@@ -3,7 +3,7 @@ import { getScopedI18n } from "locales/server";
 export default async function Accommodation() {
   const t = await getScopedI18n("info.accomodation");
   return (
-    <div>
+    <div className="text-xs md:text-base">
       <div className="space-y-2 lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:space-y-0">
         <div>
           <h4 className="font-bold">{t("hotel.header")}</h4>

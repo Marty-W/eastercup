@@ -15,14 +15,16 @@ export function InfoSection({
   return (
     <div
       className={cn(
-        "space-y-2 lg:grid lg:grid-cols-[0.6fr_2fr] lg:gap-x-1 lg:space-y-0",
+        "space-y-2 py-2 lg:grid lg:grid-cols-[0.6fr_2fr] lg:gap-x-1 lg:space-y-0 lg:py-0",
         className,
       )}
     >
       {header && (
         <h3 className="font-bold uppercase text-brand-blue">{header}</h3>
       )}
-      <div className={cn("text-sm", subSectionClassName)}>{children}</div>
+      <div className={cn("text-xs md:text-sm", subSectionClassName)}>
+        {children}
+      </div>
     </div>
   );
 }

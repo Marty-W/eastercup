@@ -12,7 +12,7 @@ export default async function Rules() {
   const t = await getScopedI18n("info");
   const currLocalale = getCurrentLocale();
   return (
-    <div>
+    <div className="text-xs md:text-base">
       <ol className="list-inside list-decimal space-y-3 md:space-y-5">
         <li>
           {t("rules.1.h1")}

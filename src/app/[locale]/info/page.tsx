@@ -33,29 +33,29 @@ export default async function InformationPage() {
         {t("rules")}
       </BentoCard>
       <BentoCard
-        className="flex h-24 items-center justify-center bg-brand-blue text-white lg:col-span-2 lg:col-start-5 lg:h-full"
-        href="/info/accommodation"
-      >
-        {t("accommodation")}
-      </BentoCard>
-      <BentoCard
-        className="flex h-24 items-center justify-center lg:col-span-2 lg:col-start-5 lg:row-start-2 lg:h-full"
-        href="/info/catering"
-      >
-        {t("catering")}
-      </BentoCard>
-      <BentoCard
-        className="relative flex h-36 items-center justify-center overflow-clip bg-brand-black text-white lg:col-span-4 lg:h-72"
+        className="relative flex min-h-36 items-center justify-center overflow-clip bg-brand-black text-white lg:col-span-4 lg:h-72"
         href="/info/about"
       >
         {t("about")}
         <AnimatedHeroStripe disableAnimation />
       </BentoCard>
       <BentoCard
-        className="flex items-center justify-center bg-brand-red text-white lg:col-span-2 lg:h-72"
+        className="flex min-h-[180px] items-center justify-center bg-brand-red text-white lg:col-span-2 lg:h-72"
         href="/info/klatovy"
       >
         {t("klatovy")}
+      </BentoCard>
+      <BentoCard
+        className="col-span-2 flex h-24 items-center justify-center bg-brand-blue text-white lg:col-start-5 lg:row-start-3 lg:h-full"
+        href="/info/accommodation"
+      >
+        {t("accommodation")}
+      </BentoCard>
+      <BentoCard
+        className="col-span-2 flex h-24 items-center justify-center lg:col-start-5 lg:row-start-2 lg:h-full"
+        href="/info/catering"
+      >
+        {t("catering")}
       </BentoCard>
     </div>
   );

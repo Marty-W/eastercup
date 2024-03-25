@@ -3,7 +3,7 @@ import { getScopedI18n } from "locales/server";
 export default async function Catering() {
   const t = await getScopedI18n("info.catering");
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 text-xs md:text-base">
       <p>{t("text")}</p>
       <p>{t("unlimitedDrinks")}</p>
       <p>{t("allergies")}</p>
