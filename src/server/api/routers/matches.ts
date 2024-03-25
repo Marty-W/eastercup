@@ -1,6 +1,6 @@
 import { removeCategoryFromTeamName } from "@/lib/utils";
 import { createTRPCRouter, publicProcedure } from "../trpc";
-import { getDay, getISODay, isBefore } from "date-fns";
+import { getISODay, isBefore } from "date-fns";
 
 export const matchRouter = createTRPCRouter({
   getAllMatches: publicProcedure.query(async ({ ctx }) => {

@@ -1,5 +1,4 @@
 import { createTRPCRouter } from "@/server/api/trpc";
-import { registrationRouter } from "./routers/registration";
 import { commonRouter } from "./routers/common";
 import { matchRouter } from "./routers/matches";
 
@@ -10,7 +9,6 @@ import { matchRouter } from "./routers/matches";
  */
 export const appRouter = createTRPCRouter({
   common: commonRouter,
-  registration: registrationRouter,
   match: matchRouter,
 });
 

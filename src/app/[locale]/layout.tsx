@@ -1,5 +1,4 @@
 import "@/styles/globals.css";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Analytics } from "@vercel/analytics/react";
 
 import localFont from "next/font/local";
@@ -52,7 +51,6 @@ export default function RootLayout({
             </div>
             <Toaster />
           </I18nProviderClient>
-          {/* <ReactQueryDevtools /> */}
         </TRPCReactProvider>
         <Analytics />
       </body>

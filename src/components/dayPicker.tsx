@@ -1,4 +1,4 @@
-import { useCurrentLocale, useScopedI18n } from "locales/client";
+import { useCurrentLocale } from "locales/client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const DAYS_EN = ["Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];

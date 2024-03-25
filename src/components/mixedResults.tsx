@@ -1,4 +1,4 @@
-import { type TeamCategory, type Matches, Team } from "@/lib/types";
+import { type TeamCategory, type Matches } from "@/lib/types";
 import { MatchResult } from "./matchResult";
 import { DayPicker } from "@/components/dayPicker";
 import { useScopedI18n } from "locales/client";
@@ -16,7 +16,6 @@ interface Props {
 
 export const MixedResults = ({
   matches,
-  category,
   selectedDayIdx,
   onDayChange,
 }: Props) => {

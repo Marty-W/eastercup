@@ -12,7 +12,6 @@ interface Props {
 
 export const CategoryResults = ({
   matches,
-  category,
   selectedDayIdx,
   onDayChange,
 }: Props) => {

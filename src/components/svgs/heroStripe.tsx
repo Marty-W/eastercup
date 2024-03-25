@@ -24,7 +24,7 @@ export const AnimatedHeroStripe = ({
   const stripeRef = useRef<SVGSVGElement>(null);
   const [viewBox, setViewBox] = useState(SMALL_SCREEN_VIEWBOX);
 
-  useAnimationFrame((t) => {
+  useAnimationFrame(() => {
     if (containerRef.current && stripeRef.current && !disableAnimation) {
       const containerWidth = containerRef.current.offsetWidth;
       const stripeWidth = stripeRef.current.getBBox().width;

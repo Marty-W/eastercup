@@ -4,7 +4,6 @@ import { api } from "@/trpc/server";
 import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
 import { BentoCard } from "@/components/bentoCard";
-import { AnimatedHeroStripe } from "@/components/svgs/heroStripe";
 import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
 
 export default async function Landing() {

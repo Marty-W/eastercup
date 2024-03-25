@@ -21,7 +21,6 @@ import {
   teamRoomInfo,
 } from "../db/schema";
 import { TRPCError } from "@trpc/server";
-import { type DBMatch } from "@/lib/types";
 
 export async function createTeam(teamInfo: InfoServerValues) {
   let newTeam;

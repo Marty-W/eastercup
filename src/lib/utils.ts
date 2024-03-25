@@ -3,7 +3,6 @@ import { twMerge } from "tailwind-merge";
 import { REGISTRATION_CUTOFF } from "./conts";
 import { zonedTimeToUtc } from "date-fns-tz";
 import { isAfter } from "date-fns";
-import { type DBMatch } from "./types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

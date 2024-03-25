@@ -10,7 +10,6 @@ import {
 } from "./conts";
 import { type InferSelectModel } from "drizzle-orm";
 import { type match } from "@/server/db/schema";
-import { InferQueryResult } from "node_modules/@trpc/react-query/dist/utils/inferReactQueryProcedure";
 import { type RouterOutputs } from "@/trpc/shared";
 
 export type LocaleKey = keyof typeof locale;
