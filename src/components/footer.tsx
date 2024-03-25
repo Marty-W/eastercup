@@ -7,7 +7,7 @@ export default async function Footer() {
   const t = await getScopedI18n("footer");
   return (
     <footer
-      className="mx-3 flex flex-col rounded-tl-lg rounded-tr-lg border-[3px] border-b-0 border-brand-red px-3 font-display text-[9px] sm:px-8 sm:text-[12px] md:px-20 md:pt-12 lg:mx-5 lg:grid lg:grid-cols-3"
+      className="mx-3 flex max-w-[1320px] flex-col rounded-tl-lg rounded-tr-lg border-[3px] border-b-0 border-brand-red px-3 font-display text-[9px] sm:px-8 sm:text-[12px] md:px-20 md:pt-12 lg:mx-5 lg:mx-auto lg:grid lg:grid-cols-3"
       id="footer"
     >
       <div className="mx-auto w-[60%] py-4 md:hidden">
