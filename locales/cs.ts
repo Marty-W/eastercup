@@ -318,4 +318,5 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "info.home.klatovy": "Město Klatovy",
   "info.home.contact": "Kontakty",
   "results.emptyState": "Zatím nejsou k dispozici žádné výsledky.",
+  "info.home.goBack": "Zpět na info",
 } as const;
