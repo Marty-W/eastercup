@@ -156,7 +156,7 @@ export default {
     "zrušení rezervace méně než 24 hodin před příjezdem - poplatek 100% z ceny první noci",
   "tshirts.tooltip.headline": "Turnajová trika",
   "tshirts.tooltip.price": "Cena za kus: 300 Kč předem, 350 Kč na místě",
-  "navbar.info": "Pro přihlášené týmy",
+  "navbar.info": "Informace",
   "navbar.teams": "Týmy",
   "navbar.contacts": "Kontakty",
   "hamburger.info": "info",

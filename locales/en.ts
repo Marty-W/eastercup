@@ -164,7 +164,7 @@ export default {
   "tshirts.tooltip.price":
     //TODO dopln cenu v EUR
     "The price is 300 Kc when you buy in advance, 350 Kc when you buy it on the spot",
-  "navbar.info": "For registered teams",
+  "navbar.info": "Info",
   "navbar.teams": "Teams",
   "navbar.contacts": "Contacts",
   "hamburger.info": "info",
