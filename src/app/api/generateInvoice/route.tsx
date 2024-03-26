@@ -1,3 +1,4 @@
+// @ts-nocheck
 import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
 import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
 import { AccountItemSchema } from "@/lib/conts";
@@ -16,7 +17,7 @@ const requestSchema = z.object({
   teamID: z.number(),
   totalPrice: z.string(),
   currency: z.string(),
-  accountItems: z.array(AccountItemSchema),
+  accountedItems: z.array(AccountItemSchema),
 });
 
 export async function POST(request: Request) {
@@ -43,10 +44,20 @@ export async function POST(request: Request) {
   }
 
   try {
+    /*
+        - [ ] 1. get latest "final" invoice - the new var symbol will be its varSymbol + 1
+        - [ ] 2. get team data, billing data  
+        - [ ] 3. generate invoice pdf
+        - [ ] 4. save invoice pdf to blob
+        - [ ] 5. save invoiceURL to db
+        - [ ] 6. save accountedItems to the createdInvoice
+
+    */
+
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 
-    const { teamID, totalPrice, currency, accountItems } = validatedBody;
+    const { teamID, totalPrice, currency, accountedItems } = validatedBody;
 
     const dbInvoice = await generateAndSaveServiceInvoice(
       teamID,

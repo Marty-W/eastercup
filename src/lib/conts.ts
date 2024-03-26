@@ -325,8 +325,6 @@ export const AccountItemSchema = z.object({
   unitPrice: z.union([z.number(), z.literal(false)]),
 });
 
-// TODO: check coordinates
-// TODO: pridej diakritiku
 export const HALL_LOCATIONS = [
   {
     name: "BK Klatovy",
