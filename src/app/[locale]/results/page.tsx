@@ -53,7 +53,7 @@ export default function Results() {
         onValueChange={(value) => setSelectedCategory(value as TeamCategory)}
         value={selectedCategory}
       >
-        <div className="rounded-md bg-brand-blue md:flex md:justify-center">
+        <div className="rounded-md bg-brand-blue shadow-brand-blue md:flex md:justify-center">
           <TabsList className="mx-auto grid h-fit max-w-md grid-cols-4 grid-rows-[40px_10px_40px] bg-brand-blue">
             {RESULT_CATEGORIES.map((category, index) => {
               if (index === 3) {

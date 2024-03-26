@@ -9,7 +9,7 @@ export const AnimatedWelcomeBento = () => {
 
   return (
     <div
-      className="relative col-span-2 row-span-2 overflow-clip rounded-xl border-2 border-black bg-brand-black px-4 py-5 xl:px-5 xl:py-6 2xl:px-7 2xl:py-8"
+      className="relative col-span-2 row-span-2 overflow-clip rounded-xl border-2 border-black bg-brand-black px-4 py-5 shadow-lg shadow-brand-black xl:px-5 xl:py-6 2xl:px-7 2xl:py-8"
       onMouseEnter={() => setAnimationSpeed(0.8)}
       onMouseLeave={() => setAnimationSpeed(0.4)}
     >
