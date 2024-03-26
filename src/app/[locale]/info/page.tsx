@@ -15,7 +15,7 @@ export default async function InformationPage() {
       </BentoCard>
       <BentoCard
         className="group col-span-2 flex items-center justify-center bg-brand-black text-white shadow-slate-400 lg:col-span-3"
-        href="/EC2024_game_schedule_v06.pdf"
+        href="/EC2024_game_schedule.pdf"
         newTab
       >
         <BouncingArrowText text={t("matchesSchedule")} />
