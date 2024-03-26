@@ -46,7 +46,7 @@ export default function RootLayout({
       <body className={`font-pano ${GeistSans.variable} font-sans antialiased`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <I18nProviderClient locale={locale}>
-            <div className="grid grid-rows-[auto_1fr_auto] space-y-4 bg-[#fafaff]">
+            <div className="grid min-h-screen grid-rows-[auto_1fr_auto] space-y-4 bg-[#fafaff]">
               <Navbar />
               <div className="container">{children}</div>
               <Footer />
