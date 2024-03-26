@@ -21,6 +21,8 @@ import {
   teamRoomInfo,
 } from "../db/schema";
 import { TRPCError } from "@trpc/server";
+import { asc, desc } from "drizzle-orm";
+import { type AccountItem } from "@/lib/types";
 
 export async function createTeam(teamInfo: InfoServerValues) {
   let newTeam;
@@ -324,4 +326,42 @@ function flattenAccomodationRooms(
           : [],
       )
     : [];
+}
+
+export async function generateAndSaveFinalInvoice(
+  teamID: number,
+  amount: string,
+  currency: string,
+  accountedItems: AccountItem[],
+) {
+  const lastIssuedInvoice = await db.query.invoice.findFirst({
+    orderBy: (invoice, { desc }) => [desc(invoice.id)],
+  });
+
+  const lastVarSymbol = lastIssuedInvoice?.varSymbol;
+  const newVarSymbol = lastVarSymbol
+    ? `${parseInt(lastVarSymbol) + 1}`
+    : "20240001";
+
+  try {
+    return await db
+      .insert(invoice)
+      .values({
+        teamId: teamID,
+        varSymbol: newVarSymbol,
+        type: "final",
+        amount: `${amount} ${currency}`,
+        price: parseInt(amount),
+        currency: currency,
+        accountedItems: accountedItems,
+      })
+      .returning();
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message:
+        "Database error occurred while creating the registration invoice",
+      cause: e,
+    });
+  }
 }

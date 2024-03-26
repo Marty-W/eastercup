@@ -90,7 +90,7 @@ interface Props {
   accountItems: AccountItem[];
 }
 
-export default function ServicesPaymentRequestTemplateCS({
+export default function FinalInvoiceTemplateCS({
   billing: { companyName, address, zip, city, ic, dic },
   teamName,
   email,

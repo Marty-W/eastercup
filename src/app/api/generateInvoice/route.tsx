@@ -2,7 +2,10 @@ import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentReques
 import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
 import { AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
-import { generateAndSaveServiceInvoice } from "@/server/api/helpers";
+import {
+  generateAndSaveFinalInvoice,
+  generateAndSaveServiceInvoice,
+} from "@/server/api/helpers";
 import { db } from "@/server/db";
 import { teams, teamBillingInfo, invoice } from "@/server/db/schema";
 import { renderToStream } from "@react-pdf/renderer";
@@ -11,6 +14,8 @@ import { eq, and } from "drizzle-orm";
 import { type Readable } from "stream";
 import { z } from "zod";
 import { env } from "@/env.mjs";
+import FinalInvoiceTemplateCS from "@/components/finalInvoiceTemplateCS";
+import FinalInvoiceTemplateEN from "@/components/finalInvoiceTemplateEN";
 
 const requestSchema = z.object({
   teamID: z.number(),
@@ -44,12 +49,12 @@ export async function POST(request: Request) {
 
   try {
     /*
-        - [ ] 1. get latest "final" invoice - the new var symbol will be its varSymbol + 1
-        - [ ] 2. get team data, billing data  
-        - [ ] 3. generate invoice pdf
-        - [ ] 4. save invoice pdf to blob
-        - [ ] 5. save invoiceURL to db
-        - [ ] 6. save accountedItems to the createdInvoice
+        - [x] 1. get latest "final" invoice - the new var symbol will be its varSymbol + 1
+        - [x] 2. get team data, billing data  
+        - [x] 3. generate invoice pdf
+        - [x] 4. save invoice pdf to blob
+        - [x] 5. save invoiceURL to db
+        - [x] 6. save accountedItems to the createdInvoice
 
     */
 
@@ -58,10 +63,11 @@ export async function POST(request: Request) {
 
     const { teamID, totalPrice, currency, accountedItems } = validatedBody;
 
-    const dbInvoice = await generateAndSaveServiceInvoice(
+    const dbInvoice = await generateAndSaveFinalInvoice(
       teamID,
       totalPrice,
       currency,
+      accountedItems,
     );
 
     const dbTeam = await db
@@ -111,31 +117,34 @@ export async function POST(request: Request) {
 
     let stream;
 
-    // if (foundTeam.country === "CZ") {
-    //   stream = await renderToStream(
-    //     <ServicesPaymentRequestTemplateCS
-    //       {...foundTeam}
-    //       invoiceVarSymbol={newInvoice.varSymbol}
-    //       accountItems={accountItems}
-    //       currency={currency}
-    //       totalInvoicePrice={totalPrice}
-    //     />,
-    //   );
-    // } else {
-    //   stream = await renderToStream(
-    //     <ServicesPaymentRequestTemplateEN
-    //       {...foundTeam}
-    //       invoiceVarSymbol={newInvoice.varSymbol}
-    //       accountItems={accountItems}
-    //       currency={currency}
-    //       totalInvoicePrice={totalPrice}
-    //     />,
-    //   );
-    // }
+    // TODO: create new templates for final invoices
+    if (foundTeam.country === "CZ") {
+      stream = await renderToStream(
+        <FinalInvoiceTemplateCS
+          {...foundTeam}
+          invoiceVarSymbol={newInvoice.varSymbol}
+          accountItems={accountedItems}
+          currency={currency}
+          totalInvoicePrice={totalPrice}
+        />,
+      );
+    } else {
+      stream = await renderToStream(
+        <FinalInvoiceTemplateEN
+          {...foundTeam}
+          invoiceVarSymbol={newInvoice.varSymbol}
+          accountItems={accountedItems}
+          currency={currency}
+          totalInvoicePrice={totalPrice}
+        />,
+      );
+    }
 
+    // TODO: rename the path to the correct one before we deploy
     const blob = await put(
-      `invoices/final/${sanitizeTeamNameForFilename(foundTeam.teamName)}.pdf`,
-      // @ts-expect-error - just scaffolding man, just let me build
+      `invoices/final-test/${sanitizeTeamNameForFilename(
+        foundTeam.teamName,
+      )}.pdf`,
       stream as Readable,
       {
         contentType: "application/pdf",
