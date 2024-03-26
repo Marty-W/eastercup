@@ -70,13 +70,13 @@ export const MixedResults = ({
         <DayPicker selectedDayIdx={selectedDayIdx} onDayChange={onDayChange} />
       </div>
       <div className="flex flex-col space-y-2 md:space-y-3">
-        <div className="mx-auto flex w-full max-w-[500px] flex-col">
+        <div className="mx-auto flex w-full max-w-[500px] flex-col space-y-3">
           {!matchesLoading ? (
             categorizedMatches.map(({ category, matches }) => {
               return (
-                <>
+                <div key={category}>
                   <h1 className="text-xs md:text-base">{category}</h1>
-                  <div className="space-y-1 rounded-md border-2 border-black">
+                  <div className="space-y-1 rounded-md border-2 border-black shadow-md">
                     {matches.map(({ id, time, teamA, teamB, winner }) => (
                       <MatchResult
                         key={id}
@@ -87,7 +87,7 @@ export const MixedResults = ({
                       />
                     ))}
                   </div>
-                </>
+                </div>
               );
             })
           ) : (

@@ -34,7 +34,7 @@ export const MatchResult = ({ time, teamA, teamB, winner }: Props) => {
           </div>
         </div>
       </div>
-      <div className="line-clamp-1 flex flex-col space-y-2 text-right">
+      <div className="line-clamp-1 flex flex-col space-y-2 pr-2 text-right">
         <span className={cn(teamA.name === winner && "font-semibold")}>
           {teamA.score}
         </span>
