@@ -1,6 +1,6 @@
 import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
 import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
-import { AccountItemSchema } from "@/lib/conts";
+import { AccountBedSchema, AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
 import {
   generateAndSaveFinalInvoice,
@@ -22,6 +22,7 @@ const requestSchema = z.object({
   totalPrice: z.string(),
   currency: z.string(),
   accountedItems: z.array(AccountItemSchema),
+  accountedBeds: z.array(AccountBedSchema).optional(),
 });
 
 export async function POST(request: Request) {
@@ -61,7 +62,8 @@ export async function POST(request: Request) {
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 
-    const { teamID, totalPrice, currency, accountedItems } = validatedBody;
+    const { teamID, totalPrice, currency, accountedItems, accountedBeds } =
+      validatedBody;
 
     const dbInvoice = await generateAndSaveFinalInvoice(
       teamID,
@@ -156,6 +158,7 @@ export async function POST(request: Request) {
       .update(invoice)
       .set({
         url: blob.url,
+        accountedBeds: accountedBeds,
       })
       .where(and(eq(invoice.teamId, teamID), eq(invoice.id, newInvoice.id)));
 
@@ -179,6 +182,7 @@ export async function POST(request: Request) {
     return new Response(
       JSON.stringify({
         error: "Invalid data provided.",
+        message: error,
       }),
       {
         status: 400,

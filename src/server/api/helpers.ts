@@ -351,7 +351,7 @@ export async function generateAndSaveFinalInvoice(
         varSymbol: newVarSymbol,
         type: "final",
         amount: `${amount} ${currency}`,
-        price: parseInt(amount),
+        price: amount,
         currency: currency,
         accountedItems: accountedItems,
       })

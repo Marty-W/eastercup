@@ -115,11 +115,13 @@ export const invoice = pgTable("invoice", {
   }).notNull(),
   paid: boolean("paid").default(false),
   amount: text("amount").notNull(),
-  price: integer("price"),
+  price: varchar("price"),
   currency: text("currency"),
   issueDate: date("issue_date").defaultNow(),
   url: text("url"),
   accountedItems: jsonb("accounted_items").default([]),
+  paidAmount: varchar("paid_amount"),
+  accountedBeds: jsonb("accounted_beds").default([]),
 });
 
 export const invoiceRelations = relations(invoice, ({ one }) => ({
