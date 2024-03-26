@@ -1,4 +1,3 @@
-// @ts-nocheck
 import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
 import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
 import { AccountItemSchema } from "@/lib/conts";
@@ -136,6 +135,7 @@ export async function POST(request: Request) {
 
     const blob = await put(
       `invoices/final/${sanitizeTeamNameForFilename(foundTeam.teamName)}.pdf`,
+      // @ts-expect-error - just scaffolding man, just let me build
       stream as Readable,
       {
         contentType: "application/pdf",
