@@ -7,27 +7,32 @@ import NavLinks from "./navLinks";
 
 export default function Navbar() {
   return (
-    <header className="md:grid-rows[1fr_3fr] grid h-[30vh] grid-cols-2 grid-rows-[1fr_3fr] px-4 pt-4">
-      <div className="col-span-2 flex items-center justify-between md:px-6">
-        <Link href="/" className="flex w-1/4 max-w-[150px] items-center">
-          <Image width={500} height={500} src="/logo-big.svg" alt="Logo" />
-        </Link>
-        <nav className="flex flex-1 items-center justify-end space-x-8">
-          <div className="hidden lg:block">
-            <NavLinks />
-          </div>
+    <header className="px-4 pt-4 md:px-8 lg:px-14 lg:pt-8">
+      <nav className="grid h-[10vh] grid-cols-[1fr_2fr_1fr] lg:min-h-[12vh]">
+        <div className="flex h-full w-full items-center justify-self-start">
+          <Link href="/" className="relative h-full w-full">
+            <Image
+              src="/logo-big.svg"
+              alt="Logo"
+              layout="fill"
+              objectFit="contain"
+              objectPosition="left"
+            />
+          </Link>
+        </div>
+        <div className="hidden self-center justify-self-center lg:block">
+          <NavLinks />
+        </div>
+        <div className="col-span-2 col-start-2 flex items-center space-x-4 justify-self-end lg:col-span-1 lg:col-start-3">
           <div className="hidden md:block">
             <Socials />
           </div>
           <LangSwitcher />
-          <div className="lg:hidden">
+          <div className="h-[30px] lg:hidden">
             <HamburgerMenu />
           </div>
-        </nav>
-      </div>
-      <div
-        className={`col-span-2 bg-[url('../images/header-stripe.svg')] bg-cover bg-clip-padding bg-repeat-x`}
-      />
+        </div>
+      </nav>
     </header>
   );
 }

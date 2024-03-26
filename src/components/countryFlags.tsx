@@ -12,7 +12,7 @@ export default function CountryFlags({ countries }: Props) {
         return (
           <span
             key={countryCode}
-            className={`fi fi-${countryCode.toLowerCase()} text-xl md:text-2xl lg:text-4xl`}
+            className={`fi fi-${countryCode.toLowerCase()} text-3xl lg:text-4xl`}
           ></span>
         );
       })}

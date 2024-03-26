@@ -248,3 +248,39 @@ export const room = pgTable(
     };
   },
 );
+
+export const match = pgTable(
+  "match",
+  {
+    id: serial("id").primaryKey(),
+    date: date("date").notNull(),
+    time: text("time").notNull(),
+    teamAId: integer("team_a_id")
+      .references(() => teams.id)
+      .notNull(),
+    teamAScore: integer("team_a_score").notNull(),
+    teamBId: integer("team_b_id")
+      .references(() => teams.id)
+      .notNull(),
+    teamBScore: integer("team_b_score").notNull(),
+  },
+  (table) => {
+    return {
+      teamAIdx: index("team_a_idx").on(table.teamAId),
+      teamBIdx: index("team_b_idx").on(table.teamBId),
+      matchIdx: index("match_idx").on(table.id),
+      dayIdx: index("date").on(table.date),
+    };
+  },
+);
+
+export const matchesRelations = relations(match, ({ one }) => ({
+  teamA: one(teams, {
+    fields: [match.teamAId],
+    references: [teams.id],
+  }),
+  teamB: one(teams, {
+    fields: [match.teamBId],
+    references: [teams.id],
+  }),
+}));

@@ -1,60 +1,70 @@
 import TimeCounter from "@/components/timeCounter";
 import { getI18n } from "locales/server";
-import Link from "next/link";
 import { api } from "@/trpc/server";
 import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
-import { getIsRegistrationClosed } from "@/lib/utils";
+import { BentoCard } from "@/components/bentoCard";
+import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
 
 export default async function Landing() {
   const t = await getI18n();
   const { teamCount, countryCount, countries } =
     await api.common.getTeamsCountInfo.query();
 
-  const isRegistrationClosed = getIsRegistrationClosed();
-
   return (
-    <>
-      <div className="h-[calc(100svh-30vh)]">
-        <div className="flex h-full flex-col justify-between text-center font-display text-lg md:pt-8">
-          <div className="mx-auto flex max-w-screen-md flex-col space-y-10 md:space-y-10">
-            <div>
-              <div className="text-base md:mb-20 md:text-2xl">
-                <div className="mb-6 text-xl font-bold md:mb-10 md:text-2xl">
-                  <h1>{t("hero.title")}</h1>
-                </div>
-                <h2 className="font-bold">28. - 31. 3. 2024</h2>
-                <span>{`Klatovy, ${t("common.cz")}`}</span>
+    <div className="flex h-full flex-col">
+      <div
+        className={`flex h-full flex-col justify-between space-y-4 py-8 text-center font-display text-lg sm:px-4 md:px-8 lg:pb-8`}
+      >
+        <div className="space-y-2  lg:grid  lg:h-full lg:gap-y-6 lg:py-2">
+          <div className="space-y-4 lg:grid lg:min-h-[400px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-6 lg:space-y-0 2xl:min-h-[600px]">
+            <AnimatedWelcomeBento />
+            <BentoCard className="bg-brand-blue text-white shadow-brand-blue">
+              <TimeCounter />
+            </BentoCard>
+            <BentoCard className="shadow-slate-400">
+              <div className="flex h-full flex-col justify-evenly space-y-2 px-4 text-sm shadow-white md:space-y-6 md:text-base">
+                <TeamCountryCount
+                  countryCount={countryCount}
+                  teamCount={teamCount}
+                />
+                <CountryFlags countries={countries} />
               </div>
-            </div>
-            {!isRegistrationClosed && (
-              <Link
-                href="/form/info"
-                className="mx-auto max-w-[200px] rounded-md bg-brand-yellow px-4 py-2 active:translate-y-1 md:max-w-[300px] md:px-8 md:py-4"
-              >
-                <span>{t("hero.button")}</span>
-              </Link>
-            )}
+            </BentoCard>
           </div>
-          <div className="flex flex-col space-y-2 pb-6 text-sm md:space-y-6 md:text-base">
-            <TimeCounter />
-            <TeamCountryCount
-              countryCount={countryCount}
-              teamCount={teamCount}
-            />
-            <CountryFlags countries={countries} />
+          <div className="grid grid-cols-2 gap-4 lg:min-h-[200px] lg:grid-cols-3 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
+            <BentoCard
+              className="flex h-[150px] flex-col justify-center border-dark-red bg-brand-red text-base text-white shadow-brand-red md:text-2xl lg:h-full"
+              href="https://app.staylive.io/eastercuplatovy"
+              newTab
+            >
+              Live stream
+            </BentoCard>
+            <BentoCard
+              className="col-start-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-base text-black shadow-brand-yellow md:text-2xl lg:h-full"
+              href="/EC2024_game_schedule.pdf"
+              newTab
+            >
+              {t("landingPage.matchSchedule")}
+            </BentoCard>
+            <BentoCard
+              className="col-span-2 flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white shadow-brand-blue lg:col-span-1 lg:h-full"
+              href="/teams"
+            >
+              {t("registeredTeams.header")}
+            </BentoCard>
           </div>
         </div>
       </div>
-      <div className="flex justify-center px-5 py-32">
+      <div className="py-8 sm:px-4 md:px-8">
         <iframe
-          className="aspect-video w-full max-w-screen-lg border-[12px] border-brand-red"
+          className="aspect-video h-full w-full rounded-xl border-2 border-black shadow-md shadow-brand-black"
           src="https://www.youtube.com/embed/9hkAsNXRFP4?si=qP5xtRzzukx7mKlV"
           title="Eastern Cup 2023 Aftermovie"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
           allowFullScreen
         ></iframe>
       </div>
-    </>
+    </div>
   );
 }

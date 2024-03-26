@@ -64,3 +64,15 @@ export function getIsRegistrationClosed(): boolean {
 
   return isAfter(now, cutoffDateInPrague);
 }
+
+export const removeCategoryFromTeamName = (teamName: string): string => {
+  const parts = teamName.split("|").map((part) => part.trim());
+
+  const teamNamePart = parts[0];
+
+  if (!teamNamePart) {
+    throw new Error(`Invalid team name: ${teamName}`);
+  }
+
+  return teamNamePart;
+};

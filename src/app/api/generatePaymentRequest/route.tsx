@@ -43,6 +43,7 @@ export async function POST(request: Request) {
   }
 
   try {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 

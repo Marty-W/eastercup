@@ -324,3 +324,72 @@ export const AccountItemSchema = z.object({
   priceWithDPH: z.number(),
   unitPrice: z.union([z.number(), z.literal(false)]),
 });
+
+// TODO: check coordinates
+// TODO: pridej diakritiku
+export const HALL_LOCATIONS = [
+  {
+    name: "BK Klatovy",
+    address: "Voříškova 715",
+    link: "https://maps.app.goo.gl/4ifgUjijpJ5QesMC8",
+    loc: { lat: 49.3977732905385, lng: 13.286436784298814 },
+    tag: "1",
+    color: "blue",
+  },
+  {
+    name: "Čapkova",
+    link: "https://maps.app.goo.gl/ptNvjTnhzFKgGny57",
+    address: "Čapkova 136",
+    loc: { lat: 49.39645998164526, lng: 13.307520612566504 },
+    tag: "2",
+    color: "red",
+  },
+  {
+    name: "Gymnázium",
+    link: "https://maps.app.goo.gl/gKbxrqW4Cy4DcVfR9",
+    address: "Nár. mučedníků 347",
+    loc: { lat: 49.39148991259919, lng: 13.298973629891169 },
+    tag: "3",
+    color: "yellow",
+  },
+  {
+    name: "Masarykova",
+    link: "https://maps.app.goo.gl/TgGR1iFwfCBWRBrg9",
+    address: "Nár. mučedníků 185",
+    loc: { lat: 49.38973114071045, lng: 13.299839524330558 },
+    tag: "4",
+    color: "black",
+  },
+  {
+    name: "CMS1",
+    link: "https://maps.app.goo.gl/dfE2Hk5dyvEJ6qwm9",
+    address: "U Elektrárny 917",
+    loc: { lat: 49.38861838985109, lng: 13.27865877957909 },
+    tag: "5",
+    color: "blue",
+  },
+  {
+    name: "CMS2",
+    link: "https://maps.app.goo.gl/dfE2Hk5dyvEJ6qwm9",
+    address: "U Elektrárny 917",
+    loc: { lat: 49.388448400046094, lng: 13.279258669183347 },
+    tag: "6",
+    color: "red",
+  },
+  {
+    name: "SPŠ",
+    link: "https://maps.app.goo.gl/2HuWi4tfc4CnQQgp8",
+    address: "Kpt. Nálepky 362",
+    loc: { lat: 49.40134821011473, lng: 13.28506908780864 },
+    tag: "7",
+    color: "yellow",
+  },
+  {
+    name: "Vodojem",
+    link: "https://maps.app.goo.gl/d2aEtrbVwhbVYC7m6",
+    address: "Studentská 646",
+    loc: { lat: 49.39382377687553, lng: 13.303834850095969 },
+    tag: "8",
+    color: "black",
+  },
+];

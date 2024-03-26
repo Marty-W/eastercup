@@ -21,10 +21,13 @@ const TimeCounter = () => {
   });
 
   return (
-    <div>
-      <p>{t("hero.tillStart")}</p>
+    <div className="h-full w-full lg:flex lg:flex-col lg:justify-center lg:space-y-2">
+      <p className="text-sm font-semibold lg:text-base">
+        {t("hero.tillStart")}
+      </p>
       <span
         suppressHydrationWarning
+        className="text-xs lg:text-base"
       >{`${diff.months}m : ${diff.days}d : ${diff.hours}h : ${diff.minutes}m : ${diff.seconds} s`}</span>
     </div>
   );

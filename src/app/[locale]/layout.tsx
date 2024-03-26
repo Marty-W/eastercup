@@ -1,5 +1,7 @@
 import "@/styles/globals.css";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import localFont from "next/font/local";
 import { GeistSans } from "geist/font/sans";
@@ -44,15 +46,17 @@ export default function RootLayout({
       <body className={`font-pano ${GeistSans.variable} font-sans antialiased`}>
         <TRPCReactProvider cookies={cookies().toString()}>
           <I18nProviderClient locale={locale}>
-            <div className="flex flex-col" id="top">
+            <div className="grid grid-rows-[auto_1fr_auto] space-y-4 bg-[#fafaff]">
               <Navbar />
               <div className="container">{children}</div>
               <Footer />
             </div>
             <Toaster />
           </I18nProviderClient>
+          <ReactQueryDevtools />
         </TRPCReactProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

@@ -1,6 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-export default function Socials() {
+
+interface Props {
+  iconSize?: number;
+}
+
+export default function Socials({ iconSize = 50 }: Props) {
   return (
     <div className="flex justify-around">
       <Link
@@ -11,8 +16,8 @@ export default function Socials() {
         <Image
           src="/socials/instagram.svg"
           alt="Instagram"
-          width={50}
-          height={50}
+          width={iconSize}
+          height={iconSize}
         />
       </Link>
       <Link
@@ -23,8 +28,8 @@ export default function Socials() {
         <Image
           src="/socials/facebook.svg"
           alt="Facebook"
-          width={50}
-          height={50}
+          width={iconSize}
+          height={iconSize}
         />
       </Link>
       <Link
@@ -35,8 +40,8 @@ export default function Socials() {
         <Image
           src="/socials/youtube.svg"
           alt="Youtube"
-          width={50}
-          height={50}
+          width={iconSize}
+          height={iconSize}
         />
       </Link>
       <Link
@@ -44,7 +49,12 @@ export default function Socials() {
         rel="noopener noreferrer"
         target="_blank"
       >
-        <Image src="/socials/tiktok.svg" alt="Tiktok" width={50} height={50} />
+        <Image
+          src="/socials/tiktok.svg"
+          alt="Tiktok"
+          width={iconSize}
+          height={iconSize}
+        />
       </Link>
     </div>
   );

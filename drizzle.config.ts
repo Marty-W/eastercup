@@ -1,6 +1,6 @@
 import { type Config } from "drizzle-kit";
 
-import { env } from "@/env.mjs";
+import { env } from "./src/env.mjs";
 
 const connectionString = env.DATABASE_URL;
 
