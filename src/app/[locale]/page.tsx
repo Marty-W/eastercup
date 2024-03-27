@@ -1,3 +1,14 @@
+"use client";
+
+import dynamic from "next/dynamic";
+
+const PDFViewer = dynamic(
+  () => import("@react-pdf/renderer").then((mod) => mod.PDFViewer),
+  {
+    ssr: false,
+    loading: () => <p>Loading...</p>,
+  },
+);
 import TimeCounter from "@/components/timeCounter";
 import { getI18n } from "locales/server";
 import { api } from "@/trpc/server";
@@ -5,66 +16,83 @@ import TeamCountryCount from "@/components/teamCountryCount";
 import CountryFlags from "@/components/countryFlags";
 import { BentoCard } from "@/components/bentoCard";
 import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
+import { Document, Page } from "@react-pdf/renderer";
+import FinalInvoiceTemplateCS from "@/components/finalInvoiceTemplateCS";
+import FinalInvoiceTemplateEN from "@/components/finalInvoiceTemplateEN";
 
-export default async function Landing() {
-  const t = await getI18n();
-  const { teamCount, countryCount, countries } =
-    await api.common.getTeamsCountInfo.query();
+export default function Landing() {
+  const billing = {
+    id: 180,
+    teamName: "BK Klatovy  | U16G",
+    country: "CZ",
+    contactPerson: "Václav Kubát",
+    email: "vaclav.kubat2@gmail.com",
+    phoneNumber: "+420775517770",
+    companyName: "BK Klatovy",
+    address: "Voříškova 715 339 01, Klatovy 3",
+    city: "Klatovy",
+    zip: "33901",
+    ic: "22850490",
+    dic: "",
+  };
+  const accountedItems = [
+    {
+      text: "Turnajová trička",
+      quantity: 8,
+      unitPrice: 300,
+      priceWithoutDPH: 1896,
+      dphRate: 21,
+      dph: 504,
+      priceWithDPH: 2400,
+      type: "tshirt",
+    },
+    {
+      text: "Stravování - snídaně",
+      quantity: 43,
+      unitPrice: 110,
+      priceWithoutDPH: 4162.4,
+      dphRate: 12,
+      dph: 567.6,
+      priceWithDPH: 4730,
+      type: "breakfast",
+    },
+    {
+      text: "Stravování - oběd",
+      quantity: 32,
+      unitPrice: 175,
+      priceWithoutDPH: 4928,
+      dphRate: 12,
+      dph: 672,
+      priceWithDPH: 5600,
+      type: "lunch",
+    },
+    {
+      text: "Ubytování - kategorie B",
+      quantity: 13,
+      unitPrice: 1890,
+      priceWithoutDPH: 21621.6,
+      dphRate: 12,
+      dph: 2948.4,
+      priceWithDPH: 24570,
+      type: "catB",
+    },
+  ];
 
   return (
-    <div className="flex h-full flex-col">
-      <div
-        className={`flex h-full flex-col justify-between space-y-4 py-8 text-center font-display text-lg sm:px-4 md:px-8 lg:pb-8`}
-      >
-        <div className="space-y-2  lg:grid  lg:h-full lg:gap-y-6 lg:py-2">
-          <div className="space-y-4 lg:grid lg:min-h-[400px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-6 lg:space-y-0 2xl:min-h-[600px]">
-            <AnimatedWelcomeBento />
-            <BentoCard className="bg-brand-blue text-white">
-              <TimeCounter />
-            </BentoCard>
-            <BentoCard>
-              <div className="flex h-full flex-col justify-evenly space-y-2 px-4 text-sm md:space-y-6 md:text-base">
-                <TeamCountryCount
-                  countryCount={countryCount}
-                  teamCount={teamCount}
-                />
-                <CountryFlags countries={countries} />
-              </div>
-            </BentoCard>
-          </div>
-          <div className="grid grid-cols-2 gap-4 lg:min-h-[200px] lg:grid-cols-3 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
-            <BentoCard
-              className="flex h-[150px] flex-col justify-center bg-brand-red text-base text-white md:text-2xl lg:h-full"
-              href="https://app.staylive.io/eastercuplatovy"
-              target="_blank"
-            >
-              Live stream
-            </BentoCard>
-            <BentoCard
-              className="col-start-2 flex h-[150px] flex-col justify-center bg-brand-yellow text-base text-black md:text-2xl lg:h-full"
-              href="/EC2024_game_schedule_v06.pdf"
-              target="_blank"
-            >
-              {t("landingPage.matchSchedule")}
-            </BentoCard>
-            <BentoCard
-              className="col-span-2 flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white lg:col-span-1 lg:h-full"
-              href="/teams"
-            >
-              {t("registeredTeams.header")}
-            </BentoCard>
-          </div>
-        </div>
-      </div>
-      <div className="py-8 sm:px-4 md:px-8">
-        <iframe
-          className="aspect-video h-full w-full rounded-xl border-2 border-black"
-          src="https://www.youtube.com/embed/9hkAsNXRFP4?si=qP5xtRzzukx7mKlV"
-          title="Eastern Cup 2023 Aftermovie"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
-          allowFullScreen
-        ></iframe>
-      </div>
+    <div className="h-screen w-screen">
+      <PDFViewer className="h-screen w-screen">
+        <FinalInvoiceTemplateEN
+          billing={billing}
+          teamName="sracky"
+          contactPerson="pan debil"
+          email="kokot@picus.sracka"
+          phoneNumber="420775517770"
+          invoiceVarSymbol="20240001"
+          currency="czk"
+          totalInvoicePrice="666"
+          accountItems={accountedItems}
+        />
+      </PDFViewer>
     </div>
   );
 }

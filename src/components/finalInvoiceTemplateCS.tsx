@@ -15,23 +15,6 @@ import {
 import { format } from "date-fns";
 import path from "path";
 
-const Roboto = path.join(process.cwd(), "fonts", "Roboto.ttf");
-const RobotoBold = path.join(process.cwd(), "fonts", "RobotoBold.ttf");
-
-Font.register({
-  family: "Roboto",
-  fonts: [
-    {
-      src: Roboto,
-      fontWeight: 400,
-    },
-    {
-      src: RobotoBold,
-      fontWeight: 700,
-    },
-  ],
-});
-
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
@@ -39,7 +22,7 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
     position: "relative",
-    fontFamily: "Roboto",
+    fontFamily: "Helvetica",
   },
   header: {
     margin: 10,
