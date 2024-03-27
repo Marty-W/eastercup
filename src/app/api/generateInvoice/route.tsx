@@ -7,7 +7,7 @@ import { db } from "@/server/db";
 import { teams, teamBillingInfo, invoice } from "@/server/db/schema";
 import { renderToStream } from "@react-pdf/renderer";
 import { put } from "@vercel/blob";
-import { eq, and } from "drizzle-orm";
+import { eq, and, count } from "drizzle-orm";
 import { type Readable } from "stream";
 import { z } from "zod";
 import { env } from "@/env.mjs";
@@ -105,8 +105,17 @@ export async function POST(request: Request) {
         },
       );
     }
+    const finalInvoiceCount = await db
+      .select({ count: count() })
+      .from(invoice)
+      .where(and(eq(invoice.type, "final"), eq(invoice.teamId, teamID)));
 
-    const totalTeamTally = await tallyNonFinalInvoices(teamID);
+    const numOfFinalInvoices = finalInvoiceCount[0]?.count;
+    let totalTeamTally = 0;
+
+    if (numOfFinalInvoices === 0) {
+      totalTeamTally = await tallyNonFinalInvoices(teamID);
+    }
 
     let stream;
 

@@ -202,13 +202,13 @@ export default function FinalInvoiceTemplateCS({
         <View style={styles.headerRow}>
           <View style={styles.sectionLeft}>
             <Text>
-              Číslo účtu:{" "}
+              Číslo účtu:
               {currency === "eur"
                 ? BANK_ACCOUNT_NUMBER_EUR
                 : BANK_ACCOUNT_NUMBER_CZK}
             </Text>
             <Text>
-              IBAN:{" "}
+              IBAN:
               {currency === "eur"
                 ? BANK_ACCOUNT_IBAN_EUR
                 : BANK_ACCOUNT_IBAN_CZK}
@@ -305,17 +305,19 @@ export default function FinalInvoiceTemplateCS({
             {totalWithDPH.toFixed(2)} {currencySymbol}
           </Text>
         </View>
-        <View style={styles.itemRow}>
-          <Text style={{ flex: 3, textAlign: "left" }}>Již zaplaceno</Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 2, textAlign: "center" }}></Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 2, textAlign: "right" }}>
-            - {paidInAdvance.toFixed(2)} {currencySymbol}
-          </Text>
-        </View>
+        {paidInAdvance !== 0 && (
+          <View style={styles.itemRow}>
+            <Text style={{ flex: 3, textAlign: "left" }}>Již zaplaceno</Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 2, textAlign: "center" }}></Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 2, textAlign: "right" }}>
+              - {paidInAdvance.toFixed(2)} {currencySymbol}
+            </Text>
+          </View>
+        )}
         <View style={styles.itemRow}>
           <Text style={{ flex: 3, textAlign: "left", fontWeight: 700 }}>
             Celkem k úhradě

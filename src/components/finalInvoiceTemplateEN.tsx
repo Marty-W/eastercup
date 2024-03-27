@@ -291,17 +291,19 @@ export default function FinalInvoiceTemplateEN({
             {totalWithDPH.toFixed(2)} €
           </Text>
         </View>
-        <View style={styles.itemRow}>
-          <Text style={{ flex: 3, textAlign: "left" }}>Advance paid</Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 2, textAlign: "center" }}></Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 1, textAlign: "center" }}></Text>
-          <Text style={{ flex: 2, textAlign: "right" }}>
-            - {paidInAdvance.toFixed(2)} €
-          </Text>
-        </View>
+        {paidInAdvance !== 0 && (
+          <View style={styles.itemRow}>
+            <Text style={{ flex: 3, textAlign: "left" }}>Advance paid</Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 2, textAlign: "center" }}></Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 1, textAlign: "center" }}></Text>
+            <Text style={{ flex: 2, textAlign: "right" }}>
+              - {paidInAdvance.toFixed(2)} €
+            </Text>
+          </View>
+        )}
         <View style={styles.itemRow}>
           <Text style={{ flex: 3, textAlign: "left", fontWeight: 700 }}>
             TOTAL DUE
