@@ -388,7 +388,7 @@ export default function FinalInvoiceTemplateEN({
           >
             <Text style={{ fontWeight: 700 }}>TOTAL DUE</Text>
             <Text style={{ marginLeft: "40px", fontWeight: 700 }}>
-              323232 eur
+              {totalDelta.toFixed(2)} €
             </Text>
           </View>
           <View style={styles.separator} />
