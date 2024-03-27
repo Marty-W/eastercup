@@ -6,7 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 const HEADERS: Record<string, LocaleKey> = {
-  "/info/halls": "info.home.halls",
+  "/info/map": "info.home.map",
   "/info/rules": "info.home.rules",
   "/info/accommodation": "info.home.accommodation",
   "/info/catering": "info.home.catering",

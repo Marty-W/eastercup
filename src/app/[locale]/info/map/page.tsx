@@ -24,7 +24,7 @@ const getPinColors = (color: string) => {
 
 const MAP_DEFAULT_CENTER = { lat: 49.39576264866427, lng: 13.293526019268224 };
 
-export default function Halls() {
+export default function MapPage() {
   return (
     <div className="flex flex-col space-y-2">
       <APIProvider apiKey={env.NEXT_PUBLIC_GOOGLE_MAPS_API_TOKEN}>

@@ -22,9 +22,9 @@ export default async function InformationPage() {
       </BentoCard>
       <BentoCard
         className="flex h-32 items-center justify-center border-dark-red bg-brand-red text-white shadow-brand-red lg:col-span-2 lg:row-span-2 lg:h-full"
-        href="/info/halls"
+        href="/info/map"
       >
-        {t("halls")}
+        {t("map")}
       </BentoCard>
       <BentoCard
         className="flex h-32 items-center justify-center border-dark-yellow bg-brand-yellow shadow-brand-yellow lg:col-span-2 lg:row-span-2 lg:h-full"
