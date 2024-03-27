@@ -105,17 +105,18 @@ export async function POST(request: Request) {
         },
       );
     }
-    const finalInvoiceCount = await db
-      .select({ count: count() })
-      .from(invoice)
-      .where(and(eq(invoice.type, "final"), eq(invoice.teamId, teamID)));
+    // const finalInvoiceCount = await db
+    //   .select({ count: count() })
+    //   .from(invoice)
+    //   .where(and(eq(invoice.type, "final"), eq(invoice.teamId, teamID)));
+    //
+    // const numOfFinalInvoices = finalInvoiceCount[0]?.count;
+    // let totalTeamTally = 0;
 
-    const numOfFinalInvoices = finalInvoiceCount[0]?.count;
-    let totalTeamTally = 0;
-
-    if (numOfFinalInvoices === 0) {
-      totalTeamTally = await tallyNonFinalInvoices(teamID);
-    }
+    // if (numOfFinalInvoices === 0) {
+    // console.log("here");
+    const totalTeamTally = await tallyNonFinalInvoices(teamID);
+    // }
 
     let stream;
 

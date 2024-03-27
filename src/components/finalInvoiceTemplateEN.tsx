@@ -165,7 +165,7 @@ export default function FinalInvoiceTemplateEN({
     return acc + item.priceWithDPH;
   }, 0);
 
-  const totalDelta = totalWithDPH - paidInAdvance;
+  const totalDelta = totalWithDPH + paidInAdvance;
 
   return (
     <Document pageMode="fullScreen" pageLayout="singlePage">
@@ -258,7 +258,7 @@ export default function FinalInvoiceTemplateEN({
                 {item.quantity}
               </Text>
               <Text style={{ flex: 1, textAlign: "center" }}>
-                {item.unitPrice} €
+                {item.unitPrice ? `${item.unitPrice.toFixed(2)} €` : ``}
               </Text>
               <Text style={{ flex: 2, textAlign: "center" }}>
                 {item.priceWithoutDPH.toFixed(2)} €
@@ -300,7 +300,7 @@ export default function FinalInvoiceTemplateEN({
             <Text style={{ flex: 1, textAlign: "center" }}></Text>
             <Text style={{ flex: 1, textAlign: "center" }}></Text>
             <Text style={{ flex: 2, textAlign: "right" }}>
-              - {paidInAdvance.toFixed(2)} €
+              {paidInAdvance.toFixed(2)} €
             </Text>
           </View>
         )}
