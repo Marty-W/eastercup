@@ -7,6 +7,7 @@ import {
   type fullFormSchema,
   type TEAM_CATEGORIRES,
   type AccountItemSchema,
+  type AccountBedSchema,
 } from "./conts";
 import { type InferSelectModel } from "drizzle-orm";
 import { type match } from "@/server/db/schema";
@@ -64,6 +65,8 @@ export type NavLink = {
 };
 
 export type AccountItem = z.infer<typeof AccountItemSchema>;
+
+export type AccountBed = z.infer<typeof AccountBedSchema>;
 
 export type AccountItems = AccountItem[];
 

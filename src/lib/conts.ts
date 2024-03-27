@@ -323,10 +323,24 @@ export const AccountItemSchema = z.object({
   priceWithoutDPH: z.number(),
   priceWithDPH: z.number(),
   unitPrice: z.union([z.number(), z.literal(false)]),
+  type: z.string(),
 });
 
-// TODO: check coordinates
-// TODO: pridej diakritiku
+export const AccountBedSchema = z.object({
+  bedId: z.string(),
+  roomId: z.number(),
+  accomodationId: z.number(),
+  teamId: z.number(),
+  purchasePricePerNight: z.number(),
+  purchaseCurrency: z.string(),
+  sellPricePerNight: z.number(),
+  sellCurrency: z.string(),
+  teamName: z.string(),
+  accomodationName: z.string(),
+  accomodationCategory: z.string(),
+  totalPrice: z.number(),
+});
+
 export const HALL_LOCATIONS = [
   {
     name: "BK Klatovy",

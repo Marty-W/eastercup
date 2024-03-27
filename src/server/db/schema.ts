@@ -10,6 +10,7 @@ import {
   varchar,
   uuid,
   index,
+  jsonb,
 } from "drizzle-orm/pg-core";
 
 export const teams = pgTable("teams", {
@@ -110,12 +111,17 @@ export const invoice = pgTable("invoice", {
   teamId: integer("team_id").references(() => teams.id),
   varSymbol: varchar("var_symbol", { length: 256 }).notNull(),
   type: varchar("type", {
-    enum: ["registration", "services"],
+    enum: ["registration", "services", "final"],
   }).notNull(),
   paid: boolean("paid").default(false),
   amount: text("amount").notNull(),
+  price: varchar("price"),
+  currency: text("currency"),
   issueDate: date("issue_date").defaultNow(),
   url: text("url"),
+  accountedItems: jsonb("accounted_items").default([]),
+  paidAmount: varchar("paid_amount"),
+  accountedBeds: jsonb("accounted_beds").default([]),
 });
 
 export const invoiceRelations = relations(invoice, ({ one }) => ({

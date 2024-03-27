@@ -1,8 +1,8 @@
-import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
-import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
-import { AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
-import { generateAndSaveServiceInvoice } from "@/server/api/helpers";
+import {
+  generateAndSaveFinalInvoice,
+  tallyNonFinalInvoices,
+} from "@/server/api/helpers";
 import { db } from "@/server/db";
 import { teams, teamBillingInfo, invoice } from "@/server/db/schema";
 import { renderToStream } from "@react-pdf/renderer";
@@ -11,12 +11,16 @@ import { eq, and } from "drizzle-orm";
 import { type Readable } from "stream";
 import { z } from "zod";
 import { env } from "@/env.mjs";
+import FinalInvoiceTemplateCS from "@/components/finalInvoiceTemplateCS";
+import FinalInvoiceTemplateEN from "@/components/finalInvoiceTemplateEN";
+import { AccountItemSchema, AccountBedSchema } from "@/lib/conts";
 
 const requestSchema = z.object({
   teamID: z.number(),
   totalPrice: z.string(),
   currency: z.string(),
-  accountItems: z.array(AccountItemSchema),
+  accountedItems: z.array(AccountItemSchema),
+  accountedBeds: z.array(AccountBedSchema).optional(),
 });
 
 export async function POST(request: Request) {
@@ -46,12 +50,15 @@ export async function POST(request: Request) {
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 
-    const { teamID, totalPrice, currency, accountItems } = validatedBody;
+    const { teamID, totalPrice, currency, accountedItems, accountedBeds } =
+      validatedBody;
 
-    const dbInvoice = await generateAndSaveServiceInvoice(
+    const dbInvoice = await generateAndSaveFinalInvoice(
       teamID,
       totalPrice,
       currency,
+      accountedItems,
+      accountedBeds,
     );
 
     const dbTeam = await db
@@ -99,50 +106,54 @@ export async function POST(request: Request) {
       );
     }
 
+    const totalTeamTally = await tallyNonFinalInvoices(teamID);
+
     let stream;
 
-    // if (foundTeam.country === "CZ") {
-    //   stream = await renderToStream(
-    //     <ServicesPaymentRequestTemplateCS
-    //       {...foundTeam}
-    //       invoiceVarSymbol={newInvoice.varSymbol}
-    //       accountItems={accountItems}
-    //       currency={currency}
-    //       totalInvoicePrice={totalPrice}
-    //     />,
-    //   );
-    // } else {
-    //   stream = await renderToStream(
-    //     <ServicesPaymentRequestTemplateEN
-    //       {...foundTeam}
-    //       invoiceVarSymbol={newInvoice.varSymbol}
-    //       accountItems={accountItems}
-    //       currency={currency}
-    //       totalInvoicePrice={totalPrice}
-    //     />,
-    //   );
-    // }
+    if (foundTeam.country === "CZ") {
+      stream = await renderToStream(
+        <FinalInvoiceTemplateCS
+          {...foundTeam}
+          invoiceVarSymbol={newInvoice.varSymbol}
+          accountItems={accountedItems}
+          currency={currency}
+          totalInvoicePrice={totalPrice}
+          paidInAdvance={totalTeamTally}
+        />,
+      );
+    } else {
+      stream = await renderToStream(
+        <FinalInvoiceTemplateEN
+          {...foundTeam}
+          invoiceVarSymbol={newInvoice.varSymbol}
+          accountItems={accountedItems}
+          currency={currency}
+          totalInvoicePrice={totalPrice}
+          paidInAdvance={totalTeamTally}
+        />,
+      );
+    }
 
-    // const blob = await put(
-    //   `invoices/final/${sanitizeTeamNameForFilename(foundTeam.teamName)}.pdf`,
-    //   stream as Readable,
-    //   {
-    //     contentType: "application/pdf",
-    //     access: "public",
-    //   },
-    // );
-    //
-    // await db
-    //   .update(invoice)
-    //   .set({
-    //     url: blob.url,
-    //   })
-    //   .where(and(eq(invoice.teamId, teamID), eq(invoice.id, newInvoice.id)));
-    //
+    const blob = await put(
+      `invoices/final/${sanitizeTeamNameForFilename(foundTeam.teamName)}.pdf`,
+      stream as Readable,
+      {
+        contentType: "application/pdf",
+        access: "public",
+      },
+    );
+
+    await db
+      .update(invoice)
+      .set({
+        url: blob.url,
+      })
+      .where(and(eq(invoice.teamId, teamID), eq(invoice.id, newInvoice.id)));
+
     return new Response(
       JSON.stringify({
         message: "Data is valid!",
-        // invoiceUrl: blob.url,
+        invoiceUrl: blob.url,
         ivoiceId: newInvoice.id,
       }),
       {
@@ -159,6 +170,7 @@ export async function POST(request: Request) {
     return new Response(
       JSON.stringify({
         error: "Invalid data provided.",
+        message: error,
       }),
       {
         status: 400,
