@@ -19,6 +19,7 @@ export default function Contacts() {
             info@eastercupklatovy.cz
           </a>
         </p>
+        <p>Hotline: +420 731 596 119</p>
       </div>
       <div className="flex flex-col">
         <span className="font-bold">BK Klatovy</span>
