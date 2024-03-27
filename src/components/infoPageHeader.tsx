@@ -55,10 +55,10 @@ export const InfoPageHeader = ({ className }: Props) => {
   return (
     <div
       className={cn(
-        "flex grid-cols-3 flex-col items-center rounded-lg border-0 md:grid md:border-4 md:px-6",
+        "flex grid-cols-3 flex-col items-center rounded-lg border-0 md:grid md:border-2 md:px-6",
         className,
       )}
-      style={{ borderColor: borderColor(HEADER_COLORS[currentPathname]) }}
+      // style={{ borderColor: borderColor(HEADER_COLORS[currentPathname]) }}
     >
       <h2 className="mx-auto w-fit px-6 py-4 text-center text-2xl font-bold leading-8 text-brand-black md:col-start-2 lg:text-4xl">
         {t(HEADERS[currentPathname]!)}

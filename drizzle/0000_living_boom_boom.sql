@@ -1,3 +1,13 @@
+CREATE TABLE IF NOT EXISTS "accomodation_capacity" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"name" text NOT NULL,
+	"category" varchar NOT NULL,
+	"contact_person" text,
+	"note" text,
+	"phone_number" text,
+	"email" text
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "catering_order" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"team_id" integer,
@@ -24,7 +34,7 @@ CREATE TABLE IF NOT EXISTS "catering_order" (
 CREATE TABLE IF NOT EXISTS "email_list" (
 	"id" serial PRIMARY KEY NOT NULL,
 	"email" text NOT NULL,
-	"invited" boolean DEFAULT false
+	"invite_mail_sent" boolean DEFAULT false
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "invoice" (
@@ -34,8 +44,35 @@ CREATE TABLE IF NOT EXISTS "invoice" (
 	"type" varchar NOT NULL,
 	"paid" boolean DEFAULT false,
 	"amount" text NOT NULL,
+	"currency" text,
 	"issue_date" date DEFAULT now(),
-	"url" text
+	"url" text,
+	"accounted_items" jsonb DEFAULT '[]'::jsonb
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "match" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"date" date NOT NULL,
+	"time" text NOT NULL,
+	"team_a_id" integer NOT NULL,
+	"team_a_score" integer NOT NULL,
+	"team_b_id" integer NOT NULL,
+	"team_b_score" integer NOT NULL
+);
+--> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "room" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"accomodation_id" integer,
+	"bed_capacity" integer NOT NULL,
+	"free_beds" integer NOT NULL,
+	"full_beds" integer NOT NULL,
+	"purchase_price_per_night" integer NOT NULL,
+	"purchase_currency" text NOT NULL,
+	"sell_price_per_night" integer NOT NULL,
+	"sell_currency" text NOT NULL,
+	"team_id" integer,
+	"occupied_from" date,
+	"occupied_to" date
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "team_accomodation_info" (
@@ -103,6 +140,15 @@ CREATE TABLE IF NOT EXISTS "tshirt_orders" (
 	"no_xxl_shirts" integer
 );
 --> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "catering_order_team_idx" ON "catering_order" ("team_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "team_a_idx" ON "match" ("team_a_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "team_b_idx" ON "match" ("team_b_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "match_idx" ON "match" ("id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "date" ON "match" ("date");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "team_idx" ON "room" ("team_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "acc_idx" ON "room" ("accomodation_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "acc_order_team_idx" ON "team_accomodation_info" ("team_id");--> statement-breakpoint
+CREATE INDEX IF NOT EXISTS "tshirt_order_team_idx" ON "tshirt_orders" ("team_id");--> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "catering_order" ADD CONSTRAINT "catering_order_team_id_teams_id_fk" FOREIGN KEY ("team_id") REFERENCES "teams"("id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
@@ -111,6 +157,30 @@ END $$;
 --> statement-breakpoint
 DO $$ BEGIN
  ALTER TABLE "invoice" ADD CONSTRAINT "invoice_team_id_teams_id_fk" FOREIGN KEY ("team_id") REFERENCES "teams"("id") ON DELETE no action ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "match" ADD CONSTRAINT "match_team_a_id_teams_id_fk" FOREIGN KEY ("team_a_id") REFERENCES "teams"("id") ON DELETE no action ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "match" ADD CONSTRAINT "match_team_b_id_teams_id_fk" FOREIGN KEY ("team_b_id") REFERENCES "teams"("id") ON DELETE no action ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "room" ADD CONSTRAINT "room_accomodation_id_accomodation_capacity_id_fk" FOREIGN KEY ("accomodation_id") REFERENCES "accomodation_capacity"("id") ON DELETE cascade ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+--> statement-breakpoint
+DO $$ BEGIN
+ ALTER TABLE "room" ADD CONSTRAINT "room_team_id_teams_id_fk" FOREIGN KEY ("team_id") REFERENCES "teams"("id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

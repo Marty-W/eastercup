@@ -5,29 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1706826253604,
-      "tag": "0000_lame_phantom_reporter",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1706827231985,
-      "tag": "0001_chunky_silhouette",
-      "breakpoints": true
-    },
-    {
-      "idx": 2,
-      "version": "5",
-      "when": 1709736715183,
-      "tag": "0002_puzzling_rockslide",
-      "breakpoints": true
-    },
-    {
-      "idx": 3,
-      "version": "5",
-      "when": 1711234401750,
-      "tag": "0003_calm_mysterio",
+      "when": 1711454864181,
+      "tag": "0000_living_boom_boom",
       "breakpoints": true
     }
   ]

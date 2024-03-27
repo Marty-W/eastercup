@@ -21,6 +21,8 @@ import {
   teamRoomInfo,
 } from "../db/schema";
 import { TRPCError } from "@trpc/server";
+import { eq } from "drizzle-orm";
+import { type AccountBed, type AccountItem } from "@/lib/types";
 
 export async function createTeam(teamInfo: InfoServerValues) {
   let newTeam;
@@ -325,3 +327,66 @@ function flattenAccomodationRooms(
       )
     : [];
 }
+
+export async function generateAndSaveFinalInvoice(
+  teamID: number,
+  amount: string,
+  currency: string,
+  accountedItems: AccountItem[],
+  accountedBeds?: AccountBed[],
+) {
+  const latestInvoiceVar = await db.query.invoice.findMany({
+    where: eq(invoice.type, "final"),
+    orderBy: (invoice, { desc }) => [desc(invoice.id)],
+    limit: 1,
+    columns: {
+      varSymbol: true,
+    },
+  });
+
+  const lastVarSymbol = latestInvoiceVar[0]?.varSymbol ?? "20240000";
+  const newVarSymbol = `${parseInt(lastVarSymbol) + 1}`;
+
+  try {
+    return await db
+      .insert(invoice)
+      .values({
+        teamId: teamID,
+        varSymbol: newVarSymbol,
+        type: "final",
+        amount: `${amount} ${currency}`,
+        price: amount,
+        currency: currency,
+        accountedItems: accountedItems,
+        accountedBeds: accountedBeds,
+      })
+      .returning();
+  } catch (e) {
+    throw new TRPCError({
+      code: "INTERNAL_SERVER_ERROR",
+      message:
+        "Database error occurred while creating the registration invoice",
+      cause: e,
+    });
+  }
+}
+
+export const tallyNonFinalInvoices = async (teamID: number) => {
+  const nonFinalInvoices = await db.query.invoice.findMany({
+    where: (invoice, { ne, eq, and }) =>
+      and(ne(invoice.type, "final"), eq(invoice.teamId, teamID)),
+    columns: {
+      paidAmount: true,
+    },
+  });
+
+  const totalUnpaidBalance = nonFinalInvoices.reduce((acc, invoice) => {
+    let dueAmount = 0;
+
+    dueAmount -= parseFloat(invoice.paidAmount ?? "0");
+
+    return acc + dueAmount;
+  }, 0);
+
+  return totalUnpaidBalance;
+};

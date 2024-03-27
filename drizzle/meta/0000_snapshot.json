@@ -1,9 +1,61 @@
 {
-  "id": "7822824b-764a-4d7c-a6f6-353a35e315ce",
+  "id": "16239099-2379-4fcc-8782-6e31bf9c7023",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
   "tables": {
+    "accomodation_capacity": {
+      "name": "accomodation_capacity",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "category": {
+          "name": "category",
+          "type": "varchar",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "contact_person": {
+          "name": "contact_person",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "note": {
+          "name": "note",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_number": {
+          "name": "phone_number",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "catering_order": {
       "name": "catering_order",
       "schema": "",
@@ -146,7 +198,15 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "catering_order_team_idx": {
+          "name": "catering_order_team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "catering_order_team_id_teams_id_fk": {
           "name": "catering_order_team_id_teams_id_fk",
@@ -181,8 +241,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "invited": {
-          "name": "invited",
+        "invite_mail_sent": {
+          "name": "invite_mail_sent",
           "type": "boolean",
           "primaryKey": false,
           "notNull": false,
@@ -235,6 +295,12 @@
           "primaryKey": false,
           "notNull": true
         },
+        "currency": {
+          "name": "currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
         "issue_date": {
           "name": "issue_date",
           "type": "date",
@@ -247,6 +313,13 @@
           "type": "text",
           "primaryKey": false,
           "notNull": false
+        },
+        "accounted_items": {
+          "name": "accounted_items",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "'[]'::jsonb"
         }
       },
       "indexes": {},
@@ -254,6 +327,238 @@
         "invoice_team_id_teams_id_fk": {
           "name": "invoice_team_id_teams_id_fk",
           "tableFrom": "invoice",
+          "tableTo": "teams",
+          "columnsFrom": [
+            "team_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "match": {
+      "name": "match",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "date": {
+          "name": "date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "time": {
+          "name": "time",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_a_id": {
+          "name": "team_a_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_a_score": {
+          "name": "team_a_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_b_id": {
+          "name": "team_b_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_b_score": {
+          "name": "team_b_score",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "team_a_idx": {
+          "name": "team_a_idx",
+          "columns": [
+            "team_a_id"
+          ],
+          "isUnique": false
+        },
+        "team_b_idx": {
+          "name": "team_b_idx",
+          "columns": [
+            "team_b_id"
+          ],
+          "isUnique": false
+        },
+        "match_idx": {
+          "name": "match_idx",
+          "columns": [
+            "id"
+          ],
+          "isUnique": false
+        },
+        "date": {
+          "name": "date",
+          "columns": [
+            "date"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "match_team_a_id_teams_id_fk": {
+          "name": "match_team_a_id_teams_id_fk",
+          "tableFrom": "match",
+          "tableTo": "teams",
+          "columnsFrom": [
+            "team_a_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "match_team_b_id_teams_id_fk": {
+          "name": "match_team_b_id_teams_id_fk",
+          "tableFrom": "match",
+          "tableTo": "teams",
+          "columnsFrom": [
+            "team_b_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "room": {
+      "name": "room",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "accomodation_id": {
+          "name": "accomodation_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bed_capacity": {
+          "name": "bed_capacity",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "free_beds": {
+          "name": "free_beds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "full_beds": {
+          "name": "full_beds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "purchase_price_per_night": {
+          "name": "purchase_price_per_night",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "purchase_currency": {
+          "name": "purchase_currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sell_price_per_night": {
+          "name": "sell_price_per_night",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "sell_currency": {
+          "name": "sell_currency",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "team_id": {
+          "name": "team_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "occupied_from": {
+          "name": "occupied_from",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "occupied_to": {
+          "name": "occupied_to",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "team_idx": {
+          "name": "team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        },
+        "acc_idx": {
+          "name": "acc_idx",
+          "columns": [
+            "accomodation_id"
+          ],
+          "isUnique": false
+        }
+      },
+      "foreignKeys": {
+        "room_accomodation_id_accomodation_capacity_id_fk": {
+          "name": "room_accomodation_id_accomodation_capacity_id_fk",
+          "tableFrom": "room",
+          "tableTo": "accomodation_capacity",
+          "columnsFrom": [
+            "accomodation_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "room_team_id_teams_id_fk": {
+          "name": "room_team_id_teams_id_fk",
+          "tableFrom": "room",
           "tableTo": "teams",
           "columnsFrom": [
             "team_id"
@@ -309,7 +614,15 @@
           "notNull": true
         }
       },
-      "indexes": {},
+      "indexes": {
+        "acc_order_team_idx": {
+          "name": "acc_order_team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "team_accomodation_info_team_id_teams_id_fk": {
           "name": "team_accomodation_info_team_id_teams_id_fk",
@@ -663,7 +976,15 @@
           "notNull": false
         }
       },
-      "indexes": {},
+      "indexes": {
+        "tshirt_order_team_idx": {
+          "name": "tshirt_order_team_idx",
+          "columns": [
+            "team_id"
+          ],
+          "isUnique": false
+        }
+      },
       "foreignKeys": {
         "tshirt_orders_team_id_teams_id_fk": {
           "name": "tshirt_orders_team_id_teams_id_fk",
