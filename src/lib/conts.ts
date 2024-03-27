@@ -343,11 +343,35 @@ export const AccountBedSchema = z.object({
 
 export const HALL_LOCATIONS = [
   {
+    name: "Office",
+    link: "https://maps.app.goo.gl/38AaevS8t35dh3KD8",
+    address: "Domažlická 767",
+    loc: { lat: 49.39545494519818, lng: 13.288878279728634 },
+    tag: "1",
+    color: "red",
+  },
+  {
+    name: "Peak shop",
+    link: "https://maps.app.goo.gl/38AaevS8t35dh3KD8",
+    address: "Domažlická 767",
+    loc: { lat: 49.39545494519818, lng: 13.288878279728634 },
+    tag: "1",
+    color: "yellow",
+  },
+  {
+    name: "Meeting point",
+    link: "https://maps.app.goo.gl/38AaevS8t35dh3KD8",
+    address: "Domažlická 767",
+    loc: { lat: 49.39545494519818, lng: 13.28892253510723 },
+    tag: "1",
+    color: "black",
+  },
+  {
     name: "BK Klatovy",
     address: "Voříškova 715",
     link: "https://maps.app.goo.gl/4ifgUjijpJ5QesMC8",
     loc: { lat: 49.3977732905385, lng: 13.286436784298814 },
-    tag: "1",
+    tag: "2",
     color: "blue",
   },
   {
@@ -355,7 +379,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/ptNvjTnhzFKgGny57",
     address: "Čapkova 136",
     loc: { lat: 49.39645998164526, lng: 13.307520612566504 },
-    tag: "2",
+    tag: "3",
     color: "red",
   },
   {
@@ -363,7 +387,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/gKbxrqW4Cy4DcVfR9",
     address: "Nár. mučedníků 347",
     loc: { lat: 49.39148991259919, lng: 13.298973629891169 },
-    tag: "3",
+    tag: "4",
     color: "yellow",
   },
   {
@@ -371,7 +395,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/TgGR1iFwfCBWRBrg9",
     address: "Nár. mučedníků 185",
     loc: { lat: 49.38973114071045, lng: 13.299839524330558 },
-    tag: "4",
+    tag: "5",
     color: "black",
   },
   {
@@ -379,7 +403,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/dfE2Hk5dyvEJ6qwm9",
     address: "U Elektrárny 917",
     loc: { lat: 49.38861838985109, lng: 13.27865877957909 },
-    tag: "5",
+    tag: "6",
     color: "blue",
   },
   {
@@ -387,7 +411,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/dfE2Hk5dyvEJ6qwm9",
     address: "U Elektrárny 917",
     loc: { lat: 49.388448400046094, lng: 13.279258669183347 },
-    tag: "6",
+    tag: "7",
     color: "red",
   },
   {
@@ -395,7 +419,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/2HuWi4tfc4CnQQgp8",
     address: "Kpt. Nálepky 362",
     loc: { lat: 49.40134821011473, lng: 13.28506908780864 },
-    tag: "7",
+    tag: "8",
     color: "yellow",
   },
   {
@@ -403,7 +427,7 @@ export const HALL_LOCATIONS = [
     link: "https://maps.app.goo.gl/d2aEtrbVwhbVYC7m6",
     address: "Studentská 646",
     loc: { lat: 49.39382377687553, lng: 13.303834850095969 },
-    tag: "8",
+    tag: "9",
     color: "black",
   },
 ];
