@@ -7,7 +7,7 @@ interface Props {
 
 export default function Socials({ iconSize = 50 }: Props) {
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around space-x-1">
       <Link
         href="https://www.instagram.com/eastercupklatovy/"
         rel="noopener noreferrer"
