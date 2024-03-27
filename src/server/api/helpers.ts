@@ -21,8 +21,8 @@ import {
   teamRoomInfo,
 } from "../db/schema";
 import { TRPCError } from "@trpc/server";
-import { asc, desc } from "drizzle-orm";
-import { type AccountItem } from "@/lib/types";
+import { eq } from "drizzle-orm";
+import { type AccountBed, type AccountItem } from "@/lib/types";
 
 export async function createTeam(teamInfo: InfoServerValues) {
   let newTeam;
@@ -333,15 +333,19 @@ export async function generateAndSaveFinalInvoice(
   amount: string,
   currency: string,
   accountedItems: AccountItem[],
+  accountedBeds?: AccountBed[],
 ) {
-  const lastIssuedInvoice = await db.query.invoice.findFirst({
+  const latestInvoiceVar = await db.query.invoice.findMany({
+    where: eq(invoice.type, "final"),
     orderBy: (invoice, { desc }) => [desc(invoice.id)],
+    limit: 1,
+    columns: {
+      varSymbol: true,
+    },
   });
 
-  const lastVarSymbol = lastIssuedInvoice?.varSymbol;
-  const newVarSymbol = lastVarSymbol
-    ? `${parseInt(lastVarSymbol) + 1}`
-    : "20240001";
+  const lastVarSymbol = latestInvoiceVar[0]?.varSymbol ?? "20240000";
+  const newVarSymbol = `${parseInt(lastVarSymbol) + 1}`;
 
   try {
     return await db
@@ -354,6 +358,7 @@ export async function generateAndSaveFinalInvoice(
         price: amount,
         currency: currency,
         accountedItems: accountedItems,
+        accountedBeds: accountedBeds,
       })
       .returning();
   } catch (e) {
@@ -365,3 +370,23 @@ export async function generateAndSaveFinalInvoice(
     });
   }
 }
+
+export const tallyNonFinalInvoices = async (teamID: number) => {
+  const nonFinalInvoices = await db.query.invoice.findMany({
+    where: (invoice, { ne, eq, and }) =>
+      and(ne(invoice.type, "final"), eq(invoice.teamId, teamID)),
+    columns: {
+      paidAmount: true,
+    },
+  });
+
+  const totalUnpaidBalance = nonFinalInvoices.reduce((acc, invoice) => {
+    let dueAmount = 0;
+
+    dueAmount -= parseFloat(invoice.paidAmount ?? "0");
+
+    return acc + dueAmount;
+  }, 0);
+
+  return totalUnpaidBalance;
+};

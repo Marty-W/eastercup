@@ -151,7 +151,6 @@ export default function FinalInvoiceTemplateEN({
   accountItems,
   receiptText,
 }: Props) {
-  console.log(paidInAdvance);
   const today = new Date();
 
   const totalWithoutDPH = accountItems.reduce((acc, item) => {
@@ -319,7 +318,7 @@ export default function FinalInvoiceTemplateEN({
         <View style={styles.totalDueBox}>
           <Text style={{ fontWeight: 700 }}>TOTAL DUE</Text>
           <Text style={{ marginLeft: "40px", fontWeight: 700 }}>
-            323232 eur
+            {totalDelta.toFixed(2)} €
           </Text>
         </View>
         <View style={styles.footer}>

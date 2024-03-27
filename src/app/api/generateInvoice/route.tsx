@@ -1,10 +1,8 @@
-import ServicesPaymentRequestTemplateCS from "@/components/servicesPaymentRequestTemplateCS";
-import ServicesPaymentRequestTemplateEN from "@/components/servicesPaymentRequestTemplateEN";
 import { AccountBedSchema, AccountItemSchema } from "@/lib/conts";
 import { sanitizeTeamNameForFilename } from "@/lib/utils";
 import {
   generateAndSaveFinalInvoice,
-  generateAndSaveServiceInvoice,
+  tallyNonFinalInvoices,
 } from "@/server/api/helpers";
 import { db } from "@/server/db";
 import { teams, teamBillingInfo, invoice } from "@/server/db/schema";
@@ -49,16 +47,6 @@ export async function POST(request: Request) {
   }
 
   try {
-    /*
-        - [x] 1. get latest "final" invoice - the new var symbol will be its varSymbol + 1
-        - [x] 2. get team data, billing data  
-        - [x] 3. generate invoice pdf
-        - [x] 4. save invoice pdf to blob
-        - [x] 5. save invoiceURL to db
-        - [x] 6. save accountedItems to the createdInvoice
-
-    */
-
     const body = await request.json();
     const validatedBody = requestSchema.parse(body);
 
@@ -70,6 +58,7 @@ export async function POST(request: Request) {
       totalPrice,
       currency,
       accountedItems,
+      accountedBeds,
     );
 
     const dbTeam = await db
@@ -117,10 +106,10 @@ export async function POST(request: Request) {
       );
     }
 
-    let stream;
-    // TODO: get paid in advance tally
+    const totalTeamTally = await tallyNonFinalInvoices(teamID);
 
-    // TODO: create new templates for final invoices
+    let stream;
+
     if (foundTeam.country === "CZ") {
       stream = await renderToStream(
         <FinalInvoiceTemplateCS
@@ -129,6 +118,7 @@ export async function POST(request: Request) {
           accountItems={accountedItems}
           currency={currency}
           totalInvoicePrice={totalPrice}
+          paidInAdvance={totalTeamTally}
         />,
       );
     } else {
@@ -139,7 +129,7 @@ export async function POST(request: Request) {
           accountItems={accountedItems}
           currency={currency}
           totalInvoicePrice={totalPrice}
-          paidInAdvance={5000}
+          paidInAdvance={totalTeamTally}
         />,
       );
     }
@@ -160,7 +150,6 @@ export async function POST(request: Request) {
       .update(invoice)
       .set({
         url: blob.url,
-        accountedBeds: accountedBeds,
       })
       .where(and(eq(invoice.teamId, teamID), eq(invoice.id, newInvoice.id)));
 
