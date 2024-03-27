@@ -118,6 +118,7 @@ export async function POST(request: Request) {
     }
 
     let stream;
+    // TODO: get paid in advance tally
 
     // TODO: create new templates for final invoices
     if (foundTeam.country === "CZ") {
@@ -138,6 +139,7 @@ export async function POST(request: Request) {
           accountItems={accountedItems}
           currency={currency}
           totalInvoicePrice={totalPrice}
+          paidInAdvance={5000}
         />,
       );
     }

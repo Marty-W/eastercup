@@ -91,6 +91,7 @@ export default function Landing() {
           currency="czk"
           totalInvoicePrice="666"
           accountItems={accountedItems}
+          paidInAdvance={5000}
         />
       </PDFViewer>
     </div>

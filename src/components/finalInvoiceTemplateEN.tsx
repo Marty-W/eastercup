@@ -134,6 +134,8 @@ interface Props {
   currency: string;
   totalInvoicePrice: string;
   accountItems: AccountItem[];
+  paidInAdvance: number;
+  receiptText?: string;
 }
 
 export default function FinalInvoiceTemplateEN({
@@ -145,9 +147,26 @@ export default function FinalInvoiceTemplateEN({
   invoiceVarSymbol,
   currency,
   totalInvoicePrice,
+  paidInAdvance,
   accountItems,
+  receiptText,
 }: Props) {
+  console.log(paidInAdvance);
   const today = new Date();
+
+  const totalWithoutDPH = accountItems.reduce((acc, item) => {
+    return acc + item.priceWithoutDPH;
+  }, 0);
+
+  const totalDPH = accountItems.reduce((acc, item) => {
+    return acc + item.dph;
+  }, 0);
+
+  const totalWithDPH = accountItems.reduce((acc, item) => {
+    return acc + item.priceWithDPH;
+  }, 0);
+
+  const totalDelta = totalWithDPH - paidInAdvance;
 
   return (
     <Document pageMode="fullScreen" pageLayout="singlePage">
@@ -263,17 +282,14 @@ export default function FinalInvoiceTemplateEN({
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 2, textAlign: "center" }}>
-            {/* TODO: get total without DPH */}
-            7777.77 €
+            {totalWithoutDPH.toFixed(2)} €
           </Text>
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 1, textAlign: "center" }}>
-            {/* TODO: get total dph */}
-            7.77 €
+            {totalDPH.toFixed(2)} €
           </Text>
           <Text style={{ flex: 2, textAlign: "right" }}>
-            {/* TODO: get total with DPH */}
-            78872.77 €
+            {totalWithDPH.toFixed(2)} €
           </Text>
         </View>
         <View style={styles.itemRow}>
@@ -284,7 +300,7 @@ export default function FinalInvoiceTemplateEN({
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 2, textAlign: "right" }}>
-            {/* TODO: get paid in advance */}- 10.77 €
+            - {paidInAdvance.toFixed(2)} €
           </Text>
         </View>
         <View style={styles.itemRow}>
@@ -297,8 +313,7 @@ export default function FinalInvoiceTemplateEN({
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 1, textAlign: "center" }}></Text>
           <Text style={{ flex: 2, textAlign: "right", fontWeight: 700 }}>
-            {/* TODO: calculate total due */}
-            8888.88 €
+            {totalDelta.toFixed(2)} €
           </Text>
         </View>
         <View style={styles.totalDueBox}>
@@ -316,14 +331,12 @@ export default function FinalInvoiceTemplateEN({
       </Page>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          {/* TODO: get translation */}
-          <Text>Prijmovy pokladni doklad c.</Text>
+          <Text>Income Receipt No.</Text>
         </View>
         <View style={styles.separator} />
         <View style={styles.headerRow}>
           <View style={styles.sectionLeft}>
-            {/* TODO: preklad prijemce */}
-            <Text style={styles.sectionHeader}>SUPPLIER:</Text>
+            <Text style={styles.sectionHeader}>Recipient:</Text>
             <Text>BK KLATOVY z.s.</Text>
             <Text>Voříškova 715</Text>
             <Text>33901, Klatovy</Text>
@@ -331,8 +344,7 @@ export default function FinalInvoiceTemplateEN({
             <Text>VAT ID: CZ22850490</Text>
           </View>
           <View style={styles.sectionRight}>
-            {/* TODO: preklad prijato od */}
-            <Text style={styles.sectionHeader}>CUSTOMER:</Text>
+            <Text style={styles.sectionHeader}>Received from:</Text>
             <Text>{companyName}</Text>
             <Text>{address}</Text>
             <Text>
@@ -350,9 +362,8 @@ export default function FinalInvoiceTemplateEN({
             lineHeight: 1.5,
           }}
         >
-          {/* TODO: prelozit */}
-          <Text>Datum vystaveni: {format(today, "dd/MM/yyyy")}</Text>
-          <Text>Datum platby: {format(today, "dd/MM/yyyy")}</Text>
+          <Text>Issue Date: {format(today, "dd/MM/yyyy")}</Text>
+          <Text>Payment Date: {format(today, "dd/MM/yyyy")}</Text>
         </View>
         <View style={styles.doubleSeparator} />
         <View style={styles.doubleSeparator} />
@@ -363,8 +374,7 @@ export default function FinalInvoiceTemplateEN({
             lineHeight: 1.5,
           }}
         >
-          {/* TODO: pridej moznost pridat text */}
-          <Text>Text: </Text>
+          <Text>Text: {receiptText}</Text>
         </View>
         <View style={styles.lightSeparator} />
         <View style={{ width: "30%", marginLeft: "auto", marginTop: "40px" }}>
@@ -393,9 +403,8 @@ export default function FinalInvoiceTemplateEN({
             justifyContent: "space-between",
           }}
         >
-          {/* TODO: pridej preklady */}
-          <Text>Podpis pokladnika:</Text>
-          <Text style={{ marginRight: "200px" }}>Podpis platce:</Text>
+          <Text>Cashier&apos;s Signature:</Text>
+          <Text style={{ marginRight: "200px" }}>Payer&apos;s Signature:</Text>
         </View>
         <View style={styles.footer}>
           <Text>
