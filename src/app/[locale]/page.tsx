@@ -19,8 +19,11 @@ export default async function Landing() {
         <div className="space-y-2  lg:grid  lg:h-full lg:gap-y-6 lg:py-2">
           <div className="space-y-4 lg:grid lg:min-h-[400px] lg:grid-cols-3 lg:grid-rows-2 lg:gap-6 lg:space-y-0 2xl:min-h-[600px]">
             <AnimatedWelcomeBento />
-            <BentoCard className="bg-brand-blue text-white shadow-brand-blue">
-              <TimeCounter />
+            <BentoCard
+              className="flex min-h-[90px] items-center justify-center border-dark-red bg-brand-red text-white shadow-brand-red lg:text-2xl"
+              href="/results"
+            >
+              {t("info.home.results")}
             </BentoCard>
             <BentoCard className="shadow-slate-400">
               <div className="flex h-full flex-col justify-evenly space-y-2 px-4 text-sm shadow-white md:space-y-6 md:text-base">
