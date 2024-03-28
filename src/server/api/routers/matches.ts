@@ -39,7 +39,7 @@ export const matchRouter = createTRPCRouter({
 
         return {
           id: match.id,
-          dayIdx: getISODay(new Date(match.date)) + 1,
+          dayIdx: getISODay(new Date(match.date)),
           time: match.time,
           category,
           winner: removeCategoryFromTeamName(winner),
