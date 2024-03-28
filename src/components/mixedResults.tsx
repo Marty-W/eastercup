@@ -70,7 +70,7 @@ export const MixedResults = ({
         <DayPicker selectedDayIdx={selectedDayIdx} onDayChange={onDayChange} />
       </div>
       <div className="flex flex-col space-y-2 md:space-y-3">
-        <div className="mx-auto flex w-full max-w-[500px] flex-col space-y-3">
+        <div className="mx-auto flex w-full max-w-[500px] flex-col space-y-5">
           {!matchesLoading ? (
             categorizedMatches.map(({ category, matches }) => {
               return (
