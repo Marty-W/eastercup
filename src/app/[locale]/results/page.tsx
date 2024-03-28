@@ -19,17 +19,15 @@ export default function Results() {
   >("all");
 
   //ISO days of the week 3 = Wednesday, 7 = Sunday
-  const [selectedDayIdx, setSelectedDayIdx] = useState<3 | 4 | 5 | 6 | 7>(
-    () => {
-      const currentDay = getISODay(new Date());
+  const [selectedDayIdx, setSelectedDayIdx] = useState<4 | 5 | 6 | 7>(() => {
+    const currentDay = getISODay(new Date());
 
-      if (currentDay < 3) {
-        return 3;
-      } else {
-        return currentDay as 3 | 4 | 5 | 6 | 7;
-      }
-    },
-  );
+    if (currentDay < 4) {
+      return 4;
+    } else {
+      return currentDay as 4 | 5 | 6 | 7;
+    }
+  });
 
   const filteredMatches = useMemo(() => {
     if (!matches.data) return [];
@@ -43,7 +41,7 @@ export default function Results() {
     });
   }, [matches.data, selectedCategory, selectedDayIdx]);
 
-  const onDayChange = (dayIdx: 3 | 4 | 5 | 6 | 7) => {
+  const onDayChange = (dayIdx: 4 | 5 | 6 | 7) => {
     setSelectedDayIdx(dayIdx);
   };
 

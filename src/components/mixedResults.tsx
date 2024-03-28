@@ -12,8 +12,8 @@ interface Props {
   matches: Matches;
   matchesLoading: boolean;
   category: string;
-  selectedDayIdx: 3 | 4 | 5 | 6 | 7;
-  onDayChange: (dayIdx: 3 | 4 | 5 | 6 | 7) => void;
+  selectedDayIdx: 4 | 5 | 6 | 7;
+  onDayChange: (dayIdx: 4 | 5 | 6 | 7) => void;
 }
 
 export const MixedResults = ({
