@@ -1,6 +1,6 @@
 {
-  "id": "411c790c-1d41-4ffe-92cd-8c3e1269b959",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "f4dba817-ab8b-4226-a552-5a69c76b5963",
+  "prevId": "411c790c-1d41-4ffe-92cd-8c3e1269b959",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -935,6 +935,12 @@
           "primaryKey": false,
           "notNull": false,
           "default": "gen_random_uuid()"
+        },
+        "sub_category": {
+          "name": "sub_category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

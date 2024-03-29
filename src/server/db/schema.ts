@@ -24,6 +24,7 @@ export const teams = pgTable("teams", {
   note: text("note"),
   registerDate: date("registered_on").notNull().defaultNow(),
   editUUID: uuid("edit_uuid").defaultRandom(),
+  subCategory: text("sub_category"),
 });
 
 export const teamRelations = relations(teams, ({ one, many }) => ({
@@ -269,6 +270,8 @@ export const match = pgTable(
       .references(() => teams.id)
       .notNull(),
     teamBScore: integer("team_b_score").notNull(),
+    isPlayoff: boolean("is_playoff").default(false),
+    extraText: text("extra_text"),
   },
   (table) => {
     return {

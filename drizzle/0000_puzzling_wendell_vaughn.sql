@@ -44,10 +44,13 @@ CREATE TABLE IF NOT EXISTS "invoice" (
 	"type" varchar NOT NULL,
 	"paid" boolean DEFAULT false,
 	"amount" text NOT NULL,
+	"price" varchar,
 	"currency" text,
 	"issue_date" date DEFAULT now(),
 	"url" text,
-	"accounted_items" jsonb DEFAULT '[]'::jsonb
+	"accounted_items" jsonb DEFAULT '[]'::jsonb,
+	"paid_amount" varchar,
+	"accounted_beds" jsonb DEFAULT '[]'::jsonb
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "match" (
