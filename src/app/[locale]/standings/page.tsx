@@ -9,7 +9,7 @@ import { GroupStandingsWrapper } from "@/components/groupStandingsWrapper";
 
 export default function Standings() {
   const [selectedCategory, setSelectedCategory] =
-    useState<TeamCategory>("U12B");
+    useState<TeamCategory>("U11 MIX");
 
   return (
     <div className="min-h-[600px] py-4 font-display">
