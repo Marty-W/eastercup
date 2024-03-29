@@ -1,6 +1,6 @@
 {
-  "id": "411c790c-1d41-4ffe-92cd-8c3e1269b959",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "11f3df27-0ebb-4acc-9b26-aecb3199de53",
+  "prevId": "f4dba817-ab8b-4226-a552-5a69c76b5963",
   "version": "5",
   "dialect": "pg",
   "tables": {
@@ -405,6 +405,19 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": true
+        },
+        "is_playoff": {
+          "name": "is_playoff",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "extra_text": {
+          "name": "extra_text",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {
@@ -935,6 +948,12 @@
           "primaryKey": false,
           "notNull": false,
           "default": "gen_random_uuid()"
+        },
+        "sub_category": {
+          "name": "sub_category",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
         }
       },
       "indexes": {},

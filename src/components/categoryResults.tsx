@@ -39,15 +39,19 @@ export const CategoryResults = ({
         <DayPicker selectedDayIdx={selectedDayIdx} onDayChange={onDayChange} />
       </div>
       <div className="mx-auto flex max-w-[500px] flex-col space-y-1 rounded-md border-2 border-black">
-        {matches.map(({ id, time, teamA, teamB, winner }) => (
-          <MatchResult
-            key={id}
-            time={time}
-            teamA={teamA}
-            teamB={teamB}
-            winner={winner}
-          />
-        ))}
+        {matches.map(
+          ({ id, time, teamA, teamB, winner, isPlayoff, extraText }) => (
+            <MatchResult
+              key={id}
+              time={time}
+              teamA={teamA}
+              teamB={teamB}
+              winner={winner}
+              isPlayoff={isPlayoff}
+              extraText={extraText}
+            />
+          ),
+        )}
       </div>
     </div>
   );
