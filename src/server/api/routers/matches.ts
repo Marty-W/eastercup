@@ -144,6 +144,7 @@ export const matchRouter = createTRPCRouter({
               teamNumbers.points += 2;
             } else {
               teamNumbers.numOfLosses += 1;
+              teamNumbers.points += 1;
             }
           } else {
             teamNumbers.ownScore += match.teamBScore;
@@ -153,6 +154,7 @@ export const matchRouter = createTRPCRouter({
               teamNumbers.points += 2;
             } else {
               teamNumbers.numOfLosses += 1;
+              teamNumbers.points += 1;
             }
           }
         });
