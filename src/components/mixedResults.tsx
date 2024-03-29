@@ -77,15 +77,27 @@ export const MixedResults = ({
                 <div key={category}>
                   <h1 className="text-xs md:text-base">{category}</h1>
                   <div className="space-y-1 rounded-md border-2 border-black shadow-md">
-                    {matches.map(({ id, time, teamA, teamB, winner }) => (
-                      <MatchResult
-                        key={id}
-                        time={time}
-                        teamA={teamA}
-                        teamB={teamB}
-                        winner={winner}
-                      />
-                    ))}
+                    {matches.map(
+                      ({
+                        id,
+                        time,
+                        teamA,
+                        teamB,
+                        winner,
+                        isPlayoff,
+                        extraText,
+                      }) => (
+                        <MatchResult
+                          key={id}
+                          time={time}
+                          teamA={teamA}
+                          teamB={teamB}
+                          winner={winner}
+                          extraText={extraText}
+                          isPlayoff={isPlayoff}
+                        />
+                      ),
+                    )}
                   </div>
                 </div>
               );

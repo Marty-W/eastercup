@@ -113,6 +113,7 @@ export const teams = pgTable("teams", {
   note: text("note"),
   registeredOn: date("registered_on").defaultNow().notNull(),
   editUuid: uuid("edit_uuid").defaultRandom(),
+  subCategory: text("sub_category"),
 });
 
 export const cateringOrder = pgTable(
@@ -197,6 +198,8 @@ export const match = pgTable(
       .notNull()
       .references(() => teams.id),
     teamBScore: integer("team_b_score").notNull(),
+    isPlayoff: boolean("is_playoff").default(false),
+    extraText: text("extra_text"),
   },
   (table) => {
     return {
