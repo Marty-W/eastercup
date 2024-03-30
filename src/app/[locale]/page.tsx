@@ -62,6 +62,13 @@ export default async function Landing() {
             >
               {t("link.standings")}
             </BentoCard>
+            <BentoCard
+              className="col-span-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-2xl text-brand-black shadow-brand-yellow lg:col-span-1 lg:hidden lg:h-full"
+              href="https://www.flickr.com/photos/eastercupklatovy/"
+              newTab
+            >
+              {t("link.gallery")}
+            </BentoCard>
           </div>
         </div>
       </div>

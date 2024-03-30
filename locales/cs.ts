@@ -327,4 +327,5 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "standings.loss": "P",
   "standings.points": "B",
   "standings.score": "S",
+  "link.gallery": "Galerie",
 } as const;
