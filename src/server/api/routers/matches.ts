@@ -227,6 +227,78 @@ export const matchRouter = createTRPCRouter({
       });
     });
 
-    return organizedData;
+    // NOTE: edge case, hardcoded for now, next year find the rule for this
+    const hardcodedU16GB = [
+      {
+        numOfWins: 4,
+        numOfLosses: 0,
+        ownScore: 251,
+        opponentScore: 106,
+        points: 8,
+        teamName: "BK MEDVĚDICE BEROUN | U16G",
+        teamId: 192,
+        category: "U16G",
+        subCategory: "B",
+        country: "CZ",
+      },
+      {
+        numOfWins: 2,
+        numOfLosses: 2,
+        ownScore: 147,
+        opponentScore: 131,
+        points: 6,
+        teamName: "Basketbalový klub mládeže Žilina | U16G",
+        teamId: 201,
+        category: "U16G",
+        subCategory: "B",
+        country: "SK",
+      },
+      {
+        numOfWins: 2,
+        numOfLosses: 2,
+        ownScore: 136,
+        opponentScore: 134,
+        points: 6,
+        teamName: "BC ŘÍČANY | U16G",
+        teamId: 204,
+        category: "U16G",
+        subCategory: "B",
+        country: "CZ",
+      },
+      {
+        numOfWins: 2,
+        numOfLosses: 2,
+        ownScore: 156,
+        opponentScore: 163,
+        points: 6,
+        teamName: "BK START Ostrava | U16G",
+        teamId: 194,
+        category: "U16G",
+        subCategory: "B",
+        country: "CZ",
+      },
+      {
+        numOfWins: 0,
+        numOfLosses: 4,
+        ownScore: 87,
+        opponentScore: 243,
+        points: 4,
+        teamName: "SKB Rokycany  | U16G",
+        teamId: 219,
+        category: "U16G",
+        subCategory: "B",
+        country: "CZ",
+      },
+    ];
+
+    const organizedWithHardcoded = {
+      ...organizedData,
+      U16G: {
+        A: organizedData.U16G?.A,
+        B: hardcodedU16GB,
+      },
+    } as OrganizedData;
+
+    return organizedWithHardcoded;
   }),
 });
