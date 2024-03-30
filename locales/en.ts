@@ -339,4 +339,5 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "standings.loss": "L",
   "standings.points": "P",
   "standings.score": "S",
+  "link.gallery": "Gallery",
 } satisfies Record<keyof typeof Locale, string>;

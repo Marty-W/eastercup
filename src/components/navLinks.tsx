@@ -14,6 +14,10 @@ const LINKS: NavLink[] = [
     href: "/info/contacts",
     text: "navbar.contacts",
   },
+  {
+    href: "https://www.flickr.com/photos/eastercupklatovy/",
+    text: "link.gallery",
+  },
 ];
 
 export default function NavLinks() {
