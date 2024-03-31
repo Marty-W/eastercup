@@ -308,7 +308,7 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "registeredTeams.notice3":
     "Týmy, které ještě nezaplatily, jsou označeny červeně.",
   "landingPage.matchSchedule": "Rozpis zápasů",
-  "info.home.results": "Výsledky",
+  "info.home.results": "Program zápasů a výsledky",
   "info.home.matchesSchedule": "Rozpis zápasů",
   "info.home.map": "Mapa",
   "info.home.rules": "Pravidla",
