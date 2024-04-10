@@ -27,9 +27,9 @@ export default async function Landing() {
             <AnimatedWelcomeBento />
             <BentoCard
               className="flex min-h-[90px] items-center justify-center border-dark-red bg-brand-red text-white shadow-brand-red lg:text-2xl"
-              href="/results"
+              href="/finalStandings"
             >
-              {t("info.home.results")}
+              {t("link.finalStandings")}
             </BentoCard>
             <BentoCard className="shadow-slate-400">
               <div className="flex h-full flex-col justify-evenly space-y-2 px-4 text-sm shadow-white md:space-y-6 md:text-base">
@@ -51,14 +51,13 @@ export default async function Landing() {
             </BentoCard>
             <BentoCard
               className="col-start-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-base text-black shadow-brand-yellow md:text-2xl lg:h-full"
-              href="/EC2024_game_schedule.pdf"
-              newTab
+              href="/results"
             >
-              {t("landingPage.matchSchedule")}
+              {t("info.home.results")}
             </BentoCard>
             <BentoCard
               className="col-span-2 flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white shadow-brand-blue lg:col-span-1 lg:h-full"
-              href="/standings"
+              href="/groupStandings"
             >
               {t("link.standings")}
             </BentoCard>
