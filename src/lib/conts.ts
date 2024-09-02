@@ -17,6 +17,8 @@ export const REGISTRATION_INVOICE_DUE_DAYS = 10;
 
 export const TOURNAMENT_START = new Date("2024-03-28");
 
+export const TOURNAMENT_DATE_STRING = "17. — 20. 4. 2025";
+
 export const TEAM_CATEGORIRES = [
   "U11 MIX",
   "U12B",

@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { AnimatedHeroStripe } from "./svgs/heroStripe";
 import { useI18n } from "locales/client";
+import { TOURNAMENT_DATE_STRING } from "@/lib/conts";
 
 export const AnimatedWelcomeBento = () => {
   const t = useI18n();
@@ -19,7 +20,7 @@ export const AnimatedWelcomeBento = () => {
             {t("hero.title")}
           </h1>
           <h2 className="text-md lg:text-2xl 2xl:text-4xl">
-            28. — 31. 3. 2024
+            {TOURNAMENT_DATE_STRING}
           </h2>
         </div>
       </div>
