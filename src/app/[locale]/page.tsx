@@ -9,8 +9,14 @@ import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
 export default async function Landing() {
   const t = await getI18n();
   // NOTE: I am hitting redis free tier limits and registration is over, so I am hardcoding the values for now
-  const { teamCount, countryCount, countries } =
-    await api.common.getTeamsCountInfo.query();
+  // TODO: bring back redis
+  // const { teamCount, countryCount, countries } =
+  //   await api.common.getTeamsCountInfo.query();
+  //
+  //
+  const teamCount = 0;
+  const countryCount = 0;
+  const countries: string[] = [];
 
   return (
     <div className="flex h-full flex-col">
