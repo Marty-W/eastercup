@@ -74,8 +74,8 @@ export default async function Landing() {
       <div className="py-8 sm:px-4 md:px-8">
         <iframe
           className="aspect-video h-full w-full rounded-xl border-2 border-black shadow-md shadow-brand-black"
-          src="https://www.youtube.com/embed/9hkAsNXRFP4?si=qP5xtRzzukx7mKlV"
-          title="Eastern Cup 2023 Aftermovie"
+          src="https://www.youtube.com/embed/qSGw5u0ADNw?si=SYPd-vMs-2u-YL0T"
+          title="Easter Cup 2024 Aftermovie"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
           allowFullScreen
         ></iframe>
