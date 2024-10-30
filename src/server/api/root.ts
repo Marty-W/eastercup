@@ -1,6 +1,7 @@
 import { createTRPCRouter } from "@/server/api/trpc";
 import { commonRouter } from "./routers/common";
 import { matchRouter } from "./routers/matches";
+import { registrationRouter } from "./routers/registration";
 
 /**
  * This is the primary router for your server.
@@ -10,6 +11,7 @@ import { matchRouter } from "./routers/matches";
 export const appRouter = createTRPCRouter({
   common: commonRouter,
   match: matchRouter,
+  registration: registrationRouter,
 });
 
 // export type definition of API

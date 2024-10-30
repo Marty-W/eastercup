@@ -44,10 +44,11 @@ export default async function Landing() {
           <div className="grid grid-cols-2 gap-4 lg:min-h-[200px] lg:grid-cols-3 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
             <BentoCard
               className="flex h-[150px] flex-col justify-center border-dark-red bg-brand-red text-base text-white shadow-brand-red md:text-2xl lg:h-full"
-              href="https://app.staylive.io/eastercupklatovy"
-              newTab
+              // href="https://app.staylive.io/eastercupklatovy"
+              href="/form/info"
+              // newTab
             >
-              Live stream
+              Registration
             </BentoCard>
             <BentoCard
               className="col-start-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-base text-black shadow-brand-yellow md:text-2xl lg:h-full"
