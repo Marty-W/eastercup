@@ -23,7 +23,7 @@ export default function Allergies() {
   });
 
   useEffect(() => {
-    if (isHasAllergyCheckboxChecked) {
+    if (!isHasAllergyCheckboxChecked) {
       form.resetField("cateringOrder.allergies.hasVegetarian");
       form.resetField("cateringOrder.allergies.hasLactoseFree");
       form.resetField("cateringOrder.allergies.hasGlutenFree");
