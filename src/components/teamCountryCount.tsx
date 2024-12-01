@@ -41,8 +41,11 @@ const getPluralEN = (count: number) => {
   };
 };
 
-export default function TeamCountryCount({ teamCount, countryCount }: Props) {
-  const locale = getCurrentLocale();
+export default async function TeamCountryCount({
+  teamCount,
+  countryCount,
+}: Props) {
+  const locale = await getCurrentLocale();
 
   if (teamCount === 0 || countryCount === 0) {
     return null;
