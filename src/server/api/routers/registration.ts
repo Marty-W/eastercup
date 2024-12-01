@@ -14,7 +14,7 @@ import {
   generateRegistrationInvoice,
   generateTshirtOrder,
 } from "@/server/api/helpers";
-import { client } from "@/trigger";
+import { postRegEmail } from "@/trigger/postRegEmail";
 import { TRPCError } from "@trpc/server";
 
 export const registrationRouter = createTRPCRouter({
@@ -51,16 +51,10 @@ export const registrationRouter = createTRPCRouter({
 
       await Promise.all(parallelTasks);
 
-      // await ctx.redis.incr("teamCount");
-      // await ctx.redis.sadd("teamCountries", info.country);
-
-      await client.sendEvent({
-        name: "postreg.email",
-        payload: {
-          recipientEmail: info.email,
-          recipientCountry: info.country,
-          teamId: newTeamId,
-        },
+      await postRegEmail.trigger({
+        recipientEmail: info.email,
+        recipientCountry: info.country,
+        teamId: newTeamId,
       });
 
       const diff = new Date().getTime() - timer.getTime();
