@@ -61,7 +61,7 @@ export const InfoPageHeader = ({ className }: Props) => {
       // style={{ borderColor: borderColor(HEADER_COLORS[currentPathname]) }}
     >
       <h2 className="mx-auto w-fit px-6 py-4 text-center text-2xl font-bold leading-8 text-brand-black md:col-start-2 lg:text-4xl">
-        {t(HEADERS[currentPathname]!)}
+        {t(HEADERS[currentPathname])}
       </h2>
       {currentPathname !== "/info/contacts" && (
         <div className="flex items-center space-x-2 md:col-start-1 md:row-start-1">

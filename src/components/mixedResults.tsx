@@ -32,7 +32,7 @@ export const MixedResults = ({
       if (!categoriesWithMatches[category]) {
         categoriesWithMatches[category] = [match];
       } else {
-        categoriesWithMatches[category]!.push(match);
+        categoriesWithMatches[category].push(match);
       }
     });
 
