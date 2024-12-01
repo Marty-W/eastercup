@@ -9,7 +9,6 @@ import ServerInvoiceTemplateCS from "@/components/serverInvoiceTemplateCS";
 import ServerInvoiceTemplateEN from "@/components/serverInvoiceTemplateEN";
 import { type Readable } from "stream";
 import * as postmark from "postmark";
-import { env } from "@/env.mjs";
 import {
   EMAIL_WELCOME_TEMPLATE_ID_CS,
   EMAIL_WELCOME_TEMPLATE_ID_EN,
@@ -72,7 +71,7 @@ export const postRegEmail = task({
     }
 
     const blob = await put(
-      `invoices/postreg/${sanitizeTeamNameForFilename(team.teamName)}.pdf`,
+      `invoices/postreg/invoices25/${sanitizeTeamNameForFilename(team.teamName)}.pdf`,
       stream as Readable,
       {
         contentType: "application/pdf",
@@ -93,7 +92,7 @@ export const postRegEmail = task({
     const emailLang =
       recipientCountry === "CZ" || recipientCountry === "SK" ? "cs" : "en";
 
-    const postmarkClient = new postmark.ServerClient(env.POSTMARK_API_TOKEN);
+    const postmarkClient = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN!);
 
     await postmarkClient.sendEmailWithTemplate({
       TemplateModel: {
