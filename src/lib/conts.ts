@@ -15,7 +15,7 @@ export const REGISTRATION_FEE_EUR = 220;
 export const REGISTRATION_FEE_CZK = 5000;
 export const REGISTRATION_INVOICE_DUE_DAYS = 10;
 
-export const TOURNAMENT_START = new Date("2024-03-28");
+export const TOURNAMENT_START = new Date("2025-04-17");
 
 export const TOURNAMENT_DATE_STRING = "17. — 20. 4. 2025";
 

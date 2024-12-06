@@ -30,7 +30,7 @@ export default function CateringOptions() {
         </TableHeader>
         <TableBody>
           <TableRow>
-            <TableCell>{t("common.thursday")}</TableCell>
+            <TableCell>{t("common.thursdayDate")}</TableCell>
             <TableCell>
               <FoodInput
                 fieldName="cateringOrder.thuBreakfast"
@@ -51,7 +51,7 @@ export default function CateringOptions() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>{t("common.friday")}</TableCell>
+            <TableCell>{t("common.fridayDate")}</TableCell>
             <TableCell>
               <FoodInput
                 fieldName="cateringOrder.friBreakfast"
@@ -72,7 +72,7 @@ export default function CateringOptions() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Sobota</TableCell>
+            <TableCell>{t("common.saturdayDate")}</TableCell>
             <TableCell>
               <FoodInput
                 fieldName="cateringOrder.satBreakfast"
@@ -93,7 +93,7 @@ export default function CateringOptions() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>{t("common.sunday")}</TableCell>
+            <TableCell>{t("common.sundayDate")}</TableCell>
             <TableCell>
               <FoodInput
                 fieldName="cateringOrder.sunBreakfast"
@@ -106,12 +106,12 @@ export default function CateringOptions() {
                 control={form.control}
               />
             </TableCell>
-            <TableCell>
+            {/* <TableCell>
               <FoodInput
                 fieldName="cateringOrder.sunDinner"
                 control={form.control}
               />
-            </TableCell>
+            </TableCell> */}
           </TableRow>
         </TableBody>
       </Table>

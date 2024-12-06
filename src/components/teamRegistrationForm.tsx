@@ -19,6 +19,9 @@ import { ArrivalDateInput } from "./formFields/dateInput";
 import PhoneNumberInput from "./formFields/phoneNumber";
 import Transport from "./formFields/transport";
 import TeamCategorySelect from "./formFields/teamCategorySelect";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import Image from "next/image";
+import { Calendar } from "lucide-react";
 
 export default function TeamRegistrationForm() {
   const t = useScopedI18n("form");
@@ -67,6 +70,14 @@ export default function TeamRegistrationForm() {
           fieldLabel="form.email"
           control={form.control}
         />
+        <Alert>
+          <Calendar className="h-4 w-4" />
+          <AlertTitle>{t("arrivalDateAlertTitle")}</AlertTitle>
+          <AlertDescription>
+            {t("arrivalDateAlertDescription")}
+          </AlertDescription>
+        </Alert>
+        <ArrivalDateInput />
         <FormSelect
           control={form.control}
           fieldName="arrivalTime"
@@ -80,7 +91,6 @@ export default function TeamRegistrationForm() {
             </SelectItem>
           ))}
         </FormSelect>
-        <ArrivalDateInput />
         <Transport />
         <FormField
           control={form.control}

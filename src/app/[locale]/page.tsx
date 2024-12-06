@@ -8,15 +8,8 @@ import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
 
 export default async function Landing() {
   const t = await getI18n();
-  // NOTE: I am hitting redis free tier limits and registration is over, so I am hardcoding the values for now
-  // TODO: bring back redis
-  // const { teamCount, countryCount, countries } =
-  //   await api.common.getTeamsCountInfo.query();
-  //
-  //
-  const teamCount = 0;
-  const countryCount = 0;
-  const countries: string[] = [];
+  const { teamCount, countryCount, countries } =
+    await api.common.getTeamsCountInfo.query();
 
   return (
     <div className="flex h-full flex-col">
@@ -42,33 +35,12 @@ export default async function Landing() {
               </div>
             </BentoCard>
           </div>
-          <div className="grid grid-cols-2 gap-4 lg:min-h-[200px] lg:grid-cols-3 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
+          <div className="lg:min-h-[200px] lg:grid-cols-2 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
             <BentoCard
-              className="flex h-[150px] flex-col justify-center border-dark-red bg-brand-red text-base text-white shadow-brand-red md:text-2xl lg:h-full"
-              // href="https://app.staylive.io/eastercupklatovy"
+              className="flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white shadow-brand-blue lg:h-full"
               href="/form/info"
-              // newTab
             >
-              Registration
-            </BentoCard>
-            <BentoCard
-              className="col-start-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-base text-black shadow-brand-yellow md:text-2xl lg:h-full"
-              href="/results"
-            >
-              {t("info.home.results")}
-            </BentoCard>
-            <BentoCard
-              className="col-span-2 flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white shadow-brand-blue lg:col-span-1 lg:h-full"
-              href="/groupStandings"
-            >
-              {t("link.standings")}
-            </BentoCard>
-            <BentoCard
-              className="col-span-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-2xl text-brand-black shadow-brand-yellow lg:col-span-1 lg:hidden lg:h-full"
-              href="https://www.flickr.com/photos/eastercupklatovy/"
-              newTab
-            >
-              {t("link.gallery")}
+              {t("link.registration")}
             </BentoCard>
           </div>
         </div>

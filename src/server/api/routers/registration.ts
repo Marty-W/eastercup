@@ -51,6 +51,9 @@ export const registrationRouter = createTRPCRouter({
 
       await Promise.all(parallelTasks);
 
+      await ctx.redis.incr("teamCount");
+      await ctx.redis.sadd("teamCountries", info.country);
+
       await postRegEmail.trigger({
         recipientEmail: info.email,
         recipientCountry: info.country,

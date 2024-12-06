@@ -60,6 +60,12 @@ export function ArrivalDateInput() {
                 defaultMonth={TOURNAMENT_START}
                 selected={field.value}
                 onSelect={field.onChange}
+                showOutsideDays={false}
+                disabled={(date) => {
+                  const tournamentStart = new Date("2025-04-16");
+                  const tournamentEnd = new Date("2025-04-20");
+                  return date < tournamentStart || date > tournamentEnd;
+                }}
               />
             </PopoverContent>
           </Popover>

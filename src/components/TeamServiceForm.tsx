@@ -17,6 +17,8 @@ import Image from "next/image";
 import InfoPopover from "./ui/infoPopover";
 import CateringPopover from "./cateringPopover";
 import AccomodationPopover from "./accomodationPopover";
+import { Alert, AlertDescription, AlertTitle } from "./ui/alert";
+import { BedIcon } from "lucide-react";
 
 export default function TeamServiceForm() {
   const form = useFormContext<z.infer<typeof teamFormServicesSchema>>();
@@ -82,6 +84,13 @@ export default function TeamServiceForm() {
             <div className="space-y-4">
               <AccomodationCategories />
               <AccomodationRooms />
+              <Alert>
+                <BedIcon className="h-4 w-4" />
+                <AlertTitle>{t("accomodation.alertTitle")}</AlertTitle>
+                <AlertDescription>
+                  {t("accomodation.alertDescription")}
+                </AlertDescription>
+              </Alert>
             </div>
           </SubQuestionContainerWithReturn>
         )}

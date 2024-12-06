@@ -13,7 +13,7 @@ import { useFormContext } from "react-hook-form";
 import { type z } from "zod";
 import AccomodationCountInput from "./accomodationCountInput";
 
-const roomTypes = ["coaches", "support"];
+const roomTypes = ["coaches"];
 
 interface Props {
   day: "wednesday" | "thursday" | "friday" | "saturday";
@@ -30,9 +30,8 @@ export default function AccomodationTable({ day }: Props) {
       </TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead></TableHead>
-          <TableHead>{t("accomodation.coaches")}</TableHead>
-          <TableHead>{t("accomodation.support")}</TableHead>
+          <TableHead className="w-20"></TableHead>
+          <TableHead className="w-full">{t("accomodation.coaches")}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

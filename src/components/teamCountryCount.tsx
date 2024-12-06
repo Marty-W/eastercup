@@ -47,14 +47,15 @@ export default async function TeamCountryCount({
 }: Props) {
   const locale = await getCurrentLocale();
 
-  if (teamCount === 0 || countryCount === 0) {
-    return null;
-  }
-  const messageEN = `${getPluralEN(teamCount)
-    ?.registered} ${teamCount} ${getPluralEN(teamCount)
-    ?.teams} from ${countryCount} ${getPluralEN(countryCount)?.countries}`;
-  const messageCZ = `${getPluralCZ(teamCount)
-    ?.registered} ${teamCount} ${getPluralCZ(teamCount)?.team} ${
+  // if (teamCount === 0 || countryCount === 0) {
+  //   return null;
+  // }
+  const messageEN = `${getPluralEN(teamCount)?.registered} ${teamCount} ${
+    getPluralEN(teamCount)?.teams
+  } from ${countryCount} ${getPluralEN(countryCount)?.countries}`;
+  const messageCZ = `${
+    getPluralCZ(teamCount)?.registered
+  } ${teamCount} ${getPluralCZ(teamCount)?.team} ${
     getPluralCZ(countryCount).from
   } ${countryCount} ${getPluralCZ(countryCount)?.country}`;
 

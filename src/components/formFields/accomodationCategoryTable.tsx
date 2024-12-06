@@ -12,13 +12,7 @@ import { type teamFormServicesSchema } from "@/lib/conts";
 import { useFormContext } from "react-hook-form";
 import { type z } from "zod";
 import AccomodationCountInput from "./accomodationCountInput";
-const roleTypes = [
-  "player",
-  "coach-men",
-  "coach-women",
-  "support-men",
-  "support-women",
-];
+const roleTypes = ["player", "coach-men", "coach-women"];
 
 interface Props {
   day: "wednesday" | "thursday" | "friday" | "saturday";
@@ -36,19 +30,13 @@ export default function AccomodationCategoryTable({ day }: Props) {
         </TableCaption>
         <TableHeader>
           <TableRow>
-            <TableHead></TableHead>
-            <TableHead>{t("accomodation.players")}</TableHead>
-            <TableHead>
+            <TableHead className="w-20"></TableHead>
+            <TableHead className="w-1/3">{t("accomodation.players")}</TableHead>
+            <TableHead className="w-1/3">
               {t("common.men")} {t("accomodation.coaches")}
             </TableHead>
-            <TableHead>
+            <TableHead className="w-1/3">
               {t("common.women")} {t("accomodation.coaches")}
-            </TableHead>
-            <TableHead>
-              {t("common.men")} {t("accomodation.support")}
-            </TableHead>
-            <TableHead>
-              {t("common.women")} {t("accomodation.support")}
             </TableHead>
           </TableRow>
         </TableHeader>
