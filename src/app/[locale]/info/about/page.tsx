@@ -1,6 +1,8 @@
 import { InfoSection, InfoSubsection } from "@/components/ui/infoSection";
 import { getScopedI18n } from "locales/server";
+import Image from "next/image";
 import Link from "next/link";
+import TshirtsImage from "public/info/tshirts.png";
 
 export default async function About() {
   const t = await getScopedI18n("info");
@@ -35,6 +37,16 @@ export default async function About() {
       </InfoSection>
       <InfoSection header={t("prizes.header")}>
         <p className="lg:leading-5">{t("prizes.text")}</p>
+      </InfoSection>
+      <InfoSection header={t("tshirts.header")}>
+        <p className="lg:leading-5">{t("tshirts.text")}</p>
+        <Image
+          src={TshirtsImage}
+          className="mx-auto"
+          width={200}
+          height={200}
+          alt="tshirt"
+        />
       </InfoSection>
       <InfoSection header={t("contact.header")}>
         <div className="mb-4 space-y-1">

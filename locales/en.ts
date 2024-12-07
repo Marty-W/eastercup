@@ -188,7 +188,7 @@ export default {
   "info.categories.normal.category3": "U16 GIRLS (born 2009 and younger)",
   "info.categories.normal.category4": "U16 BOYS (born 2009 and younger)",
   "info.term.header": "DATE",
-  "info.term.date": "March 28th – March 31th 2024",
+  "info.term.date": "April 17th – April 20th 2025",
   "info.place.header": "PLACE",
   "info.place.place1": "BK Klatovy hall (Voříškova 715, Klatovy)",
   "info.place.place2": "CMS Klatovy hall (U Elektrárny 917, Klatovy)",
@@ -350,4 +350,6 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "form.arrivalDateAlertTitle": "Tournament start",
   "form.arrivalDateAlertDescription":
     "Tournament starts on 17th of April 2025 at 10:00 for all teams.",
+  "info.tshirts.text":
+    "The price of the t-shirt is 15 EUR when ordered before the tournament, 16.5 EUR on site.",
 } satisfies Record<keyof typeof Locale, string>;
