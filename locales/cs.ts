@@ -141,10 +141,10 @@ export default {
   "accomodation.tooltip.categoryC": "Kategorie C - domov mládeže",
   "accomodation.tooltip.categoryD":
     "Kategorie D - ubytování ve třídě ve škole - vlastní spací pytle",
-  "accomodation.tooltip.categoryA.price": "Cena od 840,- Kč na osobu a noc",
-  "accomodation.tooltip.categoryB.price": "Cena od 620,- Kč na osobu a noc",
+  "accomodation.tooltip.categoryA.price": "Cena od 850,- Kč na osobu a noc",
+  "accomodation.tooltip.categoryB.price": "Cena od 650,- Kč na osobu a noc",
   "accomodation.tooltip.categoryC.price": "Cena od 460,- Kč na osobu a noc",
-  "accomodation.tooltip.categoryD.price": "Cena od 160,- Kč na osobu a noc",
+  "accomodation.tooltip.categoryD.price": "Cena od 180,- Kč na osobu a noc",
   "accomodation.tooltip.note":
     "Ceny ubytování typu A, B a C jsou předběžné a jsou bez snídaně.",
   "accomodation.tooltip.note2":
@@ -260,13 +260,13 @@ systémem na e-mailovou adresu uvedenou v přihlášce.`,
   "info.accomodation.text2":
     "Přesný název ubytovacího zařízení a cena bude upřesněna před odesláním předfaktury za objednané služby.",
   "info.accomodation.hotel.header": "Typ A: Hotel",
-  "info.accomodation.hotel.text": "cena od 840 Kč na osobu a noc",
+  "info.accomodation.hotel.text": "cena od 850 Kč na osobu a noc",
   "info.accomodation.pension.header": "Typ B: Penzion",
-  "info.accomodation.pension.text": "cena od 620,- Kč na osobu a noc",
+  "info.accomodation.pension.text": "cena od 650,- Kč na osobu a noc",
   "info.accomodation.hostel.header": "Typ C: domov mládeže",
   "info.accomodation.hostel.text": "cena od 460,- Kč na osobu a noc",
   "info.accomodation.school.header": "Typ D: Ve třídách základní školy",
-  "info.accomodation.school.text": "cení od 160,- Kč na osobu a noc",
+  "info.accomodation.school.text": "cení od 180,- Kč na osobu a noc",
   "info.accomodation.school.text2": "na karimatce ve vlastním spacáku",
   "info.accomodation.storno.header": "Storno podmínky",
   "info.accomodation.storno.text1":

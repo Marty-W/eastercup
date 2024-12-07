@@ -144,12 +144,12 @@ export default {
   "accomodation.tooltip.categoryD":
     "Category D - clasess at school – own sleepig bags and pads",
   "accomodation.tooltip.categoryA.price":
-    "Price based on hotel - starting from 34,- EUR per person and night",
+    "Price based on hotel - starting from 35 EUR per person and night",
   "accomodation.tooltip.categoryB.price":
-    "Price from 26 EUR per person and night.",
+    "Price from 27 EUR per person and night.",
   "accomodation.tooltip.categoryC.price":
     "Price from 19 EUR per person and night.",
-  "accomodation.tooltip.categoryD.price": "Price 7 EUR per person and night.",
+  "accomodation.tooltip.categoryD.price": "Price 8 EUR per person and night.",
   "accomodation.tooltip.note":
     "The prices of accomodation type A, B and C are preliminary and are without any breakfast.",
   "accomodation.tooltip.note2":
@@ -271,14 +271,14 @@ teams are obliged to take care of their belongings to prevent any theft.`,
   "info.accomodation.text2":
     "Exact name of accommodation facility and the price will be specified before sending of pre-invoice for the ordered services.",
   "info.accomodation.hotel.header": "Category A: Hotel",
-  "info.accomodation.hotel.text": "starting from 34 EUR per person and night",
+  "info.accomodation.hotel.text": "starting from 35 EUR per person and night",
   "info.accomodation.pension.header": "Category B: Pension",
-  "info.accomodation.pension.text": "price from 26 EUR per person/night",
+  "info.accomodation.pension.text": "price from 27 EUR per person/night",
   "info.accomodation.hostel.header": "Category C: Hostel or internat",
   "info.accomodation.hostel.text": "price from 19 EUR per person/night",
   "info.accomodation.school.header": "Category D: clasess at school",
-  "info.accomodation.school.text": "own sleepig bags and pads",
-  "info.accomodation.school.text2": "price 7 EUR per person and night",
+  "info.accomodation.school.text": "own sleeping bags and pads",
+  "info.accomodation.school.text2": "price 8 EUR per person and night",
   "info.accomodation.storno.header":
     "Cancellation conditions for typa A and B reservation:",
   "info.accomodation.storno.text1":
