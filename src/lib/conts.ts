@@ -164,8 +164,6 @@ const accomodationWithRoleSchema = z.object({
   player: accomodationCategorySchema,
   "coach-men": accomodationCategorySchema,
   "coach-women": accomodationCategorySchema,
-  "support-men": accomodationCategorySchema,
-  "support-women": accomodationCategorySchema,
 });
 
 const roomSchema = z.object({
@@ -177,7 +175,6 @@ const roomSchema = z.object({
 
 const roomWithRoleSchema = z.object({
   coaches: roomSchema,
-  support: roomSchema,
 });
 
 const allergiesSchema = z.object({
@@ -216,7 +213,6 @@ export const cateringOrderSchema = z.object({
   satDinner: z.number().min(0).optional(),
   sunBreakfast: z.number().min(0).optional(),
   sunLunch: z.number().min(0).optional(),
-  sunDinner: z.number().min(0).optional(),
   allergies: allergiesSchema,
 });
 
@@ -268,7 +264,6 @@ export const teamFormServicesDefaultValues = {
     satDinner: 0,
     sunBreakfast: 0,
     sunLunch: 0,
-    sunDinner: 0,
     allergies: {
       hasHalal: false,
       hasVegetarian: false,
