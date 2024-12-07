@@ -130,7 +130,7 @@ export const teamFormInfoDefaultValues = {
   country: "",
   category: TEAM_CATEGORIRES[0],
   arrivalTime: "",
-  arrivalDate: TOURNAMENT_START,
+  arrivalDate: new Date("2025-04-16"),
   willTransportStayOver: false,
   willNeedTransportFromAirport: false,
 };

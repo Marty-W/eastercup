@@ -57,12 +57,12 @@ export function ArrivalDateInput() {
             <PopoverContent className="w-auto p-0" align="start">
               <Calendar
                 mode="single"
-                defaultMonth={TOURNAMENT_START}
+                defaultMonth={new Date("2025-04-15")}
                 selected={field.value}
                 onSelect={field.onChange}
                 showOutsideDays={false}
                 disabled={(date) => {
-                  const tournamentStart = new Date("2025-04-16");
+                  const tournamentStart = new Date("2025-04-15");
                   const tournamentEnd = new Date("2025-04-20");
                   return date < tournamentStart || date > tournamentEnd;
                 }}
