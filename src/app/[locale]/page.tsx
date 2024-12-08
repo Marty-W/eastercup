@@ -8,14 +8,8 @@ import { AnimatedWelcomeBento } from "@/components/animatedWelcomeBento";
 
 export default async function Landing() {
   const t = await getI18n();
-  // NOTE: I am hitting redis free tier limits and registration is over, so I am hardcoding the values for now
-  // const { teamCount, countryCount, countries } =
-  //   await api.common.getTeamsCountInfo.query();
-  //
-
-  const teamCount = 71;
-  const countryCount = 4;
-  const countries = ["CZ", "DE", "SK", "IT"];
+  const { teamCount, countryCount, countries } =
+    await api.common.getTeamsCountInfo.query();
 
   return (
     <div className="flex h-full flex-col">
@@ -41,32 +35,12 @@ export default async function Landing() {
               </div>
             </BentoCard>
           </div>
-          <div className="grid grid-cols-2 gap-4 lg:min-h-[200px] lg:grid-cols-3 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
+          <div className="lg:min-h-[200px] lg:grid-cols-2 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
             <BentoCard
-              className="flex h-[150px] flex-col justify-center border-dark-red bg-brand-red text-base text-white shadow-brand-red md:text-2xl lg:h-full"
-              href="https://app.staylive.io/eastercupklatovy"
-              newTab
+              className="flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white shadow-brand-blue lg:h-full"
+              href="/form/info"
             >
-              Live stream
-            </BentoCard>
-            <BentoCard
-              className="col-start-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-base text-black shadow-brand-yellow md:text-2xl lg:h-full"
-              href="/results"
-            >
-              {t("info.home.results")}
-            </BentoCard>
-            <BentoCard
-              className="col-span-2 flex h-[150px] flex-col justify-center bg-brand-blue text-2xl text-white shadow-brand-blue lg:col-span-1 lg:h-full"
-              href="/groupStandings"
-            >
-              {t("link.standings")}
-            </BentoCard>
-            <BentoCard
-              className="col-span-2 flex h-[150px] flex-col justify-center border-dark-yellow bg-brand-yellow text-2xl text-brand-black shadow-brand-yellow lg:col-span-1 lg:hidden lg:h-full"
-              href="https://www.flickr.com/photos/eastercupklatovy/"
-              newTab
-            >
-              {t("link.gallery")}
+              {t("link.registration")}
             </BentoCard>
           </div>
         </div>
@@ -74,8 +48,8 @@ export default async function Landing() {
       <div className="py-8 sm:px-4 md:px-8">
         <iframe
           className="aspect-video h-full w-full rounded-xl border-2 border-black shadow-md shadow-brand-black"
-          src="https://www.youtube.com/embed/9hkAsNXRFP4?si=qP5xtRzzukx7mKlV"
-          title="Eastern Cup 2023 Aftermovie"
+          src="https://www.youtube.com/embed/qSGw5u0ADNw?si=SYPd-vMs-2u-YL0T"
+          title="Easter Cup 2024 Aftermovie"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;"
           allowFullScreen
         ></iframe>

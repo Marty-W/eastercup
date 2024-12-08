@@ -15,7 +15,9 @@ export const REGISTRATION_FEE_EUR = 220;
 export const REGISTRATION_FEE_CZK = 5000;
 export const REGISTRATION_INVOICE_DUE_DAYS = 10;
 
-export const TOURNAMENT_START = new Date("2024-03-28");
+export const TOURNAMENT_START = new Date("2025-04-17");
+
+export const TOURNAMENT_DATE_STRING = "17. — 20. 4. 2025";
 
 export const TEAM_CATEGORIRES = [
   "U11 MIX",
@@ -128,7 +130,7 @@ export const teamFormInfoDefaultValues = {
   country: "",
   category: TEAM_CATEGORIRES[0],
   arrivalTime: "",
-  arrivalDate: TOURNAMENT_START,
+  arrivalDate: new Date("2025-04-16"),
   willTransportStayOver: false,
   willNeedTransportFromAirport: false,
 };
@@ -162,8 +164,6 @@ const accomodationWithRoleSchema = z.object({
   player: accomodationCategorySchema,
   "coach-men": accomodationCategorySchema,
   "coach-women": accomodationCategorySchema,
-  "support-men": accomodationCategorySchema,
-  "support-women": accomodationCategorySchema,
 });
 
 const roomSchema = z.object({
@@ -175,7 +175,6 @@ const roomSchema = z.object({
 
 const roomWithRoleSchema = z.object({
   coaches: roomSchema,
-  support: roomSchema,
 });
 
 const allergiesSchema = z.object({
@@ -214,7 +213,6 @@ export const cateringOrderSchema = z.object({
   satDinner: z.number().min(0).optional(),
   sunBreakfast: z.number().min(0).optional(),
   sunLunch: z.number().min(0).optional(),
-  sunDinner: z.number().min(0).optional(),
   allergies: allergiesSchema,
 });
 
@@ -266,7 +264,6 @@ export const teamFormServicesDefaultValues = {
     satDinner: 0,
     sunBreakfast: 0,
     sunLunch: 0,
-    sunDinner: 0,
     allergies: {
       hasHalal: false,
       hasVegetarian: false,
@@ -308,12 +305,12 @@ export const CATEGORY_CAPACITIES = {
   U12G: 8,
   U12B: 12,
   U14G: 10,
-  U14B: 20,
+  U14B: 16,
   U16G: 10,
   U16B: 10,
 };
 
-export const REGISTRATION_CUTOFF = new Date("2024-03-07T23:59:59");
+export const REGISTRATION_CUTOFF = new Date("2025-03-07T23:59:59");
 
 export const AccountItemSchema = z.object({
   text: z.string(),

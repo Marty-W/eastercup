@@ -8,6 +8,7 @@ export const commonRouter = createTRPCRouter({
     const teamCount = await redis.get("teamCount");
 
     const countries = await redis.smembers("teamCountries");
+
     const sortedCountries = countries.sort((a: string, b: string) => {
       if (a === "CZ") {
         return -1;

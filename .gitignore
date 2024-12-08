@@ -42,3 +42,5 @@ yarn-error.log*
 *.tsbuildinfo
 .sentryclirc
 supabase
+
+.trigger
