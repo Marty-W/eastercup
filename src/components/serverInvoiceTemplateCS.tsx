@@ -14,20 +14,17 @@ import {
   Font,
 } from "@react-pdf/renderer";
 import { addDays, format } from "date-fns";
-import path from "path";
 
-const Roboto = path.join(process.cwd(), "fonts", "Roboto.ttf");
-const RobotoBold = path.join(process.cwd(), "fonts", "RobotoBold.ttf");
 
 Font.register({
   family: "Roboto",
   fonts: [
     {
-      src: Roboto,
+      src: "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf",
       fontWeight: 400,
     },
     {
-      src: RobotoBold,
+      src: "https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlvAw.ttf",
       fontWeight: 700,
     },
   ],

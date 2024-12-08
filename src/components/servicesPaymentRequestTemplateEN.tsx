@@ -22,11 +22,11 @@ Font.register({
   family: "Roboto",
   fonts: [
     {
-      src: Roboto,
+      src: "https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Me5Q.ttf",
       fontWeight: 400,
     },
     {
-      src: RobotoBold,
+      src: "https://fonts.gstatic.com/s/roboto/v30/KFOlCnqEu92Fr1MmWUlvAw.ttf",
       fontWeight: 700,
     },
   ],

@@ -10,7 +10,7 @@ const RulesSubsection = ({ children }: { children: React.ReactNode }) => {
 
 export default async function Rules() {
   const t = await getScopedI18n("info");
-  const currLocalale = getCurrentLocale();
+  const currentLocale = await getCurrentLocale();
   return (
     <div className="text-xs md:text-base">
       <ol className="list-inside list-decimal space-y-3 md:space-y-5">
@@ -52,7 +52,7 @@ export default async function Rules() {
             <p>{t("rules.6.h4.p4")}</p>
             <p>{t("rules.6.h4.p5")}</p>
             <p>{t("rules.6.h4.p6")}</p>
-            {currLocalale === "cs" && <p>{t("rules.6.h4.p7")}</p>}
+            {currentLocale === "cs" && <p>{t("rules.6.h4.p7")}</p>}
             <p>{t("rules.6.h4.p8")}</p>
             <div className="pl-8">
               <p>{t("rules.6.h4.p8.s1")}</p>

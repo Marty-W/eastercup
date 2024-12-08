@@ -10,6 +10,8 @@ interface Props {
 export const GroupStandingsWrapper = ({ selectedCategory }: Props) => {
   const groupStandings = api.match.getGroupStandings.useQuery();
 
+  console.log(groupStandings.data);
+
   if (!groupStandings.isSuccess) {
     return <Spinner className="mx-auto my-20 h-16 w-16 text-brand-blue" />;
   }
