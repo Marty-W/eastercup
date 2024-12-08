@@ -305,7 +305,7 @@ export const CATEGORY_CAPACITIES = {
   U12G: 8,
   U12B: 12,
   U14G: 10,
-  U14B: 20,
+  U14B: 16,
   U16G: 10,
   U16B: 10,
 };
