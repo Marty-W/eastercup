@@ -25,7 +25,7 @@ export default async function Landing() {
             >
               {t("link.finalStandings")}
             </BentoCard>
-            <BentoCard className="shadow-slate-400">
+            <BentoCard className="shadow-slate-400" href="/teams">
               <div className="flex h-full flex-col justify-evenly space-y-2 px-4 text-sm shadow-white md:space-y-6 md:text-base">
                 <TeamCountryCount
                   countryCount={countryCount}
