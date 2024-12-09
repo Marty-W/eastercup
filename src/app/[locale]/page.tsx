@@ -25,15 +25,18 @@ export default async function Landing() {
             >
               {t("link.finalStandings")}
             </BentoCard>
-            <BentoCard className="shadow-slate-400" href="/teams">
-              <div className="flex h-full flex-col justify-evenly space-y-2 px-4 text-sm shadow-white md:space-y-6 md:text-base">
+            <div className="flex h-full flex-col self-stretch text-sm shadow-white md:space-y-6 md:text-base">
+              <BentoCard
+                className="flex h-full flex-col justify-center gap-4 shadow-slate-400"
+                href="/teams"
+              >
                 <TeamCountryCount
                   countryCount={countryCount}
                   teamCount={teamCount}
                 />
                 <CountryFlags countries={countries} />
-              </div>
-            </BentoCard>
+              </BentoCard>
+            </div>
           </div>
           <div className="lg:min-h-[200px] lg:grid-cols-2 lg:justify-stretch lg:gap-6 lg:justify-self-stretch">
             <BentoCard
