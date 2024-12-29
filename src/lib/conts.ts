@@ -193,7 +193,6 @@ const allergiesSchema = z.object({
 });
 
 export const tshirtOrderSchema = z.object({
-  noXsShirts: z.number().min(0).max(99).optional(),
   noSShirts: z.number().min(0).max(99).optional(),
   noMShirts: z.number().min(0).max(99).optional(),
   noLShirts: z.number().min(0).max(99).optional(),

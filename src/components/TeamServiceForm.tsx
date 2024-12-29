@@ -120,11 +120,11 @@ export default function TeamServiceForm() {
         />
         {interestedInTshirts ? (
           <div className="grid h-20 grid-cols-3 grid-rows-2 gap-y-2">
-            <TshirtInput
-              fieldName="tshirtOrder.noXsShirts"
-              fieldLabel="XS"
-              control={form.control}
-            />
+            {/* <TshirtInput */}
+            {/*   fieldName="tshirtOrder.noXsShirts" */}
+            {/*   fieldLabel="XS" */}
+            {/*   control={form.control} */}
+            {/* /> */}
             <TshirtInput
               fieldName="tshirtOrder.noSShirts"
               fieldLabel="S"
