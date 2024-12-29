@@ -301,8 +301,8 @@ export type InfoServerValues = z.infer<typeof teamServerInfoSchema>;
 
 export const CATEGORY_CAPACITIES = {
   "U11 MIX": 8,
-  U12G: 8,
-  U12B: 12,
+  U12G: 10,
+  U12B: 10,
   U14G: 10,
   U14B: 16,
   U16G: 10,
