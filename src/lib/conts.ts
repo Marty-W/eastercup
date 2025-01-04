@@ -300,7 +300,7 @@ export type BillingFormValues = z.infer<typeof teamFormBillingSchema>;
 export type InfoServerValues = z.infer<typeof teamServerInfoSchema>;
 
 export const CATEGORY_CAPACITIES = {
-  "U11 MIX": 8,
+  "U11 MIX": 10,
   U12G: 10,
   U12B: 10,
   U14G: 10,
