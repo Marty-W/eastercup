@@ -302,11 +302,11 @@ export type InfoServerValues = z.infer<typeof teamServerInfoSchema>;
 export const CATEGORY_CAPACITIES = {
   "U11 MIX": 10,
   U12G: 10,
-  U12B: 10,
+  U12B: 12,
   U14G: 10,
   U14B: 16,
   U16G: 10,
-  U16B: 12,
+  U16B: 16,
 };
 
 export const REGISTRATION_CUTOFF = new Date("2025-03-07T23:59:59");
