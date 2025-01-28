@@ -8,6 +8,7 @@
     "db:push": "dotenv drizzle-kit push:pg",
     "db:studio": "dotenv drizzle-kit studio",
     "db:generate": "dotenv drizzle-kit generate:pg",
+    "send-mail": "dotenv tsx src/lib/sendBulkMail.ts",
     "db:migrate": "dotenv tsx src/server/db/migrate.ts",
     "dev": "next dev",
     "lint": "next lint",
@@ -105,3 +106,4 @@
   },
   "packageManager": "pnpm@8.7.0"
 }
+
