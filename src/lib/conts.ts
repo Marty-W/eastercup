@@ -300,16 +300,16 @@ export type BillingFormValues = z.infer<typeof teamFormBillingSchema>;
 export type InfoServerValues = z.infer<typeof teamServerInfoSchema>;
 
 export const CATEGORY_CAPACITIES = {
-  "U11 MIX": 10,
-  U12G: 10,
+  "U11 MIX": 8,
+  U12G: 3,
   U12B: 12,
   U14G: 6,
   U14B: 16,
   U16G: 10,
-  U16B: 16,
+  U16B: 10,
 };
 
-export const REGISTRATION_CUTOFF = new Date("2025-03-07T23:59:59");
+export const REGISTRATION_CUTOFF = new Date("2025-03-13T23:59:59");
 
 export const AccountItemSchema = z.object({
   text: z.string(),
